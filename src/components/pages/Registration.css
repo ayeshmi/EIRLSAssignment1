@@ -1,0 +1,200 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:600|Work+Sans:400,500,600,700&display=swap');
+@import url("https://cdn.syncfusion.com/ej2/material.css");
+body{
+  background: rgb(207, 85, 14);
+  background: linear-gradient(135deg, rgb(241, 232, 101) 0%,     rgb(196, 14, 105) 100%);
+  font-family: "work sans";
+}
+
+html{
+  font-size: 100%;
+}
+
+.form2{
+  max-width: 800px;
+  min-width: 600px;
+  max-height: 1200px;
+  width: 30%;
+  height: 60%;
+  margin: 100px auto;
+  background-color: #FFFFFF;
+  border-radius: 25px;
+}
+
+#headerTitle{
+  text-align: center;
+  font-family: 'open sans', sans-serif;
+  padding: 2rem 0;
+  margin: 0;
+  font-size: 2rem;
+}
+
+.row{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 2rem;
+  max-width: 100%;
+  
+}
+
+.form-img {
+  width: 80%;
+  height: 80%;
+  position: absolute;
+  top: 90%;
+  left: 89%;
+  transform: translate(-50%, -50%);
+}
+
+.row input{
+  width: 80%;
+  box-sizing: border-box;
+  border: none;
+  font-size: 1.3rem;
+  padding-left: 1.5rem;
+  padding-bottom: 1rem;
+  box-shadow: inset 0px -3px 0px 0px rgba(187,187,187,0.2);
+  transition: box-shadow 0.2s ease-in;
+}
+
+.row input:focus{
+   box-shadow: inset 0px -3px 0px 0px rgba(34,193,195,0.7);
+   outline: none;
+}
+
+.row input::-webkit-input-placeholder{
+  opacity: 1;
+  transition: opacity 0.25s ease-out;
+}
+
+.row input:hover::-webkit-input-placeholder,
+.row input:focus::-webkit-input-placeholder{
+  opacity: 0;
+}
+label{
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  padding-top: 2rem;
+  max-width: 100%;
+  align-self: start;
+  padding-left: 4.5rem;
+  padding-bottom: 0.5rem;
+  color: rgba(14, 6, 6, 0.9);
+}
+.row label{
+  align-self: start;
+  padding-left: 4.5rem;
+  padding-bottom: 0.5rem;
+  color: rgba(17, 11, 11, 0.9);
+}
+
+.row button{
+  border-radius: 25px;
+  width: 80%;
+  height: 40px;
+  font-size: 1.3rem;
+  color: white;
+  font-weight: 700;
+  background: rgb(207, 85, 14);
+  background: linear-gradient(90deg, rgb(241, 232, 101) 0%,     rgb(196, 14, 105) 100%);
+  border: 0px;
+  cursor: pointer;
+  transition: opacity 0.25s ease-out;
+}
+
+.row button:hover{
+  opacity: 0.8;
+}
+
+#button{
+  padding-bottom: 1.5rem;
+}
+
+#facebookIcon{
+  background-image:      url("https://image.flaticon.com/icons/svg/145/145802.svg");
+  background-repeat: no-repeat;
+  width: 3rem;
+  height: 3rem;
+}
+
+#twitterIcon{
+  background-image: url("https://image.flaticon.com/icons/svg/145/145812.svg");
+  background-repeat: no-repeat;
+  width: 3rem;
+  height: 3rem;
+}
+
+#googleIcon{
+  background-image: url("https://image.flaticon.com/icons/svg/145/145804.svg");
+  background-repeat: no-repeat;
+  width: 3rem;
+  height: 3rem;
+}
+
+#iconGroup{
+  display: flex;
+  justify-content: center;
+  padding: 2rem 0;
+}
+
+#iconGroup a{
+  margin: 0 0.6rem;
+}
+
+#alternativeLogin {
+   text-align: center;
+   padding-top: 2rem;
+   margin-top: 1.5rem;
+}
+
+
+.password{
+  width: 80%;
+  box-sizing: border-box;
+  border: none;
+  font-size: 1.3rem;
+  padding-left: 1.5rem;
+  padding-bottom: 1rem;
+  box-shadow: inset 0px -3px 0px 0px rgba(187,187,187,0.2);
+  transition: box-shadow 0.2s ease-in;
+}
+.password input:focus{
+  box-shadow: inset 0px -3px 0px 0px rgba(34,193,195,0.7);
+  outline: none;
+}
+
+.password input:hover::-webkit-input-placeholder,
+.password input:focus::-webkit-input-placeholder{
+  opacity: 0;
+}
+.password input::-webkit-input-placeholder{
+  opacity: 1;
+  transition: opacity 0.25s ease-out;
+}
+
+
+.fa-times{
+    opacity: 0;
+}
+.fa-check{
+    opacity: 1;
+}
+.container p .icon{
+    position: absolute;
+    text-align: center;
+    width: 32px;
+    height: 32px;
+    line-height: 30px;
+    font-size: large;
+    border-radius: 50%;
+    color: rgb(26,43,68);
+    border: 2px solid rgb(26,43,68);
+}
+.container #show_hide{
+    color: rgb(26,43,68);
+    font-size: 22px;
+    transform: translateX(260px) translateY(-34px);
+    cursor: pointer;
+}

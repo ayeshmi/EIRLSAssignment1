@@ -1,0 +1,169 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:600|Work+Sans:400,500,600,700&display=swap');
+@import url("https://cdn.syncfusion.com/ej2/material.css");
+body{
+  background: rgb(234, 235, 240);
+  background: linear-gradient(135deg, rgb(122, 97, 180) 0%,     rgb(77, 143, 209) 100%);
+  font-family: "work sans";
+  
+}
+
+html{
+  font-size: 100%;
+}
+
+.form3{
+  max-width: 500px;
+  min-width: 500px;
+  min-height: 500px;
+  max-height: 700px;
+  width: 30%;
+  height: 60%;
+  margin: 100px auto;
+  background-color: #FFFFFF;
+  border-radius: 25px;
+}
+.form-img {
+  width: 50%;
+  height: 90%;
+  position: absolute;
+  top: 60%;
+  left: 89%;
+  transform: translate(-50%, -50%);
+}
+.textField{
+  width: 77%;
+  height: 30%;
+}
+
+#headerTitle{
+  text-align: center;
+  font-family: 'open sans', sans-serif;
+  padding: 2rem 0;
+  margin: 0;
+  font-size: 2rem;
+}
+
+Input:focus{
+   box-shadow: inset 0px -3px 0px 0px rgba(34,193,195,0.7);
+   outline: none;
+}
+
+ Input::-webkit-input-placeholder{
+  opacity: 1;
+  transition: opacity 0.25s ease-out;
+}
+
+ Input:hover::-webkit-input-placeholder,
+Input:focus::-webkit-input-placeholder{
+  opacity: 0;
+}
+
+.textField:focus{
+    box-shadow: inset 0px -3px 0px 0px rgba(34,193,195,0.7);
+    outline: none;
+ }
+ 
+  .textField::-webkit-input-placeholder{
+   opacity: 1;
+   transition: opacity 0.25s ease-out;
+ }
+ 
+  .textField:hover::-webkit-textfield-placeholder,
+ .textField:focus::-webkit-input-placeholder{
+   opacity: 0;
+ }
+
+label{
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    padding-top: 2rem;
+    max-width: 100%;
+    align-self: start;
+    padding-left: 4.5rem;
+    padding-bottom: 0.5rem;
+    color: rgba(17, 8, 8, 0.9);
+  }
+
+   .button1{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 2rem;
+  max-width: 100%;
+  border-radius: 25px;
+  width: 80%;
+  height: 40px;
+  font-size: 1.3rem;
+  color: white;
+  font-weight: 700;
+  background: rgb(234, 235, 240);
+  background: linear-gradient(90deg, rgb(159, 138, 209) 0%,     rgb(236, 237, 238) 100%);
+  border: 0px;
+  cursor: pointer;
+  transition: opacity 0.25s ease-out;
+}
+
+ button1:hover{
+  opacity: 0.8;
+}
+
+.row{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 2rem;
+    max-width: 100%;
+    
+  }
+  
+  .row input{
+    width: 400px;
+    box-sizing: border-box;
+    border: none;
+    font-size: 1.3rem;
+    padding-left: 1.5rem;
+    padding-bottom: 1rem;
+    box-shadow: inset 0px -3px 0px 0px rgba(187,187,187,0.2);
+    transition: box-shadow 0.2s ease-in;
+  }
+  
+  .row input:focus{
+     box-shadow: inset 0px -3px 0px 0px rgba(34,193,195,0.7);
+     outline: none;
+  }
+  
+  .row input::-webkit-input-placeholder{
+    opacity: 1;
+    transition: opacity 0.25s ease-out;
+  }
+  
+  .row input:hover::-webkit-input-placeholder,
+  .row input:focus::-webkit-input-placeholder{
+    opacity: 0;
+  }
+  
+  .row label{
+    align-self: start;
+    padding-left: 4.5rem;
+    padding-bottom: 0.5rem;
+    color: rgba(12, 5, 5, 0.9);
+  }
+  
+  .row button{
+    border-radius: 25px;
+    width: 300px;
+    height: 40px;
+    font-size: 1.3rem;
+    color: rgb(8, 7, 7);
+    font-weight: 700;
+    background: rgb(234, 235, 240);
+    background: linear-gradient(90deg, rgb(122, 97, 180) 0%,     rgb(77, 143, 209) 100%);
+    border: 0px;
+    cursor: pointer;
+    transition: opacity 0.25s ease-out;
+  }
+  
+  .row button:hover{
+    opacity: 0.8;
+  }

@@ -1,0 +1,57 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:600|Work+Sans:400,500,600,700&display=swap');
+@import url("https://cdn.syncfusion.com/ej2/material.css");
+body{
+  background: rgb(234, 235, 240);
+  background: linear-gradient(135deg, rgb(241, 240, 245) 0%,     rgb(239, 242, 245) 100%);
+  font-family: "work sans";
+  
+}
+
+html{
+  font-size: 100%;
+}
+.form5{
+    max-width: 800px;
+    min-width: 800px;
+    min-height: 500px;
+    max-height: 700px;
+    width: 30%;
+    height: 60%;
+    margin: 100px auto;
+    background-color: #FFFFFF;
+    border-radius: 25px;
+  }
+  .form-img2 {
+    width: 20%;
+    height: 30%;
+    position: absolute;
+    top: 65%;
+    left: 35%;
+    transform: translate(-50%, -50%);
+  }
+  h3{
+    position: absolute;
+    top: 55%;
+    left: 48%;
+  }
+  .button5{
+    position: absolute;
+    top: 70%;
+    left: 48%;
+    border-radius: 25px;
+    width: 200px;
+    height: 60px;
+    font-size: 1.3rem;
+    color: rgb(8, 7, 7);
+    font-weight: 700;
+    background: rgb(234, 235, 240);
+    background: linear-gradient(90deg, rgb(122, 97, 180) 0%,     rgb(77, 143, 209) 100%);
+    border: 0px;
+    cursor: pointer;
+    
+   
+  }
+  
+   button5:hover{
+    opacity: 0.8;
+  }
