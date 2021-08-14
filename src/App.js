@@ -12,6 +12,7 @@ import HomepageAdmin from './components/pages/HomepageAdmin';
 import HomepageRUser from './components/pages/HomepageRegisteredUser';
 import AddBook from './components/pages/AddNewBook';
 import Registerpage1 from './components/pages/Registrationpage1';
+import BookReservation from './components/pages/BookReservation';
 
 import {BrowserRouter as Router,Switch,Route} from 'react-router-dom';
 function App() {
@@ -31,6 +32,9 @@ function App() {
       <Route path="/homeUser" component={HomepageRUser} />
       <Route path="/addBook" component={AddBook} />
       <Route path="/registerUserselection" component={Registerpage1} />
+      <Route path="/registerUserselection" component={Registerpage1} />
+      <Route path="/BookReservation" exact component={BookReservation} />
+
     </Switch>
   </Router>
   </>
