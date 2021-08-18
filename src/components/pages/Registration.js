@@ -108,15 +108,15 @@ export default class Regsiter extends Component {
 render() {
   return (
     <div >
-      <img className='form-img' src='images/boy-reading.svg' alt='spaceship' />
+     <img className='form-img22' src='images/books-1617327_1920.jpg' alt='spaceship' /> 
 <div className="form2">
-        <Form class="row"
+        <Form class="row1"
           onSubmit={this.handleLogin}
           ref={c => {
             this.form = c;
           }}
         >
-            <h2 id="headerTitle">Register</h2>
+            <h2 id="headerTitle1">Register</h2>
           
             <label >Username</label>
             <Input

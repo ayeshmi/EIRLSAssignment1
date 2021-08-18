@@ -1,8 +1,8 @@
 @import url('https://fonts.googleapis.com/css?family=Open+Sans:600|Work+Sans:400,500,600,700&display=swap');
 @import url("https://cdn.syncfusion.com/ej2/material.css");
 body{
-  background: rgb(207, 85, 14);
-  background: linear-gradient(135deg, rgb(241, 232, 101) 0%,     rgb(196, 14, 105) 100%);
+  background: rgb(235, 77, 46);
+  background: linear-gradient(135deg, rgb(182, 182, 180) 0%,     rgb(77, 143, 209) 100%);
   font-family: "work sans";
 }
 
@@ -12,64 +12,69 @@ html{
 
 .form2{
   max-width: 800px;
-  min-width: 600px;
-  max-height: 1200px;
-  width: 30%;
-  height: 60%;
-  margin: 100px auto;
+  min-width: 495px;
+  height: 715px;
+  
+  top:7%;
+  left: 50%;
   background-color: #FFFFFF;
-  border-radius: 25px;
+  border-radius: 55px;
+  margin: 80px auto;
+  position: absolute;
 }
 
-#headerTitle{
+
+#headerTitle1{
   text-align: center;
   font-family: 'open sans', sans-serif;
-  padding: 2rem 0;
+  padding: 0rem 0;
   margin: 0;
-  font-size: 2rem;
+  font-size: 2.0rem;
 }
 
-.row{
+.row1{
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-top: 2rem;
+  padding-top: 1rem;
   max-width: 100%;
   
 }
 
-.form-img {
-  width: 80%;
-  height: 80%;
+.form-img22 {
+  width:500px;
+  height: 710px;
   position: absolute;
-  top: 90%;
-  left: 89%;
+  top: 65%;
+  left: 35%;
   transform: translate(-50%, -50%);
+  border-radius: 55px;
 }
 
-.row input{
-  width: 80%;
+.row1 input{
+  width: 300px;
+  height:40px;
   box-sizing: border-box;
   border: none;
-  font-size: 1.3rem;
+  font-size: 0.8rem;
   padding-left: 1.5rem;
   padding-bottom: 1rem;
   box-shadow: inset 0px -3px 0px 0px rgba(187,187,187,0.2);
   transition: box-shadow 0.2s ease-in;
 }
 
-.row input:focus{
+.row1 input:focus{
    box-shadow: inset 0px -3px 0px 0px rgba(34,193,195,0.7);
    outline: none;
 }
 
-.row input::-webkit-input-placeholder{
+.row1 input::-webkit-input-placeholder{
   opacity: 1;
   transition: opacity 0.25s ease-out;
 }
 
-.row input:hover::-webkit-input-placeholder,
-.row input:focus::-webkit-input-placeholder{
+.row1 input:hover::-webkit-input-placeholder,
+.row1 input:focus::-webkit-input-placeholder{
   opacity: 0;
 }
 label{
@@ -83,28 +88,28 @@ label{
   padding-bottom: 0.5rem;
   color: rgba(14, 6, 6, 0.9);
 }
-.row label{
+.row1 label{
   align-self: start;
-  padding-left: 4.5rem;
+  padding-left: 7.5rem;
   padding-bottom: 0.5rem;
   color: rgba(17, 11, 11, 0.9);
 }
 
-.row button{
+.row1 button{
   border-radius: 25px;
   width: 80%;
   height: 40px;
   font-size: 1.3rem;
   color: white;
   font-weight: 700;
-  background: rgb(207, 85, 14);
-  background: linear-gradient(90deg, rgb(241, 232, 101) 0%,     rgb(196, 14, 105) 100%);
+  background: rgb(234, 235, 240);
+  background: linear-gradient(135deg, rgb(122, 97, 180) 0%,     rgb(77, 143, 209) 100%);
   border: 0px;
   cursor: pointer;
   transition: opacity 0.25s ease-out;
 }
 
-.row button:hover{
+.row1 button:hover{
   opacity: 0.8;
 }
 
