@@ -38,6 +38,11 @@ class AuthService {
       message
     });
   }
+
+  getUsers(){
+    return axios.get(API_URL);
+    }
+
   addNewBook(category,title,author,edition,isbnNumber,price,numberOfCopies,date){
     return axios.post(API_URL + "addbook", {
      category,
