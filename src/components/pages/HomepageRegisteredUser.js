@@ -1,7 +1,6 @@
 import React, { Component } from "react";
-import Cards from "../Cards";
 import CardItem from "../CardItem";
-import "./HomepageAdminCss.css";
+import "./HomepageRegisteredUser.css";
 import { withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import Dialog from '@material-ui/core/Dialog';
@@ -11,6 +10,7 @@ import MuiDialogActions from '@material-ui/core/DialogActions';
 import IconButton from '@material-ui/core/IconButton';
 import CloseIcon from '@material-ui/icons/Close';
 import Typography from '@material-ui/core/Typography';
+import authService from '../services/auth.service';
 
 const styles = (theme) => ({
     root: {
@@ -62,7 +62,8 @@ export default class HomepageAdmin extends Component {
         this.handleClose = this.handleClose.bind(this);
         
         this.state={
-            open:false
+            open:false,
+            employees: []
         };
     }
     handleClickOpen(e) {
@@ -75,6 +76,11 @@ export default class HomepageAdmin extends Component {
           open: false
         });
       }
+      componentDidMount(){
+        authService.getUsers().then((res) => {
+              this.setState({employees:res.data});
+        });
+    }
 
     
     render() {
@@ -83,8 +89,11 @@ export default class HomepageAdmin extends Component {
             return (
                 
                 <div className="cards1">
+                  
                     <div>
-                 
+                    {
+                    this.state.employees.map(
+                employee =>
             <Dialog onClose={this.handleClose} aria-labelledby="customized-dialog-title" open={this.state.open}>
               <DialogTitle id="customized-dialog-title" onClose={this.handleClose}>
                 Harry Potter
@@ -94,7 +103,7 @@ export default class HomepageAdmin extends Component {
                   Author : Ayeshmi Samaradivakara
                 </Typography>
                 <Typography gutterBottom>
-                  About Book:
+                  About Book: {employee.username}
                 </Typography>
                 <Typography gutterBottom>
               Harry Potter has never even heard of Hogwarts when the letters start dropping on the doormat at number four, Privet Drive. 
@@ -111,89 +120,37 @@ export default class HomepageAdmin extends Component {
                 </Button>
               </DialogActions>
             </Dialog>
+                    )
+    }
             </div>
+                    
           
-      <h1>Registered User Homepage.</h1>
+      
       <div className="cards__container1">
         <div className="cards__wrapper1">
           <ul className="cards__items1">
-          <div onClick={this.handleClickOpen}>
+            {
+              this.state.employees.map(
+                employee =>
+          <div class="child "  onClick={this.handleClickOpen}>
             <CardItem
               src='images/Desktop-Book-HD-Wallpapers.jpg'
-              text="View All Books"
+              text={employee.username}
               label="Book"
-              //path={this.handleClickOpen}
-              action={this.handleClickOpen}
             />   
             </div> 
-            <div onClick={this.handleClickOpen}>
-            <CardItem
-              src='images/Desktop-Book-HD-Wallpapers.jpg'
-              text="View All Books"
-              label="Book"
-              //path={this.handleClickOpen}
-              action={this.handleClickOpen}
-            />   
-            </div> 
-            <div onClick={this.handleClickOpen}>
-            <CardItem
-              src='images/Desktop-Book-HD-Wallpapers.jpg'
-              text="View All Books"
-              label="Book"
-              //path={this.handleClickOpen}
-              action={this.handleClickOpen}
-            />   
-            </div> 
+            
+              )
+            }
             </ul>
-            <ul className="cards__items1">
-            <div onClick={this.handleClickOpen}>
-            <CardItem
-              src='images/Desktop-Book-HD-Wallpapers.jpg'
-              text="View All Books"
-              label="Book"
-              //path={this.handleClickOpen}
-              action={this.handleClickOpen}
-            />   
-            </div> 
-            <div onClick={this.handleClickOpen}>
-            <CardItem
-              src='images/Desktop-Book-HD-Wallpapers.jpg'
-              text="View All Books"
-              label="Book"
-              //path={this.handleClickOpen}
-              action={this.handleClickOpen}
-            />   
-            </div> 
-            <div onClick={this.handleClickOpen}>
-            <CardItem
-              src='images/Desktop-Book-HD-Wallpapers.jpg'
-              text="View All Books"
-              label="Book"
-              //path={this.handleClickOpen}
-              action={this.handleClickOpen}
-            />   
-            </div> 
-            <div onClick={this.handleClickOpen}>
-            <CardItem
-              src='images/Desktop-Book-HD-Wallpapers.jpg'
-              text="View All Books"
-              label="Book"
-              //path={this.handleClickOpen}
-              action={this.handleClickOpen}
-            />   
-            </div> 
-            </ul>
-          
+            
+            
         </div>
       
       </div>
     
     </div>
-              )
-          
-        
-      
-                   
+              )                  
     }
 }
 

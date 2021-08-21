@@ -1,50 +1,34 @@
 import React, { Component } from 'react';
-import EmployeeService from '../services/EmployeeService';
+import authService from '../services/auth.service';
+import './ViewAllUserDetails.css';
 
 class ListEmployeeComponent extends Component {
+
     constructor(props){
         super(props)
         this.state={
             employees: []
-        }
-        this.addEmployee=this.addEmployee.bind(this);
-        this.editEmployee=this.editEmployee.bind(this);
-        this.deleteEmployee=this.deleteEmployee.bind(this);
-        this.register=this.register.bind(this);
-        this.password=this.password.bind(this);
+        }   
     }
-    editEmployee(id){
-        this.props.history.push('/update-employee/${id}');
-
-    }
-
-
-
 
 componentDidMount(){
-    EmployeeService.getEmployees().then((res) => {
+    authService.getUsers().then((res) => {
           this.setState({employees:res.data});
     });
 }
 
-
-
     render() {
         return (
             <div>
-               <h2 className="text-center">Employee List</h2> 
-               <div className="row">
-                   <button className="btn btn-primary" onClick={ this.addEmployee}>Add Employee</button>
-                   <button onClick={ () => this.register()} className="btn btn-info">Register page</button>
-                   <button onClick={ () => this.password()} className="btn btn-info">Passwordvalidation</button>
-               </div>
-               <div className="row">
+               <h2 id="headerTitle1">User List</h2> 
+            <br></br>
+               <div className="rowV">
                    <table className="table table-striped table-boordered">
                        <thead>
                            <tr>
-                               <th>Employee First name</th>
-                               <th>Employee Last name</th>
-                               <th>Employee Email Id</th>
+                               <th>Email</th>
+                               <th>Username</th>
+                               <th>Date Of Birth</th>
                                <th>Action</th>
                            </tr>
                            
@@ -54,11 +38,18 @@ componentDidMount(){
                                this.state.employees.map(
                                    employee =>
                                    <tr key={employee.id}>
-                                       <td>{employee.firstName}</td>
-                                       <td>{employee.lastName}</td>
-                                       <td>{employee.emailId}</td>
-                                       <button onClick={ () => this.editEmployee(employee.id)} className="btn btn-info">Update</button>
-                                       <button onClick={ () => this.deleteEmployee(employee.id)} className="btn btn-danger">Delete</button>
+                                       <td>{employee.email}</td>
+                                       <td>{employee.username}</td>
+                                       <td>{employee.dateOfBirth}</td>
+                                       <button className="buttonV"
+              
+              disabled={this.state.loading}
+            >
+              {this.state.loading && (
+                <span className="spinner-border spinner-border-sm"></span>
+              )}
+             <span>Delete</span>
+            </button>
                                        
                                    </tr>
                                )

@@ -40,7 +40,7 @@ class AuthService {
   }
 
   getUsers(){
-    return axios.get(API_URL);
+    return axios.get(API_URL+"employees");
     }
 
   addNewBook(category,title,author,edition,isbnNumber,price,numberOfCopies,date){

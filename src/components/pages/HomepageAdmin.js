@@ -1,6 +1,4 @@
-
 import React, { Component } from "react";
-import Cards from "../Cards";
 import CardItem from "../CardItem";
 import "./HomepageAdminCss.css";
 
@@ -8,9 +6,7 @@ import "./HomepageAdminCss.css";
 
 
 export default class HomepageAdmin extends Component {
-    render() {
-       
-          
+    render() {        
             return (
                 <div className="cards1">
       <h1>Admin Homepage.</h1>
@@ -78,7 +74,7 @@ export default class HomepageAdmin extends Component {
               src='images/sht0717Darlington.jpg'
               text="View All Customer Details"
               label="Customer"
-              path="/services"
+              path="/viewAlluserDetails"
             />
           </ul>
           

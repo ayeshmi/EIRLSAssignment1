@@ -13,6 +13,7 @@ import HomepageRUser from './components/pages/HomepageRegisteredUser';
 import AddBook from './components/pages/AddNewBook';
 import Registerpage1 from './components/pages/Registrationpage1';
 import BookReservation from './components/pages/BookReservation';
+import ViewAllUserDetails from './components/pages/ViewAllUserDetails';
 
 import {BrowserRouter as Router,Switch,Route} from 'react-router-dom';
 function App() {
@@ -34,6 +35,7 @@ function App() {
       <Route path="/registerUserselection" component={Registerpage1} />
       <Route path="/registerUserselection" component={Registerpage1} />
       <Route path="/BookReservation" exact component={BookReservation} />
+      <Route path="/viewAlluserDetails" exact component={ViewAllUserDetails} />
 
     </Switch>
   </Router>

@@ -22,7 +22,15 @@
   }
   
   .cards__items1 {
-    margin-bottom: 24px;
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .child {
+    flex: 1 0 21%; /* explanation below */
+    margin: 5px;
+    height: 300px;
+    
   }
   
   .cards__item1 {
@@ -118,3 +126,4 @@
       margin-bottom: 2rem;
     }
   }
+ 
