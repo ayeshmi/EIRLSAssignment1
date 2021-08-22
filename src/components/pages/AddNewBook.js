@@ -3,8 +3,14 @@ import React, { Component,useState } from "react";
 import AuthService from '../services/auth.service';
 import Form from "react-validation/build/form";
 import Input from "react-validation/build/input";
-import Select from 'react-select';
 import CheckButton from "react-validation/build/button";
+import TextField from '@material-ui/core/TextField';
+import { makeStyles } from '@material-ui/core/styles';
+import InputLabel from '@material-ui/core/InputLabel';
+import MenuItem from '@material-ui/core/MenuItem';
+import FormHelperText from '@material-ui/core/FormHelperText';
+import FormControl from '@material-ui/core/FormControl';
+import Select from '@material-ui/core/Select';
 
 const required = value => {
   if (!value) {
@@ -39,6 +45,8 @@ export default class AddNewBook extends Component {
     this.onChangePrice=this.onChangePrice.bind(this);
     this.onChangeNumberofCopies=this.onChangeNumberofCopies.bind(this);
     this.onChangeDate=this.onChangeDate.bind(this);
+    this.onChangeBookdes=this.onChangeBookdes.bind(this);
+    
     this.state = {
       category:"",
       title:"",
@@ -47,7 +55,9 @@ export default class AddNewBook extends Component {
       isbnNumber:"",
       price:"",
       numberOfCopies:"",
-      date:""
+      date:"",
+      bDes:""
+  
     };
   }
 
@@ -56,6 +66,11 @@ export default class AddNewBook extends Component {
   onChangeCategory(e) {
     this.setState({
       category: e.target.value
+    });
+  }
+  onChangeBookdes(e){
+    this.setState({
+      bDes:e.target.value
     });
   }
 
@@ -89,6 +104,7 @@ export default class AddNewBook extends Component {
     });
 
   }
+ 
   onChangeNumberofCopies(e) {
     this.setState({
       numberOfCopies: e.target.value
@@ -101,6 +117,7 @@ export default class AddNewBook extends Component {
     });
 
   }
+  
 
   handleLogin(e) {
     e.preventDefault();
@@ -121,7 +138,9 @@ export default class AddNewBook extends Component {
         this.state.isbnNumber,
         this.state.price,
         this.state.numberOfCopies,
-        this.state.date
+        this.state.date,
+        this.state.bDes
+        //this.state.description
         
       ).then(
         response => {
@@ -146,39 +165,30 @@ export default class AddNewBook extends Component {
       );
     }
   }
+  
 
 render() {
-    const { category } = this.state;
+ 
+    //const { category } = this.state;
   return (
-    <div >
-      <img className='form-img' src='images/boy-reading.svg' alt='spaceship' />
-<div className="form2">
-        <Form class="row"
+    
+      
+<div className="form22">
+        <Form class="row23"
           onSubmit={this.handleLogin}
           ref={c => {
             this.form = c;
           }}
         >
-            <h2 id="headerTitle">Add New Book</h2>
-          
-            <label >Category</label>
+            <h2 id="headerTitle23">Add New Book</h2>
+            <div className="GFG" >
+           
 
-           <div className="Select">
-
- <select   value={this.state.category} options={options} onChange={this.onChangeCategory} >
-            {options.map((option) => (
-              <option value={option.value}>{option.label}</option>
-            ))} 
-          </select>
-          
-          </div>
             <label >Title</label>
             
             <Input
-           
             placeholder="Enter book title"
-              type="text"
-           
+              type="text" 
               name="title"
               value={this.state.title}
               onChange={this.onChangeTitle}
@@ -187,60 +197,89 @@ render() {
          
          <label >Author</label>
             <Input
-           
             placeholder="Enter book author"
               type="text"
-           
               name="author"
               value={this.state.author}
               onChange={this.onChangeAuthor}
               validations={[required]}
             />
 
-<label >Edition</label>
 
-<select  value={this.state.edition} onChange={this.onChangeEdition} >
-            {options.map((option) => (
-              
-              <option value={option.value} onChange={this.onChangeEdition}>{option.label}</option>
-            ))}
-          </select>
-            <label >ISBN Number</label>
-            <Input
-           
-            placeholder="Enter book ISBN"
-              type="text"
-              name="isbn"
-              value={this.state.isbnNumber}
-              onChange={this.onChangeIsbn}
-              validations={[required]}
-            />
-            <label >Price</label>
-            <Input
-           
-            placeholder="Enter book price"
-              type="text"
-           
-              name="price"
-              value={this.state.price}
-              onChange={this.onChangePrice}
-              validations={[required]}
-            />
-            
-            <label >Number of copies</label>
+      
+          <FormControl >
+        <label id="demo-simple-select-label">Edition</label>
+        <Select
+          labelId="demo-simple-select-label"
+          id="demo-simple-select"
+          value={this.state.edition}
+          onChange={this.onChangeEdition} 
+          className="formItem" 
+        >
+          <MenuItem value={10}>Ten</MenuItem>
+          <MenuItem value={20}>Twenty</MenuItem>
+          <MenuItem value={30}>Thirty</MenuItem>
+        </Select>
+      </FormControl>
+         
+      
 
-            <select value={this.state.numberOfCopies} onChange={this.onChangeNumberofCopies}>
-            {options.map((option) => (
-              <option value={option.value}>{option.label}</option>
-            ))}
-          </select>
+        <br></br>
+        <br></br>
+        <br></br>
+        <br></br>
+        <br></br>
+
+        <FormControl >
+        <label>Category</label>
+        <Select
+          labelId="demo-simple-select-label"
+          id="demo-simple-select"
+          value={this.state.category}
+          onChange={this.onChangeCategory}  
+          className="formItem"
+          placeholder="Select category"
+        >
+          <MenuItem value={10}>Ten</MenuItem>
+          <MenuItem value={20}>Twenty</MenuItem>
+          <MenuItem value={30}>Thirty</MenuItem>
+        </Select>
+      </FormControl>
+
+      <label >Description</label>
+          
+          <TextField
+          className="textField1"
+       id="standard-multiline-static"
+       name="Message"
+       multiline
+       rows={6}
+       placeholder="Enter your message"
+       value={this.state.price}
+           onChange={this.onChangePrice}
+           validations={[required]}
+     />
+
+
+<FormControl >
+        <label>Number of Copies</label>
+        <Select
+          labelId="demo-simple-select-label"
+          id="demo-simple-select"
+          value={this.state.numberOfCopies}
+          onChange={this.onChangeNumberofCopies}  
+          className="formItem"
+        >
+          <MenuItem value={10}>Ten</MenuItem>
+          <MenuItem value={20}>Twenty</MenuItem>
+          <MenuItem value={30}>Thirty</MenuItem>
+        </Select>
+      </FormControl>
 
             <label >Date</label>
-            <Input
-           
+            <Input        
             placeholder="Enter your birthday"
               type="date"
-           
               name="date"
               value={this.state.date}
               onChange={this.onChangeDate}
@@ -248,8 +287,24 @@ render() {
             />
             
             
+            <FormControl >
+        <label>Image</label>
+        <Select
+          labelId="demo-simple-select-label"
+          id="demo-simple-select"
+          value={this.state.category}
+          onChange={this.onChangeCategory}  
+          className="formItem"
+          placeholder="Select category"
+        >
+          <MenuItem value={10}>Ten</MenuItem>
+          <MenuItem value={20}>Twenty</MenuItem>
+          <MenuItem value={30}>Thirty</MenuItem>
+        </Select>
+      </FormControl>
      
 
+          <br></br>
           <br></br>
 
           <div className="form-group">
@@ -279,8 +334,9 @@ render() {
               this.checkBtn = c;
             }}
           />
+          </div>
         </Form>
-        </div>
+        
         </div>
   );
 }

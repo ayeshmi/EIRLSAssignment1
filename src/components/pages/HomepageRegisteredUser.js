@@ -83,9 +83,7 @@ export default class HomepageAdmin extends Component {
     }
 
     
-    render() {
-       
-          
+    render() {          
             return (
                 
                 <div className="cards1">

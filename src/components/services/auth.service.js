@@ -43,7 +43,7 @@ class AuthService {
     return axios.get(API_URL+"employees");
     }
 
-  addNewBook(category,title,author,edition,isbnNumber,price,numberOfCopies,date){
+  addNewBook(category,title,author,edition,isbnNumber,price,numberOfCopies,date,description){
     return axios.post(API_URL + "addbook", {
      category,
      title,
@@ -52,7 +52,8 @@ class AuthService {
      isbnNumber,
      price,
      numberOfCopies,
-     date
+     date,
+     description
     });
   }
 

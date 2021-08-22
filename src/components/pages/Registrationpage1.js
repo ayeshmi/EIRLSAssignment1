@@ -37,7 +37,7 @@ export default class Registerpage1 extends Component {
               text14="Book Overdue Chargers:20LKR/day"
               text15="Video Overdue Chargers:20LKR/day"
               label="Bronze"
-              path="/services"
+              path="/register"
             />
                <CardItem
               src='images/istockphoto-184415150-612x612.jpg'
@@ -56,7 +56,7 @@ export default class Registerpage1 extends Component {
               text14="Book Overdue Chargers:15LKR/day"
               text15="Video Overdue Chargers:15LKR/day"
               label="Silver"
-              path="/services"
+              path="/register"
             />
              <CardItem
               src='images/istockphoto-497802746-612x612.jpg'
@@ -75,12 +75,12 @@ export default class Registerpage1 extends Component {
               text14="Book Overdue Chargers:10LKR/day"
               text15="Video Overdue Chargers:10LKR/day"
               label="Gold"
-              path="/addBook"
+              path="/register"
             />
             <CardItem
               src='images/istockphoto-1030071582-612x612.jpg'
               label="Platinum"
-              path="/services"
+              path="/register"
               text="Platinum"
               text2="Books per user: 10"
               text3="Videos per user: 10"

@@ -50,7 +50,7 @@ function Navbar() {
                       </Link>
                   </li>
                   <li className='nav-item'>
-                      <Link to='/register' className='nav-links' onClick={closeMobileMenu}>
+                      <Link to='/registerUserselection' className='nav-links' onClick={closeMobileMenu}>
                           Sign Up
                       </Link>
                   </li>

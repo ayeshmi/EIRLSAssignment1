@@ -11,14 +11,14 @@ html{
   font-size: 100%;
 }
 
-.form1{
+.form22{
   max-width: 500px;
-  min-width: 500px;
+  min-width: 1000px;
   min-height: 500px;
   max-height: 700px;
   width: 30%;
   height: 60%;
-  margin: 100px auto;
+  margin: 80px auto;
   background-color: #FFFFFF;
   border-radius: 25px;
 }
@@ -31,16 +31,16 @@ html{
   transform: translate(-50%, -50%);
 }
 
-#headerTitle{
+#headerTitle23{
   text-align: center;
   font-family: 'open sans', sans-serif;
-  padding: 2rem 0;
+  padding: 1rem 0;
   margin: 0;
   font-size: 2rem;
 }
 
 .select{
-    width: 400px;
+    width: 300px;
 }
 
 
@@ -49,6 +49,7 @@ html{
 Input:focus{
    box-shadow: inset 0px -3px 0px 0px rgba(34,193,195,0.7);
    outline: none;
+   align-items: center;
 }
 
  Input::-webkit-input-placeholder{
@@ -96,17 +97,17 @@ label{
   opacity: 0.8;
 }
 
-.row{
+.row23{
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding-top: 2rem;
+    padding-top: 0.5rem;
     max-width: 100%;
     
   }
   
-  .row input{
-    width: 400px;
+  .row23 input{
+    width: 300px;
     box-sizing: border-box;
     border: none;
     font-size: 1.3rem;
@@ -115,7 +116,7 @@ label{
     box-shadow: inset 0px -3px 0px 0px rgba(187,187,187,0.2);
     transition: box-shadow 0.2s ease-in;
   }
-  .row select{
+  .row23 select{
     width: 400px;
     box-sizing: border-box;
     border: none;
@@ -126,29 +127,29 @@ label{
     transition: box-shadow 0.2s ease-in;
   }
   
-  .row input:focus{
+  .row23 input:focus{
      box-shadow: inset 0px -3px 0px 0px rgba(34,193,195,0.7);
      outline: none;
   }
   
-  .row input::-webkit-input-placeholder{
+  .row23 input::-webkit-input-placeholder{
     opacity: 1;
     transition: opacity 0.25s ease-out;
   }
   
-  .row input:hover::-webkit-input-placeholder,
-  .row input:focus::-webkit-input-placeholder{
+  .row23 input:hover::-webkit-input-placeholder,
+  .row23 input:focus::-webkit-input-placeholder{
     opacity: 0;
   }
   
-  .row label{
+  .row23 label{
     align-self: start;
     padding-left: 4.5rem;
     padding-bottom: 0.5rem;
     color: rgba(12, 5, 5, 0.9);
   }
   
-  .row button{
+  .row23 button{
     border-radius: 25px;
     width: 300px;
     height: 40px;
@@ -162,6 +163,22 @@ label{
     transition: opacity 0.25s ease-out;
   }
   
-  .row button:hover{
+  .row23 button:hover{
     opacity: 0.8;
   }
+  .GFG {
+    -webkit-columns: 40px 2;
+    /* Chrome, Safari, Opera */
+    -moz-columns: 60px 2;
+    /* Firefox */
+    columns: 60px 2;
+}
+.textField1{
+  width: 300px;
+  height: 30%;
+}
+
+.formItem{
+  width: 300px;
+  align-items: center;
+}
