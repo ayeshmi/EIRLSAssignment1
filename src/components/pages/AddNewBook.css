@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Open+Sans:600|Work+Sans:400,500,600,700&display=swap');
 @import url("https://cdn.syncfusion.com/ej2/material.css");
-body{
-  background: rgb(182, 182, 180);
+.body{
+  background: rgb(177, 177, 59);
   background: linear-gradient(135deg, rgb(122, 97, 180) 0%,     rgb(77, 143, 209) 100%);
   font-family: "work sans";
   
@@ -13,21 +13,24 @@ html{
 
 .form22{
   max-width: 500px;
-  min-width: 1000px;
-  min-height: 500px;
+  min-width: 600px;
+  min-height: 1100px;
   max-height: 700px;
   width: 30%;
   height: 60%;
   margin: 80px auto;
-  background-color: #FFFFFF;
+  background-color: #3BB9FF;
   border-radius: 25px;
-}
-.form-img {
-  width: 50%;
-  height: 90%;
   position: absolute;
-  top: 60%;
-  left: 89%;
+  top:7%;
+  left: 10%;
+}
+.form-img12 {
+  width: 1900px;
+  height: 1500px;
+  position: absolute;
+  top:80%;
+  left: 39%;
   transform: translate(-50%, -50%);
 }
 
@@ -47,7 +50,7 @@ html{
 
 
 Input:focus{
-   box-shadow: inset 0px -3px 0px 0px rgba(34,193,195,0.7);
+   box-shadow: inset 0px -3px 0px 0px rgba(34, 63, 195, 0.7);
    outline: none;
    align-items: center;
 }
@@ -107,14 +110,15 @@ label{
   }
   
   .row23 input{
-    width: 300px;
+    width: 450px;
     box-sizing: border-box;
     border: none;
     font-size: 1.3rem;
     padding-left: 1.5rem;
     padding-bottom: 1rem;
-    box-shadow: inset 0px -3px 0px 0px rgba(187,187,187,0.2);
+    box-shadow: inset 0px -3px 0px 0px rgba(0, 0, 0, 0.2);
     transition: box-shadow 0.2s ease-in;
+    background: #3BB9FF;
   }
   .row23 select{
     width: 400px;
@@ -128,13 +132,13 @@ label{
   }
   
   .row23 input:focus{
-     box-shadow: inset 0px -3px 0px 0px rgba(34,193,195,0.7);
+     box-shadow: inset 0px -3px 0px 0px rgba(10, 75, 197, 0.7);
      outline: none;
   }
   
   .row23 input::-webkit-input-placeholder{
-    opacity: 1;
-    transition: opacity 0.25s ease-out;
+    opacity: 10;
+    transition:none;
   }
   
   .row23 input:hover::-webkit-input-placeholder,
@@ -171,14 +175,32 @@ label{
     /* Chrome, Safari, Opera */
     -moz-columns: 60px 2;
     /* Firefox */
-    columns: 60px 2;
+    columns: 100px 2;
 }
 .textField1{
-  width: 300px;
+  width: 450px;
   height: 30%;
+  box-sizing: border-box;
+    border: none;
+    font-size: 1.3rem;
+    padding-left: 1.5rem;
+    padding-bottom: 1rem;
+    box-shadow: inset 0px -3px 0px 0px rgba(0, 0, 0, 0.2);
+    transition: box-shadow 0.2s ease-in;
 }
 
 .formItem{
-  width: 300px;
+  width: 450px;
   align-items: center;
+  box-sizing: border-box;
+    border: none;
+    font-size: 1.3rem;
+    padding-left: 1.5rem;
+    padding-bottom: 1rem;
+    box-shadow: inset 0px -3px 0px 0px rgba(0, 0, 0, 0.2);
+    transition: box-shadow 0.2s ease-in;
+}
+.selectionLable{
+  font-size: 1.3rem;
+    
 }

@@ -14,6 +14,11 @@ import AddBook from './components/pages/AddNewBook';
 import Registerpage1 from './components/pages/Registrationpage1';
 import BookReservation from './components/pages/BookReservation';
 import ViewAllUserDetails from './components/pages/ViewAllUserDetails';
+import ViewSelectedBook from './components/pages/ViewSelectedBook';
+import profileImage from './components/pages/AddProfile';
+import ViewAllBooks from './components/pages/ViewAllBooks';
+import ViewAllContactUS from './components/pages/ViewAllContactUs';
+
 
 import {BrowserRouter as Router,Switch,Route} from 'react-router-dom';
 function App() {
@@ -36,6 +41,10 @@ function App() {
       <Route path="/registerUserselection" component={Registerpage1} />
       <Route path="/BookReservation" exact component={BookReservation} />
       <Route path="/viewAlluserDetails" exact component={ViewAllUserDetails} />
+      <Route path="/viewSelectedBook/:id" exact component={ViewSelectedBook} />
+      <Route path="/profileImage" exact component={profileImage} />
+      <Route path="/ViewAllBooks" exact component={ViewAllBooks} />
+      <Route path="/ViewAllContactUs" exact component={ViewAllContactUS} />
 
     </Switch>
   </Router>

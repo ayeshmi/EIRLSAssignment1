@@ -171,6 +171,8 @@ render() {
  
     //const { category } = this.state;
   return (
+    <div className="body">
+      <img className='form-img12' src='images/Untitled Design (1).jpg' alt='spaceship' />
     
       
 <div className="form22">
@@ -181,8 +183,7 @@ render() {
           }}
         >
             <h2 id="headerTitle23">Add New Book</h2>
-            <div className="GFG" >
-           
+            
 
             <label >Title</label>
             
@@ -206,32 +207,15 @@ render() {
             />
 
 
-      
-          <FormControl >
-        <label id="demo-simple-select-label">Edition</label>
-        <Select
-          labelId="demo-simple-select-label"
-          id="demo-simple-select"
-          value={this.state.edition}
-          onChange={this.onChangeEdition} 
-          className="formItem" 
-        >
-          <MenuItem value={10}>Ten</MenuItem>
-          <MenuItem value={20}>Twenty</MenuItem>
-          <MenuItem value={30}>Thirty</MenuItem>
-        </Select>
-      </FormControl>
+
          
       
 
-        <br></br>
-        <br></br>
-        <br></br>
-        <br></br>
-        <br></br>
+        
+      <label>Category</label>
 
         <FormControl >
-        <label>Category</label>
+        <InputLabel id="demo-simple-select-label">Select Book Category</InputLabel>
         <Select
           labelId="demo-simple-select-label"
           id="demo-simple-select"
@@ -240,9 +224,22 @@ render() {
           className="formItem"
           placeholder="Select category"
         >
-          <MenuItem value={10}>Ten</MenuItem>
-          <MenuItem value={20}>Twenty</MenuItem>
-          <MenuItem value={30}>Thirty</MenuItem>
+          <MenuItem value={"Action and Adventure"}>Action and Adventure</MenuItem>
+          <MenuItem value={"Anthology"}>Anthology</MenuItem>
+          <MenuItem value={"Classic"}>Classic</MenuItem>
+          <MenuItem value={"Comic and Graphic Novel"}>Comic and Graphic Novel</MenuItem>
+          <MenuItem value={"Crime and Detective"}>Crime and Detective</MenuItem>
+          <MenuItem value={"Drama"}>Drama</MenuItem>
+          <MenuItem value={"Fairy Tale"}>Fairy Tale</MenuItem>
+          <MenuItem value={"Fantasy"}>Fantasy</MenuItem>
+          <MenuItem value={"Historical Fiction"}>Historical Fiction</MenuItem>
+          <MenuItem value={"Horror"}>Horror</MenuItem>
+          <MenuItem value={"Humor"}>Humor</MenuItem>
+          <MenuItem value={"Legend"}>Legend</MenuItem>
+          <MenuItem value={"Romance"}>Romance</MenuItem>
+          <MenuItem value={"Short Story"}>Short Story</MenuItem>
+          <MenuItem value={"Science Fiction"}>Science Fiction</MenuItem>
+          <MenuItem value={"Mystery"}>Mystery</MenuItem>
         </Select>
       </FormControl>
 
@@ -260,9 +257,10 @@ render() {
            validations={[required]}
      />
 
-
+<label>Number of Copies</label>
 <FormControl >
-        <label>Number of Copies</label>
+<InputLabel id="demo-simple-select-label"
+className="selectionLable">Select Book Category</InputLabel>  
         <Select
           labelId="demo-simple-select-label"
           id="demo-simple-select"
@@ -286,9 +284,9 @@ render() {
               validations={[required]}
             />
             
-            
+            <label>Image</label>
             <FormControl >
-        <label>Image</label>
+        
         <Select
           labelId="demo-simple-select-label"
           id="demo-simple-select"
@@ -334,9 +332,9 @@ render() {
               this.checkBtn = c;
             }}
           />
-          </div>
+         
         </Form>
-        
+        </div>
         </div>
   );
 }

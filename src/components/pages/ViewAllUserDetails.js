@@ -41,6 +41,7 @@ componentDidMount(){
                                        <td>{employee.email}</td>
                                        <td>{employee.username}</td>
                                        <td>{employee.dateOfBirth}</td>
+                                       <td>
                                        <button className="buttonV"
               
               disabled={this.state.loading}
@@ -50,6 +51,7 @@ componentDidMount(){
               )}
              <span>Delete</span>
             </button>
+            </td>
                                        
                                    </tr>
                                )

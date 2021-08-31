@@ -18,7 +18,7 @@ export default class HomepageAdmin extends Component {
               src='images/Desktop-Book-HD-Wallpapers.jpg'
               text="View All Books"
               label="Book"
-              path="/services"
+              path="/ViewAllBooks"
             />
                <CardItem
               src='images/Desktop-Book-HD-Wallpapers.jpg'
@@ -68,7 +68,7 @@ export default class HomepageAdmin extends Component {
               src='images/contactus.jpg'
               text="Handle Contactus Requests"
               label="ContactUs"
-              path="/services"
+              path="/ViewAllContactUs"
             />  
             <CardItem
               src='images/sht0717Darlington.jpg'

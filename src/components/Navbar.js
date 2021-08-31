@@ -55,7 +55,7 @@ function Navbar() {
                       </Link>
                   </li>
                   <li className='nav-item'>
-                      <Link to='/contact' className='nav-links' onClick={closeMobileMenu}>
+                      <Link to='/profileImage' className='nav-links' onClick={closeMobileMenu}>
                           Log Out
                       </Link>
                   </li>

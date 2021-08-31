@@ -18,6 +18,10 @@ class AuthService {
       });
   }
 
+  getBooksByID(bookId){
+    return axios.get('http://localhost:8082/api/auth/book/'+bookId);
+}
+
   logout() {
     localStorage.removeItem("user");
   }
@@ -43,6 +47,14 @@ class AuthService {
     return axios.get(API_URL+"employees");
     }
 
+    getBooks(){
+      return axios.get(API_URL+"books");
+      }
+
+      getAllContactUsDetails(){
+        return axios.get(API_URL+"allConatctUs");
+        }
+
   addNewBook(category,title,author,edition,isbnNumber,price,numberOfCopies,date,description){
     return axios.post(API_URL + "addbook", {
      category,
@@ -60,6 +72,8 @@ class AuthService {
   getCurrentUser() {
     return JSON.parse(localStorage.getItem('user'));;
   }
+
+
 }
 
 export default new AuthService();

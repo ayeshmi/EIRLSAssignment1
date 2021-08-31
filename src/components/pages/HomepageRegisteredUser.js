@@ -77,10 +77,14 @@ export default class HomepageAdmin extends Component {
         });
       }
       componentDidMount(){
-        authService.getUsers().then((res) => {
+        authService.getBooks().then((res) => {
               this.setState({employees:res.data});
         });
     }
+    editEmployee(id){
+      this.props.history.push('viewSelectedBook/${id}');
+
+  }
 
     
     render() {          
@@ -93,15 +97,18 @@ export default class HomepageAdmin extends Component {
                     this.state.employees.map(
                 employee =>
             <Dialog onClose={this.handleClose} aria-labelledby="customized-dialog-title" open={this.state.open}>
+           
               <DialogTitle id="customized-dialog-title" onClose={this.handleClose}>
-                Harry Potter
+              
+              {employee.title}
+              
               </DialogTitle>
               <DialogContent dividers>
               <Typography gutterBottom>
-                  Author : Ayeshmi Samaradivakara
+                  Author : 
                 </Typography>
                 <Typography gutterBottom>
-                  About Book: {employee.username}
+                  About Book: 
                 </Typography>
                 <Typography gutterBottom>
               Harry Potter has never even heard of Hogwarts when the letters start dropping on the doormat at number four, Privet Drive. 
@@ -114,40 +121,50 @@ export default class HomepageAdmin extends Component {
               </DialogContent>
               <DialogActions>
                 <Button autoFocus onClick={this.handleClose} color="primary">
+                <button onClick={ () => this.editEmployee(employee.id)} className="btn btn-info">Update</button>
                   Book
                 </Button>
+                <Button autoFocus onClick={this.handleClose} color="primary">
+                  View
+                </Button>
               </DialogActions>
+               
             </Dialog>
-                    )
-    }
-            </div>
+                    )}        
+          
+          </div>
+            
                     
           
       
       <div className="cards__container1">
         <div className="cards__wrapper1">
           <ul className="cards__items1">
-            {
-              this.state.employees.map(
+          {
+                    this.state.employees.map(
                 employee =>
-          <div class="child "  onClick={this.handleClickOpen}>
+          <div class="child "  onClick={ () => this.editEmployee(employee.id)}>
             <CardItem
               src='images/Desktop-Book-HD-Wallpapers.jpg'
-              text={employee.username}
+              text={employee.title}
               label="Book"
             />   
             </div> 
-            
               )
-            }
+            }  
+             
+            
             </ul>
             
-            
+                     
+    
         </div>
       
       </div>
+                    
     
     </div>
+   
               )                  
     }
 }
