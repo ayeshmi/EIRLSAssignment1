@@ -1,4 +1,4 @@
-import './AddNewBook.css';
+import './AddNewVideo.css';
 import React, { Component,useState } from "react";
 import AuthService from '../services/auth.service';
 import Form from "react-validation/build/form";
@@ -11,6 +11,8 @@ import MenuItem from '@material-ui/core/MenuItem';
 import FormHelperText from '@material-ui/core/FormHelperText';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
+
+import {Link} from 'react-router-dom';
 
 const required = value => {
   if (!value) {
@@ -175,14 +177,14 @@ render() {
       <img className='form-img12' src='images/Untitled Design (1).jpg' alt='spaceship' />
     
       
-<div className="form22">
+<div className="form33">
         <Form class="row23"
           onSubmit={this.handleLogin}
           ref={c => {
             this.form = c;
           }}
         >
-            <h2 id="headerTitle23">Add New Book</h2>
+            <h2 id="headerTitle23">Add New Video</h2>
             
 
             <label >Title</label>
@@ -195,23 +197,7 @@ render() {
               onChange={this.onChangeTitle}
               validations={[required]}
             />
-         
-         <label >Author</label>
-            <Input
-            placeholder="Enter book author"
-              type="text"
-              name="author"
-              value={this.state.author}
-              onChange={this.onChangeAuthor}
-              validations={[required]}
-            />
 
-
-
-         
-      
-
-        
       <label>Category</label>
 
         <FormControl >
@@ -257,22 +243,7 @@ render() {
            validations={[required]}
      />
 
-<label>Number of Copies</label>
-<FormControl >
-<InputLabel id="demo-simple-select-label"
-className="selectionLable">Select Book Category</InputLabel>  
-        <Select
-          labelId="demo-simple-select-label"
-          id="demo-simple-select"
-          value={this.state.numberOfCopies}
-          onChange={this.onChangeNumberofCopies}  
-          className="formItem"
-        >
-          <MenuItem value={10}>Ten</MenuItem>
-          <MenuItem value={20}>Twenty</MenuItem>
-          <MenuItem value={30}>Thirty</MenuItem>
-        </Select>
-      </FormControl>
+
 
             <label >Date</label>
             <Input        
@@ -283,8 +254,10 @@ className="selectionLable">Select Book Category</InputLabel>
               onChange={this.onChangeDate}
               validations={[required]}
             />
-            
-          
+            <label>Uplaod an image</label>
+            <Link to='/uploadVideo' className='nav-links'>
+                          Upload video here
+                      </Link>
      
 
           <br></br>
@@ -298,7 +271,7 @@ className="selectionLable">Select Book Category</InputLabel>
               {this.state.loading && (
                 <span className="spinner-border spinner-border-sm"></span>
               )}
-             <span>Add Book</span>
+             <span>Add Video</span>
             </button>
             <br></br>
            

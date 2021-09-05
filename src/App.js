@@ -18,6 +18,8 @@ import ViewSelectedBook from './components/pages/ViewSelectedBook';
 import profileImage from './components/pages/AddProfile';
 import ViewAllBooks from './components/pages/ViewAllBooks';
 import ViewAllContactUS from './components/pages/ViewAllContactUs';
+import AddVideo from './components/pages/AddNewVideo';
+import UploadVideo from './components/pages/AddVideo';
 
 
 import {BrowserRouter as Router,Switch,Route} from 'react-router-dom';
@@ -37,12 +39,14 @@ function App() {
       <Route path="/homeAdmin" component={HomepageAdmin} />
       <Route path="/homeUser" component={HomepageRUser} />
       <Route path="/addBook" component={AddBook} />
+      <Route path="/addVideo" component={AddVideo} />
       <Route path="/registerUserselection" component={Registerpage1} />
       <Route path="/registerUserselection" component={Registerpage1} />
       <Route path="/BookReservation" exact component={BookReservation} />
       <Route path="/viewAlluserDetails" exact component={ViewAllUserDetails} />
       <Route path="/viewSelectedBook/:id" exact component={ViewSelectedBook} />
       <Route path="/profileImage" exact component={profileImage} />
+      <Route path="/uploadVideo" exact component={UploadVideo} />
       <Route path="/ViewAllBooks" exact component={ViewAllBooks} />
       <Route path="/ViewAllContactUs" exact component={ViewAllContactUS} />
 

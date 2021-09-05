@@ -53,7 +53,7 @@ export default class HomepageAdmin extends Component {
               src='images/futuristic-1628581653437-3273.jpg'
               text="Add a Video"
               label="Video"
-              path="/services"
+              path="/addVideo"
             />
           </ul>
           <ul className="cards__items1">
