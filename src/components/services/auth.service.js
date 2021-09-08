@@ -51,9 +51,13 @@ class AuthService {
       return axios.get(API_URL+"books");
       }
 
-      getAllContactUsDetails(){
-        return axios.get(API_URL+"allConatctUs");
-        }
+    getAllContactUsDetails(){
+      return axios.get(API_URL+"allConatctUs");
+      }
+
+    getContactUsDetailById(contactID){
+      return axios.get(API_URL + "contactus/"+contactID);
+    }
 
   addNewBook(category,title,author,edition,isbnNumber,price,numberOfCopies,date,description){
     return axios.post(API_URL + "addbook", {

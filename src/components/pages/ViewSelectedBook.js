@@ -8,19 +8,19 @@ class ListEmployeeComponent extends Component {
         super(props)
         this.state={
             id:this.props.match.params.id,
-            firstName: '',
-            lastName: '',
-            emailId: ''
+            author: '',
+            category: '',
+            description: ''
            
         }   
     }
 
 componentDidMount(){
     authService.getBooksByID(this.state.id).then(  (res) =>{
-        let employee = res.data;
-        this.setState({firstName: employee.id,
-            lastName: employee.author,
-            emailId : employee.title
+        let book = res.data;
+        this.setState({author: book.id,
+            category: book.author,
+            description : book.title
         });
     
     });
@@ -46,9 +46,9 @@ componentDidMount(){
                        <tbody>
                            
                                
-                                       <td >id{this.state.firstName}</td>
-                                       <td>hello{this.state.lastName}</td>
-                                       <td>{this.state.emailId}</td>
+                                       <td >id{this.state.author}</td>
+                                       <td>hello{this.state.category}</td>
+                                       <td>{this.state.description}</td>
                                        <button className="buttonV"
               
               disabled={this.state.loading}

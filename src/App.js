@@ -20,6 +20,7 @@ import ViewAllBooks from './components/pages/ViewAllBooks';
 import ViewAllContactUS from './components/pages/ViewAllContactUs';
 import AddVideo from './components/pages/AddNewVideo';
 import UploadVideo from './components/pages/AddVideo';
+import ReplyContactUs from './components/pages/ReplyContactUs';
 
 
 import {BrowserRouter as Router,Switch,Route} from 'react-router-dom';
@@ -49,6 +50,7 @@ function App() {
       <Route path="/uploadVideo" exact component={UploadVideo} />
       <Route path="/ViewAllBooks" exact component={ViewAllBooks} />
       <Route path="/ViewAllContactUs" exact component={ViewAllContactUS} />
+      <Route path="/replyContactUsRequest/:id"  component={ReplyContactUs} />
 
     </Switch>
   </Router>

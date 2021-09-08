@@ -81,8 +81,11 @@ export default class HomepageAdmin extends Component {
               this.setState({employees:res.data});
         });
     }
+
+  
+
     editEmployee(id){
-      this.props.history.push('viewSelectedBook/${id}');
+      this.props.history.push(`viewSelectedBook/${id}`);
 
   }
 
@@ -121,7 +124,7 @@ export default class HomepageAdmin extends Component {
               </DialogContent>
               <DialogActions>
                 <Button autoFocus onClick={this.handleClose} color="primary">
-                <button onClick={ () => this.editEmployee(employee.id)} className="btn btn-info">Update</button>
+                <button onClick={this.handleClickOpen} className="btn btn-info">Update</button>
                   Book
                 </Button>
                 <Button autoFocus onClick={this.handleClose} color="primary">

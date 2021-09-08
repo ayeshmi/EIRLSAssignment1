@@ -11,6 +11,10 @@ class ViewAllContactUs extends Component {
         }   
     }
 
+    ReplyContact(id){
+        this.props.history.push(`/replyContactUsRequest/${id}`);
+    }
+
 componentDidMount(){
     authService.getAllContactUsDetails().then((res) => {
           this.setState({ContactUsDetails:res.data});
@@ -55,7 +59,7 @@ componentDidMount(){
             </td>
             <td>
             <button className="buttonV"
-              
+              onClick={ () => this.ReplyContact(detail.id)} 
               disabled={this.state.loading}
             >
               {this.state.loading && (
