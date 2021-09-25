@@ -1,7 +1,8 @@
 import React ,{useState,useEffect} from 'react';
 import {Link} from 'react-router-dom';
-import { Button } from "../components/Button.js";
 import "./Navbar.css";
+import authService from './services/auth.service';
+
 
 
 
@@ -11,8 +12,15 @@ function Navbar() {
     const handleClick= () => setClick(!click);
     const closeMobileMenu =() => setClick(false);
    
-
-   
+    const currentUser = checkUsername();
+   // const currentUser = authService.getCurrentUser();
+  
+const [username,setUsername]=useState(currentUser.username);
+  
+  const logout = () => {
+    window.localStorage.clear();
+    window.location.href = "/login";
+} 
 
     const showButton=() => {
         if (window.innerWidth <= 960) {
@@ -54,14 +62,15 @@ function Navbar() {
                           Sign Up
                       </Link>
                   </li>
+                 
                   <li className='nav-item'>
-                      <Link to='/profileImage' className='nav-links' onClick={closeMobileMenu}>
-                          Log Out
+                      <Link to='/login' className='nav-links' onClick={logout}>
+                         Log in
                       </Link>
                   </li>
                   <li className='nav-item'>
-                      <Link to='/login' className='nav-links' onClick={closeMobileMenu}>
-                         Log in
+                      <Link to='/aboutProfile' className='nav-links' onClick={closeMobileMenu}>
+                         Hello, {username}
                       </Link>
                   </li>
               </ul>
@@ -72,5 +81,15 @@ function Navbar() {
      </>
     );
 }
+
+function checkUsername () {
+    const currentUser = authService.getCurrentUser();
+    // Checks for undefined, null, and a string with no characters:
+    if (currentUser && currentUser.username && currentUser.username.length > 0) {
+      return currentUser;
+    }
+    // Default case:
+    return 'Anonymous'
+  }
 
 export default Navbar

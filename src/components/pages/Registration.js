@@ -7,6 +7,8 @@ import CheckButton from "react-validation/build/button";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye ,faTimes,faCheck,faEyeSlash} from "@fortawesome/free-solid-svg-icons";
 
+
+
 const required = value => {
   if (!value) {
     return (
@@ -31,6 +33,7 @@ export default class Regsiter extends Component {
     this.onChangeEmail=this.onChangeEmail.bind(this);
 
     this.state = {
+      name:this.props.match.params.name,
       username: "",
       email:"",
       birthday:"",
@@ -79,9 +82,11 @@ export default class Regsiter extends Component {
         this.state.username,
         this.state.email,
         this.state.birthday,
-        this.state.password
+        this.state.password,
+        this.state.name
         
       ).then(
+        
         response => {
           this.setState({
             message: response.data.message,
@@ -95,20 +100,28 @@ export default class Regsiter extends Component {
               error.response.data.message) ||
             error.message ||
             error.toString();
+            
 
           this.setState({
             successful: false,
             message: resMessage
           });
+        
         }
+        
       );
+      
+    
     }
+    
   }
 
 render() {
   return (
-    <div >
-     <img className='form-img22' src='images/books-1617327_1920.jpg' alt='spaceship' /> 
+    
+     <div>
+       
+     <img className='form-img22'  src={"/images/books-1617327_1920.jpg"} alt='register' /> 
 <div className="form2">
         <Form class="row1"
           onSubmit={this.handleLogin}
@@ -222,7 +235,7 @@ render() {
           />
         </Form>
         </div>
-        </div>
+       </div>
   );
 }
 }

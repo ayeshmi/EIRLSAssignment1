@@ -21,6 +21,7 @@ import ViewAllContactUS from './components/pages/ViewAllContactUs';
 import AddVideo from './components/pages/AddNewVideo';
 import UploadVideo from './components/pages/AddVideo';
 import ReplyContactUs from './components/pages/ReplyContactUs';
+import AboutProfile from './components/pages/ProfileChanges';
 
 
 import {BrowserRouter as Router,Switch,Route} from 'react-router-dom';
@@ -34,7 +35,7 @@ function App() {
       <Route path="/contact"  component={Contact} />
       <Route path="/products"  component={Products} />
       <Route path="/sign-up" component={SignUp} />
-      <Route path="/register" component={Register} />
+      <Route path="/register/:name" component={Register} />
       <Route path="/adminHomepage" component={AdminHomepage} />
       <Route path="/login" component={Login} />
       <Route path="/homeAdmin" component={HomepageAdmin} />
@@ -51,6 +52,7 @@ function App() {
       <Route path="/ViewAllBooks" exact component={ViewAllBooks} />
       <Route path="/ViewAllContactUs" exact component={ViewAllContactUS} />
       <Route path="/replyContactUsRequest/:id"  component={ReplyContactUs} />
+      <Route path="/aboutProfile" component={AboutProfile} />
 
     </Switch>
   </Router>

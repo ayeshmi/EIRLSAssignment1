@@ -11,6 +11,7 @@ function CardItem(props) {
             <onclick to={props.action}/>
             <onclick>{props.action}</onclick>
             <img src={props.src} alt="Travel" className="cards__item__img" />
+            <button onClick={props.click}>Hello</button>
           </figure>
           <div className="cards__item__info">
             <p className="cards__item__text">{props.text}</p>

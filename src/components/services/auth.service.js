@@ -26,12 +26,13 @@ class AuthService {
     localStorage.removeItem("user");
   }
 
-  register(username, email,dateOfBirth, password) {
+  register(username, email,dateOfBirth, password,userType) {
     return axios.post(API_URL + "signup", {
       username,
       email,
       dateOfBirth,
-      password
+      password,
+      userType
     });
   }
 
@@ -59,6 +60,10 @@ class AuthService {
       return axios.get(API_URL + "contactus/"+contactID);
     }
 
+    replyContactUs(answer,contactID){
+      return axios.post(API_URL,"contactus/"+contactID,answer);
+     }
+
   addNewBook(category,title,author,edition,isbnNumber,price,numberOfCopies,date,description){
     return axios.post(API_URL + "addbook", {
      category,
@@ -75,6 +80,9 @@ class AuthService {
 
   getCurrentUser() {
     return JSON.parse(localStorage.getItem('user'));;
+  }
+  getUserType(name){
+    return name;
   }
 
 

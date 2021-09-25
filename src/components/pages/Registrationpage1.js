@@ -8,6 +8,12 @@ import { createMuiTheme } from "@material-ui/core";
 
 
 export default class Registerpage1 extends Component {
+
+  RegisterPage(name){
+    this.props.history.push(`/replyContactUsRequest/${name}`);
+}
+
+
     render() {
        
           
@@ -20,6 +26,8 @@ export default class Registerpage1 extends Component {
           <ul className="cards__items2">
             
             <CardItem
+           
+             
               src='images/Bronze-shutterstock_1681180837-700x390.jpg'
               text="Bronze"
               
@@ -37,7 +45,8 @@ export default class Registerpage1 extends Component {
               text14="Book Overdue Chargers:20LKR/day"
               text15="Video Overdue Chargers:20LKR/day"
               label="Bronze"
-              path="/register"
+              path="/register/Bronze"
+             //action={ () => this.RegisterPage("Bronze")} 
             />
                <CardItem
               src='images/istockphoto-184415150-612x612.jpg'
@@ -56,7 +65,7 @@ export default class Registerpage1 extends Component {
               text14="Book Overdue Chargers:15LKR/day"
               text15="Video Overdue Chargers:15LKR/day"
               label="Silver"
-              path="/register"
+              path="/register/Silver"
             />
              <CardItem
               src='images/istockphoto-497802746-612x612.jpg'
