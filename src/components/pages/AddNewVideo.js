@@ -48,6 +48,9 @@ export default class AddNewBook extends Component {
     this.onChangeNumberofCopies=this.onChangeNumberofCopies.bind(this);
     this.onChangeDate=this.onChangeDate.bind(this);
     this.onChangeBookdes=this.onChangeBookdes.bind(this);
+    this.UplaodVideo=this.UplaodVideo.bind(this);
+  //  this.onChangeMessage=this.onChangeMessage.bind(this);
+    
     
     this.state = {
       category:"",
@@ -58,7 +61,7 @@ export default class AddNewBook extends Component {
       price:"",
       numberOfCopies:"",
       date:"",
-      bDes:""
+      Message:""
   
     };
   }
@@ -106,6 +109,12 @@ export default class AddNewBook extends Component {
     });
 
   }
+  onChangeDescription(e) {
+    this.setState({
+      Message: e.target.value
+    });
+
+  }
  
   onChangeNumberofCopies(e) {
     this.setState({
@@ -120,6 +129,10 @@ export default class AddNewBook extends Component {
 
   }
   
+  
+  UplaodVideo(e){
+    this.props.history.push(`/addVideo`);
+}
 
   handleLogin(e) {
     e.preventDefault();
@@ -132,16 +145,15 @@ export default class AddNewBook extends Component {
     this.form.validateAll();
 
     if (this.checkBtn.context._errors.length === 0) {
-      AuthService.addNewBook(
+      AuthService.addVideoDetails(
         this.state.category,
-        this.state.title,
-        this.state.author,
-        this.state.edition,
-        this.state.isbnNumber,
-        this.state.price,
-        this.state.numberOfCopies,
         this.state.date,
-        this.state.bDes
+        this.state.price,
+        this.state.title
+       
+        
+   
+        
         //this.state.description
         
       ).then(
@@ -152,6 +164,7 @@ export default class AddNewBook extends Component {
           });
         },
         error => {
+
           const resMessage =
             (error.response &&
               error.response.data &&
@@ -255,10 +268,10 @@ render() {
               validations={[required]}
             />
             <label>Uplaod an image</label>
-            <Link to='/uploadVideo' className='nav-links'>
+        
+            <Link to={'/uploadVideo/'+this.state.title} className='nav-links'>
                           Upload video here
                       </Link>
-     
 
           <br></br>
           <br></br>

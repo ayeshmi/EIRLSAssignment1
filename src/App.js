@@ -48,7 +48,7 @@ function App() {
       <Route path="/viewAlluserDetails" exact component={ViewAllUserDetails} />
       <Route path="/viewSelectedBook/:id" exact component={ViewSelectedBook} />
       <Route path="/profileImage" exact component={profileImage} />
-      <Route path="/uploadVideo" exact component={UploadVideo} />
+      <Route path="/uploadVideo/:title" exact component={UploadVideo} />
       <Route path="/ViewAllBooks" exact component={ViewAllBooks} />
       <Route path="/ViewAllContactUs" exact component={ViewAllContactUS} />
       <Route path="/replyContactUsRequest/:id"  component={ReplyContactUs} />

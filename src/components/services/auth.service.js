@@ -64,6 +64,10 @@ class AuthService {
       return axios.post(API_URL,"contactus/"+contactID,answer);
      }
 
+     addVideoDetails(category,date,description,title){
+      return axios.post(API_URL+"addVideo",{category,title,date,description});
+     }
+
   addNewBook(category,title,author,edition,isbnNumber,price,numberOfCopies,date,description){
     return axios.post(API_URL + "addbook", {
      category,

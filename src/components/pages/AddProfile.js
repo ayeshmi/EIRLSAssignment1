@@ -20,6 +20,7 @@ import clsx from "clsx";
 import { LinearProgress } from "@material-ui/core";
 import axios from "axios";
 import CropImage from "./CropImage";
+import authService from '../services/auth.service';
 
 const useStyles = makeStyles((theme) => ({
   dropzoneContainer: {
@@ -75,7 +76,8 @@ function App() {
   const [percent, setPercent] = React.useState(0);
   const [downloadUri, setDownloadUri] = React.useState();
   const [selectedImageFile, setSelectedImageFile] = React.useState();
-
+  const currentUser = checkUsername();
+  const [username,setUsername]=React.useState(currentUser.username);
   const buttonClassname = clsx({
     [classes.buttonSuccess]: success,
   });
@@ -84,6 +86,7 @@ function App() {
     const fileDropped = acceptedFiles[0];
     if (fileDropped["type"].split("/")[0] === "image") {
       setSelectedImageFile(fileDropped);
+      
       return;
     }
     setFile(fileDropped);
@@ -91,6 +94,7 @@ function App() {
     setPreview(previewUrl);
     setSuccess(false);
     setPercent(0);
+    
   });
 
   const { getRootProps, getInputProps } = useDropzone({
@@ -106,16 +110,17 @@ function App() {
       setLoading(true);
       const formData = new FormData();
       formData.append("file", file);
-      const API_URL = "http://localhost:8082/api/auth";
+      formData.append("user",username)
+      const API_URL = "http://localhost:8082/api/auth/image";
       const response = await axios.put(API_URL, formData, {
         onUploadProgress: (progressEvent) => {
           const percentCompleted = Math.round(
             (progressEvent.loaded * 100) / progressEvent.total
           );
-          setPercent(percentCompleted);
+          setPercent(username);
         },
       });
-
+     // setUsername(response.data.username);
       setDownloadUri(response.data.fileDownloadUri);
       setSuccess(true);
       setLoading(false);
@@ -156,7 +161,7 @@ function App() {
                   className={classes.dropzoneContainer}
                 >
                   <input {...getInputProps()} />
-                  <p>Drag 'n' drop some files here, or click to select files</p>
+                  <p>Drag 'n' drop some files here, or click to select files </p>
                 </Paper>
               </RootRef>
             </Grid>
@@ -244,5 +249,15 @@ function App() {
     </>
   );
 }
+function checkUsername () {
+  const currentUser = authService.getCurrentUser();
+  // Checks for undefined, null, and a string with no characters:
+  if (currentUser && currentUser.username && currentUser.username.length > 0) {
+    return currentUser;
+  }
+  // Default case:
+  return 'Anonymous'
+}
+
 
 export default App;

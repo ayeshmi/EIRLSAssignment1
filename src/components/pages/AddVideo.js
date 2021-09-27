@@ -20,6 +20,7 @@ import clsx from "clsx";
 import { LinearProgress } from "@material-ui/core";
 import axios from "axios";
 import CropImage from "./CropImage";
+import { useParams } from 'react-router-dom';
 
 const useStyles = makeStyles((theme) => ({
   dropzoneContainer: {
@@ -67,6 +68,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function App() {
+ // id:this.props.match.params.id,
   const classes = useStyles();
   const [loading, setLoading] = React.useState(false);
   const [success, setSuccess] = React.useState(false);
@@ -75,17 +77,20 @@ function App() {
   const [percent, setPercent] = React.useState(0);
   const [downloadUri, setDownloadUri] = React.useState();
   const [selectedImageFile, setSelectedImageFile] = React.useState();
-
+  //const [title, setTitle] = React.useState("Syeshmi");
+  const { title } = useParams();
   const buttonClassname = clsx({
     [classes.buttonSuccess]: success,
   });
-
+  //const authResult = new URLSearchParams(window.location.search); 
+//const title = authResult.get('title')
   const onDrop = React.useCallback((acceptedFiles) => {
     const fileDropped = acceptedFiles[0];
     if (fileDropped["type"].split("/")[0] === "image") {
       setSelectedImageFile(fileDropped);
       return;
     }
+
     setFile(fileDropped);
     const previewUrl = URL.createObjectURL(fileDropped);
     setPreview(previewUrl);
@@ -105,8 +110,9 @@ function App() {
       setSuccess(false);
       setLoading(true);
       const formData = new FormData();
-      formData.append("file", file);
-      const API_URL = "http://localhost:8082/api/auth";
+      formData.append("Video", file);
+     formData.append("Title", title);
+      const API_URL = "http://localhost:8082/api/auth/video";
       const response = await axios.put(API_URL, formData, {
         onUploadProgress: (progressEvent) => {
           const percentCompleted = Math.round(
