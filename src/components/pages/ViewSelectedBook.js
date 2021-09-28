@@ -1,8 +1,12 @@
 import React, { Component } from 'react';
 import authService from '../services/auth.service';
-import './ViewAllUserDetails.css';
-
-class ListEmployeeComponent extends Component {
+import './ViewSelectedBook.css';
+import CardItem from "../CardItem";
+import Form from "react-validation/build/form";
+import Input from "react-validation/build/input";
+import CheckButton from "react-validation/build/button";
+import TextField from '@material-ui/core/TextField';
+class ViewSelectedBook extends Component {
 
     constructor(props){
         super(props)
@@ -15,60 +19,96 @@ class ListEmployeeComponent extends Component {
         }   
     }
 
-componentDidMount(){
-    authService.getBooksByID(this.state.id).then(  (res) =>{
-        let book = res.data;
-        this.setState({author: book.id,
-            category: book.author,
-            description : book.title
+    componentDidMount(){
+        authService.getBooksByID(this.state.id).then(  (res) =>{
+            let book = res.data;
+            this.setState({author: book.id,
+                category: book.author,
+                description : book.title,
+                image:book.imageOfVideo
+            });
+        
         });
-    
-    });
-    
-}
+        
+    }
 
     render() {
         return (
-            <div>
-               <h2 id="headerTitle1">User List</h2> 
-            <br></br>
-               <div className="rowV">
-                   <table className="table table-striped table-boordered">
-                       <thead>
-                           <tr>
-                               <th>Email</th>
-                               <th>Username</th>
-                               <th>Date Of Birth</th>
-                               <th>Action</th>
-                           </tr>
-                           
-                       </thead>
-                       <tbody>
-                           
-                               
-                                       <td >id{this.state.author}</td>
-                                       <td>hello{this.state.category}</td>
-                                       <td>{this.state.description}</td>
-                                       <button className="buttonV"
+            <div >
+           
+          <div className="form23"> 
+              <Form className="row2"
+                onSubmit={this.handleLogin}
+                ref={c => {
+                  this.form = c;
+                }}
+              >
+                  <h2 id="headerTitle">{this.state.description}</h2>
+                  <img src={this.state.image}
+                  className="image"></img>
+        
+       
+             <TextField
+             className="textField23"
+      
+          name="Message"
+          multiline
+          rows={7}
+          
+          value={this.state.Message}
               
-              disabled={this.state.loading}
-            >
-              {this.state.loading && (
-                <span className="spinner-border spinner-border-sm"></span>
-              )}
-             <span>Delete</span>
-            </button>
-                                       
-                                   
-                               
-                           
-                       </tbody>
-                   </table>
-
-               </div>
-            </div>
+             
+        />
+               <br></br>
+               <br></br>
+               <br></br>
+               <br></br>
+               <br></br>
+               <br></br>
+         <p className="para1">Status :</p>
+         <p className="category1">Status :<span ></span>Available</p>
+         <br></br>
+         <p className="para2">Status :</p>
+         <p className="category2">Status :<span ></span>Available</p>
+         
+                <br></br>
+                <br></br>
+                <br></br>
+                <br></br>
+                <br></br>
+                <br></br>
+                  <button class="button1"
+                    className="btn btn-primary btn-block"
+                    disabled={this.state.loading}
+                  >
+                    {this.state.loading && (
+                      <span className="spinner-border spinner-border-sm"></span>
+                    )}
+                   <span>Borrow </span>
+                  </button>
+                <br></br>
+                <span className='form-input-login'>
+              This book is available online<br></br> if you want this book to read, Click below link <br></br> <a href='registerUserselection'>here</a>
+            </span>
+                {this.state.message && (
+                  <div className="form-group">
+                    <div className="alert alert-danger" role="alert">
+                      {this.state.message}
+                    </div>
+                  </div>
+                )}
+                <CheckButton
+                  style={{ display: "none" }}
+                  ref={c => {
+                    this.checkBtn = c;
+                  }}
+                />
+              </Form>
+              
+              </div>
+              </div>
         );
     }
 }
 
-export default ListEmployeeComponent;
+export default ViewSelectedBook;

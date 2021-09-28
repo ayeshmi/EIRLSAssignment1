@@ -22,6 +22,11 @@ import AddVideo from './components/pages/AddNewVideo';
 import UploadVideo from './components/pages/AddVideo';
 import ReplyContactUs from './components/pages/ReplyContactUs';
 import AboutProfile from './components/pages/ProfileChanges';
+import AboutVideoImage from './components/pages/AddVideoImage';
+import AboutBookImage from './components/pages/AddBookImage';
+import ViewAllVideo from './components/pages/ViewAllVideoDetails';
+
+
 
 
 import {BrowserRouter as Router,Switch,Route} from 'react-router-dom';
@@ -53,7 +58,10 @@ function App() {
       <Route path="/ViewAllContactUs" exact component={ViewAllContactUS} />
       <Route path="/replyContactUsRequest/:id"  component={ReplyContactUs} />
       <Route path="/aboutProfile" component={AboutProfile} />
-
+      <Route path="/addVideoImage/:title" exact component={AboutVideoImage} />
+      <Route path="/addBookImage/:title" exact component={AboutBookImage} />
+      <Route path="/viewAllVideoDetails" exact component={ViewAllVideo} />
+     
     </Switch>
   </Router>
   </>

@@ -121,32 +121,8 @@ function App() {
 
   const { ref, ...rootProps } = getRootProps();
 
-  const uploadFile = async () => {
-    try {
-      setSuccess(false);
-      setLoading(true);
-      const formData = new FormData();
-      formData.append("Video", file);
-     formData.append("Title", title);
-     formData.append("Image", file2);
-      const API_URL = "http://localhost:8082/api/auth/video";
-      const response = await axios.put(API_URL, formData, {
-        onUploadProgress: (progressEvent) => {
-          const percentCompleted = Math.round(
-            (progressEvent.loaded * 100) / progressEvent.total
-          );
-          setPercent(percentCompleted);
-        },
-      });
-
-      setDownloadUri(response.data.fileDownloadUri);
-      setSuccess(true);
-      setLoading(false);
-    } catch (err) {
-      alert(err.message);
-    }
-  };
-  const uploadImage = async () => {
+  
+  const uploadFile1 = async () => {
     try {
       setSuccess(false);
       setLoading(true);
@@ -154,7 +130,7 @@ function App() {
       formData2.append("Video", file);
      formData2.append("Title", title);
      formData2.append("Image", file2);
-      const API_URL = "http://localhost:8082/api/auth/video";
+      const API_URL = "http://localhost:8082/api/auth/videoImage";
       const response = await axios.put(API_URL, formData2, {
         onUploadProgress: (progressEvent) => {
           const percentCompleted = Math.round(
@@ -228,7 +204,7 @@ function App() {
                           aria-label="save"
                           color="primary"
                           className={buttonClassname}
-                          onClick={uploadFile}
+                          onClick={uploadFile1}
                         >
                           {success ? <CheckIcon /> : <CloudUpload />}
                         </Fab>

@@ -267,15 +267,9 @@ render() {
               onChange={this.onChangeDate}
               validations={[required]}
             />
-            <label>Uplaod an image</label>
-        
-            <Link to={'/uploadVideo/'+this.state.title} className='nav-links'>
-                          Upload video here
-                      </Link>
-
-          <br></br>
-          <br></br>
-
+            
+  
+<br></br>
           <div className="form-group">
             <button class="row"
               className="btn btn-primary btn-block"
@@ -287,7 +281,14 @@ render() {
              <span>Add Video</span>
             </button>
             <br></br>
+            <br></br>
            
+            <Link to={'/uploadVideo/'+this.state.title} className='nav-links'>
+                          Upload video here
+                      </Link>
+                      <Link to={'/addVideoImage/'+this.state.title} className='nav-links'>
+                          Upload video image here
+                      </Link>
           </div>
 <br></br>
           {this.state.message && (

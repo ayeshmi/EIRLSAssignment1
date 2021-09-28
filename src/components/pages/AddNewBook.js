@@ -11,6 +11,7 @@ import MenuItem from '@material-ui/core/MenuItem';
 import FormHelperText from '@material-ui/core/FormHelperText';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
+import {Link} from 'react-router-dom';
 
 const required = value => {
   if (!value) {
@@ -304,6 +305,10 @@ className="selectionLable">Select Book Category</InputLabel>
            
           </div>
 <br></br>
+<Link to={'/addBookImage/'+this.state.title} className='nav-links'>
+                          Upload video image here
+                      </Link>
+                      <br></br>
           {this.state.message && (
             <div className="form-group">
               <div className="alert alert-danger" role="alert">

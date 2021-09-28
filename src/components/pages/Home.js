@@ -1,18 +1,23 @@
-  
-import React from "react";
+import React, { Component } from 'react';
+import authService from "../services/auth.service";
+
 import "../../App.css";
 import Cards from "../Cards";
 import HeroSection from "../HeroSection";
 import Footer from "../Footer";
+import CardItem from "../CardItem";
+export default class AddNewBook extends Component {
 
-function Home() {
-  return (
-    <>
-      <HeroSection />
-      <Cards/>
-      <Footer />
-    </>
-  );
+
+  render(){
+    return (
+      <>
+        <HeroSection />
+        <Cards/>
+        <Footer />
+      </>
+    );
+  }
+
 }
 
-export default Home;

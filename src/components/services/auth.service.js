@@ -48,6 +48,10 @@ class AuthService {
     return axios.get(API_URL+"employees");
     }
 
+    getVideos(){
+      return axios.get(API_URL+"AllVideos");
+      }
+
     getBooks(){
       return axios.get(API_URL+"books");
       }
@@ -88,8 +92,31 @@ class AuthService {
   getUserType(name){
     return name;
   }
-
-
+  homePageVideos(){
+    return axios.get(API_URL+"selectedVideo/Romance");
+  }
+  homePageBooks(){
+    return axios.get(API_URL+"selectedBook/Fantasy");
+  }
+  RhomePageBooksFantasy(){
+    return axios.get(API_URL+"RselectedBookF/Fantasy");
+  }
+  RhomePageBooksAction(){
+    return axios.get(API_URL+"RselectedBookA/Action");
+  }
+  RhomePageBooksDrama(){
+    return axios.get(API_URL+"RselectedBookD/Drama");
+  }
+  RhomePageBooksComic(){
+    return axios.get(API_URL+"RselectedBookC/Comic and Graphic Novel");
+  }
+  RhomePageBooksRomance(){
+    return axios.get(API_URL+"RselectedBookR/Romance");
+  }
+  RhomePageBooksHorror(){
+    return axios.get(API_URL+"RselectedBookH/Horror");
+  }
+  
 }
 
 export default new AuthService();

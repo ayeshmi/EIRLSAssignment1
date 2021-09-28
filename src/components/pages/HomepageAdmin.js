@@ -44,7 +44,7 @@ export default class HomepageAdmin extends Component {
               src='images/futuristic-1628581653437-3273.jpg'
               text="View All Video"
               label="Video"
-              path="/services"
+              path="/viewAllVideoDetails"
             />
             
           

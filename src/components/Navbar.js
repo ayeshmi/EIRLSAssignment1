@@ -53,7 +53,7 @@ const [username,setUsername]=useState(currentUser.username);
                   </li>
                   
                   <li className='nav-item'>
-                      <Link to='/products' className='nav-links' onClick={closeMobileMenu}>
+                      <Link to='/testing' className='nav-links' onClick={closeMobileMenu}>
                           About Us
                       </Link>
                   </li>

@@ -1,0 +1,56 @@
+.form23{
+    max-width: 1000px;
+    min-width: 995px;
+    min-height: 600px;
+   left:20%;
+    background-color: #FFFFFF;
+    border-radius: 55px;
+    margin: 80px auto;
+    position: absolute;
+  }
+  .image{
+      width:200px;
+      height:200px;
+      
+      border-radius: 25px;
+      position: absolute;
+  top: 18%;
+  left: 15%;
+  }
+  .lable1{
+    position: absolute;
+    top: 18%;
+    left: 15%;
+  }
+  .textField23{
+    position: absolute;
+    top: 18%;
+    left: 15%;
+    width: 500px;
+    height: 100px;
+    outline:none;
+  }
+  .para1{
+      font-size: 100%;
+    position: absolute;
+    top: 58%;
+    left: 15%;
+  }
+  .para2{
+    font-size: 100%;
+  position: absolute;
+  top: 68%;
+  left: 15%;
+}
+.category1{
+    font-size: 100%;
+  position: absolute;
+  top: 58%;
+  left: 35%;
+}
+.category2{
+    font-size: 100%;
+  position: absolute;
+  top: 68%;
+  left: 35%;
+}

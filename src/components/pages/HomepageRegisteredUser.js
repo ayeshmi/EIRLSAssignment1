@@ -54,7 +54,7 @@ const styles = (theme) => ({
   
 
 
-export default class HomepageAdmin extends Component {
+export default class HomepageRegisteredUser extends Component {
 
     constructor(props){
         super(props);
@@ -63,7 +63,13 @@ export default class HomepageAdmin extends Component {
         
         this.state={
             open:false,
-            employees: []
+            employees: [],
+            ComicBooks:[],
+            RomanceBooks:[],
+            ActionBooks:[],
+            DramaBooks:[],
+            FantasyBooks:[],
+            HorrorBooks:[]
         };
     }
     handleClickOpen(e) {
@@ -76,10 +82,32 @@ export default class HomepageAdmin extends Component {
           open: false
         });
       }
+
+
       componentDidMount(){
+
         authService.getBooks().then((res) => {
               this.setState({employees:res.data});
         });
+        authService.RhomePageBooksAction().then((res) => {
+          this.setState({ActionBooks:res.data});
+    });
+    authService.RhomePageBooksComic().then((res) => {
+      this.setState({ComicBooks:res.data});
+});
+authService.RhomePageBooksDrama().then((res) => {
+  this.setState({DramaBooks:res.data});
+});
+authService.RhomePageBooksFantasy().then((res) => {
+  this.setState({FantasyBooks:res.data});
+});
+authService.RhomePageBooksRomance().then((res) => {
+  this.setState({RomanceBooks:res.data});
+});
+authService.RhomePageBooksHorror().then((res) => {
+  this.setState({HorrorBooks:res.data});
+});
+
     }
 
   
@@ -94,77 +122,229 @@ export default class HomepageAdmin extends Component {
             return (
                 
                 <div className="cards1">
-                  
-                    <div>
-                    {
-                    this.state.employees.map(
-                employee =>
-            <Dialog onClose={this.handleClose} aria-labelledby="customized-dialog-title" open={this.state.open}>
-           
-              <DialogTitle id="customized-dialog-title" onClose={this.handleClose}>
-              
-              {employee.title}
-              
-              </DialogTitle>
-              <DialogContent dividers>
-              <Typography gutterBottom>
-                  Author : 
-                </Typography>
-                <Typography gutterBottom>
-                  About Book: 
-                </Typography>
-                <Typography gutterBottom>
-              Harry Potter has never even heard of Hogwarts when the letters start dropping on the doormat at number four, Privet Drive. 
-              Addressed in green ink on yellowish parchment with a purple seal, they are swiftly confiscated by his grisly aunt and uncle. 
-              Then, on Harry’s eleventh birthday, a great beetle-eyed giant of a man called Rubeus Hagrid bursts in with some astonishing news: Harry Potter is a wizard,
-              and he has a place at Hogwarts School of Witchcraft and Wizardry. An incredible adventure is about to begin!
-                </Typography>
-               
-                
-              </DialogContent>
-              <DialogActions>
-                <Button autoFocus onClick={this.handleClose} color="primary">
-                <button onClick={this.handleClickOpen} className="btn btn-info">Update</button>
-                  Book
-                </Button>
-                <Button autoFocus onClick={this.handleClose} color="primary">
-                  View
-                </Button>
-              </DialogActions>
-               
-            </Dialog>
-                    )}        
-          
-          </div>
-            
+                  <h1>Book Collection</h1>
+                   
                     
           
       
       <div className="cards__container1">
         <div className="cards__wrapper1">
+          <h2>Comic</h2>
           <ul className="cards__items1">
+          
           {
-                    this.state.employees.map(
+            
+                    this.state.ComicBooks.map(
                 employee =>
-          <div class="child "  onClick={ () => this.editEmployee(employee.id)}>
+          <div class="child "  >
             <CardItem
-              src='images/Desktop-Book-HD-Wallpapers.jpg'
+              src={employee.imageOfVideo}
               text={employee.title}
               label="Book"
+              path={'/viewSelectedBook/'+employee.id}
             />   
             </div> 
               )
             }  
-             
-            
+            </ul>
+            <h2>Action</h2>
+            <ul className="cards__items1">
+          {
+                    this.state.ActionBooks.map(
+                employee =>
+          <div class="child " >
+            <CardItem
+              src={employee.imageOfVideo}
+              text={employee.title}
+              label="Book"
+              path={'/viewSelectedBook/'+employee.id}
+            />   
+            </div> 
+              )
+            }  
             </ul>
             
-                     
-    
+            <ul className="cards__items1">
+            <h2>Drama</h2>
+          {
+            
+                    this.state.DramaBooks.map(
+                employee =>
+          <div class="child " >
+            <CardItem
+              src={employee.imageOfVideo}
+              text={employee.title}
+              label="Book"
+              path={'/viewSelectedBook/'+employee.id}
+            />   
+            </div> 
+              )
+            }  
+            </ul>
+            <h2>Romance</h2>
+            <ul className="cards__items1">
+          {
+                    this.state.RomanceBooks.map(
+                employee =>
+          <div class="child ">
+            <CardItem
+              src={employee.imageOfVideo}
+              text={employee.title}
+              label="Book"
+              path={'/viewSelectedBook/'+employee.id}
+            />   
+            </div> 
+              )
+            }  
+            </ul> 
+            <h2>Fantasy</h2>
+            <ul className="cards__items1">
+          {
+                    this.state.FantasyBooks.map(
+                employee =>
+          <div class="child " >
+            <CardItem
+              src={employee.imageOfVideo}
+              text={employee.title}
+              label="Book"
+              path={'/viewSelectedBook/'+employee.id}
+            />   
+            </div> 
+              )
+            }  
+            </ul>    
+            <h2>Horror</h2>    
+            <ul className="cards__items1">
+          {
+                    this.state.HorrorBooks.map(
+                employee =>
+          <div class="child " >
+            <CardItem
+              src={employee.imageOfVideo}
+              text={employee.title}
+              label="Book"
+              path={'/viewSelectedBook/'+employee.id}
+            />   
+            </div> 
+              )
+            }  
+            </ul>
         </div>
       
       </div>
+
+        <h1>Video Collection</h1>
+                   
                     
+          
+      
+      <div className="cards__container1">
+        <div className="cards__wrapper1">
+          <h2>Comic</h2>
+          <ul className="cards__items1">
+          
+          {
+            
+                    this.state.ComicBooks.map(
+                employee =>
+          <div class="child "  >
+            <CardItem
+              src={employee.imageOfVideo}
+              text={employee.title}
+              label="Book"
+              path={'/viewSelectedBook/'+employee.id}
+            /> 
+       
+            </div> 
+              )
+            }  
+            </ul>
+            <h2>Action</h2>
+            <ul className="cards__items1">
+          {
+                    this.state.ActionBooks.map(
+                employee =>
+          <div class="child ">
+            <CardItem
+              src={employee.imageOfVideo}
+              text={employee.title}
+              label="Book"
+              path={'/viewSelectedBook/'+employee.id}
+            />   
+            </div> 
+              )
+            }  
+            </ul>
+            
+            <ul className="cards__items1">
+            <h2>Drama</h2>
+          {
+            
+                    this.state.DramaBooks.map(
+                employee =>
+          <div class="child " >
+            <CardItem
+              src={employee.imageOfVideo}
+              text={employee.title}
+              label="Book"
+              path={'/viewSelectedBook/'+employee.id}
+            />   
+            </div> 
+              )
+            }  
+            </ul>
+            <h2>Romance</h2>
+            <ul className="cards__items1">
+          {
+                    this.state.RomanceBooks.map(
+                employee =>
+          <div class="child " >
+            <CardItem
+              src={employee.imageOfVideo}
+              text={employee.title}
+              label="Book"
+              path={'/viewSelectedBook/'+employee.id}
+            />   
+            </div> 
+              )
+            }  
+            </ul> 
+            <h2>Fantasy</h2>
+            <ul className="cards__items1">
+          {
+                    this.state.FantasyBooks.map(
+                employee =>
+          <div class="child "  >
+            <CardItem
+              src={employee.imageOfVideo}
+              text={employee.title}
+              label="Book"
+              path={'/viewSelectedBook/'+employee.id}
+            />   
+            </div> 
+              )
+            }  
+            </ul>    
+            <h2>Horror</h2>    
+            <ul className="cards__items1">
+          {
+                    this.state.HorrorBooks.map(
+                employee =>
+          <div class="child "  >
+            <CardItem
+              src={employee.imageOfVideo}
+              text={employee.title}
+              label="Book"
+              path={'/viewSelectedBook/'+employee.id}
+            />   
+            </div> 
+              )
+            }  
+            </ul>
+        </div>
+      
+      </div>
+                                
     
     </div>
    
