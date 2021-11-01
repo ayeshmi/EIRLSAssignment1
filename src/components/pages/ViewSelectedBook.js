@@ -1,40 +1,122 @@
-import React, { Component } from 'react';
-import authService from '../services/auth.service';
 import './ViewSelectedBook.css';
-import CardItem from "../CardItem";
+import React, { Component } from "react";
+import AuthService from '../services/auth.service';
 import Form from "react-validation/build/form";
-import Input from "react-validation/build/input";
-import CheckButton from "react-validation/build/button";
 import TextField from '@material-ui/core/TextField';
-class ViewSelectedBook extends Component {
+import CheckButton from "react-validation/build/button";
+import { data } from 'jquery';
 
-    constructor(props){
-        super(props)
-        this.state={
-            id:this.props.match.params.id,
-            author: '',
-            category: '',
-            description: ''
-           
-        }   
-    }
 
-    componentDidMount(){
-        authService.getBooksByID(this.state.id).then(  (res) =>{
-            let book = res.data;
-            this.setState({author: book.id,
-                category: book.author,
-                description : book.title,
-                image:book.imageOfVideo
-            });
-        
+
+const required = value => {
+  if (!value) {
+    return (
+      <div className="alert alert-danger" role="alert">
+        This field is required!
+      </div>
+    );
+  }
+};
+
+export default class ViewSelectedBook extends Component {
+  
+  constructor(props) {
+    super(props);
+    this.handleLogin = this.handleLogin.bind(this);
+    this.onChangeComment = this.onChangeComment.bind(this);
+   
+    this.handleComment=this.handleComment.bind(this);
+    this.state={
+      id:this.props.match.params.id,
+      author: '',
+      category: '',
+      description: '',
+      username:'',
+      user:'',
+      comment:"",
+      currentUser:"",
+      comments: []  
+  };
+  }
+
+
+
+  componentDidMount(){
+    AuthService.getBooksByID(this.state.id).then(  (res) =>{
+        let book = res.data;
+        this.setState({author: book.id,
+            category: book.author,
+           description : book.title,
+            image:book.imageOfVideo
         });
-        
-    }
+    
+    });
 
-    render() {
-        return (
-            <div >
+
+    AuthService.getAllCommentByID(this.state.id).then((res) => {
+      this.setState({comments:res.data});
+});
+    
+     let user = AuthService.getCurrentUser(); 
+     this.state.currentUser=user.username;
+}
+
+onChangeComment(e) {
+  this.setState({
+    comment: e.target.value,
+
+  });
+ 
+}
+
+handleComment(e){
+  if (this.checkBtn.context._errors.length === 0) {
+    AuthService. addCommentBook(
+      this.state.currentUser,
+      this.state.comment,
+      "Book",
+      this.state.id
+      
+    );
+  } else {
+    this.setState({
+      loading: false
+    });
+  }
+  
+
+}
+
+  handleLogin(e) {
+    e.preventDefault();
+
+    this.setState({
+      message: "",
+      loading: true
+    });
+
+    this.form.validateAll();
+
+    if (this.checkBtn.context._errors.length === 0) {
+      let user= AuthService.getCurrentUser();
+      AuthService. addNewBookReservation(
+        user.username,
+        user.username,
+        user.id
+        
+      );
+    } else {
+      this.setState({
+        loading: false
+      });
+    }
+  }
+
+render() {
+  
+  return (
+    
+    <div >
            
           <div className="form23"> 
               <Form className="row2"
@@ -49,15 +131,11 @@ class ViewSelectedBook extends Component {
         
        
              <TextField
-             className="textField23"
-      
+          className="textField23"
           name="Message"
           multiline
           rows={7}
-          
-          value={this.state.Message}
-              
-             
+          value={this.state.Message}    
         />
                <br></br>
                <br></br>
@@ -68,6 +146,8 @@ class ViewSelectedBook extends Component {
          <p className="para1">Status :</p>
          <p className="category1">Status :<span ></span>Available</p>
          <br></br>
+         <br></br>
+         <br></br>
          <p className="para2">Status :</p>
          <p className="category2">Status :<span ></span>Available</p>
          
@@ -77,7 +157,7 @@ class ViewSelectedBook extends Component {
                 <br></br>
                 <br></br>
                 <br></br>
-                  <button class="button1"
+                  <button class="buttonReservationBook"
                     className="btn btn-primary btn-block"
                     disabled={this.state.loading}
                   >
@@ -88,7 +168,7 @@ class ViewSelectedBook extends Component {
                   </button>
                 <br></br>
                 <span className='form-input-login'>
-              This book is available online<br></br> if you want this book to read, Click below link <br></br> <a href='registerUserselection'>here</a>
+              This book is available online<br></br> if you want this book to read, Click below link  <a href='registerUserselection'>here</a>
             </span>
                 {this.state.message && (
                   <div className="form-group">
@@ -103,12 +183,59 @@ class ViewSelectedBook extends Component {
                     this.checkBtn = c;
                   }}
                 />
+
+                <br></br>
+                <br></br>
+               
               </Form>
+             
+             <Form
+             
+             onSubmit={this.handleComment}
+             ref={c => {
+               this.form = c;
+             }}>
+             <div>
+                <TextField
+                placeholder="Enter your comment here"
+             className="textFieldComment"
+             name="Comment"
+             multiline
+             rows={3}
+             value={this.state.onChangeComment}
+             onChange={this.onChangeComment}
+             />
+            
+           </div>
+           <button className="commentButton" >Post</button>
+           <div className="rowV">
+                   <table className="table table-striped table-boordered">
+                       <thead>
+                           <tr>
+                               <th>View All Comments..</th>
+                               
+                           </tr>
+                           
+                       </thead>
+                       
+                       <tbody>
+                           {
+                               this.state.comments.map(
+                                   comment1 =>
+                                   <tr key={comment1.id}>
+                                       <td>{comment1.username}:{comment1.commentDetails}</td> 
+                                   </tr>
+                               )
+                           }
+                       </tbody>
+                   </table>
+
+               </div>
+             </Form>
+              </div>
+              </div>
               
-              </div>
-              </div>
         );
-    }
 }
 
-export default ViewSelectedBook;
+}

@@ -60,6 +60,10 @@ class AuthService {
       return axios.get(API_URL+"allConatctUs");
       }
 
+      getAllCommentByID(ID){
+        return axios.get(API_URL+"allCommentByID/"+ID);
+        }
+
     getContactUsDetailById(contactID){
       return axios.get(API_URL + "contactus/"+contactID);
     }
@@ -85,6 +89,15 @@ class AuthService {
      description
     });
   }
+
+  addNewBookReservation(bookName,username,userId){
+    return axios.post(API_URL + "bookReservation", {
+     bookName,
+     username,
+     userId
+     });
+  }
+
 
   getCurrentUser() {
     return JSON.parse(localStorage.getItem('user'));;
@@ -116,7 +129,15 @@ class AuthService {
   RhomePageBooksHorror(){
     return axios.get(API_URL+"RselectedBookH/Horror");
   }
-  
+  addCommentBook(username,commentDetails,typeID,type){
+    return axios.post(API_URL + "addCommentBook", {
+      username,
+      commentDetails,
+      type,
+     typeID
+      });
+  }
+
 }
 
 export default new AuthService();

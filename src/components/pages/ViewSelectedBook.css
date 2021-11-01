@@ -11,11 +11,10 @@
   .image{
       width:200px;
       height:200px;
-      
       border-radius: 25px;
-      position: absolute;
-  top: 18%;
-  left: 15%;
+      position:absolute;
+      top: 10%;
+      left: 15%;
   }
   .lable1{
     position: absolute;
@@ -30,27 +29,60 @@
     height: 100px;
     outline:none;
   }
+  .textFieldComment{
+    position: relative;
+    top: 28%;
+    left: 10%;
+    width: 800px;
+    height: 100px;
+    outline:none;
+  }
+  .commentSection{
+    position: absolute;
+    top: 98%;
+    left: 10%;
+    width: 800px;
+    height: 100px;
+    outline:none;
+  }
+  .commentButton{
+    position: sticky;
+    top: 10%;
+    left: 70%;
+    width: 150px;
+    height: 50px;
+    outline:none;
+    border-radius: 25px;
+    background: rgb(234, 235, 240);
+    background: linear-gradient(135deg, rgb(122, 97, 180) 0%,     rgb(77, 143, 209) 100%);
+    transition: opacity 0.25s ease-out;
+    border: 0px;
+  cursor: pointer;
+  font-size: 1.3rem;
+  color: white;
+  font-weight: 700;
+  }
   .para1{
       font-size: 100%;
-    position: absolute;
-    top: 58%;
-    left: 15%;
+    position: relative;
+    top: 45%;
+    right: 35%;
   }
   .para2{
     font-size: 100%;
-  position: absolute;
-  top: 68%;
-  left: 15%;
+  position: relative;
+  top: 58%;
+  right: 35%;
 }
 .category1{
-    font-size: 100%;
-  position: absolute;
-  top: 58%;
-  left: 35%;
+    font-size: 25px;
+  position: relative;
+  top: 85%;
+  left: 5%;
 }
 .category2{
-    font-size: 100%;
-  position: absolute;
-  top: 68%;
-  left: 35%;
+    font-size: 25px;
+  position: relative;
+  top: 48%;
+  left: 5%;
 }

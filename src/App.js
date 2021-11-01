@@ -25,6 +25,7 @@ import AboutProfile from './components/pages/ProfileChanges';
 import AboutVideoImage from './components/pages/AddVideoImage';
 import AboutBookImage from './components/pages/AddBookImage';
 import ViewAllVideo from './components/pages/ViewAllVideoDetails';
+import Rating from './components/pages/rating';
 
 
 
@@ -61,6 +62,7 @@ function App() {
       <Route path="/addVideoImage/:title" exact component={AboutVideoImage} />
       <Route path="/addBookImage/:title" exact component={AboutBookImage} />
       <Route path="/viewAllVideoDetails" exact component={ViewAllVideo} />
+      <Route path="/rating" exact component={Rating} />
      
     </Switch>
   </Router>
