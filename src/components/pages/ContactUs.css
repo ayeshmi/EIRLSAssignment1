@@ -30,9 +30,11 @@ html{
   left: 89%;
   transform: translate(-50%, -50%);
 }
-.textField{
-  width: 77%;
+.textFieldM 
+{
+  width: 73%;
   height: 30%;
+  
 }
 
 #headerTitle{
@@ -58,20 +60,10 @@ Input:focus::-webkit-input-placeholder{
   opacity: 0;
 }
 
-.textField:focus{
-    box-shadow: inset 0px -3px 0px 0px rgba(34,193,195,0.7);
-    outline: none;
- }
  
-  .textField::-webkit-input-placeholder{
-   opacity: 1;
-   transition: opacity 0.25s ease-out;
- }
+  
  
-  .textField:hover::-webkit-textfield-placeholder,
- .textField:focus::-webkit-input-placeholder{
-   opacity: 0;
- }
+ 
 
 label{
     display: flex;

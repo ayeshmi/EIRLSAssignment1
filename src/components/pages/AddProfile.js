@@ -111,7 +111,7 @@ function App() {
       const formData = new FormData();
       formData.append("file", file);
       formData.append("user",username)
-      const API_URL = "http://localhost:8082/api/auth/image";
+      const API_URL = "http://localhost:8082/api/auth/profileImage12";
       const response = await axios.put(API_URL, formData, {
         onUploadProgress: (progressEvent) => {
           const percentCompleted = Math.round(

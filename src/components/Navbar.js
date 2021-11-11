@@ -65,7 +65,7 @@ const [username,setUsername]=useState(currentUser.username);
                  
                   <li className='nav-item'>
                       <Link to='/login' className='nav-links' onClick={logout}>
-                         Log in
+                      {username == null ? `Login ` : `LogOut `}
                       </Link>
                   </li>
                   <li className='nav-item'>

@@ -5,7 +5,9 @@ import Form from "react-validation/build/form";
 import Input from "react-validation/build/input";
 import CheckButton from "react-validation/build/button";
 import TextField from '@material-ui/core/TextField';
-import authService from '../services/auth.service';
+import {toast} from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+toast.configure()
 
 
 const required = value => {
@@ -71,14 +73,55 @@ export default class ContactUs extends Component {
     });
   }
 
-  handleLogin = (e) => {
+  handleLogin(e) {
     e.preventDefault();
-    let contactUS = {id:this.state.id,name: this.state.name, email: this.state.email, message:this.state.Message,answer: this.state.answer};
-    console.log('employee => ' + JSON.stringify(contactUS));
-    console.log('id => ' + JSON.stringify(this.state.id));
-    authService.replyContactUs(contactUS, this.state.id).then( res => {
-        this.props.history.push('/employees');
+
+    this.setState({
+      message: "",
+      loading: true
     });
+
+    this.form.validateAll();
+
+    if (this.checkBtn.context._errors.length === 0) {
+      AuthService.replyContactUs(this.state.answer, this.state.id,this.state.email).then(
+        () => {
+          this.props.history.push("/ViewAllContactUs");
+         // window.location.reload();
+          this.notify();
+        },
+        error => {
+          const resMessage =
+            (error.response &&
+              error.response.data &&
+              error.response.data.message) ||
+            error.message ||
+            error.toString();
+              if(resMessage=="Request failed with status code 401"){
+                this.setState({
+                  loading: false,
+                  message: "Username or Password is incorrect, Check again"
+                });
+              }else{
+                this.setState({
+                  loading: false,
+                  message: resMessage
+                });
+              }
+          
+        }
+      );
+    } else {
+      this.setState({
+        loading: false
+      });
+    }
+  }
+
+  notify (){
+ 
+    // Calling toast method by passing string
+    toast('Your Answer is Successfully Sent to Client.')
 }
 
 render() {
@@ -86,10 +129,10 @@ render() {
   return (
     
     <div >
-      <img className='form-img' src='images/boy-reading.svg' alt='spaceship' />
+      
     <div className="form3"> 
         <Form className="row"
-          
+           onSubmit={this.handleLogin}
           ref={c => {
             this.form = c;
           }}
@@ -151,7 +194,7 @@ render() {
             <button class="button1"
               className="btn btn-primary btn-block"
               disabled={this.state.loading}
-              onClick={this.handleLogin}
+             
             >
               {this.state.loading && (
                 <span className="spinner-border spinner-border-sm"></span>
@@ -160,13 +203,7 @@ render() {
             </button>
           <br></br>
        
-          {this.state.message && (
-            <div className="form-group">
-              <div className="alert alert-danger" role="alert">
-                {this.state.message}
-              </div>
-            </div>
-          )}
+      
           <CheckButton
             style={{ display: "none" }}
             ref={c => {

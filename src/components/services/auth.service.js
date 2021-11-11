@@ -68,21 +68,24 @@ class AuthService {
       return axios.get(API_URL + "contactus/"+contactID);
     }
 
-    replyContactUs(answer,contactID){
-      return axios.post(API_URL,"contactus/"+contactID,answer);
+    replyContactUs(answer,contactID,email){
+      return axios.post(API_URL+"contactus/"+contactID,{answer,email});
      }
 
      addVideoDetails(category,date,description,title){
       return axios.post(API_URL+"addVideo",{category,title,date,description});
      }
 
-  addNewBook(category,title,author,edition,isbnNumber,price,numberOfCopies,date,description){
+     deleteContactUsDetailsById(id){
+      return axios.delete(API_URL+"deleteContactUs/"+id);
+     }
+
+  addNewBook(category,title,author,inumber,price,numberOfCopies,date,description){
     return axios.post(API_URL + "addbook", {
      category,
      title,
      author,
-     edition,
-     isbnNumber,
+     inumber,
      price,
      numberOfCopies,
      date,
@@ -97,7 +100,9 @@ class AuthService {
      userId
      });
   }
-
+  getUserProfilePicture(username){
+    return axios.get(API_URL+"profilePicture/"+username);
+  }
 
   getCurrentUser() {
     return JSON.parse(localStorage.getItem('user'));;
@@ -137,7 +142,10 @@ class AuthService {
      typeID
       });
   }
-
+  searchBook(specification){
+    return axios.get(API_URL + "searchBooks/"+specification);
+  }
+ // this.props.history.push(`viewSelectedBook/${id}`);
 }
 
 export default new AuthService();

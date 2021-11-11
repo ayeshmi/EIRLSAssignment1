@@ -23,14 +23,6 @@ const required = value => {
   }
 };
 
-const options = [
-    { value: "hello", label: "hello1" },
-    { value: "hello", label: "hello"},
-    { value: "hello", label: "hello" },
-    { value: "hello", label: "hello" },
-    { value: "hello", label: "hello"},
-    { value: "hello", label: "hello" },
-  ];
 
 export default class AddNewBook extends Component {
   
@@ -42,22 +34,21 @@ export default class AddNewBook extends Component {
     this.onChangeTitle = this.onChangeTitle.bind(this);
     this.onChangeAuthor=this.onChangeAuthor.bind(this);
     this.onChangeEdition=this.onChangeEdition.bind(this);
-    this.onChangeIsbn=this.onChangeIsbn.bind(this);
     this.onChangePrice=this.onChangePrice.bind(this);
     this.onChangeNumberofCopies=this.onChangeNumberofCopies.bind(this);
     this.onChangeDate=this.onChangeDate.bind(this);
     this.onChangeBookdes=this.onChangeBookdes.bind(this);
-    
+    this.onChangeIsbn=this.onChangeIsbn.bind(this);
     this.state = {
       category:"",
       title:"",
       author:"",
       edition:"",
-      isbnNumber:"",
       price:"",
       numberOfCopies:"",
       date:"",
-      bDes:""
+      bDes:"",
+      inumber:""
   
     };
   }
@@ -67,6 +58,11 @@ export default class AddNewBook extends Component {
   onChangeCategory(e) {
     this.setState({
       category: e.target.value
+    });
+  }
+  onChangeIsbn(e) {
+    this.setState({
+      inumber: e.target.value
     });
   }
   onChangeBookdes(e){
@@ -93,12 +89,7 @@ export default class AddNewBook extends Component {
     });
 
   }
-  onChangeIsbn(e) {
-    this.setState({
-      isbnNumber: e.target.value
-    });
-
-  }
+ 
   onChangePrice(e) {
     this.setState({
       price: e.target.value
@@ -135,12 +126,12 @@ export default class AddNewBook extends Component {
         this.state.category,
         this.state.title,
         this.state.author,
-        this.state.edition,
-        this.state.isbnNumber,
+        this.state.inumber,
         this.state.price,
         this.state.numberOfCopies,
         this.state.date,
         this.state.bDes
+        
         //this.state.description
         
       ).then(
@@ -207,11 +198,15 @@ render() {
               validations={[required]}
             />
 
-
-
-         
-      
-
+         <label >ISBN </label> 
+            <Input
+            placeholder="Enter book ISBN"
+              type="text" 
+              name="inumber"
+              value={this.state.inumber}
+              onChange={this.onChangeIsbn}
+              validations={[required]}
+            />
         
       <label>Category</label>
 

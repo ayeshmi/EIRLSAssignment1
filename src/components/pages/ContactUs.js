@@ -5,6 +5,9 @@ import Form from "react-validation/build/form";
 import Input from "react-validation/build/input";
 import CheckButton from "react-validation/build/button";
 import TextField from '@material-ui/core/TextField';
+import {toast} from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+toast.configure()
 
 
 const required = value => {
@@ -64,9 +67,12 @@ export default class ContactUs extends Component {
 
     if (this.checkBtn.context._errors.length === 0) {
       AuthService.contactUs(this.state.name, this.state.email,this.state.Message).then(
-        () => {
-          this.props.history.push("/profile");
-          window.location.reload();
+        response => {
+          this.setState({
+            message: response.data.message,
+            successful: true
+          });
+          this.notify();
         },
         error => {
           const resMessage =
@@ -88,6 +94,12 @@ export default class ContactUs extends Component {
       });
     }
   }
+
+notify (){
+ 
+    // Calling toast method by passing string
+    toast(this.state.message)
+}
 
 render() {
   
@@ -131,8 +143,8 @@ render() {
             />
              <label htmlFor="message">Message</label>
              <TextField
-             className="textField"
-          id="standard-multiline-static"
+             className="textFieldM"
+         
           name="Message"
           multiline
           rows={4}
@@ -155,13 +167,7 @@ render() {
             </button>
           <br></br>
        
-          {this.state.message && (
-            <div className="form-group">
-              <div className="alert alert-danger" role="alert">
-                {this.state.message}
-              </div>
-            </div>
-          )}
+       
           <CheckButton
             style={{ display: "none" }}
             ref={c => {

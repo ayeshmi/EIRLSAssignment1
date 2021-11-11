@@ -6,6 +6,9 @@ import Input from "react-validation/build/input";
 import CheckButton from "react-validation/build/button";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye ,faTimes,faCheck,faEyeSlash} from "@fortawesome/free-solid-svg-icons";
+import {toast} from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+toast.configure()
 
 
 
@@ -21,6 +24,10 @@ const required = value => {
 
 
 
+
+
+
+
 export default class Regsiter extends Component {
   
   constructor(props) {
@@ -31,7 +38,7 @@ export default class Regsiter extends Component {
     this.onChangePassword = this.onChangePassword.bind(this);
     this.onChangeBirthDay=this.onChangeBirthDay.bind(this);
     this.onChangeEmail=this.onChangeEmail.bind(this);
-
+    
     this.state = {
       name:this.props.match.params.name,
       username: "",
@@ -39,7 +46,9 @@ export default class Regsiter extends Component {
       birthday:"",
       password: "",
       loading: false,
-      message: ""
+      message: "",
+      show:false,
+      show1:true
     };
   }
 
@@ -48,6 +57,8 @@ export default class Regsiter extends Component {
       username: e.target.value
     });
   }
+
+  
 
   onChangeBirthDay(e) {
     this.setState({
@@ -92,6 +103,7 @@ export default class Regsiter extends Component {
             message: response.data.message,
             successful: true
           });
+        this.notify();
         },
         error => {
           const resMessage =
@@ -106,7 +118,7 @@ export default class Regsiter extends Component {
             successful: false,
             message: resMessage
           });
-        
+          this.notify();
         }
         
       );
@@ -115,6 +127,12 @@ export default class Regsiter extends Component {
     }
     
   }
+
+  notify (){
+ 
+    // Calling toast method by passing string
+    toast(this.state.message)
+}
 
 render() {
   return (
@@ -156,6 +174,8 @@ render() {
               onChange={this.onChangeEmail}
               validations={[required]}
             />
+           
+
             <label >Birthday</label>
             <Input
            
@@ -220,13 +240,7 @@ render() {
       </span>
           </div>
 <br></br>
-          {this.state.message && (
-            <div className="form-group">
-              <div className="alert alert-danger" role="alert">
-                {this.state.message}
-              </div>
-            </div>
-          )}
+
           <CheckButton
             style={{ display: "none" }}
             ref={c => {

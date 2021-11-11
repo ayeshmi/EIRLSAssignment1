@@ -26,11 +26,9 @@ import AboutVideoImage from './components/pages/AddVideoImage';
 import AboutBookImage from './components/pages/AddBookImage';
 import ViewAllVideo from './components/pages/ViewAllVideoDetails';
 import Rating from './components/pages/rating';
-
-
-
-
 import {BrowserRouter as Router,Switch,Route} from 'react-router-dom';
+import ViewSearchResultsBook from './components/pages/DisplaySearchResults';
+
 function App() {
   return (
   <>
@@ -61,6 +59,7 @@ function App() {
       <Route path="/aboutProfile" component={AboutProfile} />
       <Route path="/addVideoImage/:title" exact component={AboutVideoImage} />
       <Route path="/addBookImage/:title" exact component={AboutBookImage} />
+      <Route path="/searchBookResult/:serach" exact component={ViewSearchResultsBook} />
       <Route path="/viewAllVideoDetails" exact component={ViewAllVideo} />
       <Route path="/rating" exact component={Rating} />
      

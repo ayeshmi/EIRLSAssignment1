@@ -67,11 +67,18 @@ export default class Login extends Component {
               error.response.data.message) ||
             error.message ||
             error.toString();
-
-          this.setState({
-            loading: false,
-            message: resMessage
-          });
+              if(resMessage=="Request failed with status code 401"){
+                this.setState({
+                  loading: false,
+                  message: "Username or Password is incorrect, Check again"
+                });
+              }else{
+                this.setState({
+                  loading: false,
+                  message: resMessage
+                });
+              }
+          
         }
       );
     } else {
@@ -144,6 +151,8 @@ render() {
               </div>
             </div>
           )}
+          <br></br>
+          <br></br>
           <CheckButton
             style={{ display: "none" }}
             ref={c => {

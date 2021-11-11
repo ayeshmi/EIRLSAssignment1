@@ -11,6 +11,19 @@ import IconButton from '@material-ui/core/IconButton';
 import CloseIcon from '@material-ui/icons/Close';
 import Typography from '@material-ui/core/Typography';
 import authService from '../services/auth.service';
+import Form from "react-validation/build/form";
+import Input from "react-validation/build/input";
+import CheckButton from "react-validation/build/button";
+
+const required = value => {
+  if (!value) {
+    return (
+      <div className="alert alert-danger" role="alert">
+        This field is required!
+      </div>
+    );
+  }
+};
 
 const styles = (theme) => ({
     root: {
@@ -60,7 +73,8 @@ export default class HomepageRegisteredUser extends Component {
         super(props);
         this.handleClickOpen = this.handleClickOpen.bind(this);
         this.handleClose = this.handleClose.bind(this);
-        
+        this.handleSearch = this.handleSearch.bind(this);
+        this.onChangeSearch = this.onChangeSearch.bind(this);
         this.state={
             open:false,
             employees: [],
@@ -69,9 +83,25 @@ export default class HomepageRegisteredUser extends Component {
             ActionBooks:[],
             DramaBooks:[],
             FantasyBooks:[],
-            HorrorBooks:[]
+            HorrorBooks:[],
+            search:""
         };
     }
+
+    onChangeSearch(e) {
+      this.setState({
+        search: e.target.value
+      });
+    }
+
+    handleSearch(e){
+    
+        const h1=this.state.search;
+        this.props.history.push(`/searchBookResult/${h1}`);
+          window.location.reload();
+    
+    }
+
     handleClickOpen(e) {
         this.setState({
           open: true
@@ -110,11 +140,8 @@ authService.RhomePageBooksHorror().then((res) => {
 
     }
 
-  
-
     editEmployee(id){
       this.props.history.push(`viewSelectedBook/${id}`);
-
   }
 
     
@@ -122,10 +149,33 @@ authService.RhomePageBooksHorror().then((res) => {
             return (
                 
                 <div className="cards1">
-                  <h1>Book Collection</h1>
-                   
-                    
+            <Form
+             onSubmit={this.handleSearch}
+             ref={c => {
+               this.form = c;
+             }}>
+             <div>
+             
+            <Input
+              placeholder="Search By Title, Author or Keyword"
+              type="text"
+              name="search"
+              value={this.state.search}
+              onChange={this.onChangeSearch}
+              validations={[required]}
+              className="searchTextField" 
+            />
+            
+           </div>
+           <button className="commentButton12" >Search</button>
+           <CheckButton
+            style={{ display: "none" }}
+            ref={c => {
+              this.checkBtn = c;
+            }}/>
           
+             </Form>
+                  <h1>Book Collection</h1>      
       
       <div className="cards__container1">
         <div className="cards__wrapper1">
@@ -351,6 +401,5 @@ authService.RhomePageBooksHorror().then((res) => {
               )                  
     }
 }
-
   
   

@@ -41,6 +41,7 @@ export default class HomepageAdmin extends Component {
               text="Change Profile Picture"
               label="Book"
               path="/profileImage"
+            
             />
                <CardItem
               src='images/Desktop-Book-HD-Wallpapers.jpg'
