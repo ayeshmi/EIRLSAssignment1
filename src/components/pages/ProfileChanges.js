@@ -47,7 +47,7 @@ export default class HomepageAdmin extends Component {
               src='images/Desktop-Book-HD-Wallpapers.jpg'
               text="Change Profile Details"
               label="Book"
-              path="/services"
+              path="/updateProfileDetails"
             />
            
           </ul>

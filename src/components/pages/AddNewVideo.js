@@ -11,8 +11,11 @@ import MenuItem from '@material-ui/core/MenuItem';
 import FormHelperText from '@material-ui/core/FormHelperText';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
-
 import {Link} from 'react-router-dom';
+import {toast} from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+toast.configure()
+
 
 const required = value => {
   if (!value) {
@@ -49,6 +52,7 @@ export default class AddNewBook extends Component {
     this.onChangeDate=this.onChangeDate.bind(this);
     this.onChangeBookdes=this.onChangeBookdes.bind(this);
     this.UplaodVideo=this.UplaodVideo.bind(this);
+    this.onChangeAgeLimitation=this.onChangeAgeLimitation.bind(this);
   //  this.onChangeMessage=this.onChangeMessage.bind(this);
     
     
@@ -61,18 +65,30 @@ export default class AddNewBook extends Component {
       price:"",
       numberOfCopies:"",
       date:"",
-      Message:""
+      Message:"",
+      ageLimitation:""
   
     };
   }
 
+  notify (){
  
+    // Calling toast method by passing string
+    toast(this.state.message)
+}
 
   onChangeCategory(e) {
     this.setState({
       category: e.target.value
     });
   }
+
+  onChangeAgeLimitation(e) {
+    this.setState({
+      ageLimitation: e.target.value
+    });
+  }
+
   onChangeBookdes(e){
     this.setState({
       bDes:e.target.value
@@ -149,7 +165,8 @@ export default class AddNewBook extends Component {
         this.state.category,
         this.state.date,
         this.state.price,
-        this.state.title
+        this.state.title,
+        this.state.ageLimitation
        
         
    
@@ -162,6 +179,7 @@ export default class AddNewBook extends Component {
             message: response.data.message,
             successful: true
           });
+          this.notify();
         },
         error => {
 
@@ -176,6 +194,7 @@ export default class AddNewBook extends Component {
             successful: false,
             message: resMessage
           });
+          this.notify();
         }
       );
     }
@@ -256,6 +275,23 @@ render() {
            validations={[required]}
      />
 
+<label>18+ video or not</label>
+
+        <FormControl >
+        <InputLabel id="demo-simple-select-label">Select answer</InputLabel>
+        <Select
+          labelId="demo-simple-select-label"
+          id="demo-simple-select"
+          value={this.state.ageLimitation}
+          onChange={this.onChangeAgeLimitation}  
+          className="formItem"
+          placeholder="Select category"
+        >
+          <MenuItem value={"Yes"}>Yes</MenuItem>
+          <MenuItem value={"No"}>No</MenuItem>
+          
+        </Select>
+      </FormControl>
 
 
             <label >Date</label>
@@ -291,13 +327,7 @@ render() {
                       </Link>
           </div>
 <br></br>
-          {this.state.message && (
-            <div className="form-group">
-              <div className="alert alert-danger" role="alert">
-                {this.state.message}
-              </div>
-            </div>
-          )}
+        
           <CheckButton
             style={{ display: "none" }}
             ref={c => {

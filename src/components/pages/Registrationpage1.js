@@ -84,12 +84,12 @@ export default class Registerpage1 extends Component {
               text14="Book Overdue Chargers:10LKR/day"
               text15="Video Overdue Chargers:10LKR/day"
               label="Gold"
-              path="/register"
+              path="/register/Gold"
             />
             <CardItem
               src='images/istockphoto-1030071582-612x612.jpg'
               label="Platinum"
-              path="/register"
+              path="/register/Platinum"
               text="Platinum"
               text2="Books per user: 10"
               text3="Videos per user: 10"

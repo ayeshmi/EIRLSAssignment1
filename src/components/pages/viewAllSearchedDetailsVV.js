@@ -15,15 +15,7 @@ import Form from "react-validation/build/form";
 import Input from "react-validation/build/input";
 import CheckButton from "react-validation/build/button";
 
-const required = value => {
-  if (!value) {
-    return (
-      <div className="alert alert-danger" role="alert">
-        This field is required!
-      </div>
-    );
-  }
-};
+
 
 const styles = (theme) => ({
     root: {
@@ -78,14 +70,9 @@ export default class HomepageRegisteredUser extends Component {
         this.state={
             h1:this.props.match.params.serach,
             open:false,
-            employees: [],
-            ComicBooks:[],
-            RomanceBooks:[],
-            ActionBooks:[],
-            DramaBooks:[],
-            FantasyBooks:[],
-            HorrorBooks:[],
-            searchResult:""
+            videos:[],
+            searchResult:"",
+
             
          
         };
@@ -101,7 +88,7 @@ export default class HomepageRegisteredUser extends Component {
       e.preventDefault();
 
       if (this.checkBtn.context._errors.length === 0) {
-        authService. searchBook(
+        authService. searchVideo(
           this.state.searchResult
         ).then(
           ()=>{
@@ -134,8 +121,8 @@ export default class HomepageRegisteredUser extends Component {
       componentDidMount(){
 
       
-        authService.searchBook(this.state.h1).then((res) => {
-          this.setState({HorrorBooks:res.data});
+        authService.searchVideo(this.state.h1).then((res) => {
+          this.setState({videos:res.data});
         });
         
             }
@@ -148,37 +135,67 @@ export default class HomepageRegisteredUser extends Component {
     render() {          
             return (
                 
-                <div className="cards1">
-           
-                  <h1>Book Collection</h1>      
-      <h2>Searched Result for "{this.state.h1}"</h2>
-      <div className="cards__container1">
-        <div className="cards__wrapper1">
-            
-            <ul className="cards__items1">
-          {
-                    this.state.HorrorBooks.map(
-                employee =>
-          <div class="child " >
-            <CardItem
-              src={employee.imageOfVideo}
-              text={employee.title}
-              label="Book"
-              path={'/viewSelectedBook/'+employee.id}
-            />   
-            </div> 
-              )
-            }  
-            </ul>
-        </div>
-      
-      </div>
+                <div>
+               <h2 id="headerTitle1">Video List</h2> 
+               <br></br><br></br>
+              
 
-     
-                                
-    
-    </div>
-   
-              )                  
+            <br></br>
+               <div className="rowV">
+                   <table className="table table-striped table-boordered">
+                       <thead>
+                           <tr>
+                               <th>Title</th>
+                               <th>Category</th>
+                               <th>Date </th>
+                               <th>Number of Copies</th>
+                               <th>Action1</th>
+                               <th>Action2</th>
+                           </tr>
+                           
+                       </thead>
+                       <tbody>
+                           {
+                               this.state.videos.map(
+                                   video =>
+                                   <tr key={video.id}>
+                                       <td>{video.title}</td>
+                                       <td>{video.category}</td>
+                                       <td>{video.date}</td>
+                                      
+                                       <td>
+                                       <button className="buttonV"
+              onClick={ () => this.DeleteBook(video.id)} 
+              disabled={this.state.loading}
+            >
+              {this.state.loading && (
+                <span className="spinner-border spinner-border-sm"></span>
+              )}
+              
+             <span>Update</span>
+            </button>
+            </td>
+            <td>
+                                       <button className="buttonV"
+              onClick={ () => this.DeleteVideo(video.id)} 
+              disabled={this.state.loading}
+            >
+              {this.state.loading && (
+                <span className="spinner-border spinner-border-sm"></span>
+              )}
+              
+             <span>Delete</span>
+            </button>
+            </td>
+                                       
+                                   </tr>
+                               )
+                           }
+                       </tbody>
+                   </table>
+
+               </div>
+            </div>
+        );
     }
 }

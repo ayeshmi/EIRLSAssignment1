@@ -69,6 +69,18 @@
     background-color: #1f98f4;
     box-sizing: border-box;
   }
+
+  .cards__items12 {
+    
+   align-content: center;
+    margin: 0 1rem;
+    border-radius: 10px;
+    display: grid;
+  grid-template-columns: repeat(3, minmax(325px, 1fr));
+  grid-gap: 10px;
+  max-width: 450px;
+  min-width: 400px;
+  }
   
   .cards__item__img {
     position: absolute;

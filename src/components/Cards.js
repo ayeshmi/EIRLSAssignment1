@@ -55,11 +55,11 @@ editEmployee(id){
             </ul>
             <h1>Search Our Most Popular Videos</h1>
             <br></br>
-            <ul className="cards__items1">
+            <ul className="cards__items12">
           {
                     this.state.employees.map(
                 employee =>
-          <div class="child "  onClick={ () => this.editEmployee(employee.id)}>
+          <div class="child,cards__items12 "  onClick={ () => this.editEmployee(employee.id)}>
             <CardItem
               src={employee.imageOfVideo}
               text={employee.title}
@@ -75,7 +75,7 @@ editEmployee(id){
           {
                     this.state.books.map(
                 book =>
-          <div class="child "  onClick={ () => this.editEmployee(book.id)}>
+          <div class="child ,cards__items12"  onClick={ () => this.editEmployee(book.id)}>
             <CardItem
               src={book.imageOfVideo}
               text={book.title}

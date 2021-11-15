@@ -78,13 +78,7 @@ export default class HomepageRegisteredUser extends Component {
         this.state={
             h1:this.props.match.params.serach,
             open:false,
-            employees: [],
-            ComicBooks:[],
-            RomanceBooks:[],
-            ActionBooks:[],
-            DramaBooks:[],
-            FantasyBooks:[],
-            HorrorBooks:[],
+            books:[],
             searchResult:""
             
          
@@ -135,7 +129,7 @@ export default class HomepageRegisteredUser extends Component {
 
       
         authService.searchBook(this.state.h1).then((res) => {
-          this.setState({HorrorBooks:res.data});
+          this.setState({books:res.data});
         });
         
             }
@@ -148,37 +142,67 @@ export default class HomepageRegisteredUser extends Component {
     render() {          
             return (
                 
-                <div className="cards1">
-           
-                  <h1>Book Collection</h1>      
-      <h2>Searched Result for "{this.state.h1}"</h2>
-      <div className="cards__container1">
-        <div className="cards__wrapper1">
-            
-            <ul className="cards__items1">
-          {
-                    this.state.HorrorBooks.map(
-                employee =>
-          <div class="child " >
-            <CardItem
-              src={employee.imageOfVideo}
-              text={employee.title}
-              label="Book"
-              path={'/viewSelectedBook/'+employee.id}
-            />   
-            </div> 
-              )
-            }  
-            </ul>
-        </div>
-      
-      </div>
+                <div>
+               <h2 id="headerTitle1">Book List</h2> 
+               <br></br><br></br>
+              
 
-     
-                                
-    
-    </div>
-   
-              )                  
+            <br></br>
+               <div className="rowV">
+                   <table className="table table-striped table-boordered">
+                       <thead>
+                           <tr>
+                               <th>Title</th>
+                               <th>Category</th>
+                               <th>Date </th>
+                               <th>Number of Copies</th>
+                               <th>Action1</th>
+                               <th>Action2</th>
+                           </tr>
+                           
+                       </thead>
+                       <tbody>
+                           {
+                               this.state.books.map(
+                                   book =>
+                                   <tr key={book.id}>
+                                       <td>{book.title}</td>
+                                       <td>{book.category}</td>
+                                       <td>{book.date}</td>
+                                       <td>{book.numberOfCopies}</td>
+                                       <td>
+                                       <button className="buttonV"
+              onClick={ () => this.DeleteBook(book.id)} 
+              disabled={this.state.loading}
+            >
+              {this.state.loading && (
+                <span className="spinner-border spinner-border-sm"></span>
+              )}
+              
+             <span>Update</span>
+            </button>
+            </td>
+            <td>
+                                       <button className="buttonV"
+              onClick={ () => this.DeleteBook(book.id)} 
+              disabled={this.state.loading}
+            >
+              {this.state.loading && (
+                <span className="spinner-border spinner-border-sm"></span>
+              )}
+              
+             <span>Delete</span>
+            </button>
+            </td>
+                                       
+                                   </tr>
+                               )
+                           }
+                       </tbody>
+                   </table>
+
+               </div>
+            </div>
+        );
     }
 }

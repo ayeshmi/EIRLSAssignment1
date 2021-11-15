@@ -1,0 +1,205 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:600|Work+Sans:400,500,600,700&display=swap');
+@import url("https://cdn.syncfusion.com/ej2/material.css");
+body{
+  background: rgb(235, 77, 46);
+  background: linear-gradient(135deg, rgb(182, 182, 180) 0%,     rgb(77, 143, 209) 100%);
+  font-family: "work sans";
+}
+
+html{
+  font-size: 100%;
+}
+
+.form2{
+  max-width: 800px;
+  min-width: 495px;
+  height: 715px;
+  
+  top:7%;
+  left: 50%;
+  background-color: #FFFFFF;
+  border-radius: 55px;
+  margin: 80px auto;
+  position: absolute;
+}
+
+
+#headerTitle1{
+  text-align: center;
+  font-family: 'open sans', sans-serif;
+  padding: 0rem 0;
+  margin: 0;
+  font-size: 2.0rem;
+}
+
+.row1{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 1rem;
+  max-width: 100%;
+  
+}
+
+.form-img22 {
+  width:500px;
+  height: 710px;
+  position: absolute;
+  top: 65%;
+  left: 35%;
+  transform: translate(-50%, -50%);
+  border-radius: 55px;
+}
+
+.row1 input{
+  width: 300px;
+  height:40px;
+  box-sizing: border-box;
+  border: none;
+  font-size: 0.8rem;
+  padding-left: 1.5rem;
+  padding-bottom: 1rem;
+  box-shadow: inset 0px -3px 0px 0px rgba(187,187,187,0.2);
+  transition: box-shadow 0.2s ease-in;
+}
+
+.row1 input:focus{
+   box-shadow: inset 0px -3px 0px 0px rgba(34,193,195,0.7);
+   outline: none;
+}
+
+.row1 input::-webkit-input-placeholder{
+  opacity: 1;
+  transition: opacity 0.25s ease-out;
+}
+
+.row1 input:hover::-webkit-input-placeholder,
+.row1 input:focus::-webkit-input-placeholder{
+  opacity: 0;
+}
+label{
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  padding-top: 2rem;
+  max-width: 100%;
+  align-self: start;
+  padding-left: 4.5rem;
+  padding-bottom: 0.5rem;
+  color: rgba(14, 6, 6, 0.9);
+}
+.row1 label{
+  align-self: start;
+  padding-left: 7.5rem;
+  padding-bottom: 0.5rem;
+  color: rgba(17, 11, 11, 0.9);
+}
+
+.row1 button{
+  border-radius: 25px;
+  width: 80%;
+  height: 40px;
+  font-size: 1.3rem;
+  color: white;
+  font-weight: 700;
+  background: rgb(234, 235, 240);
+  background: linear-gradient(135deg, rgb(122, 97, 180) 0%,     rgb(77, 143, 209) 100%);
+  border: 0px;
+  cursor: pointer;
+  transition: opacity 0.25s ease-out;
+}
+
+.row1 button:hover{
+  opacity: 0.8;
+}
+
+#button{
+  padding-bottom: 1.5rem;
+}
+
+#facebookIcon{
+  background-image:      url("https://image.flaticon.com/icons/svg/145/145802.svg");
+  background-repeat: no-repeat;
+  width: 3rem;
+  height: 3rem;
+}
+
+#twitterIcon{
+  background-image: url("https://image.flaticon.com/icons/svg/145/145812.svg");
+  background-repeat: no-repeat;
+  width: 3rem;
+  height: 3rem;
+}
+
+#googleIcon{
+  background-image: url("https://image.flaticon.com/icons/svg/145/145804.svg");
+  background-repeat: no-repeat;
+  width: 3rem;
+  height: 3rem;
+}
+
+#iconGroup{
+  display: flex;
+  justify-content: center;
+  padding: 2rem 0;
+}
+
+#iconGroup a{
+  margin: 0 0.6rem;
+}
+
+#alternativeLogin {
+   text-align: center;
+   padding-top: 2rem;
+   margin-top: 1.5rem;
+}
+
+
+.password{
+  width: 80%;
+  box-sizing: border-box;
+  border: none;
+  font-size: 1.3rem;
+  padding-left: 1.5rem;
+  padding-bottom: 1rem;
+  box-shadow: inset 0px -3px 0px 0px rgba(187,187,187,0.2);
+  transition: box-shadow 0.2s ease-in;
+}
+.password input:focus{
+  box-shadow: inset 0px -3px 0px 0px rgba(34,193,195,0.7);
+  outline: none;
+}
+
+.password input:hover::-webkit-input-placeholder,
+.password input:focus::-webkit-input-placeholder{
+  opacity: 0;
+}
+.password input::-webkit-input-placeholder{
+  opacity: 1;
+  transition: opacity 0.25s ease-out;
+}
+
+
+.fa-times{
+    opacity: 0;
+}
+.fa-check{
+    opacity: 1;
+}
+.container p .icon{
+    position: absolute;
+    text-align: center;
+    width: 32px;
+    height: 32px;
+    line-height: 30px;
+    font-size: large;
+    border-radius: 50%;
+    color: rgb(26,43,68);
+    border: 2px solid rgb(26,43,68);
+}
+.container #show_hide{
+    color: rgb(26,43,68);
+    font-size: 22px;
+    transform: translateX(260px) translateY(-34px);
+    cursor: pointer;
+}

@@ -8,6 +8,7 @@ export default function CropImage(props) {
   const [crop, setCrop] = React.useState({
     unit: "%",
     width: 80,
+    height:80,
     aspect: 16 / 9,
   });
 

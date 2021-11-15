@@ -28,6 +28,10 @@ import ViewAllVideo from './components/pages/ViewAllVideoDetails';
 import Rating from './components/pages/rating';
 import {BrowserRouter as Router,Switch,Route} from 'react-router-dom';
 import ViewSearchResultsBook from './components/pages/DisplaySearchResults';
+import ViewSearchResultsVideo from './components/pages/DisplaySearchResultsVideo';
+import ViewSearchResultsVN from './components/pages/viewAllSearchedDetailsVB';
+import ViewSearchResultsVV from './components/pages/viewAllSearchedDetailsVV';
+import UpdateProfileDetails from './components/pages/UpdateProfileDetails';
 
 function App() {
   return (
@@ -60,7 +64,11 @@ function App() {
       <Route path="/addVideoImage/:title" exact component={AboutVideoImage} />
       <Route path="/addBookImage/:title" exact component={AboutBookImage} />
       <Route path="/searchBookResult/:serach" exact component={ViewSearchResultsBook} />
+      <Route path="/searchVideoResult/:serach" exact component={ViewSearchResultsVideo} />
+      <Route path="/searchBookResultVB/:serach" exact component={ViewSearchResultsVN} />
+      <Route path="/searchBookResultVV/:serach" exact component={ViewSearchResultsVV} />
       <Route path="/viewAllVideoDetails" exact component={ViewAllVideo} />
+      <Route path="/updateProfileDetails" exact component={UpdateProfileDetails} />
       <Route path="/rating" exact component={Rating} />
      
     </Switch>

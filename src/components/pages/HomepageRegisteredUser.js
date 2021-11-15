@@ -74,6 +74,7 @@ export default class HomepageRegisteredUser extends Component {
         this.handleClickOpen = this.handleClickOpen.bind(this);
         this.handleClose = this.handleClose.bind(this);
         this.handleSearch = this.handleSearch.bind(this);
+        this.handleSearchVideo = this.handleSearchVideo.bind(this);
         this.onChangeSearch = this.onChangeSearch.bind(this);
         this.state={
             open:false,
@@ -101,6 +102,14 @@ export default class HomepageRegisteredUser extends Component {
           window.location.reload();
     
     }
+
+    handleSearchVideo(e){
+    
+      const h1=this.state.search;
+      this.props.history.push(`/searchVideoResult/${h1}`);
+        window.location.reload();
+  
+  }
 
     handleClickOpen(e) {
         this.setState({
@@ -149,7 +158,10 @@ authService.RhomePageBooksHorror().then((res) => {
             return (
                 
                 <div className="cards1">
-            <Form
+            
+                  <h1>Book Collection</h1>    
+         <br></br><br></br>
+                  <Form
              onSubmit={this.handleSearch}
              ref={c => {
                this.form = c;
@@ -174,8 +186,7 @@ authService.RhomePageBooksHorror().then((res) => {
               this.checkBtn = c;
             }}/>
           
-             </Form>
-                  <h1>Book Collection</h1>      
+             </Form>  
       
       <div className="cards__container1">
         <div className="cards__wrapper1">
@@ -284,8 +295,34 @@ authService.RhomePageBooksHorror().then((res) => {
       </div>
 
         <h1>Video Collection</h1>
-                   
-                    
+           <br></br>    
+           <br></br>     
+        <Form
+             onSubmit={this.handleSearchVideo}
+             ref={c => {
+               this.form = c;
+             }}>
+             <div>
+             
+            <Input
+              placeholder="Search By Title, Author or Keyword"
+              type="text"
+              name="search"
+              value={this.state.search}
+              onChange={this.onChangeSearch}
+              validations={[required]}
+              className="searchTextField" 
+            />
+            
+           </div>
+           <button className="commentButton12" >Search</button>
+           <CheckButton
+            style={{ display: "none" }}
+            ref={c => {
+              this.checkBtn = c;
+            }}/>
+          
+             </Form>                
           
       
       <div className="cards__container1">

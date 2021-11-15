@@ -30,7 +30,7 @@ export default class ViewSelectedBook extends Component {
       id:this.props.match.params.id,
       author: '',
       category: '',
-      description: '',
+      description: " ",
       username:'',
       user:'',
       comment:"",
@@ -47,7 +47,8 @@ export default class ViewSelectedBook extends Component {
         this.setState({author: book.id,
             category: book.author,
            description : book.title,
-            image:book.imageOfVideo
+            image:book.imageOfVideo,
+            message:book.bookDescription
         });
     
     });
@@ -135,7 +136,7 @@ render() {
           name="Message"
           multiline
           rows={7}
-          value={this.state.Message}    
+          value={this.state.message}    
         />
                <br></br>
                <br></br>
@@ -170,13 +171,7 @@ render() {
                 <span className='form-input-login'>
               This book is available online<br></br> if you want this book to read, Click below link  <a href='registerUserselection'>here</a>
             </span>
-                {this.state.message && (
-                  <div className="form-group">
-                    <div className="alert alert-danger" role="alert">
-                      {this.state.message}
-                    </div>
-                  </div>
-                )}
+               
                 <CheckButton
                   style={{ display: "none" }}
                   ref={c => {

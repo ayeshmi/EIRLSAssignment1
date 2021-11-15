@@ -134,14 +134,14 @@ export default class HomepageRegisteredUser extends Component {
       componentDidMount(){
 
       
-        authService.searchBook(this.state.h1).then((res) => {
+        authService.searchVideo(this.state.h1).then((res) => {
           this.setState({HorrorBooks:res.data});
         });
         
             }
 
     editEmployee(id){
-      this.props.history.push(`searchBookResult/${id}`);
+      this.props.history.push(`searchVideoResult/${id}`);
   }
 
     
@@ -150,7 +150,7 @@ export default class HomepageRegisteredUser extends Component {
                 
                 <div className="cards1">
            
-                  <h1>Book Collection</h1>      
+                  <h1>Video Collection</h1>      
       <h2>Searched Result for "{this.state.h1}"</h2>
       <div className="cards__container1">
         <div className="cards__wrapper1">
@@ -163,7 +163,7 @@ export default class HomepageRegisteredUser extends Component {
             <CardItem
               src={employee.imageOfVideo}
               text={employee.title}
-              label="Book"
+              label="Video"
               path={'/viewSelectedBook/'+employee.id}
             />   
             </div> 

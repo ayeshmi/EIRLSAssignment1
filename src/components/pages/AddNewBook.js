@@ -12,6 +12,9 @@ import FormHelperText from '@material-ui/core/FormHelperText';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 import {Link} from 'react-router-dom';
+import {toast} from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+toast.configure()
 
 const required = value => {
   if (!value) {
@@ -110,6 +113,11 @@ export default class AddNewBook extends Component {
 
   }
   
+  notify (){
+ 
+    // Calling toast method by passing string
+    toast(this.state.message)
+}
 
   handleLogin(e) {
     e.preventDefault();
@@ -127,7 +135,6 @@ export default class AddNewBook extends Component {
         this.state.title,
         this.state.author,
         this.state.inumber,
-        this.state.price,
         this.state.numberOfCopies,
         this.state.date,
         this.state.bDes
@@ -140,6 +147,7 @@ export default class AddNewBook extends Component {
             message: response.data.message,
             successful: true
           });
+          this.notify();
         },
         error => {
           const resMessage =
@@ -153,6 +161,7 @@ export default class AddNewBook extends Component {
             successful: false,
             message: resMessage
           });
+          this.notify();
         }
       );
     }
@@ -248,28 +257,21 @@ render() {
        multiline
        rows={6}
        placeholder="Enter your message"
-       value={this.state.price}
-           onChange={this.onChangePrice}
+       value={this.state.bDes}
+           onChange={this.onChangeBookdes}
            validations={[required]}
      />
 
 <label>Number of Copies</label>
-<FormControl >
-<InputLabel id="demo-simple-select-label"
-className="selectionLable">Select Book Category</InputLabel>  
-        <Select
-          labelId="demo-simple-select-label"
-          id="demo-simple-select"
-          value={this.state.numberOfCopies}
-          onChange={this.onChangeNumberofCopies}  
-          className="formItem"
-        >
-          <MenuItem value={10}>Ten</MenuItem>
-          <MenuItem value={20}>Twenty</MenuItem>
-          <MenuItem value={30}>Thirty</MenuItem>
-        </Select>
-      </FormControl>
-
+<Input
+            placeholder="Enter number of copies"
+              type="text" 
+              name="inumber"
+              value={this.state.numberOfCopies}
+              onChange={this.onChangeNumberofCopies}
+              validations={[required]}
+            />
+  
             <label >Date</label>
             <Input        
             placeholder="Enter your birthday"
@@ -304,13 +306,7 @@ className="selectionLable">Select Book Category</InputLabel>
                           Upload video image here
                       </Link>
                       <br></br>
-          {this.state.message && (
-            <div className="form-group">
-              <div className="alert alert-danger" role="alert">
-                {this.state.message}
-              </div>
-            </div>
-          )}
+          
           <CheckButton
             style={{ display: "none" }}
             ref={c => {
