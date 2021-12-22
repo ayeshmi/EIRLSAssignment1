@@ -2,7 +2,8 @@ import React ,{useState,useEffect} from 'react';
 import {Link} from 'react-router-dom';
 import "./Navbar.css";
 import authService from './services/auth.service';
-
+import Dropdown from './DropdownUser';
+import DropdownPharmacist from './DropdownPharmacist';
 
 
 
@@ -11,16 +12,35 @@ function Navbar() {
     const [button,setButton]= useState(true);
     const handleClick= () => setClick(!click);
     const closeMobileMenu =() => setClick(false);
+    const [dropdown, setDropdown] = useState(false);
    
     const currentUser = checkUsername();
    // const currentUser = authService.getCurrentUser();
   
 const [username,setUsername]=useState(currentUser.username);
-  
+const [roles,setRole]=useState(currentUser.roles); 
+const [image,setImage]=useState(currentUser.profileImage); 
   const logout = () => {
     window.localStorage.clear();
     window.location.href = "/login";
 } 
+
+
+const onMouseEnter = () => {
+    if (window.innerWidth < 960) {
+      setDropdown(false);
+    } else {
+      setDropdown(true);
+    }
+  };
+
+  const onMouseLeave = () => {
+    if (window.innerWidth < 960) {
+      setDropdown(false);
+    } else {
+      setDropdown(false);
+    }
+  };
 
     const showButton=() => {
         if (window.innerWidth <= 960) {
@@ -59,7 +79,7 @@ const [username,setUsername]=useState(currentUser.username);
                   </li>
                   <li className='nav-item'>
                       <Link to='/registerUserselection' className='nav-links' onClick={closeMobileMenu}>
-                          Sign Up
+                      {username == null ? `Register ` : ` `}
                       </Link>
                   </li>
                  
@@ -69,10 +89,58 @@ const [username,setUsername]=useState(currentUser.username);
                       </Link>
                   </li>
                   <li className='nav-item'>
-                      <Link to='/aboutProfile' className='nav-links' onClick={closeMobileMenu}>
-                         Hello, {username}
+                      <Link to='/aboutProfile' className='nav-links userProfile' onClick={closeMobileMenu}>
+                         
+                         {username != null ? `Hello, ${username}` : ` `}
                       </Link>
                   </li>
+                  <li className='nav-item'>
+                  <Link to='/aboutProfile' className='nav-links' onClick={closeMobileMenu}>
+                  {roles == "ROLE_ADMIN" ? `Book` : ` `} 
+                      </Link>
+                  </li>
+                  <li className='nav-item'>
+                      <Link to='/aboutProfile' className='nav-links' onClick={closeMobileMenu}>
+                      
+                      </Link>
+                  </li>
+                  <li className='nav-item'>
+                  <Link to='/aboutProfile' className='nav-links' onClick={closeMobileMenu}>
+                      {roles == "ROLE_ADMIN" ? `Payment` : ` `}
+                      
+                      </Link>
+                  </li>
+                  <li className='nav-item'>
+                      <Link to='/aboutProfile' className='nav-links' onClick={closeMobileMenu}>
+                      {roles == "ROLE_ADMIN" ? `Lendings` : ` `}
+                      </Link>
+                  </li>
+                  <li className='nav-item'>
+                      <Link to='/aboutProfile' className='nav-links' onClick={closeMobileMenu}>
+                      {roles == "ROLE_ADMIN" ? `Orders` : ` `} 
+                      </Link>
+                  </li>
+                  <li className='nav-item'>
+                      <Link to='/viewAlluserDetails' className='nav-links' onClick={closeMobileMenu}>
+                      {roles == "ROLE_ADMIN" ? ` Users` : ` `}  
+                      </Link>
+                  </li>
+                  <li className='nav-item'>
+                      <Link to='/aboutProfile' className='nav-links' onClick={closeMobileMenu}>
+                      {roles == "ROLE_ADMIN" ? `  Moderators` : ` `}  
+                      </Link>
+                  </li>
+                
+
+             
+                  <li className='nav-item'>
+                      <Link to='/aboutProfile' className='nav-links' onClick={closeMobileMenu}>
+                      <img src={image != null ? `${image}` : `https://mysoftlogic.lk/build/images/user.955847eb.svg `}  className='imageff'/>
+                      </Link>
+                   
+                  </li>
+               
+              
               </ul>
               
               
@@ -92,4 +160,4 @@ function checkUsername () {
     return 'Anonymous'
   }
 
-export default Navbar
+export default Navbar;

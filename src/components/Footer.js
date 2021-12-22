@@ -119,6 +119,7 @@ function Footer() {
               aria-label="LinkedIn"
               rel="noreferrer"
             >
+              <i class="fa fa-cc-visa" />
               <i className="fab fa-linkedin"></i>
             </a>
           </div>

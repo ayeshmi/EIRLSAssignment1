@@ -103,6 +103,9 @@ export default class Regsiter extends Component {
             message: response.data.message,
             successful: true
           });
+          
+          this.props.history.push(`/addProfilePicture/${this.state.email}`);
+          window.location.reload();
         this.notify();
         },
         error => {

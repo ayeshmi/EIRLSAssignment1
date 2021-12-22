@@ -78,6 +78,7 @@ function App() {
   const [selectedImageFile, setSelectedImageFile] = React.useState();
   const currentUser = checkUsername();
   const [username,setUsername]=React.useState(currentUser.username);
+  const [image,setImage]=React.useState(currentUser.profileImage); 
   const buttonClassname = clsx({
     [classes.buttonSuccess]: success,
   });
@@ -161,7 +162,7 @@ function App() {
                   className={classes.dropzoneContainer}
                 >
                   <input {...getInputProps()} />
-                  <p>Drag 'n' drop some files here, or click to select files </p>
+                  <p>Drag 'n' drop some image here, or click to select image </p>
                 </Paper>
               </RootRef>
             </Grid>
@@ -173,7 +174,7 @@ function App() {
               <img
                 onLoad={() => URL.revokeObjectURL(preview)}
                 className={classes.preview}
-                src={preview || "https://via.placeholder.com/250"}
+                src={preview || image}
               />
 
               {/*  */}
@@ -229,10 +230,8 @@ function App() {
 
                       {success && (
                         <Typography>
-                          File Upload Success!{" "}
-                          <a href={downloadUri} target="_blank">
-                            File Url
-                          </a>
+                          Profile Picture Successfully Updated!{" "}
+                         
                         </Typography>
                       )}
                     </Grid>

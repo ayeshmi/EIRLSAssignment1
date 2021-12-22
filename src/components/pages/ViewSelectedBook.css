@@ -1,20 +1,18 @@
 .form23{
-    max-width: 1000px;
+    max-width: 1200px;
     min-width: 995px;
     min-height: 600px;
    left:20%;
     background-color: #FFFFFF;
     border-radius: 55px;
     margin: 80px auto;
-    position: absolute;
+    align-content: center;
   }
   .image{
-      width:200px;
-      height:200px;
+      width:400px;
+      height:300px;
       border-radius: 25px;
-      position:absolute;
-      top: 10%;
-      left: 15%;
+     
   }
   .lable1{
     position: absolute;
@@ -64,25 +62,45 @@
   }
   .para1{
       font-size: 100%;
-    position: relative;
-    top: 45%;
-    right: 35%;
+   
   }
   .para2{
     font-size: 100%;
-  position: relative;
-  top: 58%;
-  right: 35%;
+ 
 }
 .category1{
     font-size: 25px;
-  position: relative;
-  top: 85%;
-  left: 5%;
+ 
 }
 .category2{
     font-size: 25px;
-  position: relative;
-  top: 48%;
-  left: 5%;
+  
+}
+.rowBook {
+    
+  align-content: center;
+   margin: 0 1rem;
+   border-radius: 10px;
+   display: grid;
+ grid-template-columns: repeat(2, minmax(325px, 1fr));
+ grid-gap: 10px;
+
+ }
+ .rowBook2 {
+    
+  align-content: center;
+   margin: 0 1rem;
+   border-radius: 10px;
+   display: grid;
+ grid-template-columns: repeat(3, minmax(325px, 1fr));
+ grid-gap: 10px;
+
+ }
+.description{
+  align-content: left;
+}
+.paragraph{
+  width: 800px;
+  height: 300px;
+  color:gray;
 }

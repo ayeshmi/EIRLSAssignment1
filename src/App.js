@@ -15,7 +15,7 @@ import Registerpage1 from './components/pages/Registrationpage1';
 import BookReservation from './components/pages/BookReservation';
 import ViewAllUserDetails from './components/pages/ViewAllUserDetails';
 import ViewSelectedBook from './components/pages/ViewSelectedBook';
-import profileImage from './components/pages/AddProfile';
+import profileImage from './components/pages/UpdateProfilePicture';
 import ViewAllBooks from './components/pages/ViewAllBooks';
 import ViewAllContactUS from './components/pages/ViewAllContactUs';
 import AddVideo from './components/pages/AddNewVideo';
@@ -32,7 +32,12 @@ import ViewSearchResultsVideo from './components/pages/DisplaySearchResultsVideo
 import ViewSearchResultsVN from './components/pages/viewAllSearchedDetailsVB';
 import ViewSearchResultsVV from './components/pages/viewAllSearchedDetailsVV';
 import UpdateProfileDetails from './components/pages/UpdateProfileDetails';
-
+import AddProfilePicture from './components/pages/AddProfilePicture';
+import AddPayment from './components/pages/Payment';
+import ViewBookReservationCart from './components/pages/BookCart';
+import LendingPayments from './components/pages/LendingPayment';
+import ViewBookReservationOngoing from './components/pages/OngoingReservation';
+import ViewAllBookReservation from './components/pages/ViewAllBookReservations';
 function App() {
   return (
   <>
@@ -43,6 +48,7 @@ function App() {
       <Route path="/contact"  component={Contact} />
       <Route path="/products"  component={Products} />
       <Route path="/sign-up" component={SignUp} />
+      <Route path="/addProfilePicture/:email" component={ AddProfilePicture} />
       <Route path="/register/:name" component={Register} />
       <Route path="/adminHomepage" component={AdminHomepage} />
       <Route path="/login" component={Login} />
@@ -50,6 +56,7 @@ function App() {
       <Route path="/homeUser" component={HomepageRUser} />
       <Route path="/addBook" component={AddBook} />
       <Route path="/addVideo" component={AddVideo} />
+      <Route path="/addPayment/:email" component={AddPayment} />
       <Route path="/registerUserselection" component={Registerpage1} />
       <Route path="/registerUserselection" component={Registerpage1} />
       <Route path="/BookReservation" exact component={BookReservation} />
@@ -70,6 +77,11 @@ function App() {
       <Route path="/viewAllVideoDetails" exact component={ViewAllVideo} />
       <Route path="/updateProfileDetails" exact component={UpdateProfileDetails} />
       <Route path="/rating" exact component={Rating} />
+      <Route path="/viewBookReservationCart" exact component={ViewBookReservationCart} />
+      <Route path="/lendingPayment/:email" exact component={LendingPayments} />
+      <Route path="/viewBookReservationOngoing" exact component={ViewBookReservationOngoing} />
+      <Route path="/viewAllBookReservation" exact component={ViewAllBookReservation} />
+      
      
     </Switch>
   </Router>

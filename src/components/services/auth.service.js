@@ -100,11 +100,12 @@ class AuthService {
     });
   }
 
-  addNewBookReservation(bookName,username,userId){
+  addNewBookReservation(bookName,email,userId,bookId){
     return axios.post(API_URL + "bookReservation", {
      bookName,
-     username,
-     userId
+     email,
+     userId,
+     bookId
      });
   }
   getUserProfilePicture(username){
@@ -157,6 +158,43 @@ class AuthService {
     return axios.get(API_URL + "searchVideos/"+specification);
   }
 
+  getPaymentDetailsByEmail(email){
+    return axios.get(API_URL+"paymentDetails/"+email);
+  }
+  addPayment(cardType,cardHolderName,cardNumber,expiryDate,cvv,email){
+    return axios.post(API_URL + "addPayment",{
+     
+      cardType,
+      cardHolderName,
+      cardNumber,
+      expiryDate,
+      cvv,
+      email
+      });
+  }
+
+  getBookReservationCart(email){
+    return axios.get(API_URL+"getAllCartBookReservation/"+email); 
+  }
+  checkOutDetailsForBookReservation(email){
+    return axios.get(API_URL+"getCheckOutTotalPrice/"+email)
+  }
+
+  getCheckOutTotalPrice(email){
+    return axios.get(API_URL+"getCheckOutTotalPrice/"+email)
+  }
+  confirmBookCart(email,price){
+    return axios.post(API_URL+"confirmBookCart/"+email,{price})
+  }
+  getLendingPaymentDetailsByEmail(email){
+    return axios.get(API_URL+"lendingPaymentDetails/"+email);
+  }
+  getOngoingBookReseravtionDetails(email){
+    return axios.get(API_URL+"getAllOngoingBookReservation/"+email);
+  }
+  getAllReservationToHandleReturns(){
+    return axios.get(API_URL+"getAllBookReservation");
+  }
  
  
 }
