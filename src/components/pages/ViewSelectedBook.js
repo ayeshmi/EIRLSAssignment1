@@ -39,7 +39,11 @@ export default class ViewSelectedBook extends Component {
       comment:"",
       currentUser:"",
       comments: []  ,
-      message: ""
+      message: "",
+      price:"",
+      publishedYear:"",
+      bookExcerpt:"",
+      numberOfPAges:""
   };
   }
 
@@ -52,7 +56,11 @@ export default class ViewSelectedBook extends Component {
             category: book.category,
            description : book.title,
             image:book.imageOfVideo,
-            message:book.bookDescription
+            message:book.bookDescription,
+            price:book.price,
+      publishedYear:book.year,
+      bookExcerpt:book.bookExcerpt,
+      numberOfPAges:book.numberOfPages
         });
     
     });
@@ -171,10 +179,10 @@ render() {
                 <div className="rowBook2">
                 <p className="para1">Author :</p>
                 <p className="para2">Category :</p>
-                <p className="para2">Status :</p>
+                <p className="para2">Price :</p>
                 <p className="category1"><span ></span>{this.state.author}</p>
                 <p className="category2"><span ></span>{this.state.category}</p>
-                <p className="category2"><span ></span>{this.state.category}</p>
+                <p className="category2"><span ></span>Rs. {this.state.price}.00</p>
                 </div>
                 <br></br>
                 <div className="rowBook2">
@@ -182,16 +190,15 @@ render() {
                 <p className="para1">Pages :</p>
                 <p className="para2">Published :</p>
                 <p className="category1"><span ></span>{this.state.author}</p>
-                <p className="category2"><span ></span>{this.state.category}</p>
-                <p className="category2"><span ></span>{this.state.category}</p>
+                <p className="category2"><span ></span>{this.state.numberOfPAges}</p>
+                <p className="category2"><span ></span>{this.state.publishedYear}</p>
                 </div>
      
              <br></br>
              <br></br>
              <br></br>
                 <p className="description">Book Excerpt : </p>
-                <p className="paragraph">was warmly discussed, which procured it a high reputation. It rallied round it a certain number of partisans. The solution it proposed gave, at least, full liberty to the imagination. The human mind delights in grand conceptions of supernatural beings. And the sea is precisely their best vehicle, the only medium through which these giants (against which terrestrial animals, such as elephants or rhinoceroses, are as nothing) can be produced or developed.
-The industrial and commercial papers treated the question chiefly from this point of view. The Shipping and Mercantile Gazette, the Lloyd's List, the Packet-Boat, and the Maritime and Colonial Review, all papers devoted to insurance companies which threatened to raise their rates of premium, were unanimous on this point. Public opinion had been pronounced. The United States were the first in the field; and in New York they made preparations for an expedition destined to pursue this narwhal. A frigate of great speed, the Abraham Lincoln, was put in comm</p>
+                <p className="paragraph">{this.state.bookExcerpt}</p>
                
 <div className="rowBook">  
          <p>Depend on your user type, you can lend this book for a given period, If you want to lend this book click on the bellow button</p>

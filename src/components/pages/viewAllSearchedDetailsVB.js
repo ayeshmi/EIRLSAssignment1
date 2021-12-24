@@ -14,6 +14,9 @@ import authService from '../services/auth.service';
 import Form from "react-validation/build/form";
 import Input from "react-validation/build/input";
 import CheckButton from "react-validation/build/button";
+import {toast} from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+toast.configure()
 
 const required = value => {
   if (!value) {
@@ -154,7 +157,7 @@ export default class HomepageRegisteredUser extends Component {
                            <tr>
                                <th>Title</th>
                                <th>Category</th>
-                               <th>Date </th>
+                               <th>Published Date </th>
                                <th>Number of Copies</th>
                                <th>Action1</th>
                                <th>Action2</th>
@@ -168,7 +171,7 @@ export default class HomepageRegisteredUser extends Component {
                                    <tr key={book.id}>
                                        <td>{book.title}</td>
                                        <td>{book.category}</td>
-                                       <td>{book.date}</td>
+                                       <td>{book.year}</td>
                                        <td>{book.numberOfCopies}</td>
                                        <td>
                                        <button className="buttonV"

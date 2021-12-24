@@ -14,7 +14,9 @@ import authService from '../services/auth.service';
 import Form from "react-validation/build/form";
 import Input from "react-validation/build/input";
 import CheckButton from "react-validation/build/button";
-
+import {toast} from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+toast.configure()
 
 
 const styles = (theme) => ({
@@ -116,7 +118,34 @@ export default class HomepageRegisteredUser extends Component {
           open: false
         });
       }
-
+      DeleteVideo(id){
+        authService. deleteVideoById(id).then(
+        
+            response => {
+              this.setState({
+                message: response.data.message,
+                successful: true
+              });
+            this.notify();
+            },
+            error => {
+              const resMessage =
+                (error.response &&
+                  error.response.data &&
+                  error.response.data.message) ||
+                error.message ||
+                error.toString();
+                
+    
+              this.setState({
+                successful: false,
+                message: resMessage
+              });
+              this.notify();
+            }
+            
+          );
+    }
 
       componentDidMount(){
 
@@ -147,10 +176,10 @@ export default class HomepageRegisteredUser extends Component {
                            <tr>
                                <th>Title</th>
                                <th>Category</th>
-                               <th>Date </th>
+                               <th>Published Year </th>
                                <th>Number of Copies</th>
-                               <th>Action1</th>
-                               <th>Action2</th>
+                               <th>Action</th>
+                               
                            </tr>
                            
                        </thead>
@@ -161,32 +190,20 @@ export default class HomepageRegisteredUser extends Component {
                                    <tr key={video.id}>
                                        <td>{video.title}</td>
                                        <td>{video.category}</td>
-                                       <td>{video.date}</td>
-                                      
+                                       <td>{video.year}</td>
+                                       <td>{video.numberOfCopies}</td>
                                        <td>
                                        <button className="buttonV"
-              onClick={ () => this.DeleteBook(video.id)} 
+               onClick={ () => this.DeleteVideo(video.id)} 
               disabled={this.state.loading}
             >
               {this.state.loading && (
                 <span className="spinner-border spinner-border-sm"></span>
               )}
-              
-             <span>Update</span>
-            </button>
-            </td>
-            <td>
-                                       <button className="buttonV"
-              onClick={ () => this.DeleteVideo(video.id)} 
-              disabled={this.state.loading}
-            >
-              {this.state.loading && (
-                <span className="spinner-border spinner-border-sm"></span>
-              )}
-              
              <span>Delete</span>
             </button>
             </td>
+            
                                        
                                    </tr>
                                )

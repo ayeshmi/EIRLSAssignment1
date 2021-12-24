@@ -122,7 +122,8 @@ componentDidMount(){
                            <tr>
                                <th>Video Title</th>
                                <th>Video Category</th>
-                               <th>Uploaded Date</th>
+                               <th>Published Year</th>
+                               <th>Number of Copies</th>
                                <th>Action</th>
                            </tr>
                            
@@ -134,7 +135,8 @@ componentDidMount(){
                                    <tr key={video.id}>
                                        <td>{video.title}</td>
                                        <td>{video.category}</td>
-                                       <td>{video.date}</td>
+                                       <td>{video.year}</td>
+                                       <td>{video.numberOfCopies}</td>
                                        <td>
                                        <button className="buttonV"
                onClick={ () => this.DeleteVideo(video.id)} 

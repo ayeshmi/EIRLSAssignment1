@@ -124,7 +124,7 @@ handleSearch(e){
                            <tr>
                                <th>Title</th>
                                <th>Category</th>
-                               <th>Date </th>
+                               <th>Published Date </th>
                                <th>Number of Copies</th>
                                <th>Update</th>
                                <th>Delete</th>
@@ -138,7 +138,7 @@ handleSearch(e){
                                    <tr key={book.id}>
                                        <td>{book.title}</td>
                                        <td>{book.category}</td>
-                                       <td>{book.date}</td>
+                                       <td>{book.year}</td>
                                        <td>{book.numberOfCopies}</td>
                                        <td>
                                        <button className="buttonV"

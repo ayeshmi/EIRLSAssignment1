@@ -72,8 +72,8 @@ class AuthService {
       return axios.post(API_URL+"contactus/"+contactID,{answer,email});
      }
 
-     addVideoDetails(category,date,description,title,ageLimitation){
-      return axios.post(API_URL+"addVideo",{category,title,date,description,ageLimitation});
+     addVideoDetails(category,date,description,title,ageLimitation,author,year,numberOfCopies,price){
+      return axios.post(API_URL+"addVideo",{category,title,date,description,ageLimitation,author,year,numberOfCopies,price});
      }
 
      deleteContactUsDetailsById(id){
@@ -88,7 +88,7 @@ class AuthService {
       return axios.delete(API_URL+"deleteVideo/"+id);
      }
 
-  addNewBook(category,title,author,inumber,numberOfCopies,date,bookDescription){
+  addNewBook(category,title,author,inumber,numberOfCopies,date,bookDescription,bookExcerpt,price,year,numberOfPages){
     return axios.post(API_URL + "addbook", {
      category,
      title,
@@ -96,7 +96,8 @@ class AuthService {
      inumber,
      numberOfCopies,
      date,
-     bookDescription
+     bookDescription,
+     bookExcerpt,price,year,numberOfPages
     });
   }
 
@@ -128,7 +129,7 @@ class AuthService {
     return axios.get(API_URL+"RselectedBookF/Fantasy");
   }
   RhomePageBooksAction(){
-    return axios.get(API_URL+"RselectedBookA/Action");
+    return axios.get(API_URL+"RselectedBookA/Action and Adventure");
   }
   RhomePageBooksDrama(){
     return axios.get(API_URL+"RselectedBookD/Drama");
@@ -195,7 +196,28 @@ class AuthService {
   getAllReservationToHandleReturns(){
     return axios.get(API_URL+"getAllBookReservation");
   }
- 
+  getBookReservationById(id){
+    return axios.get(API_URL+"getBookReservationById"+id);
+  }
+  advanceBookReservation(bookId,bookName,email,date){
+    return axios.post(API_URL+"advanceBookReservation12",{
+      bookId,
+      bookName,
+      email,
+      date
+    });
+  }
+
+  viewBlackListCustomers(){
+    return axios.get(API_URL+"viewBlackListCustomers");
+  }
+
+  checking(num1,num2){
+    return axios.post(API_URL+"checking",{
+      num1,
+      num2
+    });
+  }
  
 }
 

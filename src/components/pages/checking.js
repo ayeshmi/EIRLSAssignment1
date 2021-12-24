@@ -58,10 +58,9 @@ export default class Login extends Component {
     this.form.validateAll();
 
     if (this.checkBtn.context._errors.length === 0) {
-      AuthService.login(this.state.username, this.state.password).then(
+      AuthService.checking(this.state.username, this.state.password).then(
         () => {
-          this.props.history.push("/adminHomepage");
-          window.location.reload();
+         
        
         },
         error => {
@@ -119,7 +118,7 @@ render() {
             <Input
            
             placeholder="Enter your username"
-              type="text"
+              type="number"
            
               name="username"
               value={this.state.username}
@@ -133,7 +132,7 @@ render() {
             <Input
             
             placeholder="Enter your password"
-              type="password"
+              type="number"
               
               name="password"
               value={this.state.password}

@@ -42,6 +42,10 @@ export default class AddNewBook extends Component {
     this.onChangeDate=this.onChangeDate.bind(this);
     this.onChangeBookdes=this.onChangeBookdes.bind(this);
     this.onChangeIsbn=this.onChangeIsbn.bind(this);
+    this.onChangeBExcerpt=this.onChangeBExcerpt.bind(this);
+    this.onChangePrice=this.onChangePrice.bind(this);
+    this.onChangePublishedYear=this.onChangePublishedYear.bind(this);
+    this.onChangeNumberOfPaged=this.onChangeNumberOfPaged.bind(this);
     this.state = {
       category:"",
       title:"",
@@ -51,12 +55,38 @@ export default class AddNewBook extends Component {
       numberOfCopies:"",
       date:"",
       bDes:"",
-      inumber:""
+      inumber:"",
+      bExcerpt:"",
+      price:"",
+      publishedYear:"",
+      numberOfPages:""
   
     };
   }
 
- 
+  onChangeBExcerpt(e) {
+    this.setState({
+      bExcerpt: e.target.value
+    });
+  }
+
+  onChangePrice(e) {
+    this.setState({
+      price: e.target.value
+    });
+  }
+
+  onChangePublishedYear(e) {
+    this.setState({
+      publishedYear: e.target.value
+    });
+  }
+
+  onChangeNumberOfPaged(e) {
+    this.setState({
+      numberOfPages: e.target.value
+    });
+  }
 
   onChangeCategory(e) {
     this.setState({
@@ -137,7 +167,12 @@ export default class AddNewBook extends Component {
         this.state.inumber,
         this.state.numberOfCopies,
         this.state.date,
-        this.state.bDes
+        this.state.bDes,
+        this.state.bExcerpt,
+        this.state.price,
+        this.state.publishedYear,
+        this.state.numberOfPages
+        
         
         //this.state.description
         
@@ -173,7 +208,7 @@ render() {
     //const { category } = this.state;
   return (
     <div className="body">
-      <img className='form-img12' src='images/Untitled Design (1).jpg' alt='spaceship' />
+      <img className='form-img123' src='images/Untitled Design (1).jpg' alt='spaceship' />
     
       
 <div className="form22">
@@ -185,9 +220,9 @@ render() {
         >
             <h2 id="headerTitle23">Add New Book</h2>
             
-
+<div className='rowAddBook'>
             <label >Title</label>
-            
+            <label >Author</label>
             <Input
             placeholder="Enter book title"
               type="text" 
@@ -197,7 +232,7 @@ render() {
               validations={[required]}
             />
          
-         <label >Author</label>
+         
             <Input
             placeholder="Enter book author"
               type="text"
@@ -206,19 +241,81 @@ render() {
               onChange={this.onChangeAuthor}
               validations={[required]}
             />
-
+</div>
+<div className='rowAddBook'>
          <label >ISBN </label> 
+         <label>Number of Copies</label>
             <Input
             placeholder="Enter book ISBN"
-              type="text" 
+              type="number" 
               name="inumber"
               value={this.state.inumber}
               onChange={this.onChangeIsbn}
               validations={[required]}
+              size={13}
             />
         
-      <label>Category</label>
 
+<Input
+            placeholder="Enter number of copies"
+              type="number" 
+              name="inumber"
+              value={this.state.numberOfCopies}
+              onChange={this.onChangeNumberofCopies}
+              validations={[required]}
+            />
+            </div>
+
+            <div className='rowAddBook'>
+            <label >Date</label>
+            <label >Price (Rs.)</label>
+      <Input        
+      placeholder="Enter date of today"
+        type="date"
+        name="date"
+        value={this.state.date}
+        onChange={this.onChangeDate}
+        validations={[required]}
+      />
+
+<Input
+            placeholder="Enter book price"
+              type="number" 
+              name="inumber"
+              value={this.state.price}
+              onChange={this.onChangePrice}
+              validations={[required]}
+              size={13}
+            />
+            </div>
+
+            <div className='rowAddBook'>
+         <label >Number Of Pages </label> 
+         <label>Published Year</label>
+            <Input
+            placeholder="Enter number of pages"
+              type="number" 
+              name="inumber"
+              value={this.state.numberOfPages}
+              onChange={this.onChangeNumberOfPaged}
+              validations={[required]}
+              size={13}
+            />
+        
+
+<Input
+            placeholder="Enter published year"
+              type="number" 
+              name="inumber"
+              value={this.state.publishedYear}
+              onChange={this.onChangePublishedYear}
+              validations={[required]}
+            />
+            </div>
+
+            
+      <label>Category</label>
+      
         <FormControl >
         <InputLabel id="demo-simple-select-label">Select Book Category</InputLabel>
         <Select
@@ -247,6 +344,8 @@ render() {
           <MenuItem value={"Mystery"}>Mystery</MenuItem>
         </Select>
       </FormControl>
+      <br></br>
+      
 
       <label >Description</label>
           
@@ -256,31 +355,28 @@ render() {
        name="Message"
        multiline
        rows={6}
-       placeholder="Enter your message"
+       placeholder="Enter book description"
        value={this.state.bDes}
            onChange={this.onChangeBookdes}
            validations={[required]}
      />
 
-<label>Number of Copies</label>
-<Input
-            placeholder="Enter number of copies"
-              type="text" 
-              name="inumber"
-              value={this.state.numberOfCopies}
-              onChange={this.onChangeNumberofCopies}
-              validations={[required]}
-            />
+<label >Book Excerpt </label>
+          
+          <TextField
+          className="textField1"
+       id="standard-multiline-static"
+       name="bExcerpt"
+       multiline
+       rows={6}
+       placeholder="Enter book excerpt"
+       value={this.state.bExcerpt}
+           onChange={this.onChangeBExcerpt}
+           validations={[required]}
+     />
+
   
-            <label >Date</label>
-            <Input        
-            placeholder="Enter your birthday"
-              type="date"
-              name="date"
-              value={this.state.date}
-              onChange={this.onChangeDate}
-              validations={[required]}
-            />
+         
             
           
      

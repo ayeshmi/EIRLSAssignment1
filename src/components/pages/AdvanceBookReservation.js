@@ -1,11 +1,12 @@
-import './Login.css';
+import './AdvanceBookReservation.css';
 import React, { Component } from "react";
-import AuthService from '../services/auth.service';
 import Form from "react-validation/build/form";
 import Input from "react-validation/build/input";
 import CheckButton from "react-validation/build/button";
+import TextField from '@material-ui/core/TextField';
 import {toast} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import authService from '../services/auth.service';
 toast.configure()
 
 
@@ -19,32 +20,64 @@ const required = value => {
   }
 };
 
-export default class Login extends Component {
+export default class ContactUs extends Component {
   
   constructor(props) {
     super(props);
     this.handleLogin = this.handleLogin.bind(this);
-    this.onChangeUsername = this.onChangeUsername.bind(this);
-    this.onChangePassword = this.onChangePassword.bind(this);
-
+    this.onChangeBookName = this.onChangeBookName.bind(this);
+    this.onChangeEmail = this.onChangeEmail.bind(this);
+    this.onChangeStartDate = this.onChangeStartDate.bind(this);
+    this.onChangeMessage = this.onChangeMessage.bind(this);
     this.state = {
-      username: "",
-      password: "",
       loading: false,
-      message: ""
+      message: "",
+      startDate:"",
+      bookID:this.props.match.params.bookID,
+      email1:"",
+      bookName: ""
     };
   }
+  
+  componentDidMount(){
+    
+    let user = authService.getCurrentUser(); 
+    this.state.email1=user.email; 
+    authService.getBookReservationCart(user.email).then((res) => {
+      this.setState({reservations:res.data});
 
-  onChangeUsername(e) {
+      authService.getBooksByID(this.state.bookID).then(  (res) =>{
+        let book = res.data;
+        this.setState({bookName: book.title
+            
+        });
+    
+    });
+});
+}
+
+onChangeBookName(e) {
     this.setState({
-      username: e.target.value
+      bookName: e.target.value
     });
   }
 
-  onChangePassword(e) {
+  onChangeEmail(e) {
     this.setState({
-      password: e.target.value
+      email1: e.target.value
     });
+  }
+
+  onChangeStartDate(e) {
+    this.setState({
+      startDate: e.target.value
+    });
+  }
+
+  onChangeMessage(e){
+      this.setState({
+          message:e.target.value
+      })
   }
 
   handleLogin(e) {
@@ -58,11 +91,10 @@ export default class Login extends Component {
     this.form.validateAll();
 
     if (this.checkBtn.context._errors.length === 0) {
-      AuthService.login(this.state.username, this.state.password).then(
+      authService.advanceBookReservation(this.state.bookID,this.state.bookName, this.state.email1,this.state.startDate).then(
         () => {
           this.props.history.push("/adminHomepage");
           window.location.reload();
-       
         },
         error => {
           const resMessage =
@@ -76,13 +108,11 @@ export default class Login extends Component {
                   loading: false,
                   message: "Username or Password is incorrect, Check again"
                 });
-                this.notify();
               }else{
                 this.setState({
                   loading: false,
                   message: resMessage
                 });
-                this.notify();
               }
           
         }
@@ -94,52 +124,71 @@ export default class Login extends Component {
     }
   }
 
-  notify (){
+
+
+notify (){
  
     // Calling toast method by passing string
     toast(this.state.message)
 }
+
 
 render() {
   
   return (
     
     <div >
-      <img className='form-img11' src='images/books-1617327_1920.jpg' alt='spaceship' />
-    <div className="form11"> 
-        <Form className="row2"
+     
+    <div className="form3"> 
+        <Form className="row"
           onSubmit={this.handleLogin}
           ref={c => {
             this.form = c;
           }}
         >
-            <h2 id="headerTitle">Login</h2>
+            <h2 id="headerTitle">Advance Book Reservation</h2>
             
-            <label >Username</label>
+            <label >Book Name</label>
             <Input
            
-            placeholder="Enter your username"
+            placeholder="Enter book name"
               type="text"
            
-              name="username"
-              value={this.state.username}
-              onChange={this.onChangeUsername}
+              name="bookName"
+              value={this.state.bookName}
+              onChange={this.onChangeBookName}
               validations={[required]}
+              disabled
             />
          
 
          
-            <label htmlFor="password">Password</label>
+            <label htmlFor="email">Email</label>
             <Input
-            
-            placeholder="Enter your password"
-              type="password"
               
-              name="password"
-              value={this.state.password}
-              onChange={this.onChangePassword}
+              placeholder="Enter user email"
+              type="text"
+              name="email"
+              value={this.state.email1}
+              onChange={this.onChangeEmail}
+              validations={[required]}
+              disabled
+            />
+
+        <label>Lending Start Date</label>
+            <Input
+           
+            placeholder="Select lending start date"
+              type="date"
+           
+              name="startDate"
+              value={this.state.startDate}
+              onChange={this.onChangeStartDate}
               validations={[required]}
             />
+
+             
+            
           <br></br>
 
           
@@ -150,15 +199,11 @@ render() {
               {this.state.loading && (
                 <span className="spinner-border spinner-border-sm"></span>
               )}
-             <span>Login</span>
+             <span>Submit</span>
             </button>
           <br></br>
-          <span className='form-input-login'>
-        Already don't have an account?<br></br> Register <a href='registerUserselection'>here</a>
-      </span>
-        
-          <br></br>
-          <br></br>
+       
+       
           <CheckButton
             style={{ display: "none" }}
             ref={c => {
@@ -172,5 +217,4 @@ render() {
   );
 }
 }
-  
-  
+

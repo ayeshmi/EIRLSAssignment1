@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Open+Sans:600|Work+Sans:400,500,600,700&display=swap');
 @import url("https://cdn.syncfusion.com/ej2/material.css");
-.body{
-  background: rgb(177, 177, 59);
+body{
+  background: rgb(234, 235, 240);
   background: linear-gradient(135deg, rgb(122, 97, 180) 0%,     rgb(77, 143, 209) 100%);
   font-family: "work sans";
   
@@ -11,44 +11,43 @@ html{
   font-size: 100%;
 }
 
-.form22{
-  min-width: 1000px;
-  min-height: 1300px;
+.form3{
+  
+  min-width: 850px;
+  min-height: 500px;
+  max-height: 1000px;
   width: 30%;
   height: 60%;
-  margin: 80px auto;
-  background-color: #3BB9FF;
+  margin: 100px auto;
+  background-color: #FFFFFF;
   border-radius: 25px;
-  position: absolute;
-  top:7%;
-  left: 10%;
 }
-
-.form-img123 {
-  width: 1854px;
-  height: 1700px;
+.form-img {
+  width: 50%;
+  height: 90%;
   position: absolute;
-  top:80%;
-  left: 39%;
+  top: 60%;
+  left: 89%;
   transform: translate(-50%, -50%);
 }
+.textFieldM 
+{
+  width: 73%;
+  height: 30%;
+  
+}
 
-#headerTitle23{
+#headerTitle{
   text-align: center;
   font-family: 'open sans', sans-serif;
-  padding: 1rem 0;
+  padding: 2rem 0;
   margin: 0;
   font-size: 2rem;
 }
 
-.select{
-    width: 300px;
-}
-
 Input:focus{
-   box-shadow: inset 0px -3px 0px 0px rgba(34, 63, 195, 0.7);
+   box-shadow: inset 0px -3px 0px 0px rgba(34,193,195,0.7);
    outline: none;
-   align-items: center;
 }
 
  Input::-webkit-input-placeholder{
@@ -60,6 +59,11 @@ Input:focus{
 Input:focus::-webkit-input-placeholder{
   opacity: 0;
 }
+
+ 
+  
+ 
+ 
 
 label{
     display: flex;
@@ -96,27 +100,16 @@ label{
   opacity: 0.8;
 }
 
-.row23{
+.row{
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding-top: 0.5rem;
+    padding-top: 2rem;
     max-width: 100%;
     
   }
   
-  .row23 input{
-    width: 450px;
-    box-sizing: border-box;
-    border: none;
-    font-size: 1.3rem;
-    padding-left: 1.5rem;
-    padding-bottom: 1rem;
-    box-shadow: inset 0px -3px 0px 0px rgba(0, 0, 0, 0.2);
-    transition: box-shadow 0.2s ease-in;
-    background: #3BB9FF;
-  }
-  .row23 select{
+  .row input{
     width: 400px;
     box-sizing: border-box;
     border: none;
@@ -127,29 +120,29 @@ label{
     transition: box-shadow 0.2s ease-in;
   }
   
-  .row23 input:focus{
-     box-shadow: inset 0px -3px 0px 0px rgba(10, 75, 197, 0.7);
+  .row input:focus{
+     box-shadow: inset 0px -3px 0px 0px rgba(34,193,195,0.7);
      outline: none;
   }
   
-  .row23 input::-webkit-input-placeholder{
-    opacity: 10;
-    transition:none;
+  .row input::-webkit-input-placeholder{
+    opacity: 1;
+    transition: opacity 0.25s ease-out;
   }
   
-  .row23 input:hover::-webkit-input-placeholder,
-  .row23 input:focus::-webkit-input-placeholder{
+  .row input:hover::-webkit-input-placeholder,
+  .row input:focus::-webkit-input-placeholder{
     opacity: 0;
   }
   
-  .row23 label{
+  .row label{
     align-self: start;
     padding-left: 4.5rem;
     padding-bottom: 0.5rem;
     color: rgba(12, 5, 5, 0.9);
   }
   
-  .row23 button{
+  .row button{
     border-radius: 25px;
     width: 300px;
     height: 40px;
@@ -163,51 +156,24 @@ label{
     transition: opacity 0.25s ease-out;
   }
   
-  .row23 button:hover{
+  .row button:hover{
     opacity: 0.8;
   }
-  .GFG {
-    -webkit-columns: 40px 2;
-    /* Chrome, Safari, Opera */
-    -moz-columns: 60px 2;
-    /* Firefox */
-    columns: 100px 2;
-}
-.textField1{
-  width: 450px;
-  height: 30%;
-  box-sizing: border-box;
-    border: none;
-    font-size: 1.3rem;
-    padding-left: 1.5rem;
-    padding-bottom: 1rem;
-    box-shadow: inset 0px -3px 0px 0px rgba(0, 0, 0, 0.2);
-    transition: box-shadow 0.2s ease-in;
-}
 
-.formItem{
-  width: 450px;
-  align-items: center;
-  box-sizing: border-box;
-    border: none;
-    font-size: 1.3rem;
-    padding-left: 1.5rem;
-    padding-bottom: 1rem;
-    box-shadow: inset 0px -3px 0px 0px rgba(0, 0, 0, 0.2);
-    transition: box-shadow 0.2s ease-in;
-}
-.selectionLable{
-  font-size: 1.3rem;
+  .rowPayment {
     
+    align-content: center;
+     margin: 0 1rem;
+     border-radius: 10px;
+     display: grid;
+   grid-template-columns: repeat(2, minmax(325px, 1fr));
+   grid-gap: 10px;
+  
+   }
+.expiryDate{
+    width: 10px;
 }
-
-.rowAddBook {
-    
-  align-content: center;
-   margin: 0 1rem;
-   border-radius: 10px;
-   display: grid;
- grid-template-columns: repeat(2, minmax(325px, 1fr));
- grid-gap: 10px;
-
- }
+.cardImage{
+    width: 50px;
+    height: 40px;
+}

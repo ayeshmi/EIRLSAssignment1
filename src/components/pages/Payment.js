@@ -53,6 +53,7 @@ export default class ContactUs extends Component {
   }
 
   componentDidMount(){
+    
     authService.getPaymentDetailsByEmail(this.state.email).then(  (res) =>{
       let payment = res.data;
       this.setState({reason: payment.reason,

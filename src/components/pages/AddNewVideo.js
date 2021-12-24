@@ -48,12 +48,14 @@ export default class AddNewBook extends Component {
     this.onChangeEdition=this.onChangeEdition.bind(this);
     this.onChangeIsbn=this.onChangeIsbn.bind(this);
     this.onChangePrice=this.onChangePrice.bind(this);
+    this.onChangePrice1=this.onChangePrice1.bind(this);
     this.onChangeNumberofCopies=this.onChangeNumberofCopies.bind(this);
     this.onChangeDate=this.onChangeDate.bind(this);
     this.onChangeBookdes=this.onChangeBookdes.bind(this);
     this.UplaodVideo=this.UplaodVideo.bind(this);
     this.onChangeAgeLimitation=this.onChangeAgeLimitation.bind(this);
-  //  this.onChangeMessage=this.onChangeMessage.bind(this);
+    this.onChangePrice=this.onChangePrice.bind(this);
+    this.onChangePublishedYear=this.onChangePublishedYear.bind(this);
     
     
     this.state = {
@@ -66,7 +68,11 @@ export default class AddNewBook extends Component {
       numberOfCopies:"",
       date:"",
       Message:"",
-      ageLimitation:""
+      ageLimitation:"",
+      price:"",
+      publishedYear:"",
+      numberOfCopies:"",
+      
   
     };
   }
@@ -77,11 +83,25 @@ export default class AddNewBook extends Component {
     toast(this.state.message)
 }
 
+onChangePrice(e) {
+  this.setState({
+    price: e.target.value
+  });
+}
+
+onChangePublishedYear(e) {
+  this.setState({
+    publishedYear: e.target.value
+  });
+}
+
   onChangeCategory(e) {
     this.setState({
       category: e.target.value
     });
   }
+
+
 
   onChangeAgeLimitation(e) {
     this.setState({
@@ -125,6 +145,12 @@ export default class AddNewBook extends Component {
     });
 
   }
+  onChangePrice1(e) {
+    this.setState({
+      price1: e.target.value
+    });
+
+  }
   onChangeDescription(e) {
     this.setState({
       Message: e.target.value
@@ -144,6 +170,8 @@ export default class AddNewBook extends Component {
     });
 
   }
+
+ 
   
   
   UplaodVideo(e){
@@ -166,12 +194,11 @@ export default class AddNewBook extends Component {
         this.state.date,
         this.state.price,
         this.state.title,
-        this.state.ageLimitation
-       
-        
-   
-        
-        //this.state.description
+        this.state.ageLimitation,
+        this.state.author,
+        this.state.publishedYear,
+        this.state.numberOfCopies,
+        this.state.price1,
         
       ).then(
         response => {
@@ -218,9 +245,9 @@ render() {
         >
             <h2 id="headerTitle23">Add New Video</h2>
             
-
+<div className='rowAddVideo'>
             <label >Title</label>
-            
+            <label >Author</label>
             <Input
             placeholder="Enter book title"
               type="text" 
@@ -229,9 +256,67 @@ render() {
               onChange={this.onChangeTitle}
               validations={[required]}
             />
+            
+            
+            <Input        
+            placeholder="Enter video author"
+              type="text"
+              name="date"
+              value={this.state.author}
+              onChange={this.onChangeAuthor}
+              validations={[required]}
+            />
+</div>
 
+<div className='rowAddVideo'>
+            <label >Number Of Copies</label>
+            <label >Date</label>
+            <Input
+            placeholder="Enter number of copies"
+              type="number" 
+              name="title"
+              value={this.state.numberOfCopies}
+              onChange={this.onChangeNumberofCopies}
+              validations={[required]}
+            />
+            
+            
+            <Input        
+            placeholder="Enter your birthday"
+              type="date"
+              name="date"
+              value={this.state.date}
+              onChange={this.onChangeDate}
+              validations={[required]}
+            />
+</div>
+
+<div className='rowAddVideo'>
+            <label >Published Year</label>
+            <label >Price (Rs.)</label>
+      <Input        
+      placeholder="Enter movie published year"
+        type="number"
+        name="date"
+        value={this.state.publishedYear}
+        onChange={this.onChangePublishedYear}
+        validations={[required]}
+      />
+
+<Input
+            placeholder="Enter movie price"
+              type="number" 
+              name="inumber"
+              value={this.state.price1}
+              onChange={this.onChangePrice1}
+              validations={[required]}
+              size={13}
+            />
+            </div>
+
+<div className='rowAddVideo'>
       <label>Category</label>
-
+      <label>18+ video or not</label>
         <FormControl >
         <InputLabel id="demo-simple-select-label">Select Book Category</InputLabel>
         <Select
@@ -261,6 +346,24 @@ render() {
         </Select>
       </FormControl>
 
+     
+
+<FormControl >
+<InputLabel id="demo-simple-select-label">Select answer</InputLabel>
+<Select
+  labelId="demo-simple-select-label"
+  id="demo-simple-select"
+  value={this.state.ageLimitation}
+  onChange={this.onChangeAgeLimitation}  
+  className="formItem"
+  placeholder="Select category"
+>
+  <MenuItem value={"Yes"}>Yes</MenuItem>
+  <MenuItem value={"No"}>No</MenuItem>
+  
+</Select>
+</FormControl>
+</div>
       <label >Description</label>
           
           <TextField
@@ -269,40 +372,15 @@ render() {
        name="Message"
        multiline
        rows={6}
-       placeholder="Enter your message"
+       placeholder="Enter book description"
        value={this.state.price}
            onChange={this.onChangePrice}
            validations={[required]}
      />
 
-<label>18+ video or not</label>
-
-        <FormControl >
-        <InputLabel id="demo-simple-select-label">Select answer</InputLabel>
-        <Select
-          labelId="demo-simple-select-label"
-          id="demo-simple-select"
-          value={this.state.ageLimitation}
-          onChange={this.onChangeAgeLimitation}  
-          className="formItem"
-          placeholder="Select category"
-        >
-          <MenuItem value={"Yes"}>Yes</MenuItem>
-          <MenuItem value={"No"}>No</MenuItem>
-          
-        </Select>
-      </FormControl>
 
 
-            <label >Date</label>
-            <Input        
-            placeholder="Enter your birthday"
-              type="date"
-              name="date"
-              value={this.state.date}
-              onChange={this.onChangeDate}
-              validations={[required]}
-            />
+
             
   
 <br></br>

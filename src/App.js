@@ -38,6 +38,10 @@ import ViewBookReservationCart from './components/pages/BookCart';
 import LendingPayments from './components/pages/LendingPayment';
 import ViewBookReservationOngoing from './components/pages/OngoingReservation';
 import ViewAllBookReservation from './components/pages/ViewAllBookReservations';
+import ViewAllBookReservationAdvance from './components/pages/ViewAllBookReservationAdvance';
+import AdvanceBookReservation from './components/pages/AdvanceBookReservation';
+import ViewBlackListUsers from './components/pages/ViewBlackListUsers';
+import checking from './components/pages/checking';
 function App() {
   return (
   <>
@@ -81,8 +85,10 @@ function App() {
       <Route path="/lendingPayment/:email" exact component={LendingPayments} />
       <Route path="/viewBookReservationOngoing" exact component={ViewBookReservationOngoing} />
       <Route path="/viewAllBookReservation" exact component={ViewAllBookReservation} />
-      
-     
+      <Route path="/viewAllBookReservationAdvance" exact component={ViewAllBookReservationAdvance} />
+      <Route path="/advanceBookReservation/:bookID" exact component={AdvanceBookReservation} />
+      <Route path="/viewBlackListUsers" exact component={ViewBlackListUsers} />
+      <Route path="/checking" exact component={checking} />
     </Switch>
   </Router>
   </>

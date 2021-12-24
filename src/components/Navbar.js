@@ -4,7 +4,9 @@ import "./Navbar.css";
 import authService from './services/auth.service';
 import Dropdown from './DropdownUser';
 import DropdownPharmacist from './DropdownPharmacist';
-
+import {toast} from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+toast.configure()
 
 
 function Navbar() {
@@ -21,6 +23,8 @@ const [username,setUsername]=useState(currentUser.username);
 const [roles,setRole]=useState(currentUser.roles); 
 const [image,setImage]=useState(currentUser.profileImage); 
   const logout = () => {
+    notify();
+
     window.localStorage.clear();
     window.location.href = "/login";
 } 
@@ -148,6 +152,12 @@ const onMouseEnter = () => {
        </nav>
      </>
     );
+}
+
+ function notify (){
+ 
+  // Calling toast method by passing string
+  toast("Successfully Logout")
 }
 
 function checkUsername () {
