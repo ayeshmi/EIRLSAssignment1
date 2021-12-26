@@ -1,4 +1,4 @@
-import './ViewSelectedBook.css';
+import './ViewSelectedVideo.css';
 import React, { Component } from "react";
 import AuthService from '../services/auth.service';
 import Form from "react-validation/build/form";
@@ -27,7 +27,7 @@ export default class ViewSelectedBook extends Component {
     super(props);
     this.handleLogin = this.handleLogin.bind(this);
     this.onChangeComment = this.onChangeComment.bind(this);
-   this.handleSearch=this.handleSearch.bind(this);
+    this.handleSearch = this.handleSearch.bind(this);
     this.handleComment=this.handleComment.bind(this);
     this.state={
       id:this.props.match.params.id,
@@ -50,17 +50,17 @@ export default class ViewSelectedBook extends Component {
 
 
   componentDidMount(){
-    AuthService.getBooksByID(this.state.id).then(  (res) =>{
+    AuthService.getVideoByID(this.state.id).then(  (res) =>{
         let book = res.data;
         this.setState({author: book.author,
             category: book.category,
            description : book.title,
             image:book.imageOfVideo,
-            message:book.bookDescription,
+            message:book.description,
             price:book.price,
       publishedYear:book.year,
       bookExcerpt:book.bookExcerpt,
-      numberOfPAges:book.numberOfPages
+      numberOfPAges:book.ageLimitation
         });
     
     });
@@ -83,19 +83,15 @@ onChangeComment(e) {
 }
 
 handleComment(e){
-  if (this.checkBtn.context._errors.length === 0) {
+  
     AuthService. addCommentBook(
       this.state.currentUser,
       this.state.comment,
-      "Book",
+      "Video",
       this.state.id
       
     );
-  } else {
-    this.setState({
-      loading: false
-    });
-  }
+ 
   
 
 }
@@ -103,8 +99,8 @@ handleComment(e){
 handleSearch(e){
     
     
-  this.props.history.push(`/viewAllBookReservationAdvance/${this.state.id}`);
-    window.location.reload();
+    this.props.history.push(`/viewAllVideoReservationAdvance/${this.state.id}`);
+      window.location.reload();
 
 }
 
@@ -118,9 +114,9 @@ handleSearch(e){
 
     this.form.validateAll();
 
-    if (this.checkBtn.context._errors.length === 0) {
+    
       let user= AuthService.getCurrentUser();
-      AuthService. addNewBookReservation(
+      AuthService. addNewVideoReservation(
         this.state.description,
         user.email,
         user.id,
@@ -152,11 +148,7 @@ handleSearch(e){
         }
         
       );
-    } else {
-      this.setState({
-        loading: false
-      });
-    }
+  
   }
 
   notify (){
@@ -184,55 +176,40 @@ render() {
                 <p className="description">{this.state.message} </p>
                 </div>
                 <br></br>
-                <div className="rowBook2">
+                <div className="rowVideo2">
                 <p className="para1">Author :</p>
                 <p className="para2">Category :</p>
                 <p className="para2">Price :</p>
+                <p className="para2">18+ movie :</p>
                 <p className="category1"><span ></span>{this.state.author}</p>
                 <p className="category2"><span ></span>{this.state.category}</p>
                 <p className="category2"><span ></span>Rs. {this.state.price}.00</p>
+                <p className="category2"><span ></span>{this.state.numberOfPAges}</p>
                 </div>
                 <br></br>
-                <div className="rowBook2">
-                <p className="description">ISBN : </p>
-                <p className="para1">Pages :</p>
-                <p className="para2">Published :</p>
-                <p className="category1"><span ></span>{this.state.author}</p>
-                <p className="category2"><span ></span>{this.state.numberOfPAges}</p>
-                <p className="category2"><span ></span>{this.state.publishedYear}</p>
-                </div>
-     
-             <br></br>
-             <br></br>
-             <br></br>
-                <p className="description">Book Excerpt : </p>
-                <p className="paragraph">{this.state.bookExcerpt}</p>
+                <br></br>
+      
+                </Form>
                
-<div className="rowBook2">  
-         <p>Depend on your user type, you can lend this book for a given period, If you want to lend this book click on the bellow button</p>
-         <p>You can order this book via our company, If you want to order this book click on the bellow button</p>
-         <p>You can order this book via our company, If you want to order this book click on the bellow button</p>
+<div className="rowBook">  
+         <p>Depend on your user type, you can lend this video for a given period, If you want to lend this video click on the bellow button</p>
+         <p>You can order this video via our company, If you want to order this video click on the bellow button</p>
                   <button className='lendingButton' onClick={this.handleLogin}>LEND</button>
-                  <button className='orderButton' onClick={this.handleSearch}>ORDER</button>
-                  <button className='orderButton' onClick={this.handleSearch}>ORDER</button>
+          
+                  
+                  <button className='lendingButton' onClick={this.handleSearch}>ORDER</button>
                   </div>
                   <br></br>
                   <br></br>
                 <span className='form-input-login'>
               This book is available online<br></br> if you want this book to read, Click below link  <a href='registerUserselection'>here</a>
             </span>
-               
-                <CheckButton
-                  style={{ display: "none" }}
-                  ref={c => {
-                    this.checkBtn = c;
-                  }}
-                />
+          
 
                 <br></br>
                 <br></br>
                
-              </Form>
+              
              
              <Form
              
@@ -278,7 +255,7 @@ render() {
                </div>
              </Form>
               </div>
-              </div>
+              </div> 
               
         );
 }

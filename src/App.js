@@ -42,6 +42,11 @@ import ViewAllBookReservationAdvance from './components/pages/ViewAllBookReserva
 import AdvanceBookReservation from './components/pages/AdvanceBookReservation';
 import ViewBlackListUsers from './components/pages/ViewBlackListUsers';
 import checking from './components/pages/checking';
+import ViewSelectedVideo from './components/pages/ViewSelectedVideo';
+import ViewAllVideoReservationAdvance from './components/pages/ViewAllVideoReservationAdvance';
+import ViewVideoReservationCart from './components/pages/VideoCart';
+
+
 function App() {
   return (
   <>
@@ -85,10 +90,13 @@ function App() {
       <Route path="/lendingPayment/:email" exact component={LendingPayments} />
       <Route path="/viewBookReservationOngoing" exact component={ViewBookReservationOngoing} />
       <Route path="/viewAllBookReservation" exact component={ViewAllBookReservation} />
-      <Route path="/viewAllBookReservationAdvance" exact component={ViewAllBookReservationAdvance} />
+      <Route path="/viewAllBookReservationAdvance/:bookID" exact component={ViewAllBookReservationAdvance} />
       <Route path="/advanceBookReservation/:bookID" exact component={AdvanceBookReservation} />
       <Route path="/viewBlackListUsers" exact component={ViewBlackListUsers} />
       <Route path="/checking" exact component={checking} />
+      <Route path="/viewSelectedVideo/:id" exact component={ViewSelectedVideo} />
+      <Route path="/viewAllVideoReservationAdvance/:videoID" exact component={ViewAllVideoReservationAdvance} />
+      <Route path="/viewVideoReservationCart" exact component={ViewVideoReservationCart} />
     </Switch>
   </Router>
   </>

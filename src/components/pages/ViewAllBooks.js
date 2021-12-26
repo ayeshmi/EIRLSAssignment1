@@ -50,6 +50,9 @@ DeleteBook(id){
             message: response.data.message,
             successful: true
           });
+          authService.getBooks().then((res) => {
+            this.setState({books:res.data});
+      });
         this.notify();
         },
         error => {

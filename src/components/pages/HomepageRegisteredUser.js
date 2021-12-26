@@ -85,7 +85,8 @@ export default class HomepageRegisteredUser extends Component {
             DramaBooks:[],
             FantasyBooks:[],
             HorrorBooks:[],
-            search:""
+            search:"",
+            RomanceVideos:[]
         };
     }
 
@@ -145,6 +146,9 @@ authService.RhomePageBooksRomance().then((res) => {
 });
 authService.RhomePageBooksHorror().then((res) => {
   this.setState({HorrorBooks:res.data});
+});
+authService.RhomePageVideosRomance().then((res) => {
+  this.setState({ RomanceVideos:res.data});
 });
 
     }
@@ -332,14 +336,14 @@ authService.RhomePageBooksHorror().then((res) => {
           
           {
             
-                    this.state.ComicBooks.map(
+                    this.state. RomanceVideos.map(
                 employee =>
           <div class="child "  >
             <CardItem
               src={employee.imageOfVideo}
               text={employee.title}
-              label="Book"
-              path={'/viewSelectedBook/'+employee.id}
+              label="Video"
+              path={'/viewSelectedVideo/'+employee.id}
             /> 
        
             </div> 
@@ -355,7 +359,7 @@ authService.RhomePageBooksHorror().then((res) => {
             <CardItem
               src={employee.imageOfVideo}
               text={employee.title}
-              label="Book"
+              label="Video"
               path={'/viewSelectedBook/'+employee.id}
             />   
             </div> 
@@ -373,7 +377,7 @@ authService.RhomePageBooksHorror().then((res) => {
             <CardItem
               src={employee.imageOfVideo}
               text={employee.title}
-              label="Book"
+              label="Video"
               path={'/viewSelectedBook/'+employee.id}
             />   
             </div> 
@@ -389,7 +393,7 @@ authService.RhomePageBooksHorror().then((res) => {
             <CardItem
               src={employee.imageOfVideo}
               text={employee.title}
-              label="Book"
+              label="Video"
               path={'/viewSelectedBook/'+employee.id}
             />   
             </div> 
@@ -405,8 +409,8 @@ authService.RhomePageBooksHorror().then((res) => {
             <CardItem
               src={employee.imageOfVideo}
               text={employee.title}
-              label="Book"
-              path={'/viewSelectedBook/'+employee.id}
+              label="Video"
+              path={'/viewSelectedVideo/'+employee.id}
             />   
             </div> 
               )
@@ -421,7 +425,7 @@ authService.RhomePageBooksHorror().then((res) => {
             <CardItem
               src={employee.imageOfVideo}
               text={employee.title}
-              label="Book"
+              label="Video"
               path={'/viewSelectedBook/'+employee.id}
             />   
             </div> 

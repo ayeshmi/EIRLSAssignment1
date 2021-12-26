@@ -1,0 +1,118 @@
+.form23{
+    max-width: 1200px;
+    min-width: 995px;
+    min-height: 600px;
+   left:20%;
+    background-color: #FFFFFF;
+    border-radius: 55px;
+    margin: 80px auto;
+    align-content: center;
+  }
+  .image{
+      width:400px;
+      height:300px;
+      border-radius: 25px;
+     
+  }
+  .lable1{
+    position: absolute;
+    top: 18%;
+    left: 15%;
+  }
+  .textField23{
+    position: absolute;
+    top: 18%;
+    left: 15%;
+    width: 500px;
+    height: 100px;
+    outline:none;
+  }
+  .textFieldComment{
+    position: relative;
+    top: 28%;
+    left: 10%;
+    width: 800px;
+    height: 100px;
+    outline:none;
+  }
+  .commentSection{
+    position: absolute;
+    top: 98%;
+    left: 10%;
+    width: 800px;
+    height: 100px;
+    outline:none;
+  }
+  .commentButton{
+    position: sticky;
+    top: 10%;
+    left: 70%;
+    width: 150px;
+    height: 50px;
+    outline:none;
+    border-radius: 25px;
+    background: rgb(234, 235, 240);
+    background: linear-gradient(135deg, rgb(122, 97, 180) 0%,     rgb(77, 143, 209) 100%);
+    transition: opacity 0.25s ease-out;
+    border: 0px;
+  cursor: pointer;
+  font-size: 1.3rem;
+  color: white;
+  font-weight: 700;
+  }
+  .para1{
+      font-size: 100%;
+   
+  }
+  .para2{
+    font-size: 100%;
+ 
+}
+.category1{
+    font-size: 25px;
+ 
+}
+.category2{
+    font-size: 25px;
+  
+}
+.rowBook {
+    
+  align-content: center;
+   margin: 0 1rem;
+   border-radius: 10px;
+   display: grid;
+ grid-template-columns: repeat(2, minmax(325px, 1fr));
+ grid-gap: 10px;
+
+ }
+ .rowVideo2 {
+    
+  align-content: center;
+   margin: 0 1rem;
+   border-radius: 10px;
+   display: grid;
+ grid-template-columns: repeat(4, minmax(250px, 1fr));
+ grid-gap: 10px;
+
+ }
+.description{
+  align-content: left;
+}
+.paragraph{
+  width: 800px;
+  height: 300px;
+  color:gray;
+}
+.lendingButton{
+    outline:none;
+    border-radius: 25px;
+    background: rgb(234, 235, 240);
+    background: linear-gradient(135deg, rgb(122, 97, 180) 0%,     rgb(77, 143, 209) 100%);
+    transition: opacity 0.25s ease-out;
+    border: 0px;
+  cursor: pointer;
+  font-size: 1.3rem;
+  color: white;
+  font-weight: 700;
+}

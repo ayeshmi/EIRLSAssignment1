@@ -9,7 +9,7 @@ class ListEmployeeComponent extends Component {
         super(props)
         
         this.state={
-            id:this.props.match.params.bookId,
+            id:this.props.match.params.videoId,
             reservations: [],
             email:" "
 
@@ -20,9 +20,10 @@ componentDidMount(){
     //this.handleLogin = this.handleLogin.bind(this);
     let user = authService.getCurrentUser(); 
     this.state.email=user.email; 
-    authService.getBookReservationById(this.state.id).then((res) => {
-          this.setState({reservations:res.data});
-    });
+  
+    authService.getVideoReservationById(this.state.id).then((res) => {
+        this.setState({reservations:res.data});
+  });
     
 
 }

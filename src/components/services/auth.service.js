@@ -22,6 +22,10 @@ class AuthService {
     return axios.get('http://localhost:8082/api/auth/book/'+bookId);
 }
 
+getVideoByID(videoId){
+  return axios.get('http://localhost:8082/api/auth/Video/'+videoId);
+}
+
   logout() {
     localStorage.removeItem("user");
   }
@@ -109,6 +113,16 @@ class AuthService {
      bookId
      });
   }
+
+  addNewVideoReservation(videoName,email,userId,videoId){
+    return axios.post(API_URL + "videoReservation", {
+      videoName,
+     email,
+     userId,
+     videoId
+     });
+  }
+
   getUserProfilePicture(username){
     return axios.get(API_URL+"profilePicture/"+username);
   }
@@ -122,8 +136,13 @@ class AuthService {
   homePageVideos(){
     return axios.get(API_URL+"selectedVideo/Romance");
   }
-  homePageBooks(){
-    return axios.get(API_URL+"selectedBook/Fantasy");
+
+  homePageVideos(){
+    return axios.get(API_URL+"selectedVideo/Romance");
+  }
+
+  RhomePageVideosRomance(){
+    return axios.get(API_URL+"RselectedVideoR/Romance");
   }
   RhomePageBooksFantasy(){
     return axios.get(API_URL+"RselectedBookF/Fantasy");
@@ -177,6 +196,11 @@ class AuthService {
   getBookReservationCart(email){
     return axios.get(API_URL+"getAllCartBookReservation/"+email); 
   }
+
+  getVideoReservationCart(email){
+    return axios.get(API_URL+"getAllCartVideoReservation/"+email); 
+  }
+
   checkOutDetailsForBookReservation(email){
     return axios.get(API_URL+"getCheckOutTotalPrice/"+email)
   }
@@ -184,8 +208,16 @@ class AuthService {
   getCheckOutTotalPrice(email){
     return axios.get(API_URL+"getCheckOutTotalPrice/"+email)
   }
+
+  getCheckOutTotalPricvideo(email){
+    return axios.get(API_URL+"getCheckOutTotalPriceVideo/"+email)
+  }
+
   confirmBookCart(email,price){
     return axios.post(API_URL+"confirmBookCart/"+email,{price})
+  }
+  confirmVideoCart(email,price){
+    return axios.post(API_URL+"confirmVideoCart/"+email,{price})
   }
   getLendingPaymentDetailsByEmail(email){
     return axios.get(API_URL+"lendingPaymentDetails/"+email);
@@ -196,9 +228,15 @@ class AuthService {
   getAllReservationToHandleReturns(){
     return axios.get(API_URL+"getAllBookReservation");
   }
+  
   getBookReservationById(id){
     return axios.get(API_URL+"getBookReservationById"+id);
   }
+
+  getVideoReservationById(id){
+    return axios.get(API_URL+"getVideoReservationById"+id);
+  }
+
   advanceBookReservation(bookId,bookName,email,date){
     return axios.post(API_URL+"advanceBookReservation12",{
       bookId,
@@ -217,6 +255,10 @@ class AuthService {
       num1,
       num2
     });
+  }
+
+  deleteUser(id){
+    return axios.delete(API_URL+"deleteUser/"+id);
   }
  
 }
