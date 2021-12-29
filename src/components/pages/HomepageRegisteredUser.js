@@ -86,7 +86,8 @@ export default class HomepageRegisteredUser extends Component {
             FantasyBooks:[],
             HorrorBooks:[],
             search:"",
-            RomanceVideos:[]
+            RomanceVideos:[],
+            id:""
         };
     }
 
@@ -125,7 +126,8 @@ export default class HomepageRegisteredUser extends Component {
 
 
       componentDidMount(){
-
+        let user = authService.getCurrentUser(); 
+        this.state.id=user.id;
         authService.getBooks().then((res) => {
               this.setState({employees:res.data});
         });
@@ -147,7 +149,7 @@ authService.RhomePageBooksRomance().then((res) => {
 authService.RhomePageBooksHorror().then((res) => {
   this.setState({HorrorBooks:res.data});
 });
-authService.RhomePageVideosRomance().then((res) => {
+authService.RhomePageVideosRomance(user.id).then((res) => {
   this.setState({ RomanceVideos:res.data});
 });
 

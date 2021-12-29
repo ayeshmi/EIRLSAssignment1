@@ -104,3 +104,18 @@
   height: 300px;
   color:gray;
 }
+.commentReply{
+position: absolute;
+margin-left: 100px;
+ left :1220px;
+ 
+}
+.deleteComment{
+  width: 20px;
+  height: 20px;
+}
+.commentDelete{
+  position: absolute;
+margin-left: 100px;
+ left :1175px;
+}

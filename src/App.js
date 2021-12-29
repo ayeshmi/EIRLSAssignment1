@@ -45,6 +45,8 @@ import checking from './components/pages/checking';
 import ViewSelectedVideo from './components/pages/ViewSelectedVideo';
 import ViewAllVideoReservationAdvance from './components/pages/ViewAllVideoReservationAdvance';
 import ViewVideoReservationCart from './components/pages/VideoCart';
+import AboutUs from './components/pages/AboutUs';
+import ViewAllPayments from './components/pages/ViewAllPayments';
 
 
 function App() {
@@ -97,6 +99,8 @@ function App() {
       <Route path="/viewSelectedVideo/:id" exact component={ViewSelectedVideo} />
       <Route path="/viewAllVideoReservationAdvance/:videoID" exact component={ViewAllVideoReservationAdvance} />
       <Route path="/viewVideoReservationCart" exact component={ViewVideoReservationCart} />
+      <Route path="/aboutUs" exact component={AboutUs} />
+      <Route path="/viewAllPayments" exact component={ViewAllPayments} />
     </Switch>
   </Router>
   </>

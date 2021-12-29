@@ -48,7 +48,8 @@ export default class Regsiter extends Component {
       loading: false,
       message: "",
       show:false,
-      show1:true
+      show1:true,
+      newUpdates:"yes"
     };
   }
 
@@ -94,7 +95,8 @@ export default class Regsiter extends Component {
         this.state.email,
         this.state.birthday,
         this.state.password,
-        this.state.name
+        this.state.name,
+        this.state.newUpdates
         
       ).then(
         
@@ -144,13 +146,14 @@ render() {
        
      <img className='form-img22'  src={"/images/books-1617327_1920.jpg"} alt='register' /> 
 <div className="form2">
-        <Form class="row1"
+        <Form 
           onSubmit={this.handleLogin}
           ref={c => {
             this.form = c;
           }}
         >
-            <h2 id="headerTitle1">Register</h2>
+          <div class="row1">
+            <h2 id="headerTitle1">Register{this.state.newUpdates}</h2>
           
             <label >Username</label>
             <Input
@@ -226,7 +229,8 @@ render() {
 </p>
 
           <br></br>
-
+          
+          
           <div className="form-group">
             <button class="row"
               className="btn btn-primary btn-block"
@@ -237,11 +241,16 @@ render() {
               )}
              <span>Regsiter</span>
             </button>
+           
             <br></br>
             <span className='form-input-login'>
         Already have an account? Login <a href='login'>here</a>
       </span>
           </div>
+          </div>
+          <input type="checkbox" id="topping" name="newUpdates" value={this.state.newUpdates} className='emailSending' />
+         
+         <p className="newUpdates">Get update new book and video adding.</p> 
 <br></br>
 
           <CheckButton
@@ -250,7 +259,9 @@ render() {
               this.checkBtn = c;
             }}
           />
+          
         </Form>
+        
         </div>
        </div>
   );

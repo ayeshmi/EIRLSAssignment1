@@ -22,6 +22,7 @@ function Navbar() {
 const [username,setUsername]=useState(currentUser.username);
 const [roles,setRole]=useState(currentUser.roles); 
 const [image,setImage]=useState(currentUser.profileImage); 
+const [age,setAge]=useState(currentUser.id);
   const logout = () => {
     notify();
 
@@ -100,7 +101,7 @@ const onMouseEnter = () => {
                   </li>
                   <li className='nav-item'>
                   <Link to='/aboutProfile' className='nav-links' onClick={closeMobileMenu}>
-                  {roles == "ROLE_ADMIN" ? `Book` : ` `} 
+                  {roles == "ROLE_ADMIN" ? `Book ` : ` `} 
                       </Link>
                   </li>
                   <li className='nav-item'>

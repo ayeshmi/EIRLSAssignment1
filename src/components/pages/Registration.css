@@ -13,7 +13,7 @@ html{
 .form2{
   max-width: 800px;
   min-width: 495px;
-  height: 715px;
+  height: 905px;
   
   top:7%;
   left: 50%;
@@ -202,4 +202,14 @@ label{
     font-size: 22px;
     transform: translateX(260px) translateY(-34px);
     cursor: pointer;
+}
+.emailSending{
+  position: absolute;
+  left: 100px;
+  width: 20px;
+  height: 20px;
+}
+.newUpdates{
+  position: absolute;
+  left:125px;
 }

@@ -9,7 +9,7 @@ class ListEmployeeComponent extends Component {
         super(props)
         
         this.state={
-            id:this.props.match.params.bookId,
+            id:this.props.match.params.bookID,
             reservations: [],
             email:" "
 
@@ -32,7 +32,7 @@ componentDidMount(){
     render() {
         return (
             <div>
-               <h2 id="headerTitle1">Reservation List+{this.state.email}</h2> 
+               <h2 id="headerTitle1">Reservation List</h2> 
             <br></br>
                <div className="rowV">
                    <table className="table table-striped table-boordered">
@@ -52,7 +52,7 @@ componentDidMount(){
                                 reservation =>
                                    <tr key={reservation.id}>
                                        <td>{reservation.bookName}</td>
-                                       <td>{reservation.author}</td>
+                                       <td>{reservation.bookName}</td>
                                        <td>{reservation.returnDate}</td>
                                        
                                        <td>

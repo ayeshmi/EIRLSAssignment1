@@ -30,13 +30,14 @@ getVideoByID(videoId){
     localStorage.removeItem("user");
   }
 
-  register(username, email,dateOfBirth, password,userType) {
+  register(username, email,dateOfBirth, password,userType,newUpdates) {
     return axios.post(API_URL + "signup", {
       username,
       email,
       dateOfBirth,
       password,
-      userType
+      userType,
+      newUpdates
     });
   }
 
@@ -53,7 +54,7 @@ getVideoByID(videoId){
     }
 
     getVideos(){
-      return axios.get(API_URL+"AllVideos");
+      return axios.get(API_URL+"AllVideos/");
       }
 
     getBooks(){
@@ -137,12 +138,12 @@ getVideoByID(videoId){
     return axios.get(API_URL+"selectedVideo/Romance");
   }
 
-  homePageVideos(){
-    return axios.get(API_URL+"selectedVideo/Romance");
+  homePageBooks(){
+    return axios.get(API_URL+"selectedBook/Romance");
   }
 
-  RhomePageVideosRomance(){
-    return axios.get(API_URL+"RselectedVideoR/Romance");
+  RhomePageVideosRomance(id){
+    return axios.get(API_URL+"RselectedVideoR/Romance/"+id);
   }
   RhomePageBooksFantasy(){
     return axios.get(API_URL+"RselectedBookF/Fantasy");
@@ -162,12 +163,13 @@ getVideoByID(videoId){
   RhomePageBooksHorror(){
     return axios.get(API_URL+"RselectedBookH/Horror");
   }
-  addCommentBook(username,commentDetails,typeID,type){
+  addCommentBook(username,commentDetails,typeID,type,userID){
     return axios.post(API_URL + "addCommentBook", {
       username,
       commentDetails,
       type,
-     typeID
+     typeID,
+     userID
       });
   }
   searchBook(specification){
@@ -225,16 +227,20 @@ getVideoByID(videoId){
   getOngoingBookReseravtionDetails(email){
     return axios.get(API_URL+"getAllOngoingBookReservation/"+email);
   }
+
+  getOngoingVideoReseravtionDetails(email){
+    return axios.get(API_URL+"getAllOngoingVideoReservation/"+email);
+  }
   getAllReservationToHandleReturns(){
     return axios.get(API_URL+"getAllBookReservation");
   }
   
   getBookReservationById(id){
-    return axios.get(API_URL+"getBookReservationById"+id);
+    return axios.get(API_URL+"getBookReservationById/"+id);
   }
 
   getVideoReservationById(id){
-    return axios.get(API_URL+"getVideoReservationById"+id);
+    return axios.get(API_URL+"getVideoReservationById/"+id);
   }
 
   advanceBookReservation(bookId,bookName,email,date){
@@ -259,6 +265,20 @@ getVideoByID(videoId){
 
   deleteUser(id){
     return axios.delete(API_URL+"deleteUser/"+id);
+  }
+  viewAllPayments(email){
+    return axios.get(API_URL+"allUnpaidPayments/"+email);
+  }
+  addBookOrder(bookId,userId,price){
+    return axios.post(API_URL+"addBookOrder",{
+      bookId,userId,price
+    });
+  }
+  deleteCommentByID(commentID,userID){
+    return axios.delete(API_URL+"deleteCommentByID/"+commentID+"/"+userID);
+  }
+  deleteInaapropiateComment(commentID){
+    return axios.delete(API_URL+"deleteInappropaiateComment/"+commentID);
   }
  
 }

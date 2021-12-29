@@ -4,7 +4,12 @@ import AuthService from '../services/auth.service';
 import Form from "react-validation/build/form";
 import TextField from '@material-ui/core/TextField';
 import CheckButton from "react-validation/build/button";
-import { data } from 'jquery';
+import Dialog from "@material-ui/core/Dialog";
+import DialogContentText from "@material-ui/core/DialogContentText";
+import DialogTitle from "@material-ui/core/DialogTitle";
+import DialogActions from "@material-ui/core/DialogActions";
+import DialogContent from "@material-ui/core/DialogContent";
+import Button from "@material-ui/core/Button";
 import {toast} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 toast.configure()
@@ -21,6 +26,10 @@ const required = value => {
   }
 };
 
+
+  
+
+
 export default class ViewSelectedBook extends Component {
   
   constructor(props) {
@@ -29,6 +38,8 @@ export default class ViewSelectedBook extends Component {
     this.onChangeComment = this.onChangeComment.bind(this);
    this.handleSearch=this.handleSearch.bind(this);
     this.handleComment=this.handleComment.bind(this);
+    this.addOrder=this.addOrder.bind(this);
+   
     this.state={
       id:this.props.match.params.id,
       author: '',
@@ -43,7 +54,12 @@ export default class ViewSelectedBook extends Component {
       price:"",
       publishedYear:"",
       bookExcerpt:"",
-      numberOfPAges:""
+      numberOfPAges:"",
+      userID:"",
+      bookID:"",
+      open:false,
+       showMessage: false,
+       role:""
   };
   }
 
@@ -60,7 +76,8 @@ export default class ViewSelectedBook extends Component {
             price:book.price,
       publishedYear:book.year,
       bookExcerpt:book.bookExcerpt,
-      numberOfPAges:book.numberOfPages
+      numberOfPAges:book.numberOfPages,
+      bookID:book.id
         });
     
     });
@@ -72,7 +89,12 @@ export default class ViewSelectedBook extends Component {
     
      let user = AuthService.getCurrentUser(); 
      this.state.currentUser=user.username;
+     this.state.userID=user.id;
+     this.state.role=user.roles;
 }
+
+
+
 
 onChangeComment(e) {
   this.setState({
@@ -88,7 +110,8 @@ handleComment(e){
       this.state.currentUser,
       this.state.comment,
       "Book",
-      this.state.id
+      this.state.id,
+      this.state.userID
       
     );
   } else {
@@ -106,6 +129,14 @@ handleSearch(e){
   this.props.history.push(`/viewAllBookReservationAdvance/${this.state.id}`);
     window.location.reload();
 
+}
+replyComment(e){
+  alert("hello");
+}
+addOrder(e){
+  AuthService.addBookOrder(this.state.bookID,this.state.userID,this.state.price);
+  this.props.history.push(`/viewAllBookReservationAdvance/${this.state.id}`);
+  window.location.reload();
 }
 
   handleLogin(e) {
@@ -125,6 +156,7 @@ handleSearch(e){
         user.email,
         user.id,
         this.state.id
+        
         
       ).then(
         
@@ -165,6 +197,21 @@ handleSearch(e){
     toast(this.state.message)
 }
 
+_showMessage = (bool) => {
+  this.setState({
+    showMessage: bool
+  });
+}
+deleteComment(id){
+if(this.state.role =='USER_ROLE'){
+  AuthService.deleteCommentByID(id,this.state.userID);
+}
+else{
+  AuthService.deleteInaapropiateComment(id);
+}
+
+}
+
 render() {
   
   return (
@@ -177,7 +224,7 @@ render() {
                   this.form = c;
                 }}
               >
-                <h2 id="headerTitle">{this.state.description}</h2>
+                <h2 id="headerTitle">{this.state.description}{this.state.role}</h2>
                 <div className="rowBook">
                 <img src={this.state.image}
                   className="image"></img>
@@ -213,8 +260,8 @@ render() {
          <p>You can order this book via our company, If you want to order this book click on the bellow button</p>
          <p>You can order this book via our company, If you want to order this book click on the bellow button</p>
                   <button className='lendingButton' onClick={this.handleLogin}>LEND</button>
-                  <button className='orderButton' onClick={this.handleSearch}>ORDER</button>
-                  <button className='orderButton' onClick={this.handleSearch}>ORDER</button>
+                  <button className='orderButton' onClick={this.addOrder}>ORDER</button>
+                  <button className='orderButton' onClick={this.handleSearch}>ADVANCE lEND</button>
                   </div>
                   <br></br>
                   <br></br>
@@ -253,6 +300,7 @@ render() {
             
            </div>
            <button className="commentButton" >Post</button>
+           </Form>
            <div className="rowV">
                    <table className="table table-striped table-boordered">
                        <thead>
@@ -267,16 +315,28 @@ render() {
                            {
                                this.state.comments.map(
                                    comment1 =>
-                                   <tr key={comment1.id}>
-                                       <td>{comment1.username}:{comment1.commentDetails}</td> 
+                                   <tr key={comment1.commentID}>
+                                       <td>{comment1.username}:{comment1.commentDetails}{comment1.commentID}
+                                       
+                                       <button className='commentReply'><img src="https://image.flaticon.com/icons/png/512/61/61848.png" className='deleteComment' onClick={this._showMessage.bind(null, true)}>
+                                       </img></button>
+                           
+                                       <button className='commentDelete'onClick={() => this.deleteComment(comment1.commentID)}><img src="https://cdn1.iconfinder.com/data/icons/messaging-3/48/Reply-512.png" className='deleteComment' ></img></button></td> 
+                                       <br></br>
+                                      
                                    </tr>
+                                  
                                )
+                               
                            }
+                         
                        </tbody>
                    </table>
-
+ 
                </div>
-             </Form>
+
+      
+             
               </div>
               </div>
               

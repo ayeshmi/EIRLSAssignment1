@@ -15,6 +15,7 @@ export default class AddNewBook extends Component {
     this.state={
         //open:false,
         reservations: [],
+        reservations1: [],
         books:[],
         email:" ",
         price:" "
@@ -30,6 +31,10 @@ export default class AddNewBook extends Component {
     authService.getOngoingBookReseravtionDetails(user.email).then((res) => {
           this.setState({reservations:res.data});
     });
+
+    authService.getOngoingVideoReseravtionDetails(user.email).then((res) => {
+      this.setState({reservations1:res.data});
+});
 
 
    
@@ -83,10 +88,27 @@ handleLogin(e) {
         
             
             <h1>Your Backet Details.</h1>
+            <h1>Book</h1>
             <br></br>
             <ul className="cards__items123">
           {
                     this.state.reservations.map(
+                reservation =>
+          <div class="child cards__items12 "  onClick={ () => this.editEmployee(reservation.id)}>
+            <CardItem
+              src="https://icat.in/storage/app/public/uploads/banner_158211267013.png"
+              text={reservation.bookName}
+              label="Book"
+            />   
+            </div> 
+              )
+            }  
+            </ul>
+            <h1>Video</h1>
+            <br></br>
+            <ul className="cards__items123">
+          {
+                    this.state.reservations1.map(
                 reservation =>
           <div class="child cards__items12 "  onClick={ () => this.editEmployee(reservation.id)}>
             <CardItem

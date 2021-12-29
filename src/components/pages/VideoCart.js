@@ -94,7 +94,7 @@ handleLogin(e) {
             <CardItem
               src="https://icat.in/storage/app/public/uploads/banner_158211267013.png"
               text={reservation.videoName}
-              label="Book"
+              label="Video"
             />   
             </div> 
               )
