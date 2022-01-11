@@ -1,0 +1,50 @@
+body {
+    overflow-x: hidden;
+  }
+  
+  .main-image {
+    background: url(https://www.incimages.com/uploaded_files/image/1920x1080/GettyImages-900301626_437925.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    width: 100vw;
+    height: 550px;
+    position: relative;
+    background-attachment: fixed;
+  }
+  
+  .filter:after {
+    background-color: rgba(0, 0, 0, 0.4);
+    content: '';
+    display: block;
+    height: 100%;
+    left: 0;
+    top: 0;
+    position: absolute;
+    width: 100%;
+    z-index: 1;
+  }
+  
+  .card-title {
+    overflow: hidden;
+    color: rgba(0, 0, 0, 0.85);
+    font-weight: 500;
+    font-size: 16px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+  .cards__items1234 {
+    
+    align-content: center;
+     margin: 0 1rem;
+     border-radius: 10px;
+     display: grid;
+   grid-template-columns: repeat(4, minmax(325px, 1fr));
+   grid-gap: 10px;
+   max-width: 50px;
+   min-width: 400px;
+   }
+   .lable{
+      color: rgb(255, 255, 255);
+      
+   }

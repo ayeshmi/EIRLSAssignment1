@@ -280,6 +280,12 @@ getVideoByID(videoId){
   deleteInaapropiateComment(commentID){
     return axios.delete(API_URL+"deleteInappropaiateComment/"+commentID);
   }
+  bookWebscraping(){
+    return axios.get(API_URL+"OtherWebsitesDetails/");
+  }
+  addNewBookIntegration(){
+    return axios.get(API_URL+"readCSV/");
+  }
  
 }
 

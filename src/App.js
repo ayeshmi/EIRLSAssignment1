@@ -47,6 +47,9 @@ import ViewAllVideoReservationAdvance from './components/pages/ViewAllVideoReser
 import ViewVideoReservationCart from './components/pages/VideoCart';
 import AboutUs from './components/pages/AboutUs';
 import ViewAllPayments from './components/pages/ViewAllPayments';
+import BookWebScraping from './components/pages/WebScrapping';
+import ApiIntegration from './components/pages/APIIntegration';
+import AddNewBookIntegration from './components/pages/AddNewBookCSV';
 
 
 function App() {
@@ -101,6 +104,9 @@ function App() {
       <Route path="/viewVideoReservationCart" exact component={ViewVideoReservationCart} />
       <Route path="/aboutUs" exact component={AboutUs} />
       <Route path="/viewAllPayments" exact component={ViewAllPayments} />
+      <Route path="/bookScraping" exact component={BookWebScraping} />
+      <Route path="/apiIntegration" exact component={ApiIntegration} />
+      <Route path="/addNewBookIntegration" exact component={AddNewBookIntegration} />
     </Switch>
   </Router>
   </>
