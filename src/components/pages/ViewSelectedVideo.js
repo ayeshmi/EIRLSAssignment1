@@ -43,7 +43,8 @@ export default class ViewSelectedBook extends Component {
       price:"",
       publishedYear:"",
       bookExcerpt:"",
-      numberOfPAges:""
+      numberOfPAges:"",
+      message1: ""
   };
   }
 
@@ -56,7 +57,7 @@ export default class ViewSelectedBook extends Component {
             category: book.category,
            description : book.title,
             image:book.imageOfVideo,
-            message:book.description,
+            message1:book.description,
             price:book.price,
       publishedYear:book.year,
       bookExcerpt:book.bookExcerpt,
@@ -120,7 +121,8 @@ handleSearch(e){
         this.state.description,
         user.email,
         user.id,
-        this.state.id
+        this.state.id,
+        this.state.image
         
       ).then(
         
@@ -173,7 +175,7 @@ render() {
                 <div className="rowBook">
                 <img src={this.state.image}
                   className="image"></img>
-                <p className="description">{this.state.message} </p>
+                <p className="description">{this.state.message1} </p>
                 </div>
                 <br></br>
                 <div className="rowVideo2">

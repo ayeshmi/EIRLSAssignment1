@@ -3,6 +3,7 @@ import "../Cards.css";
 import "./BookCart.css";
 import React, { Component } from 'react';
 import authService from '../services/auth.service';
+import { Card, Button } from 'react-bootstrap';
 
 
 export default class AddNewBook extends Component {
@@ -85,17 +86,56 @@ handleLogin(e) {
         
             
             <h1>Your Backet Details.</h1>
-            <br></br>
+            
+            <form className="checkOutForm" onSubmit={this.handleLogin}
+          ref={c => {
+            this.form = c;
+          }}>
+            <div className="hi12">
+        <h1 style={{ fontSize:'30px' }}>PAYMENT</h1></div>
+      <br></br>
+      <div className="cartPayment">
+    <p className="lendingFee">Total Lending Fee:</p> 
+    <p className="totalFee">Rs. {this.state.price}. 00</p> 
+    <div className="ayeshmi">
+    <button className="cartPaymentButton">Confirm and Pay</button>
+  
+              <div class="card-body">
+                
+                <img class="me-2" width="45px"
+                  src="https://mdbootstrap.com/wp-content/plugins/woocommerce-gateway-stripe/assets/images/visa.svg"
+                  alt="Visa" />
+                <img class="me-2" width="45px"
+                  src="https://mdbootstrap.com/wp-content/plugins/woocommerce-gateway-stripe/assets/images/amex.svg"
+                  alt="American Express" />
+                <img class="me-2" width="45px"
+                  src="https://mdbootstrap.com/wp-content/plugins/woocommerce-gateway-stripe/assets/images/mastercard.svg"
+                  alt="Mastercard" />
+                <img class="me-2" width="45px"
+                  src="https://mdbootstrap.com/wp-content/plugins/woocommerce/includes/gateways/paypal/assets/images/paypal.png"
+                  alt="PayPal acceptance mark" />
+              </div>
+            
+            </div>
+    </div>
+   
+     </form>
             <ul className="cards__items123">
           {
                     this.state.reservations.map(
                 reservation =>
-          <div class="child cards__items12 "  onClick={ () => this.editEmployee(reservation.id)}>
-            <CardItem
-              src="https://icat.in/storage/app/public/uploads/banner_158211267013.png"
-              text={reservation.videoName}
-              label="Video"
-            />   
+          <div class=" cards__items12 "  onClick={ () => this.editEmployee(reservation.id)}>
+            <Card style={{ width: '18rem', background: 'rgb(141, 190, 230)' }}>
+      <Card.Img variant="top" className='cardImage12' src={reservation.image} />
+      <Card.Body>
+          <p style={{ color:'white',fontSize:'22px' }}><b>{reservation.videoName}</b></p>
+          <p style={{ color:'black' }}>Lended Date : {reservation.date}</p>
+          <p style={{ color:'black' }}>Return Date : {reservation.returnDate}</p>
+          <p style={{ color:'black' }}>Overdue Fee : Rs.{reservation.overduePayment}.00</p>
+          
+        <Button variant="primary" style={{ alignContent:'center' }}  >View</Button>
+      </Card.Body>
+    </Card>  
             </div> 
               )
             }  
@@ -107,19 +147,7 @@ handleLogin(e) {
           
     
         </div>
-        <form className="checkOutForm" onSubmit={this.handleLogin}
-          ref={c => {
-            this.form = c;
-          }}>
-        <h1>CheckOut</h1>
-      <br></br>
-      <div className="cartPayment">
-    <p className="lendingFee">Total Lending Fee:</p> 
-    <p className="totalFee">Rs. {this.state.price}. 00</p> 
-    <button className="cartPaymentButton">Confirm and Pay now</button>
  
-    </div>
-     </form>
    
       </div>
    

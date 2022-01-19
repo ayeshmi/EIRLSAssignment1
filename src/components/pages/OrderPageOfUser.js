@@ -31,8 +31,10 @@ class ListBooks extends Component {
         this.onlineBookView=this.onlineBookView.bind(this);
         this.addNewBook=this.addNewBook.bind(this);
         this.updateBook=this.updateBook.bind(this);
+        this.videoBascket=this.videoBascket.bind(this);
+        this.viewVideoLending=this.viewVideoLending.bind(this);
         this.state={
-          Videos: []
+            books: []
         }   
     }
 
@@ -44,9 +46,9 @@ class ListBooks extends Component {
       }
 
 componentDidMount(){
-  authService.getVideos().then((res) => {
-    this.setState({Videos:res.data});
-});
+    authService.getBooks().then((res) => {
+          this.setState({books:res.data});
+    });
 }
 
 DeleteBook(id){
@@ -91,96 +93,88 @@ notify (){
 
 handleSearch(e){
     
-  const h1=this.state.search;
-  this.props.history.push(`/searchBookResultVV/${h1}`);
-    window.location.reload();
+    const h1=this.state.search;
+    this.props.history.push(`/searchBookResultVB/${h1}`);
+      window.location.reload();
 
 }
 
 viewCategories(e){
     
-  this.props.history.push(`/viewAllVideoCategory`);
+  this.props.history.push(`/viewBookReservationOngoing`);
     window.location.reload();
 
 }
 onlineBookView(e){
-  this.props.history.push(`/viewAllOnlineVideoView`);
+  this.props.history.push(`/viewAllOnlineBookView`);
   window.location.reload();
 }
+videoBascket(e){
+    this.props.history.push(`/viewVideoReservationCart`);
+    window.location.reload();
+  }
 addNewBook(e){
-  this.props.history.push(`/addVideo`);
+  this.props.history.push(`/viewBookReservationCart`);
   window.location.reload();
 }
 updateBook(e){
   this.props.history.push(`/updateBookDetails`);
   window.location.reload();
 }
+viewVideoLending(e){
+    this.props.history.push(`/viewVideoReservationOngoing`);
+    window.location.reload();
+  }
 
     render() {
         return (
             <div className='bodyOfCategoryBook'>
-               <h2 id="headerTitle1"><b>Handle Videos</b></h2> 
+               <h2 id="headerTitle1"><b>Handle Books</b></h2> 
                <br></br><br></br>
                <div className='cards__items13 '>
                  <div>
-               <Card style={{ width: '12rem',backgroundColor:'rgb(119, 175, 212)' }}>
+               <Card style={{ width: '15rem',backgroundColor:'rgb(119, 175, 212)' }}>
       <Card.Img variant="top" src="https://cdn.everydaypower.com/wp-content/uploads/2018/03/Books-for-Leaders-1000x600.jpg" />
       <Card.Body>
-        <Button variant="primary" onClick={this.addNewBook}>Add New Video</Button>
+        <Button variant="primary" onClick={this.addNewBook}>Book Basket</Button>
       </Card.Body>
     </Card>
     </div>
     <div>
-               <Card style={{ width: '12rem',backgroundColor:'rgb(119, 175, 212)'  }}>
+               <Card style={{ width: '15rem',backgroundColor:'rgb(119, 175, 212)'  }}>
       <Card.Img variant="top" src="https://cdn.everydaypower.com/wp-content/uploads/2018/03/Books-for-Leaders-1000x600.jpg" />
       <Card.Body>
-        <Button variant="primary" onClick={this.onlineBookView}>Online Video View</Button>
+        <Button variant="primary" onClick={this.videoBascket}>Video Basket</Button>
       </Card.Body>
     </Card>
     </div>
     <div>
-               <Card style={{ width: '12rem' ,backgroundColor:'rgb(119, 175, 212)' }}>
+               <Card style={{ width: '15rem' ,backgroundColor:'rgb(119, 175, 212)' }}>
       <Card.Img variant="top" src="https://cdn.everydaypower.com/wp-content/uploads/2018/03/Books-for-Leaders-1000x600.jpg" />
       <Card.Body>
         
         
-        <Button variant="primary" onClick={this.viewCategories}>View All Categories</Button>
+        <Button variant="primary" onClick={this.viewCategories}>Book Lendings</Button>
       </Card.Body>
     </Card>
     </div>
     <div>
-    <Form
-             onSubmit={this.handleSearch}
-             ref={c => {
-               this.form = c;
-             }}>
-             <div>
-             
-            <Input
-              placeholder="Search By Title, Author or Any Keyword"
-              type="text"
-              name="search"
-              value={this.state.search}
-              onChange={this.onChangeSearch}
-              validations={[required]}
-              className="searchTextFieldVB1" 
-            />
-            
-           </div>
-           <button className="commentButtonViewAll1" onClick={this.handleSearch}>Search</button>
-           <CheckButton
-            style={{ display: "none" }}
-            ref={c => {
-              this.checkBtn = c;
-            }}/>
-          
-             </Form> 
+    <Card style={{ width: '15rem' ,backgroundColor:'rgb(119, 175, 212)' }}>
+      <Card.Img variant="top" src="https://cdn.everydaypower.com/wp-content/uploads/2018/03/Books-for-Leaders-1000x600.jpg" />
+      <Card.Body>
+        
+     
+        <Button variant="primary" onClick={this.viewVideoLending}>Video Lending</Button>
+      </Card.Body>
+    </Card>
              </div>
+       
     </div>
            
 
             <br></br>
                <div >
+               <h2 id="headerTitle1"><b>Order Details</b></h2>
                    <table>
                        <thead>
                            <tr>
@@ -196,7 +190,7 @@ updateBook(e){
                        </thead>
                        <tbody>
                            {
-                               this.state.Videos.map(
+                               this.state.books.map(
                                    book =>
                                    <tr key={book.id}>
                                        <td className='back1'>{book.title}</td>

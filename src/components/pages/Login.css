@@ -44,7 +44,7 @@ html{
   width:500px;
   height: 596px;
   position: absolute;
-  top: 60%;
+  top: 54%;
   left: 35%;
   transform: translate(-50%, -50%);
   border-radius: 55px;
@@ -201,4 +201,5 @@ label{
     font-size: 22px;
     transform: translateX(260px) translateY(-34px);
     cursor: pointer;
+    
 }

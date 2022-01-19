@@ -1,0 +1,140 @@
+import React, { Component } from 'react';
+import authService from '../services/auth.service';
+import './ViewSelectedCategoryBook.css';
+import Form from "react-validation/build/form";
+import Input from "react-validation/build/input";
+import CheckButton from "react-validation/build/button";
+import {toast} from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import CardItem from "../CardItem";
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { Card, Button } from 'react-bootstrap';
+toast.configure()
+
+const required = value => {
+    if (!value) {
+      return (
+        <div className="alert alert-danger" role="alert">
+          This field is required!
+        </div>
+      );
+    }
+  };
+
+class ListBooks extends Component {
+
+    constructor(props){
+        super(props);
+        this.handleSearch = this.handleSearch.bind(this);
+        this.addNewBook=this.addNewBook.bind(this);
+        this.onChangeSearch = this.onChangeSearch.bind(this);
+        this.state={
+            category:this.props.match.params.category,
+            books: []
+        }   
+    }
+
+    
+    onChangeSearch(e) {
+        this.setState({
+          search: e.target.value
+        });
+      }
+
+componentDidMount(){
+    authService.viewSelectedCategoryVideos(this.state.category).then((res) => {
+          this.setState({books:res.data});
+    });
+}
+
+DeleteBook(id){
+    authService.deleteBookById(id).then(
+    
+        response => {
+          this.setState({
+            message: response.data.message,
+            successful: true
+          });
+          authService.getBooks().then((res) => {
+            this.setState({books:res.data});
+      });
+        this.notify();
+        },
+        error => {
+          const resMessage =
+            (error.response &&
+              error.response.data &&
+              error.response.data.message) ||
+            error.message ||
+            error.toString();
+            
+
+          this.setState({
+            successful: false,
+            message: resMessage
+          });
+          this.notify();
+        }
+        
+      );
+}
+
+notify (){
+ 
+    // Calling toast method by passing string
+    toast(this.state.message)
+}
+
+handleSearch(e){
+    
+    const h1=this.state.search;
+    this.props.history.push(`/searchBookResultVB/${h1}`);
+      window.location.reload();
+
+}
+addNewBook(e){
+    
+  const h1=this.state.search;
+  this.props.history.push(`/addBook`);
+    window.location.reload();
+
+}
+viewSelectedBookDetails(id){
+ 
+    this.props.history.push(`/viewSelectedVideo/${id}`);
+      window.location.reload();
+  
+  }
+
+    render() {
+        return (
+            <div className='bodyOfCategoryBook'>
+               <h2 id="headerTitle1"><b>Handle Books</b></h2> 
+               <br></br><br></br>
+               <ul className='cards__items14 '>
+                 <div className='cards__items14 '> 
+                 {
+                               this.state.books.map(
+                                   book =>
+               <Card style={{ width: '18rem', backgroundColor:'rgb(74, 165, 201)' }}>
+      <Card.Img variant="top" className='cardImage12' src={book.imageOfVideo} />
+      <Card.Body>
+          <p><b>{book.title}</b></p>
+          <p style={{ color:'black' }}>{book.author}</p>
+          <p style={{ color:'black' }}>{book.year}</p>
+          <p style={{ color:'black' }}>{book.category}</p>
+        <Button variant="primary" style={{ alignContent:'center' }}  onClick={()=>this.viewSelectedBookDetails(book.id)}>View</Button>
+      </Card.Body>
+    </Card>
+                               )}
+    </div>
+    
+    </ul>
+            <br></br>
+               
+            </div>
+        );
+    }
+}
+
+export default ListBooks;

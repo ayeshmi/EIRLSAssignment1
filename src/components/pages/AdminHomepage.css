@@ -55,3 +55,13 @@ html{
    button5:hover{
     opacity: 0.8;
   }
+  .greeting{
+    
+    align-items: center;
+  }
+  .h4{
+    font-size: 5px;
+    position: absolute;
+    top: 70%;
+    left: 48%;
+  }

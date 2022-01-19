@@ -153,7 +153,7 @@ render() {
           }}
         >
           <div class="row1">
-            <h2 id="headerTitle1">Register{this.state.newUpdates}</h2>
+            <h2 id="headerTitle1">Register</h2>
           
             <label >Username</label>
             <Input
@@ -206,27 +206,6 @@ render() {
             />
              
 
-
-<p id="capital">
-<FontAwesomeIcon  className="fa-times icon" icon={faTimes}/>
-<FontAwesomeIcon  className="fa-check icon" icon={faCheck}/>
-<span>Capital Letters</span>
-</p>
-<p id="char">
-<FontAwesomeIcon  className="fa-times icon" icon={faTimes}/>
-<FontAwesomeIcon  className="fa-check icon" icon={faCheck}/>
-<span>Special Characters</span>
-</p>
-<p id="num">
-<FontAwesomeIcon className="fa-times icon" icon={faTimes}/>
-<FontAwesomeIcon  className="fa-check icon" icon={faCheck}/>
-<span>Use Numbers</span>
-</p>
-<p id="more8">
-<FontAwesomeIcon className="fa-times icon" icon={faTimes}/>
-<FontAwesomeIcon  className="fa-check icon" icon={faCheck}/>
-<span>8+ Characters</span>
-</p>
 
           <br></br>
           

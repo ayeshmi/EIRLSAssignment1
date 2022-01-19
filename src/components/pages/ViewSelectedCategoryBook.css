@@ -10,56 +10,40 @@
     font-family: arial, sans-serif;
     border-collapse: collapse;
     width: 100%;
-    
+    background-color: #FFFFFF;
   }
-  .th{
+  th{
     border: 1px solid #f7e7e7;
     text-align: left;
     padding: 8px; 
-    background-color: #7ad16f;
+    background-color: #2793a1;
   }
   td {
-    border: 1px solid #f7e7e7;
+    border: 1px solid #130e0e;
     text-align: left;
     padding: 8px;
-    background-color: #e2e5f7;
   }
   
   tr:nth-child(even) {
-    background-color: #992323;
+    background-color: #dddddd;
   }
 
-   .buttonVG{
+   .buttonV{
     border-radius: 25px;
     width: 80%;
     height: 30px;
     font-size: 1.3rem;
     color: white;
     font-weight: 700;
-    background: rgb(71, 180, 153);
-  background: linear-gradient(135deg, rgba(2, 78, 21, 0.815) 0%,     rgb(11, 173, 60) 100%);
-    border: 0px;
-    cursor: pointer;
-    transition: opacity 0.25s ease-out;
-    align-items: center;
-  }
-
-  .buttonVR{
-    border-radius: 25px;
-    width: 80%;
-    height: 30px;
-    font-size: 1.3rem;
-    color: white;
-    font-weight: 700;
-    background: rgb(170, 27, 27);
-  background: linear-gradient(135deg, rgba(241, 33, 68, 0.815) 0%,     rgb(218, 75, 75) 100%);
+    background: rgb(234, 235, 240);
+  background: linear-gradient(135deg, rgb(122, 97, 180) 0%,     rgb(77, 143, 209) 100%);
     border: 0px;
     cursor: pointer;
     transition: opacity 0.25s ease-out;
     align-items: center;
   }
   
-  buttonV:hover{
+  button:hover{
     opacity: 0.8;
   }
 
@@ -71,16 +55,16 @@
     max-width: 100%;
     
   }
-  .commentButtonViewAll1{
+  .commentButtonViewAll{
     position: absolute;
-    top: 32%;
+    top: 30%;
     right: 19%;
     width: 150px;
     height: 50px;
     outline:none;
     border-radius: 25px;
-    background: rgb(180, 187, 219);
-    background: linear-gradient(135deg, rgb(100, 67, 182) 0%,     rgb(47, 102, 156) 100%);
+    background: rgb(234, 235, 240);
+    background: linear-gradient(135deg, rgb(235, 233, 240) 0%,     rgb(98, 144, 190) 100%);
     transition: opacity 0.25s ease-out;
     border: 0px;
   cursor: pointer;
@@ -88,7 +72,7 @@
   color: white;
   font-weight: 700;
   }
-  .searchTextFieldVB1{
+  .searchTextFieldVB{
     position: relative;
     top: 28%;
     right: 25%;
@@ -100,47 +84,31 @@
   font-size: 1.2rem;
   padding-left: 1.5rem;
   padding-bottom: 1rem;
-  background: rgb(171, 182, 235);
-    background: linear-gradient(135deg, rgb(161, 186, 207) 0%,     rgb(86, 124, 228) 100%);
-    transition: opacity 0.25s ease-out;
-  
+  box-shadow: inset 0px -3px 0px 0px rgba(31, 50, 219, 0.2);
   transition: box-shadow 0.2s ease-in;
   border-radius: 20px;
   }
 
-  .cards__items13 {
+  .cards__items14 {
     
     align-content: center;
      margin: 0 1rem;
      border-radius: 10px;
      display: grid;
-   grid-template-columns: repeat(4, minmax(300px, 1fr));
+   grid-template-columns: repeat(4, minmax(375px, 1fr));
    grid-gap: 10px;
-   max-width: 450px;
-   min-width: 400px;
+   min-width: 450px;
    color: rgb(234, 235, 240);
    }
 
    .cards123{
      align-content: center;
    }
-   .back{
-    background: rgb(119, 175, 212);
+
+   .cardImage12{
+       width: 286px;
+       height: 205px;
    }
-   .back1{
-    background: rgb(218, 223, 248);
-    
-    border-color: white;
+   .bodyOfCategoryBook{
+      background-color:white;
    }
-   .back2{
-    background: rgb(100, 119, 214);
-    color: white;
-    border-color: white;
-   }
-   .viewAllImage{
-     width: 100px;
-     height:100px;
-     border-color: white;
-     border-radius: 5px;
-   }
- 

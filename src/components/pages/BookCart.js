@@ -85,15 +85,50 @@ handleLogin(e) {
        <div>
         
             
-            <h1>Your Backet Details.</h1>
-            <br></br>
+            <h1>Your Book Backet Details.</h1>
+          
+           
+            <form className="checkOutForm" onSubmit={this.handleLogin}
+          ref={c => {
+            this.form = c;
+          }}>
+            <div className="hi12">
+        <h1 style={{ fontSize:'30px' }}>PAYMENT</h1></div>
+      <br></br>
+      <div className="cartPayment">
+    <p className="lendingFee">Total Lending Fee:</p> 
+    <p className="totalFee">Rs. {this.state.price}. 00</p> 
+    <div className="ayeshmi">
+    <button className="cartPaymentButton">Confirm and Pay</button>
+  
+              <div class="card-body">
+                
+                <img class="me-2" width="45px"
+                  src="https://mdbootstrap.com/wp-content/plugins/woocommerce-gateway-stripe/assets/images/visa.svg"
+                  alt="Visa" />
+                <img class="me-2" width="45px"
+                  src="https://mdbootstrap.com/wp-content/plugins/woocommerce-gateway-stripe/assets/images/amex.svg"
+                  alt="American Express" />
+                <img class="me-2" width="45px"
+                  src="https://mdbootstrap.com/wp-content/plugins/woocommerce-gateway-stripe/assets/images/mastercard.svg"
+                  alt="Mastercard" />
+                <img class="me-2" width="45px"
+                  src="https://mdbootstrap.com/wp-content/plugins/woocommerce/includes/gateways/paypal/assets/images/paypal.png"
+                  alt="PayPal acceptance mark" />
+              </div>
+            
+            </div>
+    </div>
+   
+     </form>
+     
             <ul className="cards__items123">
           {
                     this.state.reservations.map(
                 reservation =>
           <div class="child cards__items12 "  onClick={ () => this.editEmployee(reservation.id)}>
             <CardItem
-              src="https://icat.in/storage/app/public/uploads/banner_158211267013.png"
+              src={reservation.image}
               text={reservation.bookName}
               label="Book"
             />   
@@ -101,29 +136,13 @@ handleLogin(e) {
               )
             }  
             </ul>
+            
             <br></br>
-            <br></br>
-          
-          
-          
-    
-        </div>
-        <form className="checkOutForm" onSubmit={this.handleLogin}
-          ref={c => {
-            this.form = c;
-          }}>
-        <h1>CheckOut</h1>
-      <br></br>
-      <div className="cartPayment">
-    <p className="lendingFee">Total Lending Fee:</p> 
-    <p className="totalFee">Rs. {this.state.price}. 00</p> 
-    <button className="cartPaymentButton">Confirm and Pay now</button>
- 
-    </div>
-     </form>
-   
+  
+     
+     
       </div>
-   
+      </div>
       </div>
  
     );

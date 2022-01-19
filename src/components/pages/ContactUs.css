@@ -11,10 +11,10 @@ html{
   font-size: 100%;
 }
 
-.form3{
-  max-width: 500px;
-  min-width: 500px;
-  min-height: 500px;
+.form4{
+  max-width: 600px;
+  min-width: 600px;
+  min-height: 600px;
   max-height: 700px;
   width: 30%;
   height: 60%;
@@ -30,10 +30,10 @@ html{
   left: 89%;
   transform: translate(-50%, -50%);
 }
-.textFieldM 
+.textFieldM1 
 {
   width: 73%;
-  height: 30%;
+  height: 100px;
   
 }
 
@@ -60,10 +60,6 @@ Input:focus::-webkit-input-placeholder{
   opacity: 0;
 }
 
- 
-  
- 
- 
 
 label{
     display: flex;
@@ -100,7 +96,7 @@ label{
   opacity: 0.8;
 }
 
-.row{
+.row58{
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -109,7 +105,7 @@ label{
     
   }
   
-  .row input{
+  .row58 input{
     width: 400px;
     box-sizing: border-box;
     border: none;
@@ -120,29 +116,29 @@ label{
     transition: box-shadow 0.2s ease-in;
   }
   
-  .row input:focus{
+  .row58 input:focus{
      box-shadow: inset 0px -3px 0px 0px rgba(34,193,195,0.7);
      outline: none;
   }
   
-  .row input::-webkit-input-placeholder{
+  .row58 input::-webkit-input-placeholder{
     opacity: 1;
     transition: opacity 0.25s ease-out;
   }
   
-  .row input:hover::-webkit-input-placeholder,
-  .row input:focus::-webkit-input-placeholder{
+  .row58 input:hover::-webkit-input-placeholder,
+  .row58 input:focus::-webkit-input-placeholder{
     opacity: 0;
   }
   
-  .row label{
+  .row58 label{
     align-self: start;
     padding-left: 4.5rem;
     padding-bottom: 0.5rem;
     color: rgba(12, 5, 5, 0.9);
   }
   
-  .row button{
+  .row58 button{
     border-radius: 25px;
     width: 300px;
     height: 40px;
@@ -156,6 +152,39 @@ label{
     transition: opacity 0.25s ease-out;
   }
   
-  .row button:hover{
+  .row58 button:hover{
     opacity: 0.8;
+  }
+
+  .row58 textField{
+    width: 400px;
+    box-sizing: border-box;
+    border: none;
+    font-size: 1.3rem;
+    padding-left: 1.5rem;
+    padding-bottom: 1rem;
+    box-shadow: inset 0px -3px 0px 0px rgba(187,187,187,0.2);
+    transition: box-shadow 0.2s ease-in;
+  }
+  
+  .row58 input:focus{
+     box-shadow: inset 0px -3px 0px 0px rgba(34,193,195,0.7);
+     outline: none;
+  }
+  
+  .row58 input::-webkit-input-placeholder{
+    opacity: 1;
+    transition: opacity 0.25s ease-out;
+  }
+  
+  .row58 input:hover::-webkit-input-placeholder,
+  .row58 input:focus::-webkit-input-placeholder{
+    opacity: 0;
+  }
+  
+  .row58 label{
+    align-self: start;
+    padding-left: 4.5rem;
+    padding-bottom: 0.5rem;
+    color: rgba(12, 5, 5, 0.9);
   }

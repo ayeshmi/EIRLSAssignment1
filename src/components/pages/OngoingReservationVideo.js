@@ -28,13 +28,11 @@ export default class AddNewBook extends Component {
     let user = authService.getCurrentUser(); 
      this.state.email=user.email;
 
-    authService.getOngoingBookReseravtionDetails(user.email).then((res) => {
+    authService.getOngoingVideoReseravtionDetails(user.email).then((res) => {
           this.setState({reservations:res.data});
     });
 
-    authService.getOngoingVideoReseravtionDetails(user.email).then((res) => {
-      this.setState({reservations1:res.data});
-});
+
 
 
    
@@ -95,7 +93,7 @@ handleLogin(e) {
           {
                     this.state.reservations.map(
                 reservation =>
-          <div class="child cards__items12 "  onClick={ () => this.editEmployee(reservation.id)}>
+          <div class="cards__items12 "  onClick={ () => this.editEmployee(reservation.id)}>
             
                          <Card style={{ width: '18rem', background: 'rgb(141, 190, 230)' }}>
       <Card.Img variant="top" className='cardImage12' src={reservation.image} />

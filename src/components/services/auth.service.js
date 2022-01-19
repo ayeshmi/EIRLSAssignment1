@@ -106,21 +106,21 @@ getVideoByID(videoId){
     });
   }
 
-  addNewBookReservation(bookName,email,userId,bookId){
+  addNewBookReservation(bookName,email,userId,bookId,image){
     return axios.post(API_URL + "bookReservation", {
      bookName,
      email,
      userId,
-     bookId
+     bookId,image
      });
   }
 
-  addNewVideoReservation(videoName,email,userId,videoId){
+  addNewVideoReservation(videoName,email,userId,videoId,image){
     return axios.post(API_URL + "videoReservation", {
       videoName,
      email,
      userId,
-     videoId
+     videoId,image
      });
   }
 
@@ -140,6 +140,12 @@ getVideoByID(videoId){
 
   homePageBooks(){
     return axios.get(API_URL+"selectedBook/Romance");
+  }
+  viewSelectedCategoryBooks(category){
+    return axios.get(API_URL+"selectedBook/"+category);
+  }
+  viewSelectedCategoryVideos(category){
+    return axios.get(API_URL+"selectedVideo/"+category);
   }
 
   RhomePageVideosRomance(id){

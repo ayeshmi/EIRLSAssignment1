@@ -107,8 +107,8 @@ render() {
     
     <div >
       <img className='form-img' src='images/boy-reading.svg' alt='spaceship' />
-    <div className="form3"> 
-        <Form className="row"
+    <div className="form4"> 
+        <Form className="row58"
           onSubmit={this.handleLogin}
           ref={c => {
             this.form = c;
@@ -142,17 +142,17 @@ render() {
               validations={[required]}
             />
              <label htmlFor="message">Message</label>
-             <TextField
-             className="textFieldM"
-         
-          name="Message"
-          multiline
-          rows={4}
-          placeholder="Enter your message"
-          value={this.state.Message}
+             <Input
+            
+            placeholder="Enter your message"
+              type="text"
+              className="textFieldM1"
+              name="Message"
+              value={this.state.Message}
               onChange={this.onChangeMessage}
               validations={[required]}
-        />
+            />
+          
           <br></br>
 
           

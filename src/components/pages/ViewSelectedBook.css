@@ -118,4 +118,24 @@ margin-left: 100px;
   position: absolute;
 margin-left: 100px;
  left :1175px;
+ background: rgb(170, 27, 27);
+  background: linear-gradient(135deg, rgba(241, 33, 68, 0.815) 0%,     rgb(218, 75, 75) 100%);
+}
+.lendingButton{
+  border-radius: 25px;
+    width: 80%;
+    height: 30px;
+    font-size: 1.3rem;
+    color: white;
+    font-weight: 700;
+    background: rgb(170, 27, 27);
+  background: linear-gradient(135deg, rgba(241, 33, 68, 0.815) 0%,     rgb(218, 75, 75) 100%);
+    border: 0px;
+    cursor: pointer;
+    transition: opacity 0.25s ease-out;
+    align-items: center;
+}
+.commentButton12{
+  background: rgb(170, 27, 27);
+  background: linear-gradient(135deg, rgba(241, 33, 68, 0.815) 0%,     rgb(218, 75, 75) 100%);
 }

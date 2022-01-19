@@ -34,6 +34,7 @@ import ViewSearchResultsVV from './components/pages/viewAllSearchedDetailsVV';
 import UpdateProfileDetails from './components/pages/UpdateProfileDetails';
 import AddProfilePicture from './components/pages/AddProfilePicture';
 import AddPayment from './components/pages/Payment';
+import BookSearch from './components/pages/BookSearch';
 import ViewBookReservationCart from './components/pages/BookCart';
 import LendingPayments from './components/pages/LendingPayment';
 import ViewBookReservationOngoing from './components/pages/OngoingReservation';
@@ -50,6 +51,16 @@ import ViewAllPayments from './components/pages/ViewAllPayments';
 import BookWebScraping from './components/pages/WebScrapping';
 import ApiIntegration from './components/pages/APIIntegration';
 import AddNewBookIntegration from './components/pages/AddNewBookCSV';
+import ViewAllCategory from './components/pages/ViewAllCategory';
+import ViewSelectedCategoryBooks from './components/pages/ViewSelectedCategoryBook';
+import ViewAllOnlineBookView from './components/pages/ViewAllOnlineBookView';
+import AddOnlineBook from './components/pages/AddOnlineBook';
+import UpdateBookDetails from './components/pages/UpdateBookDetails';
+import OrderPageOfUser from './components/pages/OrderPageOfUser';
+import ViewAllOnlineVideoView from './components/pages/ViewAllOnlineVideoView';
+import ViewAllVideoCategory from './components/pages/ViewallVideoCategory';
+import viewSelectedCategoryVideos from './components/pages/ViewSelectedVideoCategory';
+import ViewVideoReservationOngoing from './components/pages/OngoingReservationVideo';
 
 
 function App() {
@@ -94,6 +105,7 @@ function App() {
       <Route path="/viewBookReservationCart" exact component={ViewBookReservationCart} />
       <Route path="/lendingPayment/:email" exact component={LendingPayments} />
       <Route path="/viewBookReservationOngoing" exact component={ViewBookReservationOngoing} />
+      <Route path="/viewVideoReservationOngoing" exact component={ViewVideoReservationOngoing} />
       <Route path="/viewAllBookReservation" exact component={ViewAllBookReservation} />
       <Route path="/viewAllBookReservationAdvance/:bookID" exact component={ViewAllBookReservationAdvance} />
       <Route path="/advanceBookReservation/:bookID" exact component={AdvanceBookReservation} />
@@ -107,6 +119,15 @@ function App() {
       <Route path="/bookScraping" exact component={BookWebScraping} />
       <Route path="/apiIntegration" exact component={ApiIntegration} />
       <Route path="/addNewBookIntegration" exact component={AddNewBookIntegration} />
+      <Route path="/viewAllCategory" exact component={ViewAllCategory} />
+      <Route path="/viewAllVideoCategory" exact component={ ViewAllVideoCategory} />
+      <Route path="/viewSelectedCategoryBooks/:category" exact component={ViewSelectedCategoryBooks} />
+      <Route path="/viewSelectedCategoryVideos/:category" exact component={viewSelectedCategoryVideos} />
+      <Route path="/viewAllOnlineBookView" exact component={ViewAllOnlineBookView} />
+      <Route path="/viewAllOnlineVideoView" exact component={ViewAllOnlineVideoView} />
+      <Route path="/addOnlineBook/:title" exact component={AddOnlineBook} />
+      <Route path="/updateBookDetails" exact component={UpdateBookDetails} />
+      <Route path="/orderPageOfUser" exact component={OrderPageOfUser} />
     </Switch>
   </Router>
   </>

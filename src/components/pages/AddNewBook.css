@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=Open+Sans:600|Work+Sans:400,500,600,700&display=swap');
 @import url("https://cdn.syncfusion.com/ej2/material.css");
-.body{
+.bodyAddNew{
   background: rgb(177, 177, 59);
   background: linear-gradient(135deg, rgb(122, 97, 180) 0%,     rgb(77, 143, 209) 100%);
   font-family: "work sans";
@@ -13,7 +13,7 @@ html{
 
 .form22{
   min-width: 1000px;
-  min-height: 1300px;
+  min-height: 1350px;
   width: 30%;
   height: 60%;
   margin: 80px auto;
@@ -26,7 +26,7 @@ html{
 
 .form-img123 {
   width: 1854px;
-  height: 1700px;
+  height: 1800px;
   position: absolute;
   top:80%;
   left: 39%;
@@ -210,4 +210,8 @@ label{
  grid-template-columns: repeat(2, minmax(325px, 1fr));
  grid-gap: 10px;
 
+ }
+ .alertClass{
+   width: 450px;
+   height: 40px;
  }

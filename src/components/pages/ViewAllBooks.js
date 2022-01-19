@@ -6,6 +6,9 @@ import Input from "react-validation/build/input";
 import CheckButton from "react-validation/build/button";
 import {toast} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import CardItem from "../CardItem";
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { Card, Button } from 'react-bootstrap';
 toast.configure()
 
 const required = value => {
@@ -24,6 +27,10 @@ class ListBooks extends Component {
         super(props);
         this.handleSearch = this.handleSearch.bind(this);
         this.onChangeSearch = this.onChangeSearch.bind(this);
+        this.viewCategories=this.viewCategories.bind(this);
+        this.onlineBookView=this.onlineBookView.bind(this);
+        this.addNewBook=this.addNewBook.bind(this);
+        this.updateBook=this.updateBook.bind(this);
         this.state={
             books: []
         }   
@@ -74,6 +81,8 @@ DeleteBook(id){
       );
 }
 
+
+
 notify (){
  
     // Calling toast method by passing string
@@ -88,12 +97,59 @@ handleSearch(e){
 
 }
 
+viewCategories(e){
+    
+  this.props.history.push(`/viewAllCategory`);
+    window.location.reload();
+
+}
+onlineBookView(e){
+  this.props.history.push(`/viewAllOnlineBookView`);
+  window.location.reload();
+}
+addNewBook(e){
+  this.props.history.push(`/addBook`);
+  window.location.reload();
+}
+updateBook(e){
+  this.props.history.push(`/updateBookDetails`);
+  window.location.reload();
+}
+
     render() {
         return (
-            <div>
-               <h2 id="headerTitle1">Book List</h2> 
+            <div className='bodyOfCategoryBook'>
+               <h2 id="headerTitle1"><b>Handle Books</b></h2> 
                <br></br><br></br>
-               <Form
+               <div className='cards__items13 '>
+                 <div>
+               <Card style={{ width: '12rem',backgroundColor:'rgb(119, 175, 212)' }}>
+      <Card.Img variant="top" src="https://cdn.everydaypower.com/wp-content/uploads/2018/03/Books-for-Leaders-1000x600.jpg" />
+      <Card.Body>
+        <Button variant="primary" onClick={this.addNewBook}>Add New Book</Button>
+      </Card.Body>
+    </Card>
+    </div>
+    <div>
+               <Card style={{ width: '12rem',backgroundColor:'rgb(119, 175, 212)'  }}>
+      <Card.Img variant="top" src="https://cdn.everydaypower.com/wp-content/uploads/2018/03/Books-for-Leaders-1000x600.jpg" />
+      <Card.Body>
+        <Button variant="primary" onClick={this.onlineBookView}>Online Book View</Button>
+      </Card.Body>
+    </Card>
+    </div>
+    <div>
+               <Card style={{ width: '12rem' ,backgroundColor:'rgb(119, 175, 212)' }}>
+      <Card.Img variant="top" src="https://cdn.everydaypower.com/wp-content/uploads/2018/03/Books-for-Leaders-1000x600.jpg" />
+      <Card.Body>
+        
+        
+        <Button variant="primary" onClick={this.viewCategories}>View All Categories</Button>
+      </Card.Body>
+    </Card>
+    </div>
+    <div>
+    <Form
              onSubmit={this.handleSearch}
              ref={c => {
                this.form = c;
@@ -101,17 +157,17 @@ handleSearch(e){
              <div>
              
             <Input
-              placeholder="Search By Title, Author or Keyword"
+              placeholder="Search By Title, Author or Any Keyword"
               type="text"
               name="search"
               value={this.state.search}
               onChange={this.onChangeSearch}
               validations={[required]}
-              className="searchTextFieldVB" 
+              className="searchTextFieldVB1" 
             />
             
            </div>
-           <button className="commentButtonViewAll" onClick={this.handleSearch}>Search</button>
+           <button className="commentButtonViewAll1" onClick={this.handleSearch}>Search</button>
            <CheckButton
             style={{ display: "none" }}
             ref={c => {
@@ -119,18 +175,22 @@ handleSearch(e){
             }}/>
           
              </Form> 
+             </div>
+    </div>
+           
 
             <br></br>
-               <div className="rowV">
-                   <table className="table table-striped table-boordered">
+               <div >
+                   <table>
                        <thead>
                            <tr>
-                               <th>Title</th>
-                               <th>Category</th>
-                               <th>Published Date </th>
-                               <th>Number of Copies</th>
-                               <th>Update</th>
-                               <th>Delete</th>
+                               <th className='back2' >Title</th>
+                               <th  className='back2'>Category</th>
+                               <th  className='back2'>Image</th>
+                               <th  className='back2'>Published Date </th>
+                               <th  className='back2'>Number of Copies</th>
+                               <th  className='back2'>Update</th>
+                               <th  className='back2'>Delete</th>
                            </tr>
                            
                        </thead>
@@ -139,14 +199,15 @@ handleSearch(e){
                                this.state.books.map(
                                    book =>
                                    <tr key={book.id}>
-                                       <td>{book.title}</td>
-                                       <td>{book.category}</td>
-                                       <td>{book.year}</td>
-                                       <td>{book.numberOfCopies}</td>
-                                       <td>
-                                       <button className="buttonV"
-              onClick={ () => this.DeleteBook(book.id)} 
-              disabled={this.state.loading}
+                                       <td className='back1'>{book.title}</td>
+                                       <td className='back1'><img src={book.imageOfVideo} className='viewAllImage'></img></td> 
+                                       <td className='back1'>{book.category}</td>
+                                       <td className='back1'>{book.year}</td>
+                                       <td className='back1'>{book.numberOfCopies}</td>
+                                       <td className='back1'>
+                                       <button className="buttonVG"
+              onClick={ () => this.updateBook(book.id)} 
+              disabled={this.state.loading} 
             >
               {this.state.loading && (
                 <span className="spinner-border spinner-border-sm"></span>
@@ -155,8 +216,8 @@ handleSearch(e){
              <span>Update</span>
             </button>
             </td>
-                                       <td>
-                                       <button className="buttonV"
+                                       <td className='back1'>
+                                       <button className="buttonVR"
               onClick={ () => this.DeleteBook(book.id)} 
               disabled={this.state.loading}
             >

@@ -82,16 +82,12 @@ render() {
                   this.form = c;
                 }}>
                 
-                    <h2 id="headerTitle">Welcome {currentUser.username}</h2>
-                    
-                    <h2>{hour < 12 ? `Good Morning ` : `Good Evening `}</h2>
+                    <h2 id="headerTitle">Welcome {currentUser.username} <br></br> {hour < 12 ? `Good Morning ` : `Good Evening `}</h2>
+                
                     <br></br>
                     <br></br>
                     
-                    <h3>User Id      :{currentUser.id}
-                    <br></br>
-                    <br></br>
-                    Email Address:{currentUser.email}</h3>
+                    
                         
                         <button className="button5"
                       

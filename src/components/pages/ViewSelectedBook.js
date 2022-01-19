@@ -9,9 +9,10 @@ import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import DialogActions from "@material-ui/core/DialogActions";
 import DialogContent from "@material-ui/core/DialogContent";
-import Button from "@material-ui/core/Button";
 import {toast} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { Card, Button } from 'react-bootstrap';
+import { red } from '@material-ui/core/colors';
 toast.configure()
 
 
@@ -50,7 +51,7 @@ export default class ViewSelectedBook extends Component {
       comment:"",
       currentUser:"",
       comments: []  ,
-      message: "",
+      message1: "",
       price:"",
       publishedYear:"",
       bookExcerpt:"",
@@ -59,7 +60,9 @@ export default class ViewSelectedBook extends Component {
       bookID:"",
       open:false,
        showMessage: false,
-       role:""
+       role:"",
+       inumber: "",
+       message: ""
   };
   }
 
@@ -77,7 +80,8 @@ export default class ViewSelectedBook extends Component {
       publishedYear:book.year,
       bookExcerpt:book.bookExcerpt,
       numberOfPAges:book.numberOfPages,
-      bookID:book.id
+      bookID:book.id,
+      inumber:book.inumber
         });
     
     });
@@ -143,7 +147,7 @@ addOrder(e){
     e.preventDefault();
 
     this.setState({
-      message: "",
+      message1: "",
       loading: true
     });
 
@@ -155,14 +159,15 @@ addOrder(e){
         this.state.description,
         user.email,
         user.id,
-        this.state.id
+        this.state.id,
+        this.state.image
         
         
       ).then(
         
         response => {
           this.setState({
-            message: response.data.message,
+            message1: response.data.message,
             successful: true
           });
         this.notify();
@@ -178,7 +183,7 @@ addOrder(e){
 
           this.setState({
             successful: false,
-            message: resMessage
+            message1: resMessage
           });
           this.notify();
         }
@@ -194,7 +199,7 @@ addOrder(e){
   notify (){
  
     // Calling toast method by passing string
-    toast(this.state.message)
+    toast(this.state.message1)
 }
 
 _showMessage = (bool) => {
@@ -224,7 +229,7 @@ render() {
                   this.form = c;
                 }}
               >
-                <h2 id="headerTitle">{this.state.description}{this.state.role}</h2>
+                <h2 id="headerTitle">{this.state.description}</h2>
                 <div className="rowBook">
                 <img src={this.state.image}
                   className="image"></img>
@@ -241,10 +246,10 @@ render() {
                 </div>
                 <br></br>
                 <div className="rowBook2">
-                <p className="description">ISBN : </p>
+                <p className="description">ISBN -13 : </p>
                 <p className="para1">Pages :</p>
                 <p className="para2">Published :</p>
-                <p className="category1"><span ></span>{this.state.author}</p>
+                <p className="category1"><span ></span>{this.state.inumber}</p>
                 <p className="category2"><span ></span>{this.state.numberOfPAges}</p>
                 <p className="category2"><span ></span>{this.state.publishedYear}</p>
                 </div>
@@ -254,12 +259,12 @@ render() {
              <br></br>
                 <p className="description">Book Excerpt : </p>
                 <p className="paragraph">{this.state.bookExcerpt}</p>
-               
+                
 <div className="rowBook2">  
          <p>Depend on your user type, you can lend this book for a given period, If you want to lend this book click on the bellow button</p>
          <p>You can order this book via our company, If you want to order this book click on the bellow button</p>
          <p>You can order this book via our company, If you want to order this book click on the bellow button</p>
-                  <button className='lendingButton' onClick={this.handleLogin}>LEND</button>
+         <Button className='lendingButton' onClick={this.handleLogin}>LEND</Button>
                   <button className='orderButton' onClick={this.addOrder}>ORDER</button>
                   <button className='orderButton' onClick={this.handleSearch}>ADVANCE lEND</button>
                   </div>

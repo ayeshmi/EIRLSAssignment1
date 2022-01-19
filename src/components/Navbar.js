@@ -78,7 +78,7 @@ const onMouseEnter = () => {
                   </li>
                   
                   <li className='nav-item'>
-                      <Link to='/rating' className='nav-links' onClick={closeMobileMenu}>
+                      <Link to='/aboutUs' className='nav-links' onClick={closeMobileMenu}>
                           About Us
                       </Link>
                   </li>
@@ -100,41 +100,118 @@ const onMouseEnter = () => {
                       </Link>
                   </li>
                   <li className='nav-item'>
-                  <Link to='/aboutProfile' className='nav-links' onClick={closeMobileMenu}>
-                  {roles == "ROLE_ADMIN" ? `Book ` : ` `} 
+                  {(() => {
+
+if (roles == "ROLE_ADMIN") {
+
+  return (
+
+    <Link to='/ViewAllBooks' className='nav-links' onClick={closeMobileMenu}>
+                     Book
                       </Link>
+  )
+}  else {
+  return (
+
+    <Link to='/viewAllCategory' className='nav-links' onClick={closeMobileMenu}>
+                   Book
+                      </Link>
+  )
+}
+})()}
                   </li>
+
                   <li className='nav-item'>
-                      <Link to='/aboutProfile' className='nav-links' onClick={closeMobileMenu}>
+                  {(() => {
+
+if (roles == "ROLE_ADMIN") {
+
+  return (
+
+    <Link to='/viewAllVideoDetails' className='nav-links' onClick={closeMobileMenu}>
+                     Video
+                      </Link>
+  )
+}  else {
+  return (
+
+    <Link to='/viewAllVideoCategory' className='nav-links' onClick={closeMobileMenu}>
+                   Video
+                      </Link>
+  )
+}
+})()}
+                  </li>
+                  
+                  <li className='nav-item'>
+                  <Link to='/aboutProfile' className='nav-links' onClick={closeMobileMenu}>
+                  {(() => {
+
+if (roles == "ROLE_ADMIN") {
+
+  return (
+
+    <Link to='/aboutProfile' className='nav-links' onClick={closeMobileMenu}>
+                     Payments
+                      </Link>
+  )
+}  else {
+  return (
+
+    <Link to='/aboutProfile' className='nav-links' onClick={closeMobileMenu}>
+                    Payments
+                      </Link>
+  )
+}
+})()}
                       
                       </Link>
                   </li>
                   <li className='nav-item'>
-                  <Link to='/aboutProfile' className='nav-links' onClick={closeMobileMenu}>
-                      {roles == "ROLE_ADMIN" ? `Payment` : ` `}
-                      
+                  {(() => {
+
+if (roles == "ROLE_ADMIN") {
+
+  return (
+
+    <Link to='/aboutProfile' className='nav-links' onClick={closeMobileMenu}>
+                     Lendings
                       </Link>
+  )
+}  else {
+  return (
+
+    <Link to='/aboutProfile' className='nav-links' onClick={closeMobileMenu}>
+                    Lendings
+                      </Link>
+  )
+}
+})()}
                   </li>
+                 
                   <li className='nav-item'>
-                      <Link to='/aboutProfile' className='nav-links' onClick={closeMobileMenu}>
-                      {roles == "ROLE_ADMIN" ? `Lendings` : ` `}
+                  {(() => {
+
+if (roles == "ROLE_ADMIN") {
+
+  return (
+
+    <Link to='/aboutProfile' className='nav-links' onClick={closeMobileMenu}>
+                     Orders
                       </Link>
-                  </li>
-                  <li className='nav-item'>
-                      <Link to='/aboutProfile' className='nav-links' onClick={closeMobileMenu}>
-                      {roles == "ROLE_ADMIN" ? `Orders` : ` `} 
+  )
+}  else {
+  return (
+
+    <Link to='/orderPageOfUser' className='nav-links' onClick={closeMobileMenu}>
+                     Orders
                       </Link>
+  )
+}
+})()}
                   </li>
-                  <li className='nav-item'>
-                      <Link to='/viewAlluserDetails' className='nav-links' onClick={closeMobileMenu}>
-                      {roles == "ROLE_ADMIN" ? ` Users` : ` `}  
-                      </Link>
-                  </li>
-                  <li className='nav-item'>
-                      <Link to='/aboutProfile' className='nav-links' onClick={closeMobileMenu}>
-                      {roles == "ROLE_ADMIN" ? `  Moderators` : ` `}  
-                      </Link>
-                  </li>
+                
+                  
                 
 
              
