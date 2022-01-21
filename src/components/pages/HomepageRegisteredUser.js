@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import CardItem from "../CardItem";
 import "./HomepageRegisteredUser.css";
 import { withStyles } from '@material-ui/core/styles';
-import Button from '@material-ui/core/Button';
+
 import Dialog from '@material-ui/core/Dialog';
 import MuiDialogTitle from '@material-ui/core/DialogTitle';
 import MuiDialogContent from '@material-ui/core/DialogContent';
@@ -12,8 +12,13 @@ import CloseIcon from '@material-ui/icons/Close';
 import Typography from '@material-ui/core/Typography';
 import authService from '../services/auth.service';
 import Form from "react-validation/build/form";
-import Input from "react-validation/build/input";
+
 import CheckButton from "react-validation/build/button";
+import { Card, Button } from 'react-bootstrap';
+import {
+  InputGroup,
+  Input
+} from 'reactstrap';
 
 const required = value => {
   if (!value) {
@@ -159,6 +164,13 @@ authService.RhomePageVideosRomance(user.id).then((res) => {
       this.props.history.push(`viewSelectedBook/${id}`);
   }
 
+  viewSelectedBookDetails(id){
+ 
+    this.props.history.push(`/viewSelectedBook/${id}`);
+      window.location.reload();
+  
+  }
+
     
     render() {          
             return (
@@ -167,13 +179,7 @@ authService.RhomePageVideosRomance(user.id).then((res) => {
             
                   <h1>Book Collection</h1>    
          <br></br><br></br>
-                  <Form
-             onSubmit={this.handleSearch}
-             ref={c => {
-               this.form = c;
-             }}>
-             <div>
-             
+         <InputGroup size='lg' className='mb-3'>
             <Input
               placeholder="Search By Title, Author or Keyword"
               type="text"
@@ -182,17 +188,15 @@ authService.RhomePageVideosRomance(user.id).then((res) => {
               onChange={this.onChangeSearch}
               validations={[required]}
               className="searchTextField" 
+              style={{ backgroundColor:'#77b5fe' }}
             />
             
-           </div>
-           <button className="commentButton12" >Search</button>
-           <CheckButton
-            style={{ display: "none" }}
-            ref={c => {
-              this.checkBtn = c;
-            }}/>
+              <Button color='secondary' onClick={this.handleSearch} >
+                <i className='fas fa-search'></i>
+              </Button>
+            
+          </InputGroup>
           
-             </Form>  
       
       <div className="cards__container1">
         <div className="cards__wrapper1">
@@ -204,46 +208,66 @@ authService.RhomePageVideosRomance(user.id).then((res) => {
                     this.state.ComicBooks.map(
                 employee =>
           <div class="child "  >
-            <CardItem
-              src={employee.imageOfVideo}
-              text={employee.title}
-              label="Book"
-              path={'/viewSelectedBook/'+employee.id}
-            />   
+            
+            <Card style={{ width: '16rem',height:'30rem', backgroundColor:'#77b5fe' }}>
+      <Card.Img variant="top" className='cardImage12' src={employee.imageOfVideo} />
+      <Card.Body>
+          <p style={{ fontSize:'20px',color:'white'}}><b>{employee.title}</b></p>
+          <p style={{ color:'black' }}>Author :{employee.author}</p>
+          <p style={{ color:'black' }}>Published  :{employee.year}</p>
+          <p style={{ color:'black' }}>{employee.category}</p>
+        <Button variant="primary" style={{ alignContent:'center' }}  onClick={()=>this.viewSelectedBookDetails(employee.id)}>View</Button>
+      </Card.Body>
+    </Card> 
             </div> 
               )
             }  
             </ul>
+            <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
             <h2>Action</h2>
             <ul className="cards__items1">
           {
                     this.state.ActionBooks.map(
                 employee =>
           <div class="child " >
-            <CardItem
-              src={employee.imageOfVideo}
-              text={employee.title}
-              label="Book"
-              path={'/viewSelectedBook/'+employee.id}
-            />   
+                <Card style={{ width: '16rem',height:'30rem', backgroundColor:'#77b5fe' }}>
+      <Card.Img variant="top" className='cardImage12' src={employee.imageOfVideo} />
+      <Card.Body>
+          <p style={{ fontSize:'20px',color:'white'}}><b>{employee.title}</b></p>
+          <p style={{ color:'black' }}>Author :{employee.author}</p>
+          <p style={{ color:'black' }}>Published  :{employee.year}</p>
+          <p style={{ color:'black' }}>{employee.category}</p>
+        <Button variant="primary" style={{ alignContent:'center' }}  onClick={()=>this.viewSelectedBookDetails(employee.id)}>View</Button>
+      </Card.Body>
+    </Card>   
             </div> 
               )
             }  
             </ul>
-            
-            <ul className="cards__items1">
             <h2>Drama</h2>
+            <ul className="cards__items1">
+           
           {
             
                     this.state.DramaBooks.map(
                 employee =>
           <div class="child " >
-            <CardItem
-              src={employee.imageOfVideo}
-              text={employee.title}
-              label="Book"
-              path={'/viewSelectedBook/'+employee.id}
-            />   
+                <Card style={{ width: '16rem',height:'30rem', backgroundColor:'#77b5fe' }}>
+      <Card.Img variant="top" className='cardImage12' src={employee.imageOfVideo} />
+      <Card.Body>
+          <p style={{ fontSize:'20px',color:'white'}}><b>{employee.title}</b></p>
+          <p style={{ color:'black' }}>Author :{employee.author}</p>
+          <p style={{ color:'black' }}>Published  :{employee.year}</p>
+          <p style={{ color:'black' }}>{employee.category}</p>
+        <Button variant="primary" style={{ alignContent:'center' }}  onClick={()=>this.viewSelectedBookDetails(employee.id)}>View</Button>
+      </Card.Body>
+    </Card>   
             </div> 
               )
             }  
@@ -254,12 +278,16 @@ authService.RhomePageVideosRomance(user.id).then((res) => {
                     this.state.RomanceBooks.map(
                 employee =>
           <div class="child ">
-            <CardItem
-              src={employee.imageOfVideo}
-              text={employee.title}
-              label="Book"
-              path={'/viewSelectedBook/'+employee.id}
-            />   
+                <Card style={{ width: '16rem',height:'30rem', backgroundColor:'#77b5fe' }}>
+      <Card.Img variant="top" className='cardImage12' src={employee.imageOfVideo} />
+      <Card.Body>
+          <p style={{ fontSize:'20px',color:'white'}}><b>{employee.title}</b></p>
+          <p style={{ color:'black' }}>Author :{employee.author}</p>
+          <p style={{ color:'black' }}>Published  :{employee.year}</p>
+          <p style={{ color:'black' }}>{employee.category}</p>
+        <Button variant="primary" style={{ alignContent:'center' }}  onClick={()=>this.viewSelectedBookDetails(employee.id)}>View</Button>
+      </Card.Body>
+    </Card>   
             </div> 
               )
             }  
@@ -270,12 +298,16 @@ authService.RhomePageVideosRomance(user.id).then((res) => {
                     this.state.FantasyBooks.map(
                 employee =>
           <div class="child " >
-            <CardItem
-              src={employee.imageOfVideo}
-              text={employee.title}
-              label="Book"
-              path={'/viewSelectedBook/'+employee.id}
-            />   
+                <Card style={{ width: '16rem',height:'30rem', backgroundColor:'#77b5fe' }}>
+      <Card.Img variant="top" className='cardImage12' src={employee.imageOfVideo} />
+      <Card.Body>
+          <p style={{ fontSize:'20px',color:'white'}}><b>{employee.title}</b></p>
+          <p style={{ color:'black' }}>Author :{employee.author}</p>
+          <p style={{ color:'black' }}>Published  :{employee.year}</p>
+          <p style={{ color:'black' }}>{employee.category}</p>
+        <Button variant="primary" style={{ alignContent:'center' }}  onClick={()=>this.viewSelectedBookDetails(employee.id)}>View</Button>
+      </Card.Body>
+    </Card>  
             </div> 
               )
             }  
@@ -286,12 +318,16 @@ authService.RhomePageVideosRomance(user.id).then((res) => {
                     this.state.HorrorBooks.map(
                 employee =>
           <div class="child " >
-            <CardItem
-              src={employee.imageOfVideo}
-              text={employee.title}
-              label="Book"
-              path={'/viewSelectedBook/'+employee.id}
-            />   
+                 <Card style={{ width: '16rem',height:'30rem', backgroundColor:'#77b5fe' }}>
+      <Card.Img variant="top" className='cardImage12' src={employee.imageOfVideo} />
+      <Card.Body>
+          <p style={{ fontSize:'20px',color:'white'}}><b>{employee.title}</b></p>
+          <p style={{ color:'black' }}>Author :{employee.author}</p>
+          <p style={{ color:'black' }}>Published  :{employee.year}</p>
+          <p style={{ color:'black' }}>{employee.category}</p>
+        <Button variant="primary" style={{ alignContent:'center' }}  onClick={()=>this.viewSelectedBookDetails(employee.id)}>View</Button>
+      </Card.Body>
+    </Card>  
             </div> 
               )
             }  
@@ -302,14 +338,8 @@ authService.RhomePageVideosRomance(user.id).then((res) => {
 
         <h1>Video Collection</h1>
            <br></br>    
-           <br></br>     
-        <Form
-             onSubmit={this.handleSearchVideo}
-             ref={c => {
-               this.form = c;
-             }}>
-             <div>
-             
+           <br></br>  
+           <InputGroup size='lg' className='mb-3'>
             <Input
               placeholder="Search By Title, Author or Keyword"
               type="text"
@@ -318,17 +348,15 @@ authService.RhomePageVideosRomance(user.id).then((res) => {
               onChange={this.onChangeSearch}
               validations={[required]}
               className="searchTextField" 
+              style={{ backgroundColor:'#77b5fe' }}
             />
             
-           </div>
-           <button className="commentButton12" >Search</button>
-           <CheckButton
-            style={{ display: "none" }}
-            ref={c => {
-              this.checkBtn = c;
-            }}/>
-          
-             </Form>                
+              <Button color='secondary' onClick={this.handleSearchVideo} >
+                <i className='fas fa-search'></i>
+              </Button>
+            
+          </InputGroup>   
+                     
           
       
       <div className="cards__container1">
@@ -341,29 +369,44 @@ authService.RhomePageVideosRomance(user.id).then((res) => {
                     this.state. RomanceVideos.map(
                 employee =>
           <div class="child "  >
-            <CardItem
-              src={employee.imageOfVideo}
-              text={employee.title}
-              label="Video"
-              path={'/viewSelectedVideo/'+employee.id}
-            /> 
+                 <Card style={{ width: '16rem',height:'30rem', backgroundColor:'#77b5fe' }}>
+      <Card.Img variant="top" className='cardImage12' src={employee.imageOfVideo} />
+      <Card.Body>
+          <p style={{ fontSize:'20px',color:'white'}}><b>{employee.title}</b></p>
+          <p style={{ color:'black' }}>Author :{employee.author}</p>
+          <p style={{ color:'black' }}>Published  :{employee.year}</p>
+          <p style={{ color:'black' }}>{employee.category}</p>
+        <Button variant="primary" style={{ alignContent:'center' }}  onClick={()=>this.viewSelectedBookDetails(employee.id)}>View</Button>
+      </Card.Body>
+    </Card> 
        
             </div> 
               )
             }  
             </ul>
+            <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
             <h2>Action</h2>
             <ul className="cards__items1">
           {
                     this.state.ActionBooks.map(
                 employee =>
           <div class="child ">
-            <CardItem
-              src={employee.imageOfVideo}
-              text={employee.title}
-              label="Video"
-              path={'/viewSelectedBook/'+employee.id}
-            />   
+                 <Card style={{ width: '16rem',height:'30rem', backgroundColor:'#77b5fe' }}>
+      <Card.Img variant="top" className='cardImage12' src={employee.imageOfVideo} />
+      <Card.Body>
+          <p style={{ fontSize:'20px',color:'white'}}><b>{employee.title}</b></p>
+          <p style={{ color:'black' }}>Author :{employee.author}</p>
+          <p style={{ color:'black' }}>Published  :{employee.year}</p>
+          <p style={{ color:'black' }}>{employee.category}</p>
+        <Button variant="primary" style={{ alignContent:'center' }}  onClick={()=>this.viewSelectedBookDetails(employee.id)}>View</Button>
+      </Card.Body>
+    </Card>  
             </div> 
               )
             }  
@@ -376,12 +419,16 @@ authService.RhomePageVideosRomance(user.id).then((res) => {
                     this.state.DramaBooks.map(
                 employee =>
           <div class="child " >
-            <CardItem
-              src={employee.imageOfVideo}
-              text={employee.title}
-              label="Video"
-              path={'/viewSelectedBook/'+employee.id}
-            />   
+                 <Card style={{ width: '16rem',height:'30rem', backgroundColor:'#77b5fe' }}>
+      <Card.Img variant="top" className='cardImage12' src={employee.imageOfVideo} />
+      <Card.Body>
+          <p style={{ fontSize:'20px',color:'white'}}><b>{employee.title}</b></p>
+          <p style={{ color:'black' }}>Author :{employee.author}</p>
+          <p style={{ color:'black' }}>Published  :{employee.year}</p>
+          <p style={{ color:'black' }}>{employee.category}</p>
+        <Button variant="primary" style={{ alignContent:'center' }}  onClick={()=>this.viewSelectedBookDetails(employee.id)}>View</Button>
+      </Card.Body>
+    </Card> 
             </div> 
               )
             }  
@@ -392,12 +439,16 @@ authService.RhomePageVideosRomance(user.id).then((res) => {
                     this.state.RomanceBooks.map(
                 employee =>
           <div class="child " >
-            <CardItem
-              src={employee.imageOfVideo}
-              text={employee.title}
-              label="Video"
-              path={'/viewSelectedBook/'+employee.id}
-            />   
+                <Card style={{ width: '16rem',height:'30rem', backgroundColor:'#77b5fe' }}>
+      <Card.Img variant="top" className='cardImage12' src={employee.imageOfVideo} />
+      <Card.Body>
+          <p style={{ fontSize:'20px',color:'white'}}><b>{employee.title}</b></p>
+          <p style={{ color:'black' }}>Author :{employee.author}</p>
+          <p style={{ color:'black' }}>Published  :{employee.year}</p>
+          <p style={{ color:'black' }}>{employee.category}</p>
+        <Button variant="primary" style={{ alignContent:'center' }}  onClick={()=>this.viewSelectedBookDetails(employee.id)}>View</Button>
+      </Card.Body>
+    </Card>   
             </div> 
               )
             }  
@@ -408,12 +459,16 @@ authService.RhomePageVideosRomance(user.id).then((res) => {
                     this.state.FantasyBooks.map(
                 employee =>
           <div class="child "  >
-            <CardItem
-              src={employee.imageOfVideo}
-              text={employee.title}
-              label="Video"
-              path={'/viewSelectedVideo/'+employee.id}
-            />   
+                 <Card style={{ width: '16rem',height:'30rem', backgroundColor:'#77b5fe' }}>
+      <Card.Img variant="top" className='cardImage12' src={employee.imageOfVideo} />
+      <Card.Body>
+          <p style={{ fontSize:'20px',color:'white'}}><b>{employee.title}</b></p>
+          <p style={{ color:'black' }}>Author :{employee.author}</p>
+          <p style={{ color:'black' }}>Published  :{employee.year}</p>
+          <p style={{ color:'black' }}>{employee.category}</p>
+        <Button variant="primary" style={{ alignContent:'center' }}  onClick={()=>this.viewSelectedBookDetails(employee.id)}>View</Button>
+      </Card.Body>
+    </Card> 
             </div> 
               )
             }  
@@ -424,12 +479,16 @@ authService.RhomePageVideosRomance(user.id).then((res) => {
                     this.state.HorrorBooks.map(
                 employee =>
           <div class="child "  >
-            <CardItem
-              src={employee.imageOfVideo}
-              text={employee.title}
-              label="Video"
-              path={'/viewSelectedBook/'+employee.id}
-            />   
+                 <Card style={{ width: '16rem',height:'30rem', backgroundColor:'#77b5fe' }}>
+      <Card.Img variant="top" className='cardImage12' src={employee.imageOfVideo} />
+      <Card.Body>
+          <p style={{ fontSize:'20px',color:'white'}}><b>{employee.title}</b></p>
+          <p style={{ color:'black' }}>Author :{employee.author}</p>
+          <p style={{ color:'black' }}>Published  :{employee.year}</p>
+          <p style={{ color:'black' }}>{employee.category}</p>
+        <Button variant="primary" style={{ alignContent:'center' }}  onClick={()=>this.viewSelectedBookDetails(employee.id)}>View</Button>
+      </Card.Body>
+    </Card> 
             </div> 
               )
             }  

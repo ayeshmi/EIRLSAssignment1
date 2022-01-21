@@ -26,6 +26,7 @@ export default class ViewSelectedBook extends Component {
   constructor(props) {
     super(props);
     this.handleLogin = this.handleLogin.bind(this);
+    this.handleLogin2 = this.handleLogin2.bind(this);
     this.onChangeComment = this.onChangeComment.bind(this);
     this.handleSearch = this.handleSearch.bind(this);
     this.handleComment=this.handleComment.bind(this);
@@ -153,6 +154,53 @@ handleSearch(e){
   
   }
 
+  handleLogin2(e) {
+    e.preventDefault();
+
+    this.setState({
+      message: "",
+      loading: true
+    });
+
+    this.form.validateAll();
+
+    
+      let user= AuthService.getCurrentUser();
+      AuthService. addNewVideoReservationOnline(
+        this.state.description,
+        user.email,
+        user.id,
+        this.state.id,
+        this.state.image
+        
+      ).then(
+        
+        response => {
+          this.setState({
+            message: response.data.message,
+            successful: true
+          });
+        this.notify();
+        },
+        error => {
+          const resMessage =
+            (error.response &&
+              error.response.data &&
+              error.response.data.message) ||
+            error.message ||
+            error.toString();
+            
+
+          this.setState({
+            successful: false,
+            message: resMessage
+          });
+          this.notify();
+        }
+        
+      );
+  }
+
   notify (){
  
     // Calling toast method by passing string
@@ -192,24 +240,59 @@ render() {
                 <br></br>
       
                 </Form>
-               
-<div className="rowBook">  
-         <p>Depend on your user type, you can lend this video for a given period, If you want to lend this video click on the bellow button</p>
-         <p>You can order this video via our company, If you want to order this video click on the bellow button</p>
-                  <button className='lendingButton' onClick={this.handleLogin}>LEND</button>
-          
-                  
-                  <button className='lendingButton' onClick={this.handleSearch}>ORDER</button>
-                  </div>
-                  <br></br>
-                  <br></br>
-                <span className='form-input-login'>
-              This book is available online<br></br> if you want this book to read, Click below link  <a href='registerUserselection'>here</a>
-            </span>
-          
 
-                <br></br>
-                <br></br>
+                <table>
+                       <thead>
+                           <tr>
+                               <th className='back2' >Depend on your user type, you can lend this book for a given period, If you want to lend this book click on the bellow button</th>
+                               <th  className='back2'>You can order this book via our website, If you want to order this book click on the bellow button</th>
+                               <th  className='back2'>You can read this book onlie, If you want to lend this book click on the bellow button</th>
+                               
+                           </tr>
+                           
+                       </thead>
+                       <tbody>
+                           
+                                   <tr >
+                                       
+                                       <td className='back1'> <button className="buttonVG"
+              onClick={this.handleLogin}
+              disabled={this.state.loading} 
+             
+            >
+            
+              
+             <span>LEND</span>
+            </button></td>
+                                       <td className='back1'> <button className="buttonVG"
+              onClick={this.handleLogin2}
+              disabled={this.state.loading} 
+             
+            >
+             
+              
+             <span>ONLINE MOVIE</span>
+            </button></td>
+
+                                       <td className='back1'>
+                                       <button className="buttonVR"
+            
+              disabled={this.state.loading}
+            >
+        
+              
+              
+             <span>ADVANCE LEND</span>
+            </button>
+            </td>
+                                       
+                                   </tr>
+                               
+                           
+                       </tbody>
+                   </table>
+               
+                   <h1>Give your feedbacks........</h1>
                
               
              
@@ -236,7 +319,7 @@ render() {
                    <table className="table table-striped table-boordered">
                        <thead>
                            <tr>
-                               <th>View All Comments..</th>
+                               <th style={{ backgroundColor:'#77b5fe',alignContent:'center',color:'white',fontSize:'20px' }}>View All Comments..</th>
                                
                            </tr>
                            
@@ -247,7 +330,10 @@ render() {
                                this.state.comments.map(
                                    comment1 =>
                                    <tr key={comment1.id}>
-                                       <td>{comment1.username}:{comment1.commentDetails}</td> 
+                                       <td className='back1'>{comment1.username}:{comment1.commentDetails}
+                                       <button className='commentReply' style={{ backgroundColor:'red',borderBlockColor:'white',borderColor:'white'}} ><img src="https://image.flaticon.com/icons/png/512/61/61848.png" className='deleteComment' >
+                                       </img></button></td> 
+
                                    </tr>
                                )
                            }

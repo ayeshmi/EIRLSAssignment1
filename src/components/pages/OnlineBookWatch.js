@@ -28,20 +28,18 @@ export default class AddNewBook extends Component {
     let user = authService.getCurrentUser(); 
      this.state.email=user.email;
 
-    authService.getOngoingBookReseravtionDetails(user.email).then((res) => {
+    authService.getOnlineBookWatch(user.id).then((res) => {
           this.setState({reservations:res.data});
     });
 
-    authService.getOngoingVideoReseravtionDetails(user.email).then((res) => {
-      this.setState({reservations1:res.data});
-});
+
 
 
    
   }
 
-editEmployee(id){
-  this.props.history.push(`viewSelectedBook/${id}`);
+editEmployee(){
+  this.props.history.push(`http://localhost:8082/api/auth/video/myfile.pdf`);
 
 }
 handleLogin(e) {
@@ -87,25 +85,25 @@ handleLogin(e) {
        <div>
         
             
-            <h1>On Going Book Reservations</h1>
+            <h1>Online Book List</h1>
            <br></br>
            <br></br>
             <br></br>
-            <ul className="cards__items123r">
+            <ul className="cards__items123">
           {
                     this.state.reservations.map(
                 reservation =>
-          <div class="cards__items12 "  onClick={ () => this.editEmployee(reservation.id)}>
+          <div class="child cards__items12 " >
             
                          <Card style={{ width: '16rem', background: 'rgb(141, 190, 230)' }}>
-      <Card.Img variant="top" className='cardImage12' src={reservation.image} />
+      <Card.Img variant="top" className='cardImage12' src={reservation.imageOfVideo} />
       <Card.Body>
-          <p style={{ color:'white',fontSize:'22px' }}><b>{reservation.bookName}</b></p>
-          <p style={{ color:'black' }}>Lended Date : {reservation.date}</p>
-          <p style={{ color:'black' }}>Return Date : {reservation.returnDate}</p>
-          <p style={{ color:'black' }}>Overdue Fee : Rs.{reservation.overduePayment}.00</p>
-          
-        <Button variant="primary" style={{ alignContent:'center' }}  >View</Button>
+          <p style={{ color:'white',fontSize:'22px' }}><b>{reservation.title}</b></p>
+          <p style={{ color:'black' }}>Author : {reservation.author}</p>
+          <p style={{ color:'black' }}>Published Year : {reservation.year}</p>
+          <p style={{ color:'black' }}>{reservation.category}</p>
+          <a href={reservation.onlineBook} target="_blank" rel="noopener">READ</a>
+       
       </Card.Body>
     </Card>  
             </div> 

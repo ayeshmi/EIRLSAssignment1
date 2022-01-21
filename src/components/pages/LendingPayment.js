@@ -40,7 +40,7 @@ export default class ContactUs extends Component {
     this.onChangeMessage = this.onChangeMessage.bind(this);
     this.state = {
       reason: "",
-      price: "",
+      price: this.props.match.params.price,
       cardType: "",
       cardHolderName:"",
       cardNumber:"",
@@ -82,19 +82,19 @@ export default class ContactUs extends Component {
 
   onChangecardNumber(e) {
     this.setState({
-      cardType: e.target.value
+      cardNumber: e.target.value
     });
   }
 
   onChangeExpiryDate(e) {
     this.setState({
-      cardType: e.target.value
+      expiryDate: e.target.value
     });
   }
 
   onChangeCvv(e) {
     this.setState({
-      cardType: e.target.value
+      cvv: e.target.value
     });
   }
 
@@ -164,7 +164,7 @@ render() {
     <div >
      
     <div className="form3"> 
-        <Form className="row"
+        <Form className="row1234"
           onSubmit={this.handleLogin}
           ref={c => {
             this.form = c;
@@ -179,7 +179,7 @@ render() {
               type="text"
            
               name="reason"
-              value={this.state.reason}
+              value='LendingFee'
               onChange={this.onChangeReason}
               validations={[required]}
               disabled
@@ -193,7 +193,7 @@ render() {
               placeholder="Enter your price"
               type="text"
               name="price"
-              value={this.state.price}
+              value={this.state.price+'.00'}
               onChange={this.onChangePrice}
               validations={[required]}
               disabled

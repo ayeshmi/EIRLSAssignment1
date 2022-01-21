@@ -33,6 +33,8 @@ class ListBooks extends Component {
         this.updateBook=this.updateBook.bind(this);
         this.videoBascket=this.videoBascket.bind(this);
         this.viewVideoLending=this.viewVideoLending.bind(this);
+        this.onlineBookWatch=this.onlineBookWatch.bind(this);
+        this.onlineVideoWatch=this.onlineVideoWatch.bind(this);
         this.state={
             books: []
         }   
@@ -46,7 +48,8 @@ class ListBooks extends Component {
       }
 
 componentDidMount(){
-    authService.getBooks().then((res) => {
+  let user = authService.getCurrentUser(); 
+    authService.getOrderBooks(user.id).then((res) => {
           this.setState({books:res.data});
     });
 }
@@ -88,7 +91,8 @@ DeleteBook(id){
 notify (){
  
     // Calling toast method by passing string
-    toast(this.state.message)
+    toast(this.state.message);
+
 }
 
 handleSearch(e){
@@ -126,10 +130,20 @@ viewVideoLending(e){
     window.location.reload();
   }
 
+  onlineBookWatch(e){
+    this.props.history.push(`/onlineBookWatch`);
+    window.location.reload();
+  }
+
+  onlineVideoWatch(e){
+    this.props.history.push(`/onlineVideoWatch`);
+    window.location.reload();
+  }
+
     render() {
         return (
             <div className='bodyOfCategoryBook'>
-               <h2 id="headerTitle1"><b>Handle Books</b></h2> 
+               <h2 id="headerTitle1"><b>Handle Reservations</b></h2> 
                <br></br><br></br>
                <div className='cards__items13 '>
                  <div>
@@ -150,7 +164,7 @@ viewVideoLending(e){
     </div>
     <div>
                <Card style={{ width: '15rem' ,backgroundColor:'rgb(119, 175, 212)' }}>
-      <Card.Img variant="top" src="https://cdn.everydaypower.com/wp-content/uploads/2018/03/Books-for-Leaders-1000x600.jpg" />
+      <Card.Img variant="top" src="https://www.betterreading.com.au/wp-content/uploads/2019/03/Four-isolated-people-thrown-together-by-family-and-circumstance...-Read-it-first-with-Better-Reading-Preview.-5-768x403.png" />
       <Card.Body>
         
         
@@ -160,7 +174,7 @@ viewVideoLending(e){
     </div>
     <div>
     <Card style={{ width: '15rem' ,backgroundColor:'rgb(119, 175, 212)' }}>
-      <Card.Img variant="top" src="https://cdn.everydaypower.com/wp-content/uploads/2018/03/Books-for-Leaders-1000x600.jpg" />
+      <Card.Img variant="top" src="https://cdn.mos.cms.futurecdn.net/4U6wcUYiDzP4zCyuLWwo3M.png" />
       <Card.Body>
         
      
@@ -168,7 +182,22 @@ viewVideoLending(e){
       </Card.Body>
     </Card>
              </div>
-       
+             <div>
+               <Card style={{ width: '15rem',backgroundColor:'rgb(119, 175, 212)' }}>
+      <Card.Img variant="top" src="https://cdn.everydaypower.com/wp-content/uploads/2018/03/Books-for-Leaders-1000x600.jpg" />
+      <Card.Body>
+        <Button variant="primary" onClick={this.onlineBookWatch}>Online Book</Button> 
+      </Card.Body>
+    </Card>
+    </div>
+    <div>
+               <Card style={{ width: '15rem',backgroundColor:'rgb(119, 175, 212)' }}>
+      <Card.Img variant="top" src="https://cdn.everydaypower.com/wp-content/uploads/2018/03/Books-for-Leaders-1000x600.jpg" />
+      <Card.Body>
+        <Button variant="primary" onClick={this.onlineVideoWatch}>Online Video</Button> 
+      </Card.Body>
+    </Card>
+    </div>
     </div>
            
 
@@ -183,8 +212,8 @@ viewVideoLending(e){
                                <th  className='back2'>Image</th>
                                <th  className='back2'>Published Date </th>
                                <th  className='back2'>Number of Copies</th>
-                               <th  className='back2'>Update</th>
-                               <th  className='back2'>Delete</th>
+                              
+                               <th  className='back2'>Cancel Order</th>
                            </tr>
                            
                        </thead>
@@ -198,28 +227,17 @@ viewVideoLending(e){
                                        <td className='back1'>{book.category}</td>
                                        <td className='back1'>{book.year}</td>
                                        <td className='back1'>{book.numberOfCopies}</td>
-                                       <td className='back1'>
-                                       <button className="buttonVG"
-              onClick={ () => this.updateBook(book.id)} 
-              disabled={this.state.loading} 
-            >
-              {this.state.loading && (
-                <span className="spinner-border spinner-border-sm"></span>
-              )}
-              
-             <span>Update</span>
-            </button>
-            </td>
+            
                                        <td className='back1'>
                                        <button className="buttonVR"
-              onClick={ () => this.DeleteBook(book.id)} 
+             
               disabled={this.state.loading}
             >
               {this.state.loading && (
                 <span className="spinner-border spinner-border-sm"></span>
               )}
               
-             <span>Delete</span>
+             <span>Cancel Order</span>
             </button>
             </td>
                                        

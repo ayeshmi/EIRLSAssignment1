@@ -146,7 +146,7 @@ export default class AddNewBook extends Component {
   notify (){
  
     // Calling toast method by passing string
-    toast(this.state.message)
+    toast.success(this.state.message)
 }
 
   handleLogin(e) {
@@ -196,7 +196,7 @@ export default class AddNewBook extends Component {
             successful: false,
             message: resMessage
           });
-          this.notify();
+          toast.error(this.state.message);
         }
       );
     }

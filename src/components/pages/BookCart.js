@@ -4,6 +4,10 @@ import "../Cards.css";
 import "./BookCart.css";
 import React, { Component } from 'react';
 import authService from '../services/auth.service';
+import { Card, Button } from 'react-bootstrap';
+import {toast} from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+toast.configure()
 
 
 export default class AddNewBook extends Component {
@@ -12,12 +16,14 @@ export default class AddNewBook extends Component {
     super(props);
     
     this.handleLogin = this.handleLogin.bind(this);
+    this.handleLogin1 = this.handleLogin1.bind(this);
     this.state={
         //open:false,
         reservations: [],
         books:[],
         email:" ",
-        price:" "
+        price:" ",
+        loading: false
     };
 }
 
@@ -38,18 +44,76 @@ export default class AddNewBook extends Component {
    
   }
 
+  notify (){
+ 
+    // Calling toast method by passing string
+    toast(this.state.message)
+}
+
 editEmployee(id){
   this.props.history.push(`viewSelectedBook/${id}`);
 
 }
-handleLogin(e) {
-    e.preventDefault();
+viewSelectedBookDetails(id){
+ 
+  this.props.history.push(`/viewSelectedBook/${id}`);
+  window.location.reload();
+
+}
+
+deleteCartBook(id){
+  authService.deleteCartBook(id);
+  this.props.history.push(`/viewBookReservationCart`);
+    window.location.reload();
+
+}
+
+
+handleLogin1(e) {
+  e.preventDefault();
+
+  
+  authService.confirmBookCart(this.state.email, this.state.price).then(
+      () => {
+        this.props.history.push(`lendingPayment/${this.state.email}/${this.state.price}`);
+        window.location.reload();
+      },
+      error => {
+        const resMessage =
+          (error.response &&
+            error.response.data &&
+            error.response.data.message) ||
+          error.message ||
+          error.toString();
+            if(resMessage=="Request failed with status code 401"){
+              this.setState({
+                loading: false,
+                message: "Username or Password is incorrect, Check again"
+              });
+            }else{
+              this.setState({
+                loading: false,
+                message: resMessage
+              });
+            }
+        
+      }
+    );
+
+ 
+}
+
+handleLogin(id) {
+
 
     
-    authService.confirmBookCart(this.state.email, this.state.price).then(
+    authService.deleteCartBook(id).then(
         () => {
-          this.props.history.push(`lendingPayment/${this.state.email}`);
+          
+          this.props.history.push(`/viewBookReservationCart`);
           window.location.reload();
+          this.notify();
+          
         },
         error => {
           const resMessage =
@@ -68,6 +132,7 @@ handleLogin(e) {
                   loading: false,
                   message: resMessage
                 });
+                this.notify();
               }
           
         }
@@ -88,7 +153,7 @@ handleLogin(e) {
             <h1>Your Book Backet Details.</h1>
           
            
-            <form className="checkOutForm" onSubmit={this.handleLogin}
+            <form className="checkOutForm" onSubmit={this.handleLogin1}
           ref={c => {
             this.form = c;
           }}>
@@ -99,7 +164,20 @@ handleLogin(e) {
     <p className="lendingFee">Total Lending Fee:</p> 
     <p className="totalFee">Rs. {this.state.price}. 00</p> 
     <div className="ayeshmi">
-    <button className="cartPaymentButton">Confirm and Pay</button>
+      
+    <button 
+    class="button1"
+    className="btn btn-primary btn-block"
+    
+              className="cartPaymentButton"
+              disabled={this.state.loading}
+            >
+              {this.state.loading && (
+                <span className="spinner-border spinner-border-sm"></span>
+              )}
+             <span>Login</span>
+            </button>
+    
   
               <div class="card-body">
                 
@@ -122,16 +200,22 @@ handleLogin(e) {
    
      </form>
      
-            <ul className="cards__items123">
+            <ul className="cards__items120">
           {
                     this.state.reservations.map(
                 reservation =>
-          <div class="child cards__items12 "  onClick={ () => this.editEmployee(reservation.id)}>
-            <CardItem
-              src={reservation.image}
-              text={reservation.bookName}
-              label="Book"
-            />   
+          <div class="cards__items12o "  onClick={ () => this.editEmployee(reservation.id)}>
+                    <Card style={{ width: '16rem',height:'25rem', backgroundColor:'#77b5fe' }}>
+      <Card.Img variant="top" className='cardImage12' src={reservation.image} />
+      <Card.Body>
+          <p style={{ fontSize:'20px'}}><b>{reservation.bookName}</b></p>
+          
+        <Button variant="primary" style={{ alignContent:'center' }}  onClick={()=>this.viewSelectedBookDetails(reservation.bookId)}>View</Button>
+        
+        <Button variant="primary" style={{ alignContent:'right', backgroundColor:'red' }}  onClick={()=>this.handleLogin(reservation.id)}>Delete</Button>
+      </Card.Body>
+    </Card>
+             
             </div> 
               )
             }  

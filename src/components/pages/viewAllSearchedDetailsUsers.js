@@ -18,15 +18,6 @@ import {toast} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 toast.configure()
 
-const required = value => {
-  if (!value) {
-    return (
-      <div className="alert alert-danger" role="alert">
-        This field is required!
-      </div>
-    );
-  }
-};
 
 const styles = (theme) => ({
     root: {
@@ -81,8 +72,9 @@ export default class HomepageRegisteredUser extends Component {
         this.state={
             h1:this.props.match.params.serach,
             open:false,
-            books:[],
-            searchResult:""
+            videos:[],
+            searchResult:"",
+
             
          
         };
@@ -98,7 +90,7 @@ export default class HomepageRegisteredUser extends Component {
       e.preventDefault();
 
       if (this.checkBtn.context._errors.length === 0) {
-        authService. searchBook(
+        authService. searchUser(
           this.state.searchResult
         ).then(
           ()=>{
@@ -126,13 +118,40 @@ export default class HomepageRegisteredUser extends Component {
           open: false
         });
       }
-
+      DeleteVideo(id){
+        authService. deleteVideoById(id).then(
+        
+            response => {
+              this.setState({
+                message: response.data.message,
+                successful: true
+              });
+            this.notify();
+            },
+            error => {
+              const resMessage =
+                (error.response &&
+                  error.response.data &&
+                  error.response.data.message) ||
+                error.message ||
+                error.toString();
+                
+    
+              this.setState({
+                successful: false,
+                message: resMessage
+              });
+              this.notify();
+            }
+            
+          );
+    }
 
       componentDidMount(){
 
       
-        authService.searchBook(this.state.h1).then((res) => {
-          this.setState({books:res.data});
+        authService.searchUser(this.state.h1).then((res) => {
+          this.setState({videos:res.data});
         });
         
             }
@@ -141,12 +160,14 @@ export default class HomepageRegisteredUser extends Component {
       this.props.history.push(`searchBookResult/${id}`);
   }
 
+
+
     
     render() {          
             return (
                 
                 <div className='bodyOfCategoryBook'>
-               <h2 id="headerTitle1">Book List</h2> 
+               <h2 id="headerTitle1">User List</h2> 
                <br></br><br></br>
               
 
@@ -158,47 +179,47 @@ export default class HomepageRegisteredUser extends Component {
                                <th className='back2'>Title</th>
                                <th className='back2'>Image</th>
                                <th className='back2'>Category</th>
-                               <th className='back2'>Published Date </th>
+                               <th className='back2'>Published Year </th>
                                <th className='back2'>Number of Copies</th>
-                               <th className='back2'>Action1</th>
-                               <th className='back2'>Action2</th>
+                               <th className='back2'>Update</th>
+                               <th className='back2'>Delete</th>
+                               
                            </tr>
                            
                        </thead>
                        <tbody>
                            {
-                               this.state.books.map(
-                                   book =>
-                                   <tr key={book.id}>
-                                       <td  className='back1'>{book.title}</td>
-                                       <td className='back1'><img src={book.imageOfVideo} className='viewAllImage'></img></td> 
-                                       <td  className='back1'>{book.category}</td>
-                                       <td  className='back1'>{book.year}</td>
-                                       <td  className='back1'>{book.numberOfCopies}</td>
-                                       <td  className='back1'>
+                               this.state.videos.map(
+                                   video =>
+                                   <tr key={video.id}>
+                                       <td className='back1'>{video.username}</td>
+                                       <td className='back1'><img src={video.imageOfVideo} className='viewAllImage'></img></td> 
+                                       <td className='back1'>{video.username}</td>
+                                       <td className='back1'>{video.username}</td>
+                                       <td className='back1'>{video.username}</td>
+                                       <td className='back1'>
                                        <button className="buttonVG"
-              onClick={ () => this.DeleteBook(book.id)} 
+               onClick={ () => this.DeleteVideo(video.id)} 
               disabled={this.state.loading}
             >
               {this.state.loading && (
                 <span className="spinner-border spinner-border-sm"></span>
               )}
-              
              <span>Update</span>
             </button>
             </td>
-            <td className='back1'>
+                                       <td className='back1'>
                                        <button className="buttonVR"
-              onClick={ () => this.DeleteBook(book.id)} 
+               onClick={ () => this.DeleteVideo(video.id)} 
               disabled={this.state.loading}
             >
               {this.state.loading && (
                 <span className="spinner-border spinner-border-sm"></span>
               )}
-              
              <span>Delete</span>
             </button>
             </td>
+            
                                        
                                    </tr>
                                )

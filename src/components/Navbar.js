@@ -24,7 +24,6 @@ const [roles,setRole]=useState(currentUser.roles);
 const [image,setImage]=useState(currentUser.profileImage); 
 const [age,setAge]=useState(currentUser.id);
   const logout = () => {
-    notify();
 
     window.localStorage.clear();
     window.location.href = "/login";
@@ -151,14 +150,14 @@ if (roles == "ROLE_ADMIN") {
 
   return (
 
-    <Link to='/aboutProfile' className='nav-links' onClick={closeMobileMenu}>
-                     Payments
+    <Link to='/viewAlluserDetails' className='nav-links' onClick={closeMobileMenu}>
+                     Customers
                       </Link>
   )
 }  else {
   return (
 
-    <Link to='/aboutProfile' className='nav-links' onClick={closeMobileMenu}>
+    <Link to='/viewAllPayments' className='nav-links' onClick={closeMobileMenu}>
                     Payments
                       </Link>
   )
@@ -167,27 +166,7 @@ if (roles == "ROLE_ADMIN") {
                       
                       </Link>
                   </li>
-                  <li className='nav-item'>
-                  {(() => {
-
-if (roles == "ROLE_ADMIN") {
-
-  return (
-
-    <Link to='/aboutProfile' className='nav-links' onClick={closeMobileMenu}>
-                     Lendings
-                      </Link>
-  )
-}  else {
-  return (
-
-    <Link to='/aboutProfile' className='nav-links' onClick={closeMobileMenu}>
-                    Lendings
-                      </Link>
-  )
-}
-})()}
-                  </li>
+                  
                  
                   <li className='nav-item'>
                   {(() => {

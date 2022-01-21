@@ -164,21 +164,23 @@ export default class HomepageRegisteredUser extends Component {
     render() {          
             return (
                 
-                <div>
+                <div className='bodyOfCategoryBook'>
                <h2 id="headerTitle1">Video List</h2> 
                <br></br><br></br>
               
 
             <br></br>
                <div className="rowV">
-                   <table className="table table-striped table-boordered">
+                   <table >
                        <thead>
                            <tr>
-                               <th>Title</th>
-                               <th>Category</th>
-                               <th>Published Year </th>
-                               <th>Number of Copies</th>
-                               <th>Action</th>
+                               <th className='back2'>Title</th>
+                               <th className='back2'>Image</th>
+                               <th className='back2'>Category</th>
+                               <th className='back2'>Published Year </th>
+                               <th className='back2'>Number of Copies</th>
+                               <th className='back2'>Update</th>
+                               <th className='back2'>Delete</th>
                                
                            </tr>
                            
@@ -188,12 +190,24 @@ export default class HomepageRegisteredUser extends Component {
                                this.state.videos.map(
                                    video =>
                                    <tr key={video.id}>
-                                       <td>{video.title}</td>
-                                       <td>{video.category}</td>
-                                       <td>{video.year}</td>
-                                       <td>{video.numberOfCopies}</td>
-                                       <td>
-                                       <button className="buttonV"
+                                       <td className='back1'>{video.title}</td>
+                                       <td className='back1'><img src={video.imageOfVideo} className='viewAllImage'></img></td> 
+                                       <td className='back1'>{video.category}</td>
+                                       <td className='back1'>{video.year}</td>
+                                       <td className='back1'>{video.numberOfCopies}</td>
+                                       <td className='back1'>
+                                       <button className="buttonVG"
+               onClick={ () => this.DeleteVideo(video.id)} 
+              disabled={this.state.loading}
+            >
+              {this.state.loading && (
+                <span className="spinner-border spinner-border-sm"></span>
+              )}
+             <span>Update</span>
+            </button>
+            </td>
+                                       <td className='back1'>
+                                       <button className="buttonVR"
                onClick={ () => this.DeleteVideo(video.id)} 
               disabled={this.state.loading}
             >

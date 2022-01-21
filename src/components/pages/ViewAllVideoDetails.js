@@ -118,13 +118,14 @@ updateBook(e){
 
     render() {
         return (
+     
             <div className='bodyOfCategoryBook'>
                <h2 id="headerTitle1"><b>Handle Videos</b></h2> 
                <br></br><br></br>
                <div className='cards__items13 '>
                  <div>
                <Card style={{ width: '12rem',backgroundColor:'rgb(119, 175, 212)' }}>
-      <Card.Img variant="top" src="https://cdn.everydaypower.com/wp-content/uploads/2018/03/Books-for-Leaders-1000x600.jpg" />
+      <Card.Img variant="top" src="https://i.ebayimg.com/images/g/pK4AAOSwRs1eLHuN/s-l640.jpg" />
       <Card.Body>
         <Button variant="primary" onClick={this.addNewBook}>Add New Video</Button>
       </Card.Body>
@@ -132,7 +133,7 @@ updateBook(e){
     </div>
     <div>
                <Card style={{ width: '12rem',backgroundColor:'rgb(119, 175, 212)'  }}>
-      <Card.Img variant="top" src="https://cdn.everydaypower.com/wp-content/uploads/2018/03/Books-for-Leaders-1000x600.jpg" />
+      <Card.Img variant="top" src="https://i.ebayimg.com/images/g/pK4AAOSwRs1eLHuN/s-l640.jpg" />
       <Card.Body>
         <Button variant="primary" onClick={this.onlineBookView}>Online Video View</Button>
       </Card.Body>
@@ -140,7 +141,7 @@ updateBook(e){
     </div>
     <div>
                <Card style={{ width: '12rem' ,backgroundColor:'rgb(119, 175, 212)' }}>
-      <Card.Img variant="top" src="https://cdn.everydaypower.com/wp-content/uploads/2018/03/Books-for-Leaders-1000x600.jpg" />
+      <Card.Img variant="top" src="https://i.ebayimg.com/images/g/pK4AAOSwRs1eLHuN/s-l640.jpg" />
       <Card.Body>
         
         
@@ -208,6 +209,7 @@ updateBook(e){
                                        <button className="buttonVG"
               onClick={ () => this.updateBook(book.id)} 
               disabled={this.state.loading} 
+             
             >
               {this.state.loading && (
                 <span className="spinner-border spinner-border-sm"></span>
@@ -234,7 +236,30 @@ updateBook(e){
                            }
                        </tbody>
                    </table>
+                   <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+  Launch demo modal
+</button>
 
+
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
                </div>
             </div>
         );

@@ -13,6 +13,7 @@ import {toast} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { Card, Button } from 'react-bootstrap';
 import { red } from '@material-ui/core/colors';
+import { left } from 'glamor';
 toast.configure()
 
 
@@ -36,6 +37,8 @@ export default class ViewSelectedBook extends Component {
   constructor(props) {
     super(props);
     this.handleLogin = this.handleLogin.bind(this);
+    this.handleLogin2 = this.handleLogin2.bind(this);
+    this.handleLogin3 = this.handleLogin3.bind(this);
     this.onChangeComment = this.onChangeComment.bind(this);
    this.handleSearch=this.handleSearch.bind(this);
     this.handleComment=this.handleComment.bind(this);
@@ -185,7 +188,113 @@ addOrder(e){
             successful: false,
             message1: resMessage
           });
+          toast.error(this.state.message1);
+        }
+        
+      );
+    } else {
+      this.setState({
+        loading: false
+      });
+    }
+  }
+
+  handleLogin2(e) {
+    e.preventDefault();
+
+    this.setState({
+      message1: "",
+      loading: true
+    });
+
+    this.form.validateAll();
+
+    if (this.checkBtn.context._errors.length === 0) {
+      let user= AuthService.getCurrentUser();
+      AuthService. addNewBookReservationOnline(
+        this.state.description,
+        user.email,
+        user.id,
+        this.state.id,
+        this.state.image
+        
+        
+      ).then(
+        
+        response => {
+          this.setState({
+            message1: response.data.message,
+            successful: true
+          });
+        this.notify();
+        },
+        error => {
+          const resMessage =
+            (error.response &&
+              error.response.data &&
+              error.response.data.message) ||
+            error.message ||
+            error.toString();
+            
+
+          this.setState({
+            successful: false,
+            message1: resMessage
+          });
+          toast.error(this.state.message1);
+        }
+        
+      );
+    } else {
+      this.setState({
+        loading: false
+      });
+    }
+  }
+
+  handleLogin3(e) {
+    e.preventDefault();
+
+    this.setState({
+      message1: "",
+      loading: true
+    });
+
+    this.form.validateAll();
+
+    if (this.checkBtn.context._errors.length === 0) {
+      let user= AuthService.getCurrentUser();
+      AuthService.  addNewBookOrder(
+        this.state.description,
+        user.email,
+        user.id,
+        this.state.id,
+        this.state.image
+        
+        
+      ).then(
+        
+        response => {
+          this.setState({
+            message1: response.data.message,
+            successful: true
+          });
           this.notify();
+        },
+        error => {
+          const resMessage =
+            (error.response &&
+              error.response.data &&
+              error.response.data.message) ||
+            error.message ||
+            error.toString();
+            
+
+          this.setState({
+            successful: false,
+            message1: resMessage
+          });
+          toast.error(this.state.message1);
         }
         
       );
@@ -199,7 +308,7 @@ addOrder(e){
   notify (){
  
     // Calling toast method by passing string
-    toast(this.state.message1)
+    toast.success(this.state.message1)
 }
 
 _showMessage = (bool) => {
@@ -208,7 +317,7 @@ _showMessage = (bool) => {
   });
 }
 deleteComment(id){
-if(this.state.role =='USER_ROLE'){
+if(this.state.role =='ROLE_USER'){
   AuthService.deleteCommentByID(id,this.state.userID);
 }
 else{
@@ -259,20 +368,69 @@ render() {
              <br></br>
                 <p className="description">Book Excerpt : </p>
                 <p className="paragraph">{this.state.bookExcerpt}</p>
-                
-<div className="rowBook2">  
-         <p>Depend on your user type, you can lend this book for a given period, If you want to lend this book click on the bellow button</p>
-         <p>You can order this book via our company, If you want to order this book click on the bellow button</p>
-         <p>You can order this book via our company, If you want to order this book click on the bellow button</p>
-         <Button className='lendingButton' onClick={this.handleLogin}>LEND</Button>
-                  <button className='orderButton' onClick={this.addOrder}>ORDER</button>
-                  <button className='orderButton' onClick={this.handleSearch}>ADVANCE lEND</button>
-                  </div>
-                  <br></br>
-                  <br></br>
-                <span className='form-input-login'>
-              This book is available online<br></br> if you want this book to read, Click below link  <a href='registerUserselection'>here</a>
-            </span>
+
+                <table>
+                       <thead>
+                           <tr>
+                               <th className='back2' >Depend on your user type, you can lend this book for a given period, If you want to lend this book click on the bellow button</th>
+                               <th  className='back2'>You can order this book via our website, If you want to order this book click on the bellow button</th>
+                               <th  className='back2'>You can read this book onlie, If you want to lend this book click on the bellow button</th>
+                               <th  className='back2'>If this is not available, you can go to advance lending this book for a given period, If you want to lend this book click on the bellow button </th>
+                            
+                           </tr>
+                           
+                       </thead>
+                       <tbody>
+                           
+                                   <tr >
+                                       
+                                       <td className='back1'> <button className="buttonVG"
+              onClick={this.handleLogin}
+              disabled={this.state.loading} 
+             
+            >
+            
+              
+             <span>LEND</span>
+            </button></td>
+                                       <td className='back1'> <button className="buttonVG"
+              onClick={this.handleLogin2}
+              disabled={this.state.loading} 
+             
+            >
+             
+              
+             <span>ONLINE BOOK</span>
+            </button></td>
+                                       <td className='back1'>
+                                       <button className="buttonVG"
+              onClick={this.handleLogin3}
+              disabled={this.state.loading} 
+             
+            >
+             
+              
+             <span>ORDER BOOK</span>
+            </button>
+            </td>
+                                       <td className='back1'>
+                                       <button className="buttonVR"
+            
+              disabled={this.state.loading}
+            >
+        
+              
+              
+             <span>ADVANCE LEND</span>
+            </button>
+            </td>
+                                       
+                                   </tr>
+                               
+                           
+                       </tbody>
+                   </table>
+ 
                
                 <CheckButton
                   style={{ display: "none" }}
@@ -285,7 +443,7 @@ render() {
                 <br></br>
                
               </Form>
-             
+             <h1>Give your feedbacks........</h1>
              <Form
              
              onSubmit={this.handleComment}
@@ -304,13 +462,13 @@ render() {
              />
             
            </div>
-           <button className="commentButton" >Post</button>
+           <button className="commentButton" >POST</button>
            </Form>
            <div className="rowV">
-                   <table className="table table-striped table-boordered">
+                   <table >
                        <thead>
                            <tr>
-                               <th>View All Comments..</th>
+                               <th style={{ backgroundColor:'#77b5fe',alignContent:'center',color:'white',fontSize:'20px' }}>View All Comments...</th>
                                
                            </tr>
                            
@@ -321,13 +479,13 @@ render() {
                                this.state.comments.map(
                                    comment1 =>
                                    <tr key={comment1.commentID}>
-                                       <td>{comment1.username}:{comment1.commentDetails}{comment1.commentID}
+                                       <td className='back1'>{comment1.username}:{comment1.commentDetails}
                                        
-                                       <button className='commentReply'><img src="https://image.flaticon.com/icons/png/512/61/61848.png" className='deleteComment' onClick={this._showMessage.bind(null, true)}>
+                                       <button className='commentReply' style={{ backgroundColor:'red',borderBlockColor:'white',borderColor:'white'}} onClick={() => this.deleteComment(comment1.commentID)}><img src="https://image.flaticon.com/icons/png/512/61/61848.png" className='deleteComment' onClick={this._showMessage.bind(null, true)}>
                                        </img></button>
                            
-                                       <button className='commentDelete'onClick={() => this.deleteComment(comment1.commentID)}><img src="https://cdn1.iconfinder.com/data/icons/messaging-3/48/Reply-512.png" className='deleteComment' ></img></button></td> 
-                                       <br></br>
+                                       
+                       </td>
                                       
                                    </tr>
                                   

@@ -129,8 +129,8 @@
   .searchTextField{
     position: relative;
     top: 28%;
-    left: 15%;
-    width: 800px;
+    
+    width: 200px;
     height: 50px;
     outline:none;
     box-sizing: border-box;

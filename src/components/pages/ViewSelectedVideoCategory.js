@@ -42,9 +42,10 @@ class ListBooks extends Component {
       }
 
 componentDidMount(){
-    authService.viewSelectedCategoryVideos(this.state.category).then((res) => {
-          this.setState({books:res.data});
-    });
+  let user = authService.getCurrentUser(); 
+  authService.RhomePageVideosRomanceUser(user.id).then((res) => {
+    this.setState({ books:res.data});
+  });
 }
 
 DeleteBook(id){
@@ -109,17 +110,18 @@ viewSelectedBookDetails(id){
     render() {
         return (
             <div className='bodyOfCategoryBook'>
-               <h2 id="headerTitle1"><b>Handle Books</b></h2> 
+              <br></br>
+               <h2 id="headerTitle1"><b>{this.state.category} Videos</b></h2> 
                <br></br><br></br>
                <ul className='cards__items14 '>
                  <div className='cards__items14 '> 
                  {
                                this.state.books.map(
                                    book =>
-               <Card style={{ width: '18rem', backgroundColor:'rgb(74, 165, 201)' }}>
+               <Card style={{  width: '16rem',height:'30rem', backgroundColor:'#77b5fe' }}>
       <Card.Img variant="top" className='cardImage12' src={book.imageOfVideo} />
       <Card.Body>
-          <p><b>{book.title}</b></p>
+          <p style={{ fontSize:'20px',color:'#f0f8ff'}}><b>{book.title}</b></p>
           <p style={{ color:'black' }}>{book.author}</p>
           <p style={{ color:'black' }}>{book.year}</p>
           <p style={{ color:'black' }}>{book.category}</p>

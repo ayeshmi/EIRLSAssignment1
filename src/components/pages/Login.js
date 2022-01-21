@@ -4,10 +4,10 @@ import AuthService from '../services/auth.service';
 import Form from "react-validation/build/form";
 import Input from "react-validation/build/input";
 import CheckButton from "react-validation/build/button";
+import { css } from "glamor";
 import {toast} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-toast.configure()
-
+toast.configure();
 
 const required = value => {
   if (!value) {
@@ -76,13 +76,13 @@ export default class Login extends Component {
                   loading: false,
                   message: "Username or Password is incorrect, Check again"
                 });
-                this.notify();
+                toast.success(this.state.message);
               }else{
                 this.setState({
                   loading: false,
                   message: resMessage
                 });
-                this.notify();
+                toast.error(this.state.message);
               }
           
         }
@@ -94,11 +94,7 @@ export default class Login extends Component {
     }
   }
 
-  notify (){
- 
-    // Calling toast method by passing string
-    toast(this.state.message)
-}
+
 
 render() {
   

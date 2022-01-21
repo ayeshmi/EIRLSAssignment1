@@ -123,7 +123,13 @@ export default class Regsiter extends Component {
             successful: false,
             message: resMessage
           });
-          this.notify();
+          if(resMessage=="Request failed with status code 400"){
+            this.setState({
+              loading: false,
+              message: "Incorrect email format!"
+            }
+          )};
+          toast.error(this.state.message);
         }
         
       );
@@ -136,7 +142,7 @@ export default class Regsiter extends Component {
   notify (){
  
     // Calling toast method by passing string
-    toast(this.state.message)
+    toast.success(this.state.message)
 }
 
 render() {
@@ -207,10 +213,10 @@ render() {
              
 
 
-          <br></br>
           
-          
+         <br></br>
           <div className="form-group">
+      
             <button class="row"
               className="btn btn-primary btn-block"
               disabled={this.state.loading}
@@ -220,7 +226,8 @@ render() {
               )}
              <span>Regsiter</span>
             </button>
-           
+            <br></br>
+            
             <br></br>
             <span className='form-input-login'>
         Already have an account? Login <a href='login'>here</a>

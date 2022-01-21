@@ -396,13 +396,6 @@ render() {
             </button>
             <br></br>
             <br></br>
-           
-            <Link to={'/uploadVideo/'+this.state.title} className='nav-links'>
-                          Upload video here
-                      </Link>
-                      <Link to={'/addVideoImage/'+this.state.title} className='nav-links'>
-                          Upload video image here
-                      </Link>
           </div>
 <br></br>
         

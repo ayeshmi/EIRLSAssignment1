@@ -48,7 +48,8 @@ export default class ContactUs extends Component {
       cvv:"",
       loading: false,
       message: "",
-      email:this.props.match.params.email
+      email:this.props.match.params.email,
+      
     };
   }
 
@@ -83,19 +84,19 @@ export default class ContactUs extends Component {
 
   onChangecardNumber(e) {
     this.setState({
-      cardType: e.target.value
+      cardNumber: e.target.value
     });
   }
 
   onChangeExpiryDate(e) {
     this.setState({
-      cardType: e.target.value
+      expiryDate: e.target.value
     });
   }
 
   onChangeCvv(e) {
     this.setState({
-      cardType: e.target.value
+     cvv: e.target.value
     });
   }
 
@@ -128,7 +129,7 @@ export default class ContactUs extends Component {
             message: response.data.message,
             successful: true
           });
-          this.notify();
+          toast.success(this.state.message);
         },
         error => {
           const resMessage =
@@ -142,30 +143,32 @@ export default class ContactUs extends Component {
             loading: false,
             message: resMessage
           });
+          toast.error(this.state.message);
         }
       );
     } else {
       this.setState({
         loading: false
       });
+      this.notify();
     }
   }
 
 notify (){
  
     // Calling toast method by passing string
-    toast(this.state.message)
+    toast.success(this.state.message)
 }
 
 
 render() {
-  
+ 
   return (
     
     <div >
      
     <div className="form3"> 
-        <Form className="row"
+        <Form className="row1234"
           onSubmit={this.handleLogin}
           ref={c => {
             this.form = c;
@@ -191,7 +194,7 @@ render() {
             <label htmlFor="email">Price (Rs.)</label>
             <Input
               
-              placeholder="Enter your price"
+              placeholder="Enter payment price"
               type="text"
               name="price"
               value={this.state.price}
@@ -236,8 +239,8 @@ render() {
              <Input
             
             placeholder="4569 7589 7596 7581"
-              type="text"
-              
+            type="number"
+              size="2"
               name="cardNumber"
               value={this.state.cardNumber}
               onChange={this.onChangecardNumber}
@@ -261,7 +264,7 @@ render() {
             
             placeholder="758"
               type="number"
-              
+              size="3"
               name="cvv"
               value={this.state.cvv}
               onChange={this.onChangeCvv}

@@ -248,7 +248,7 @@ function App() {
                       )}
                       <br></br>
                       <br></br>
-                      <a type="button" className="paymentButton"><Link to={`/addPayment/${email}`}>My route</Link></a>
+                      <a ><Link to={`/addPayment/${email}`}>Pay Registration Fee</Link></a>
                     </Grid>
                   </Grid>
                 </>

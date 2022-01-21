@@ -12,7 +12,7 @@ html{
 }
 
 .form3{
-  
+  align-content: center;
   min-width: 850px;
   min-height: 500px;
   max-height: 1000px;
@@ -100,7 +100,7 @@ label{
   opacity: 0.8;
 }
 
-.row{
+.row1234{
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -109,7 +109,7 @@ label{
     
   }
   
-  .row input{
+  .row1234 input{
     width: 400px;
     box-sizing: border-box;
     border: none;
@@ -120,29 +120,29 @@ label{
     transition: box-shadow 0.2s ease-in;
   }
   
-  .row input:focus{
+  .row1234 input:focus{
      box-shadow: inset 0px -3px 0px 0px rgba(34,193,195,0.7);
      outline: none;
   }
   
-  .row input::-webkit-input-placeholder{
+  .row1234 input::-webkit-input-placeholder{
     opacity: 1;
     transition: opacity 0.25s ease-out;
   }
   
-  .row input:hover::-webkit-input-placeholder,
-  .row input:focus::-webkit-input-placeholder{
+  .row1234 input:hover::-webkit-input-placeholder,
+  .row1234 input:focus::-webkit-input-placeholder{
     opacity: 0;
   }
   
-  .row label{
+  .row1234 label{
     align-self: start;
     padding-left: 4.5rem;
     padding-bottom: 0.5rem;
     color: rgba(12, 5, 5, 0.9);
   }
   
-  .row button{
+  .row1234 button{
     border-radius: 25px;
     width: 300px;
     height: 40px;
@@ -156,7 +156,7 @@ label{
     transition: opacity 0.25s ease-out;
   }
   
-  .row button:hover{
+  .row1234 button:hover{
     opacity: 0.8;
   }
 

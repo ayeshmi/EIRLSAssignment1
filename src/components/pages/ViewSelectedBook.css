@@ -101,7 +101,7 @@
 }
 .paragraph{
   width: 800px;
-  height: 300px;
+  height: 150px;
   color:gray;
 }
 .commentReply{
@@ -113,6 +113,7 @@ margin-left: 100px;
 .deleteComment{
   width: 20px;
   height: 20px;
+  background-color: red;
 }
 .commentDelete{
   position: absolute;
@@ -138,4 +139,8 @@ margin-left: 100px;
 .commentButton12{
   background: rgb(170, 27, 27);
   background: linear-gradient(135deg, rgba(241, 33, 68, 0.815) 0%,     rgb(218, 75, 75) 100%);
+}
+.vertical{
+  border-left: 5px solid black;
+            height: 80px;
 }

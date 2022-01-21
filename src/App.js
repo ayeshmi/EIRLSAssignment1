@@ -31,6 +31,7 @@ import ViewSearchResultsBook from './components/pages/DisplaySearchResults';
 import ViewSearchResultsVideo from './components/pages/DisplaySearchResultsVideo';
 import ViewSearchResultsVN from './components/pages/viewAllSearchedDetailsVB';
 import ViewSearchResultsVV from './components/pages/viewAllSearchedDetailsVV';
+import ViewSearchResultsUser from './components/pages/viewAllSearchedDetailsUsers';
 import UpdateProfileDetails from './components/pages/UpdateProfileDetails';
 import AddProfilePicture from './components/pages/AddProfilePicture';
 import AddPayment from './components/pages/Payment';
@@ -60,7 +61,12 @@ import OrderPageOfUser from './components/pages/OrderPageOfUser';
 import ViewAllOnlineVideoView from './components/pages/ViewAllOnlineVideoView';
 import ViewAllVideoCategory from './components/pages/ViewallVideoCategory';
 import viewSelectedCategoryVideos from './components/pages/ViewSelectedVideoCategory';
+
 import ViewVideoReservationOngoing from './components/pages/OngoingReservationVideo';
+import ViewAllReservationDetails from './components/pages/ViewAllReservationDetails';
+import OnlineBookWatch from './components/pages/OnlineBookWatch';
+import OnlineVideoWatch from './components/pages/OnlineVideoWatch';
+
 
 
 function App() {
@@ -103,7 +109,7 @@ function App() {
       <Route path="/updateProfileDetails" exact component={UpdateProfileDetails} />
       <Route path="/rating" exact component={Rating} />
       <Route path="/viewBookReservationCart" exact component={ViewBookReservationCart} />
-      <Route path="/lendingPayment/:email" exact component={LendingPayments} />
+      <Route path="/lendingPayment/:email/:price" exact component={LendingPayments} />
       <Route path="/viewBookReservationOngoing" exact component={ViewBookReservationOngoing} />
       <Route path="/viewVideoReservationOngoing" exact component={ViewVideoReservationOngoing} />
       <Route path="/viewAllBookReservation" exact component={ViewAllBookReservation} />
@@ -128,6 +134,10 @@ function App() {
       <Route path="/addOnlineBook/:title" exact component={AddOnlineBook} />
       <Route path="/updateBookDetails" exact component={UpdateBookDetails} />
       <Route path="/orderPageOfUser" exact component={OrderPageOfUser} />
+      <Route path="/viewAllReservationDetails" exact component={ViewAllReservationDetails} />
+      <Route path="/onlineBookWatch" exact component={OnlineBookWatch} />
+      <Route path="/onlineVideoWatch" exact component={ OnlineVideoWatch} />
+      <Route path="/searchUser/:serach" exact component={ ViewSearchResultsUser} />
     </Switch>
   </Router>
   </>

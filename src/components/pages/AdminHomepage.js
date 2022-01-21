@@ -59,7 +59,7 @@ export default class AdminHomepage extends Component {
        notify (){
  
         // Calling toast method by passing string
-        toast("Successfully login!")
+        toast.success('Welcome to Home page!')
     }
 
 

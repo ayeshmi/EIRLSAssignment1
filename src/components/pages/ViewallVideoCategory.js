@@ -106,7 +106,7 @@ getSelectedCategory(name){
                <ul className='cards__items14 '>
                  <div>
                <Card style={{ width: '17rem', backgroundColor:'rgb(74, 165, 201)' }}>
-      <Card.Img variant="top" className='cardImage' src="https://wallup.net/wp-content/uploads/2019/09/748406-archer-animation-series-cartoon-action-adventure-comedy-spy-crime.jpg" />
+      <Card.Img variant="top" className='cardImage' src="https://static3.srcdn.com/wordpress/wp-content/uploads/2020/02/action-adventure-movies-featured.jpg" />
       <Card.Body>
         <Button variant="primary" onClick={()=>this.getSelectedCategory('Romance')}>Action and Adventure</Button>
       </Card.Body>
@@ -114,7 +114,7 @@ getSelectedCategory(name){
     </div>
     <div>
                <Card style={{ width: '17rem', backgroundColor:'rgb(74, 165, 201)' }}>
-      <Card.Img variant="top" className='cardImage' src="http://4.bp.blogspot.com/-Ao53w2ES90U/TWb9uDtmtQI/AAAAAAAADHE/QfKLCTeZ4oM/s1600/Collection5.jpg" />
+      <Card.Img variant="top" className='cardImage' src="https://i.ytimg.com/vi/tDqrV_hzDTk/maxresdefault.jpg" />
       <Card.Body>
         <Button variant="primary">Anthology</Button>
       </Card.Body>
@@ -122,7 +122,7 @@ getSelectedCategory(name){
     </div>
     <div>
                <Card style={{ width: '17rem', backgroundColor:'rgb(74, 165, 201)' }}>
-      <Card.Img variant="top" className='cardImage' src="https://www.amreading.com/wp-content/uploads/Classic_Books-1-901x676.jpg" />
+      <Card.Img variant="top" className='cardImage' src="https://www.verblio.com/wp-content/uploads/2018/08/old-movie-blog-topics.jpg" />
       <Card.Body>
         
         
@@ -132,11 +132,11 @@ getSelectedCategory(name){
     </div>
     <div>
     <Card style={{ width: '17rem', backgroundColor:'rgb(74, 165, 201)' }}>
-      <Card.Img variant="top" className='cardImage' src="https://www.bestanimationstudios.com/images/services/illus/graphic-novel-illustration/graphic-novel-illustration06.jpg" />
+      <Card.Img variant="top" className='cardImage' src="https://gentlegamer.de/wp-content/uploads/2018/10/ee16eb3a1564e5f9a5e5d7f9af297aff._SX1280_QL80_TTD_.jpg" />
       <Card.Body>
         
         
-        <Button variant="primary">Comic and Graphic Novels</Button>
+        <Button variant="primary">Comic and Graphic Movies</Button>
       </Card.Body>
     </Card>
     </div>
@@ -145,7 +145,7 @@ getSelectedCategory(name){
         <ul className='cards__items14 '>
                  <div>
                <Card style={{ width: '17rem', backgroundColor:'rgb(74, 165, 201)' }}>
-      <Card.Img variant="top" className='cardImage' src="https://3.bp.blogspot.com/-bPySRdL9nLM/WYrlSjKEhEI/AAAAAAAADII/plhRT2qd4OAVseVJrH2SzxmtCvB89gnTwCLcBGAs/w1200-h630-p-k-no-nu/A%2BKnight%2527s%2BVow%2BAMAZON%2BLARGE.jpg" />
+      <Card.Img variant="top" className='cardImage' src="https://static3.srcdn.com/wordpress/wp-content/uploads/2020/05/pjimage-64.jpg" />
       <Card.Body>
         <Button variant="primary" onClick={this.addNewBook}>Romance</Button>
       </Card.Body>
@@ -153,9 +153,9 @@ getSelectedCategory(name){
     </div>
     <div>
                <Card style={{ width: '17rem', backgroundColor:'rgb(74, 165, 201)' }}>
-      <Card.Img variant="top" className='cardImage' src="https://cdn.everydaypower.com/wp-content/uploads/2018/03/Books-for-Leaders-1000x600.jpg" />
+      <Card.Img variant="top" className='cardImage' src="https://www.deadgoodbooks.co.uk/wp-content/uploads/2019/11/Best-crime-movies-of-2019.jpg" />
       <Card.Body>
-        <Button variant="primary">Online Book View</Button>
+        <Button variant="primary">Crime and Detective</Button>
       </Card.Body>
     </Card>
     </div>
@@ -165,7 +165,7 @@ getSelectedCategory(name){
       <Card.Body>
         
         
-        <Button variant="primary">View All Categories</Button>
+        <Button variant="primary">Crime and Detective</Button>
       </Card.Body>
     </Card>
     </div>

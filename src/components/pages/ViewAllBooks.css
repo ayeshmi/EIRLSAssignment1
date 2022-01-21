@@ -30,7 +30,7 @@
   }
 
    .buttonVG{
-    border-radius: 25px;
+    border-radius: 10px;
     width: 80%;
     height: 30px;
     font-size: 1.3rem;
@@ -45,7 +45,7 @@
   }
 
   .buttonVR{
-    border-radius: 25px;
+    border-radius: 10px;
     width: 80%;
     height: 30px;
     font-size: 1.3rem;

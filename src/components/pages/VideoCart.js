@@ -48,7 +48,7 @@ handleLogin(e) {
     
     authService.confirmVideoCart(this.state.email, this.state.price).then(
         () => {
-          this.props.history.push(`lendingPayment/${this.state.email}`);
+          this.props.history.push(`lendingPayment/${this.state.email}/${this.state.price}`);
           window.location.reload();
         },
         error => {
@@ -125,7 +125,7 @@ handleLogin(e) {
                     this.state.reservations.map(
                 reservation =>
           <div class=" cards__items12 "  onClick={ () => this.editEmployee(reservation.id)}>
-            <Card style={{ width: '18rem', background: 'rgb(141, 190, 230)' }}>
+            <Card style={{ width: '16rem', background: 'rgb(141, 190, 230)' }}>
       <Card.Img variant="top" className='cardImage12' src={reservation.image} />
       <Card.Body>
           <p style={{ color:'white',fontSize:'22px' }}><b>{reservation.videoName}</b></p>

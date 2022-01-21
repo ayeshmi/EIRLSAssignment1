@@ -18,34 +18,14 @@ class ViewAllContactUs extends Component {
         this.props.history.push(`/replyContactUsRequest/${id}`);
     }
 
-    DeleteContact(id){
-        authService.deleteContactUsDetailsById(id).then(
-        
-            response => {
-              this.setState({
-                message: response.data.message,
-                successful: true
-              });
-            this.notify();
-            },
-            error => {
-              const resMessage =
-                (error.response &&
-                  error.response.data &&
-                  error.response.data.message) ||
-                error.message ||
-                error.toString();
-                
     
-              this.setState({
-                successful: false,
-                message: resMessage
-              });
-              this.notify();
-            }
-            
-          );
-    }
+handleLogin1(price) {
+ 
+  let user = authService.getCurrentUser(); 
+        this.props.history.push(`lendingPayment/${user.email}/${price}`);
+        window.location.reload();
+
+}
 
 componentDidMount(){
     let user = authService.getCurrentUser(); 
@@ -63,16 +43,16 @@ notify (){
     render() {
         return (
             <div>
-               <h2 id="headerTitle1">ContactUs Details</h2> 
+               <h2 id="headerTitle1">Unpaid Payments.</h2> 
             <br></br>
                <div className="rowV">
-                   <table className="table table-striped table-boordered">
+                   <table >
                        <thead>
                            <tr>
-                               <th>Reason</th>
-                               <th>Price (Rs.)</th>
-                               <th>Status</th>
-                               <th>Pay</th>
+                               <th className='back2'>Reason</th>
+                               <th className='back2'>Price (Rs.)</th>
+                               <th className='back2'>Status</th>
+                               <th className='back2'>Pay</th>
                                
                            </tr>
                            
@@ -82,18 +62,16 @@ notify (){
                                this.state.ContactUsDetails.map(
                                    detail =>
                                    <tr key={detail.id}>
-                                       <td>{detail.reason}</td>
-                                       <td>{detail.price}</td>
-                                       <td>{detail.paymentStatus}</td>
+                                       <td className='back1'>{detail.reason}</td>
+                                       <td className='back1'>{detail.price}</td>
+                                       <td className='back1'>{detail.paymentStatus}</td>
      
-            <td>
-            <button className="buttonV"
-              onClick={ () => this.DeleteContact(detail.id)} 
-              disabled={this.state.loading}
+            <td className='back1'>
+            <button className="buttonVG"
+              onClick={ () => this.handleLogin1(detail.price)} 
+              
             >
-              {this.state.loading && (
-                <span className="spinner-border spinner-border-sm"></span>
-              )}
+             
              <span>Pay</span>
             </button>
             </td>

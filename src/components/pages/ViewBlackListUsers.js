@@ -23,13 +23,13 @@ componentDidMount(){
                <h2 id="headerTitle1">User List</h2> 
             <br></br>
                <div className="rowV">
-                   <table className="table table-striped table-boordered">
+                   <table >
                        <thead>
                            <tr>
-                               <th>Email</th>
-                               <th>Username</th>
-                               <th>Date Of Birth</th>
-                               <th>Action</th>
+                               <th className='back2'>Email</th>
+                               <th className='back2'>Username</th>
+                               <th className='back2'>Date Of Birth</th>
+                               <th className='back2'> Action</th>
                            </tr>
                            
                        </thead>
@@ -38,10 +38,10 @@ componentDidMount(){
                                this.state.employees.map(
                                    employee =>
                                    <tr key={employee.id}>
-                                       <td>{employee.email}</td>
-                                       <td>{employee.username}</td>
-                                       <td>{employee.dateOfBirth}</td>
-                                       <td>
+                                       <td className='back1'>{employee.email}</td>
+                                       <td className='back1'>{employee.username}</td>
+                                       <td className='back1'>{employee.dateOfBirth}</td>
+                                       <td className='back1'>
                                        <button className="buttonV"
               
               disabled={this.state.loading}
