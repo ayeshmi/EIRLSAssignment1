@@ -81,6 +81,10 @@ getVideoByID(videoId){
       return axios.post(API_URL+"addVideo",{category,title,date,description,ageLimitation,author,year,numberOfCopies,price});
      }
 
+     addVideoCopyDetails(category,date,description,title,ageLimitation,author,year,numberOfCopies,price){
+      return axios.post(API_URL+"addVideoCopy",{category,title,date,description,ageLimitation,author,year,numberOfCopies,price});
+     }
+
      deleteContactUsDetailsById(id){
       return axios.delete(API_URL+"deleteContactUs/"+id);
      }
@@ -95,6 +99,19 @@ getVideoByID(videoId){
 
   addNewBook(category,title,author,inumber,numberOfCopies,date,bookDescription,bookExcerpt,price,year,numberOfPages){
     return axios.post(API_URL + "addbook", {
+     category,
+     title,
+     author,
+     inumber,
+     numberOfCopies,
+     date,
+     bookDescription,
+     bookExcerpt,price,year,numberOfPages
+    });
+  }
+
+  addNewBookCopy(category,title,author,inumber,numberOfCopies,date,bookDescription,bookExcerpt,price,year,numberOfPages){
+    return axios.post(API_URL + "addBookCopy", {
      category,
      title,
      author,
@@ -248,6 +265,10 @@ getVideoByID(videoId){
       });
   }
 
+  addNewVideoIntegration(){
+    return axios.get(API_URL+"readVideoCSV/");
+  }
+
   getBookReservationCart(email){
     return axios.get(API_URL+"getAllCartBookReservation/"+email); 
   }
@@ -345,9 +366,15 @@ getVideoByID(videoId){
   bookWebscraping(){
     return axios.get(API_URL+"OtherWebsitesDetails/");
   }
+
+  videoWebscraping(){
+    return axios.get(API_URL+"OtherVideoWebsitesDetails/");
+  }
   addNewBookIntegration(){
     return axios.get(API_URL+"readCSV/");
   }
+
+ 
  
 }
 

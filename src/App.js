@@ -50,8 +50,11 @@ import ViewVideoReservationCart from './components/pages/VideoCart';
 import AboutUs from './components/pages/AboutUs';
 import ViewAllPayments from './components/pages/ViewAllPayments';
 import BookWebScraping from './components/pages/WebScrapping';
+import VideoWebScraping from './components/pages/WebScrappingVideo';
 import ApiIntegration from './components/pages/APIIntegration';
+import ApiIntegrationVideo from './components/pages/APIIntegrationVideo';
 import AddNewBookIntegration from './components/pages/AddNewBookCSV';
+import AddNewVideoIntegration from './components/pages/AddNewVideoCSV';
 import ViewAllCategory from './components/pages/ViewAllCategory';
 import ViewSelectedCategoryBooks from './components/pages/ViewSelectedCategoryBook';
 import ViewAllOnlineBookView from './components/pages/ViewAllOnlineBookView';
@@ -61,7 +64,7 @@ import OrderPageOfUser from './components/pages/OrderPageOfUser';
 import ViewAllOnlineVideoView from './components/pages/ViewAllOnlineVideoView';
 import ViewAllVideoCategory from './components/pages/ViewallVideoCategory';
 import viewSelectedCategoryVideos from './components/pages/ViewSelectedVideoCategory';
-
+import externalResources from './components/pages/ExternalResource';
 import ViewVideoReservationOngoing from './components/pages/OngoingReservationVideo';
 import ViewAllReservationDetails from './components/pages/ViewAllReservationDetails';
 import OnlineBookWatch from './components/pages/OnlineBookWatch';
@@ -123,8 +126,11 @@ function App() {
       <Route path="/aboutUs" exact component={AboutUs} />
       <Route path="/viewAllPayments" exact component={ViewAllPayments} />
       <Route path="/bookScraping" exact component={BookWebScraping} />
+      <Route path="/videoScraping" exact component={VideoWebScraping} />
       <Route path="/apiIntegration" exact component={ApiIntegration} />
+      <Route path="/apiIntegrationVideo" exact component={ApiIntegrationVideo} />
       <Route path="/addNewBookIntegration" exact component={AddNewBookIntegration} />
+      <Route path="/addNewVideoIntegration" exact component={AddNewVideoIntegration} />
       <Route path="/viewAllCategory" exact component={ViewAllCategory} />
       <Route path="/viewAllVideoCategory" exact component={ ViewAllVideoCategory} />
       <Route path="/viewSelectedCategoryBooks/:category" exact component={ViewSelectedCategoryBooks} />
@@ -138,6 +144,7 @@ function App() {
       <Route path="/onlineBookWatch" exact component={OnlineBookWatch} />
       <Route path="/onlineVideoWatch" exact component={ OnlineVideoWatch} />
       <Route path="/searchUser/:serach" exact component={ ViewSearchResultsUser} />
+      <Route path="/externalResources" exact component={ externalResources} />
     </Switch>
   </Router>
   </>

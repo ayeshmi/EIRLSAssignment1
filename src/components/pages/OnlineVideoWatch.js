@@ -89,11 +89,11 @@ handleLogin(e) {
            <br></br>
            <br></br>
             <br></br>
-            <ul className="cards__items123">
+            <ul className="cards__items120">
           {
                     this.state.reservations.map(
                 reservation =>
-          <div class="child cards__items12 ">
+          <div >
             
                          <Card style={{ width: '16rem', background: 'rgb(141, 190, 230)' }}>
       <Card.Img variant="top" className='cardImage12' src={reservation.imageOfVideo} />

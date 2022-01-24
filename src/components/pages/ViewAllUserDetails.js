@@ -104,7 +104,7 @@ DeleteUser(id){
     render() {
         return (
             <div className='bodyOfCategoryBook'>
-               <h2 id="headerTitle1">User List</h2> 
+               <h2 id="headerTitle1"><b>Handle Customers</b></h2> 
             <br></br>
             <div className='cards__items13 '>
                  <div>

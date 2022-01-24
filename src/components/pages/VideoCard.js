@@ -37,7 +37,7 @@ const BookCard = ({
             className='close'
             type='button'
             onClick={toggle}
-            style={{ backgroundColor:'red', alignContent:'center'}}
+            style={{ backgroundColor:'red' }}
           >
             <span aria-hidden={true}>X</span>
           </button>
@@ -46,41 +46,15 @@ const BookCard = ({
           <div className='d-flex justify-content-between ml-3'>
             <img src={thumbnail} alt={title} style={{ height: '233px' }} />
             <div>
-              <p>Page Count: {pageCount}</p>
-              <p>Language : {language}</p>
-              <p>Authors : {authors}</p>
-              <p>Publisher : {publisher}</p>
+              <p>Year: {pageCount}</p>
+              <p>Duration : {language}</p>
+              <p>Category : {authors}</p>
+              <p>IMBD Ratings : {publisher}</p>
             </div>
           </div>
-          <div className='mt-3'>{description}</div>
+          <div className='mt-3'>Actors: {description}</div>
         </div>
-        <div className='modal-footer'>
-          <div className='left-silde'>
-            <a
-              href={previewLink}
-              className='btn-link'
-              color='default'
-              type='button'
-              target='_blank'
-              rel='noopener noreferrer'
-            >
-              Preview Link
-            </a>
-          </div>
-          <div className='divider'></div>
-          <div className='right-silde'>
-            <a
-              href={infoLink}
-              className='btn-link'
-              color='default'
-              type='button'
-              target='_blank'
-              rel='noopener noreferrer'
-            >
-              Info Link
-            </a>
-          </div>
-        </div>
+        
       </Modal>
     </Card>
   );

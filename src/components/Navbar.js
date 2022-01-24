@@ -175,8 +175,8 @@ if (roles == "ROLE_ADMIN") {
 
   return (
 
-    <Link to='/aboutProfile' className='nav-links' onClick={closeMobileMenu}>
-                     Orders
+    <Link to='/externalResources' className='nav-links' onClick={closeMobileMenu}>
+                     External Resources
                       </Link>
   )
 }  else {

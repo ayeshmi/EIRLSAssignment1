@@ -15,7 +15,7 @@ class ListEmployeeComponent extends Component {
     }
 
 componentDidMount(){
-    authService.bookWebscraping().then((res) => {
+    authService.videoWebscraping().then((res) => {
           this.setState({employees:res.data});
     });
  
@@ -68,11 +68,13 @@ DeleteUser(id){
                    <table >
                        <thead>
                            <tr>
-                               <th>Book Name</th>
+                               <th>Video Name</th>
                                <th>Author</th>
+                               <th>Year</th>
+                               <th>Duration</th>
+                               <th>Category</th>
+                               <th>Description</th>
                                <th>Image</th>
-                               <th>More Details</th>
-                               <th>Action</th>
                            </tr>
                            
                        </thead>
@@ -81,14 +83,16 @@ DeleteUser(id){
                                this.state.employees.map(
                                    employee =>
                                    <tr key={employee.id}>
-                                       <td className='back1'>{employee.title}</td>
                                        <td className='back1'>{employee.name}</td>
-                                       <td className='back1'> <img src={employee.image} className='viewAllImage'/></td>
-                                       <td className='back1'>Price:{employee.price}<br></br>Category: {employee.category}<br></br>Published Year:{employee.year}</td>
+                                       <td className='back1'>{employee.author}</td>
+                                       <td className='back1'>{employee.year}</td>
+                                       <td className='back1'>{employee.duration}</td>
+                                       <td className='back1'>{employee.category}</td>
                                        
-                                       <td className='back1'>
-                                       <a href='${employee.url}'>More Details</a>
-            </td>
+                                       <td className='back1'>{employee.description}</td>
+                                       
+                                       <td className='back1'><img src={employee.image} className='viewAllImage'></img></td>
+                                      
                                        
                                    </tr>
                                )

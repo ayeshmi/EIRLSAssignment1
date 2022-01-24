@@ -16,16 +16,17 @@ class ListEmployeeComponent extends Component {
             employees: [],
             status:"",
             isOpen: false,
-            message: ""
+            message: "",
+            status:""
         }   
     }
 
 componentDidMount(){
-    authService.addNewBookIntegration().then((res) => {
-          this.setState({employees:res.data});
-    });
- 
+  authService.addNewVideoIntegration().then((res) => {
+    this.setState({employees:res.data});
+});
 }
+
 
 notify (){
  
@@ -33,7 +34,7 @@ notify (){
     toast.success(this.state.message)
 }
 
-handleAddNewBook(category,title,author,inumber,numberOfCopies,date,bookDescription,bookExcerpt,price,year,numberOfPages,status) {
+handleAddNewBook(category,date,price,title,ageLimitation,author,publishedYear,numberOfCopies,price1,status) {
 
     this.setState({
       message: "",
@@ -41,7 +42,8 @@ handleAddNewBook(category,title,author,inumber,numberOfCopies,date,bookDescripti
     });
 
     if (status === 'new') {
-      authService. addNewBook(category,title,author,inumber,numberOfCopies,date,bookDescription,bookExcerpt,price,year,numberOfPages).then(
+      
+      authService. addVideoDetails(category,date,price,title,ageLimitation,author,publishedYear,numberOfCopies,price1).then(
         response => {
           this.setState({
             message: response.data.message,
@@ -65,7 +67,7 @@ handleAddNewBook(category,title,author,inumber,numberOfCopies,date,bookDescripti
         }
       );
     } else {
-      authService. addNewBookCopy(category,title,author,inumber,numberOfCopies,date,bookDescription,bookExcerpt,price,year,numberOfPages).then(
+      authService. addVideoCopyDetails(category,date,price,title,ageLimitation,author,publishedYear,numberOfCopies,price1).then(
         response => {
           this.setState({
             message: response.data.message,
@@ -95,21 +97,20 @@ handleAddNewBook(category,title,author,inumber,numberOfCopies,date,bookDescripti
     render() {
         return (
             <div>
-               <h2 id="headerTitle1">Add new books or copies</h2> 
+               <h2 id="headerTitle1">Add new videos or copies</h2> 
             <br></br>
                <div className="rowV">
-                   <table >
+                   <table>
                        <thead>
                            <tr>
-                               <th>Book Name</th>
-                               <th>Image</th>
+                               <th>Video Name</th>
                                <th>Author</th>
+                               <th>Age Limitation</th>
                                <th>Category</th>
-                               <th>Price</th>
-                               <th>Published Year</th>
-                               <th>ISBN-Number</th>
+                               <th>Number of Copies</th>
+                               <th>Video Description</th>
+                               <th>Image</th> 
                                <th>Action</th> 
-                                
                            </tr>   
                        </thead> 
                        <tbody>
@@ -119,16 +120,16 @@ handleAddNewBook(category,title,author,inumber,numberOfCopies,date,bookDescripti
                                    
                                    <tr key={employee.id}>
                                        
-                                       <td className='back1'> {employee.title}</td>
-                                       <td className='back1'> {employee.title}</td>
+                                       <td className='back1'> {employee.name}</td>
                                        <td className='back1'>{employee.author}</td>
-                                       <td className='back1'>{employee.category}</td>
-                                       <td className='back1'>{employee.price}</td>
-                                       <td className='back1'>{employee.year}</td>
-                                       <td className='back1'>{employee.inumber}</td>
+                                       <td className='back1'>{employee.ageLimitation}</td>
+                                       <td className='back1'>{employee.category}{employee.status}</td>
+                                       <td className='back1'>{employee.numberOfCopies}</td>
+                                       <td className='back1'>{employee.description}</td>
+                                       <td className='back1'><img src={employee.image} className='viewAllImage'></img></td>
                                        <td className='back1'>
                                        <button className="buttonVG"
-            onClick={() => this.handleAddNewBook(employee.category,employee.title,employee.author,employee.inumber,employee.numberOfCopies,employee.date,employee.bookDescription,employee.bookExcerpt,employee.price,employee.year,employee.numberOfPages,employee.status)}
+            onClick={() => this.handleAddNewBook(employee.category,employee.date,employee.price,employee.name,employee.ageLimitation,employee.author,employee.publishedYear,employee.numberOfCopies,employee.price1,employee.status)}
               disabled={this.state.loading}
             >  
              <span>{employee.status == 'exist' ? `Add as a copy ` : 'Add as a new book'}</span>
