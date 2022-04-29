@@ -162,7 +162,7 @@ DeleteUser(id){
                                <th className='back2'>User Type</th>
                                <th className='back2'>Username</th>
                                <th className='back2'> Date Of Birth</th>
-                               <th className='back2'>View</th>
+                              
                                <th className='back2'>Delete</th>
                            </tr>
                            
@@ -178,17 +178,7 @@ DeleteUser(id){
                                        <td className='back1'>{employee.userType}</td>
                                        <td className='back1'>{employee.username}</td>
                                        <td className='back1'>{employee.dateOfBirth}</td>
-                                       <td className='back1'>
-                                       <button className="buttonVG"
-              onClick={ () => this.DeleteUser(employee.id)} 
-              disabled={this.state.loading}
-            >
-              {this.state.loading && (
-                <span className="spinner-border spinner-border-sm"></span>
-              )}
-             <span>VIEW</span>
-            </button>
-            </td>
+                                       
                                        <td className='back1'>
                                        <button className="buttonVR"
               onClick={ () => this.DeleteUser(employee.id)} 

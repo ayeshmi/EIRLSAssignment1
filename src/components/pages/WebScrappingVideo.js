@@ -62,19 +62,19 @@ DeleteUser(id){
     render() {
         return (
             <div>
-               <h2 id="headerTitle1">Scrapped Data</h2> 
+               <h2 id="headerTitle1">Video Scrapped Data</h2> 
             <br></br>
                <div className="rowV">
                    <table >
                        <thead>
                            <tr>
-                               <th>Video Name</th>
-                               <th>Author</th>
-                               <th>Year</th>
-                               <th>Duration</th>
-                               <th>Category</th>
-                               <th>Description</th>
-                               <th>Image</th>
+                               <th className='back2' >Video Name</th>
+                               <th className='back2' >Author</th>
+                               <th className='back2' >Year</th>
+                               <th className='back2' >Duration</th>
+                               <th className='back2' >Category</th>
+                               <th className='back2' >Description</th>
+                               <th className='back2' >Image</th>
                            </tr>
                            
                        </thead>
@@ -88,10 +88,10 @@ DeleteUser(id){
                                        <td className='back1'>{employee.year}</td>
                                        <td className='back1'>{employee.duration}</td>
                                        <td className='back1'>{employee.category}</td>
-                                       
+                                       <td className='back1'><img src={employee.image} className='viewAllImage'></img></td>
                                        <td className='back1'>{employee.description}</td>
                                        
-                                       <td className='back1'><img src={employee.image} className='viewAllImage'></img></td>
+                                       
                                       
                                        
                                    </tr>

@@ -147,7 +147,7 @@ handleSearch(e){
             successful: false,
             message: resMessage
           });
-          this.notify();
+          toast.error(this.state.message);
         }
         
       );
@@ -195,7 +195,7 @@ handleSearch(e){
             successful: false,
             message: resMessage
           });
-          this.notify();
+          toast.error(this.state.message)
         }
         
       );
@@ -204,7 +204,7 @@ handleSearch(e){
   notify (){
  
     // Calling toast method by passing string
-    toast(this.state.message)
+    toast.success(this.state.message)
 }
 
 render() {
@@ -212,7 +212,7 @@ render() {
   return (
     
     <div >
-          <div className="form23"> 
+          <div className="form235"> 
               <Form className="row2"
                 onSubmit={this.handleLogin}
                 ref={c => {
@@ -244,9 +244,9 @@ render() {
                 <table>
                        <thead>
                            <tr>
-                               <th className='back2' >Depend on your user type, you can lend this book for a given period, If you want to lend this book click on the bellow button</th>
-                               <th  className='back2'>You can order this book via our website, If you want to order this book click on the bellow button</th>
-                               <th  className='back2'>You can read this book onlie, If you want to lend this book click on the bellow button</th>
+                               <th className='back2' >Depend on your user type, you can lend this video for a given period, If you want to lend this video click on the bellow button</th>
+                               
+                               <th  className='back2'>You can read this video onlie, If you want to lend this video click on the bellow button</th>
                                
                            </tr>
                            
@@ -255,7 +255,7 @@ render() {
                            
                                    <tr >
                                        
-                                       <td className='back1'> <button className="buttonVG"
+                                       <td className='back1'> <button className="buttonVB"
               onClick={this.handleLogin}
               disabled={this.state.loading} 
              
@@ -264,7 +264,7 @@ render() {
               
              <span>LEND</span>
             </button></td>
-                                       <td className='back1'> <button className="buttonVG"
+                                       <td className='back1'> <button className="buttonVB3"
               onClick={this.handleLogin2}
               disabled={this.state.loading} 
              
@@ -274,24 +274,14 @@ render() {
              <span>ONLINE MOVIE</span>
             </button></td>
 
-                                       <td className='back1'>
-                                       <button className="buttonVR"
-            
-              disabled={this.state.loading}
-            >
-        
-              
-              
-             <span>ADVANCE LEND</span>
-            </button>
-            </td>
+             
                                        
                                    </tr>
                                
                            
                        </tbody>
                    </table>
-               
+               <br></br>
                    <h1>Give your feedbacks........</h1>
                
               

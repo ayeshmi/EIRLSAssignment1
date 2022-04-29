@@ -167,7 +167,7 @@ function App() {
           <Grid container>
             <Grid item xs={12}>
               <Typography align="center" style={{ padding: 16 }}>
-                Upload your video here
+               Upload copy of online book here
               </Typography>
               <Divider />
             </Grid>
@@ -188,14 +188,8 @@ function App() {
 
 
             <Grid item xs={6} style={{ padding: 16 }}>
-            <Typography align="center" variant="subtitle1">
-                Preview
-              </Typography>
-              <img
-                onLoad={() => URL.revokeObjectURL(preview)}
-                className={classes.preview}
-                src={preview || "https://via.placeholder.com/250"}
-              />
+           
+            
 
               {/*  */}
               {file && (

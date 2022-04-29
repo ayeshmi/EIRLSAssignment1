@@ -125,6 +125,44 @@ handleLogin(id) {
               if(resMessage=="Request failed with status code 401"){
                 this.setState({
                   loading: false,
+                  message: "Some thing went wrong, Check again"
+                });
+              }else{
+                this.setState({
+                  loading: false,
+                  message: resMessage
+                });
+                this.notify();
+              }
+          
+        }
+      );
+
+   
+  }
+
+  handleLogin3(id,id1) {
+
+
+    
+    authService.deleteCartBook(id1).then(
+        () => {
+          
+          this.props.history.push(`/viewSelectedBook/${id}`);
+          window.location.reload();
+          this.notify();
+          
+        },
+        error => {
+          const resMessage =
+            (error.response &&
+              error.response.data &&
+              error.response.data.message) ||
+            error.message ||
+            error.toString();
+              if(resMessage=="Request failed with status code 401"){
+                this.setState({
+                  loading: false,
                   message: "Username or Password is incorrect, Check again"
                 });
               }else{
@@ -150,7 +188,7 @@ handleLogin(id) {
        <div>
         
             
-            <h1>Your Book Backet Details.</h1>
+            <h1>Your Book Cart Details.</h1>
           
            
             <form className="checkOutForm" onSubmit={this.handleLogin1}
@@ -175,7 +213,7 @@ handleLogin(id) {
               {this.state.loading && (
                 <span className="spinner-border spinner-border-sm"></span>
               )}
-             <span>Login</span>
+             <span>Confirm and Pay</span>
             </button>
     
   
@@ -212,6 +250,7 @@ handleLogin(id) {
           
         <Button variant="primary" style={{ alignContent:'center' }}  onClick={()=>this.viewSelectedBookDetails(reservation.bookId)}>View</Button>
         
+        <Button variant="primary" style={{ alignContent:'right', backgroundColor:'#00008b' }}  onClick={()=>this.handleLogin3(reservation.bookId,reservation.id)}>Edit</Button>
         <Button variant="primary" style={{ alignContent:'right', backgroundColor:'red' }}  onClick={()=>this.handleLogin(reservation.id)}>Delete</Button>
       </Card.Body>
     </Card>

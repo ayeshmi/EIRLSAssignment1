@@ -93,16 +93,17 @@ handleLogin(e) {
           {
                     this.state.reservations.map(
                 reservation =>
-          <div >
+          <div class="cards__items12 " >
             
                          <Card style={{ width: '16rem', background: 'rgb(141, 190, 230)' }}>
       <Card.Img variant="top" className='cardImage12' src={reservation.imageOfVideo} />
       <Card.Body>
+      
           <p style={{ color:'white',fontSize:'22px' }}><b>{reservation.title}</b></p>
           <p style={{ color:'black' }}>Author : {reservation.author}</p>
           <p style={{ color:'black' }}>Published Year : {reservation.year}</p>
           <p style={{ color:'black' }}>{reservation.category}</p>
-          <a href={reservation.fileDownloadUri} target="_blank" rel="noopener">WATCH</a>
+          <a href={reservation.fileDownloadUri} >WATCH</a>
        
       </Card.Body>
     </Card>  
@@ -121,7 +122,7 @@ handleLogin(e) {
         <h1 style={{ fontSize:'25px', alignContent:'center' }}>WARNING !</h1></div>
       <br></br>
       <div className="cartPayment">
-    <p className="lendingFee">Return books on time will be helped to protect your account. </p> 
+    <p className="lendingFee">Return videos on time will be helped to protect your account. </p> 
     </div>
     
    

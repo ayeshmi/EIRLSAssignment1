@@ -68,18 +68,7 @@ const BookCard = ({
             </a>
           </div>
           <div className='divider'></div>
-          <div className='right-silde'>
-            <a
-              href={infoLink}
-              className='btn-link'
-              color='default'
-              type='button'
-              target='_blank'
-              rel='noopener noreferrer'
-            >
-              Info Link
-            </a>
-          </div>
+          
         </div>
       </Modal>
     </Card>

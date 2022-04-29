@@ -75,7 +75,7 @@ DeleteBook(id){
             successful: false,
             message: resMessage
           });
-          this.notify();
+          toast.error(this.state.message);
         }
         
       );
@@ -86,7 +86,7 @@ DeleteBook(id){
 notify (){
  
     // Calling toast method by passing string
-    toast(this.state.message)
+    toast.success(this.state.message)
 }
 
 handleSearch(e){
@@ -111,8 +111,8 @@ addNewBook(e){
   this.props.history.push(`/addBook`);
   window.location.reload();
 }
-updateBook(e){
-  this.props.history.push(`/updateBookDetails`);
+updateBook(id){
+  this.props.history.push(`/updateBookDetails/${id}`);
   window.location.reload();
 }
 
@@ -200,7 +200,25 @@ updateBook(e){
                                    book =>
                                    <tr key={book.id}>
                                        <td className='back1'>{book.title}</td>
-                                       <td className='back1'><img src={book.imageOfVideo} className='viewAllImage'></img></td> 
+                                       <td className='back1'>
+                                         
+                                         {(() => {
+
+if (book.imageOfVideo == null) {
+
+  return (
+
+    <img src="http://cdn.onlinewebfonts.com/svg/img_234957.png" className='viewAllImage'></img>
+  )
+} 
+else {
+  return (
+
+    <img src={book.imageOfVideo} className='viewAllImage'></img>
+  )
+}
+})()}
+                                         </td> 
                                        <td className='back1'>{book.category}</td>
                                        <td className='back1'>{book.year}</td>
                                        <td className='back1'>{book.numberOfCopies}</td>

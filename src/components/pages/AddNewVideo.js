@@ -80,7 +80,7 @@ export default class AddNewBook extends Component {
   notify (){
  
     // Calling toast method by passing string
-    toast(this.state.message)
+    toast.success(this.state.message)
 }
 
 onChangePrice(e) {
@@ -221,7 +221,7 @@ onChangePublishedYear(e) {
             successful: false,
             message: resMessage
           });
-          this.notify();
+          toast.error(this.state.message)
         }
       );
     }

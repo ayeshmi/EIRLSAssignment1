@@ -47,6 +47,7 @@ export default class AdminHomepage extends Component {
          }
 
       }
+     
 
       getHour = () => {
         const date = new Date();
@@ -82,12 +83,12 @@ render() {
                   this.form = c;
                 }}>
                 
-                    <h2 id="headerTitle">Welcome {currentUser.username} <br></br> {hour < 12 ? `Good Morning ` : `Good Evening `}</h2>
+                    <h2 id="headerTitle">Welcome {currentUser.username} <br></br> {hour < 12 ? `Good Evening  ` : `Good Morning`}</h2>
                 
                     <br></br>
                     <br></br>
                     
-                    
+                    <p className='paragraph12'>"Lend a book" is book and video lending company. <br></br> Our vision is to give good quality books and videos for our customers.</p>
                         
                         <button className="button5"
                       

@@ -9,14 +9,7 @@ function HeroSection() {
             <video src='/videos/video3.mp4' autoPlay loop muted/>
             <h1>LEND A BOOK </h1>
             <p>Do you want book or video? </p>
-            <div className='hero-btns'>
-                <Button className='btns' buttonStyle='bts--outline' buttonSize='btm--large'>
-                 GET STARTED
-                </Button>
-                
-                
-       
-            </div>
+            
             
         </div>
     )

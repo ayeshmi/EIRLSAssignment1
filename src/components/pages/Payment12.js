@@ -39,7 +39,7 @@ export default class ContactUs extends Component {
     this.onChangeExpiryDate = this.onChangeExpiryDate.bind(this);
     this.onChangeMessage = this.onChangeMessage.bind(this);
     this.state = {
-      reason: "",
+      reason: this.props.match.params.reason,
       price: this.props.match.params.price,
       cardType: "",
       cardHolderName:"",
@@ -48,16 +48,16 @@ export default class ContactUs extends Component {
       cvv:"",
       loading: false,
       message: "",
-      email:this.props.match.params.email
+      email:this.props.match.params.email,
+      
     };
   }
 
   componentDidMount(){
-    authService.getLendingPaymentDetailsByEmail(this.state.email).then(  (res) =>{
+    
+    authService.getPaymentDetailsByEmail(this.state.email).then(  (res) =>{
       let payment = res.data;
-      this.setState({reason: payment.reason,
-          price: payment.price
-      });
+      
   
   });
 }
@@ -94,7 +94,7 @@ export default class ContactUs extends Component {
 
   onChangeCvv(e) {
     this.setState({
-      cvv: e.target.value
+     cvv: e.target.value
     });
   }
 
@@ -121,7 +121,7 @@ export default class ContactUs extends Component {
     this.form.validateAll();
 
     if (this.checkBtn.context._errors.length === 0) {
-      AuthService.addPayment12(this.state.cardType, this.state.cardHolderName,this.state.cardNumber,this.state.expiryDate,this.state.cvv,this.state.email).then(
+      AuthService.addPayment(this.state.cardType, this.state.cardHolderName,this.state.cardNumber,this.state.expiryDate,this.state.cvv,this.state.email).then(
         response => {
           this.setState({
             message: response.data.message,
@@ -160,7 +160,7 @@ notify (){
 
 
 render() {
-  
+ 
   return (
     
     <div >
@@ -181,7 +181,7 @@ render() {
               type="text"
            
               name="reason"
-              value='LendingFee'
+              value={this.state.reason}
               onChange={this.onChangeReason}
               validations={[required]}
               disabled
@@ -192,10 +192,10 @@ render() {
             <label htmlFor="email">Price (Rs.)</label>
             <Input
               
-              placeholder="Enter your price"
+              placeholder="Enter payment price"
               type="text"
               name="price"
-              value={this.state.price+'.00'}
+              value={this.state.price}
               onChange={this.onChangePrice}
               validations={[required]}
               disabled
@@ -237,8 +237,8 @@ render() {
              <Input
             
             placeholder="4569 7589 7596 7581"
-              type="text"
-              
+            type="number"
+              size="2"
               name="cardNumber"
               value={this.state.cardNumber}
               onChange={this.onChangecardNumber}
@@ -262,7 +262,7 @@ render() {
             
             placeholder="758"
               type="number"
-              
+              size="3"
               name="cvv"
               value={this.state.cvv}
               onChange={this.onChangeCvv}

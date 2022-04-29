@@ -117,7 +117,7 @@ updateBookImage(title){
             <div className='bodyOfCategoryBook'>
                <h2 id="headerTitle1"><b>Handle Books</b></h2> 
                <br></br><br></br>
-       
+               
            
 
             <br></br>
@@ -129,8 +129,8 @@ updateBookImage(title){
                                <th className='back2'>Category</th>
                                <th className='back2'>Book Image</th>
                                <th className='back2'>Online Book</th>
-                               <th className='back2'>Update</th>
-                               <th className='back2'> Delete</th>
+                               <th className='back2'>Upload Image</th>
+                               <th className='back2'> Upload Book</th>
                            </tr>
                            
                        </thead>
@@ -139,11 +139,11 @@ updateBookImage(title){
                                this.state.books.map(
                                    book =>
                                    <tr key={book.id}>
-                                       <td>{book.title}</td>
-                                       <td>{book.category}</td>
-                                       <td><img src={book.imageOfVideo} className='viewAllImage'></img></td> 
-                                       <td>{book.onlineBook != null ? `Available`:`Not Available`}</td>
-                                       <td>
+                                       <td className='back1'>{book.title}</td>
+                                       <td className='back1'>{book.category}</td>
+                                       <td className='back1'><img src={book.imageOfVideo} className='viewAllImage'></img></td> 
+                                       <td className='back1'>{book.onlineBook != null ? `Available`:`Not Available`}</td>
+                                       <td className='back1'>
                                        <button className="buttonVG"
               onClick={ () => this.updateBookImage(book.title)} 
               disabled={this.state.loading}
@@ -155,7 +155,7 @@ updateBookImage(title){
              <span>Update Image</span>
             </button>
             </td>
-                                       <td>
+                                       <td className='back1'>
                                        <button className="buttonVG"
               onClick={ () => this.updateBookOnline(book.title)} 
               disabled={this.state.loading}

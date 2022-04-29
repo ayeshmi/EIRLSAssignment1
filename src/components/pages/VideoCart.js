@@ -4,6 +4,9 @@ import "./BookCart.css";
 import React, { Component } from 'react';
 import authService from '../services/auth.service';
 import { Card, Button } from 'react-bootstrap';
+import {toast} from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+toast.configure()
 
 
 export default class AddNewBook extends Component {
@@ -37,11 +40,61 @@ export default class AddNewBook extends Component {
 
    
   }
+  deleteCartBook(id){
+    authService.deleteCartVideo(id);
+    this.props.history.push(`/viewVideoReservationCart`);
+      window.location.reload();
+  
+  }
 
 editEmployee(id){
   this.props.history.push(`viewSelectedVideo/${id}`);
 
 }
+notify (){
+ 
+  // Calling toast method by passing string
+  toast(this.state.message)
+}
+
+handleLogin3(id,id1) {
+
+
+    
+  authService.deleteCartVideo(id1).then(
+      () => {
+        
+        this.props.history.push(`/viewSelectedVideo/${id}`);
+        window.location.reload();
+        this.notify();
+        
+      },
+      error => {
+        const resMessage =
+          (error.response &&
+            error.response.data &&
+            error.response.data.message) ||
+          error.message ||
+          error.toString();
+            if(resMessage=="Request failed with status code 401"){
+              this.setState({
+                loading: false,
+                message: "Username or Password is incorrect, Check again"
+              });
+            }else{
+              this.setState({
+                loading: false,
+                message: resMessage
+              });
+              this.notify();
+            }
+        
+      }
+    );
+
+ 
+}
+
 handleLogin(e) {
     e.preventDefault();
 
@@ -85,7 +138,7 @@ handleLogin(e) {
        <div>
         
             
-            <h1>Your Backet Details.</h1>
+            <h1>Your Video Cart Details.</h1>
             
             <form className="checkOutForm" onSubmit={this.handleLogin}
           ref={c => {
@@ -120,23 +173,24 @@ handleLogin(e) {
     </div>
    
      </form>
-            <ul className="cards__items123">
+            <ul className="cards__items120">
           {
                     this.state.reservations.map(
                 reservation =>
-          <div class=" cards__items12 "  onClick={ () => this.editEmployee(reservation.id)}>
-            <Card style={{ width: '16rem', background: 'rgb(141, 190, 230)' }}>
-      <Card.Img variant="top" className='cardImage12' src={reservation.image} />
-      <Card.Body>
-          <p style={{ color:'white',fontSize:'22px' }}><b>{reservation.videoName}</b></p>
-          <p style={{ color:'black' }}>Lended Date : {reservation.date}</p>
-          <p style={{ color:'black' }}>Return Date : {reservation.returnDate}</p>
-          <p style={{ color:'black' }}>Overdue Fee : Rs.{reservation.overduePayment}.00</p>
-          
-        <Button variant="primary" style={{ alignContent:'center' }}  >View</Button>
-      </Card.Body>
-    </Card>  
-            </div> 
+                <div class="cards__items12o "  >
+                <Card style={{ width: '16rem',height:'25rem', backgroundColor:'#77b5fe' }}>
+  <Card.Img variant="top" className='cardImage12' src={reservation.image} />
+  <Card.Body>
+      <p style={{ fontSize:'20px'}}><b>{reservation.videoName}</b></p>
+      
+    <Button variant="primary" style={{ alignContent:'center' }}  onClick={()=>this.editEmployee(reservation.videoId)}>View</Button>
+    
+    <Button variant="primary" style={{ alignContent:'right', backgroundColor:'#00008b' }}  onClick={()=>this.handleLogin3(reservation.videoId,reservation.id)}>Edit</Button>
+    <Button variant="primary" style={{ alignContent:'right', backgroundColor:'red' }}  onClick={()=>this. deleteCartBook(reservation.id)}>Delete</Button>
+  </Card.Body>
+</Card>
+         
+        </div>  
               )
             }  
             </ul>

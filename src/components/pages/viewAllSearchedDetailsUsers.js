@@ -176,12 +176,13 @@ export default class HomepageRegisteredUser extends Component {
                    <table >
                        <thead>
                            <tr>
-                               <th className='back2'>Title</th>
-                               <th className='back2'>Image</th>
-                               <th className='back2'>Category</th>
-                               <th className='back2'>Published Year </th>
-                               <th className='back2'>Number of Copies</th>
-                               <th className='back2'>Update</th>
+                           <th className='back2'> User ID</th>
+                               <th className='back2'>Email</th>
+                               <th className='back2'>Profile Image</th>
+                               <th className='back2'>User Type</th>
+                               <th className='back2'>Username</th>
+                               <th className='back2'> Date Of Birth</th>
+                              
                                <th className='back2'>Delete</th>
                                
                            </tr>
@@ -192,22 +193,14 @@ export default class HomepageRegisteredUser extends Component {
                                this.state.videos.map(
                                    video =>
                                    <tr key={video.id}>
+                                     <td className='back1'>{video.id}</td>
+                                       <td className='back1'>{video.email}</td>
+                                       <td className='back1'><img src={video.imageOfProfile} className='viewAllImage'/></td>
+                                       <td className='back1'>{video.userType}</td>
                                        <td className='back1'>{video.username}</td>
-                                       <td className='back1'><img src={video.imageOfVideo} className='viewAllImage'></img></td> 
-                                       <td className='back1'>{video.username}</td>
-                                       <td className='back1'>{video.username}</td>
-                                       <td className='back1'>{video.username}</td>
-                                       <td className='back1'>
-                                       <button className="buttonVG"
-               onClick={ () => this.DeleteVideo(video.id)} 
-              disabled={this.state.loading}
-            >
-              {this.state.loading && (
-                <span className="spinner-border spinner-border-sm"></span>
-              )}
-             <span>Update</span>
-            </button>
-            </td>
+                                       <td className='back1'>{video.dateOfBirth}</td>
+                                   
+                  
                                        <td className='back1'>
                                        <button className="buttonVR"
                onClick={ () => this.DeleteVideo(video.id)} 

@@ -43,7 +43,7 @@ export default class ViewSelectedBook extends Component {
    this.handleSearch=this.handleSearch.bind(this);
     this.handleComment=this.handleComment.bind(this);
     this.addOrder=this.addOrder.bind(this);
-   
+   this.addNewBook=this.addNewBook.bind(this);
     this.state={
       id:this.props.match.params.id,
       author: '',
@@ -311,6 +311,14 @@ addOrder(e){
     toast.success(this.state.message1)
 }
 
+addNewBook(id){
+    
+  
+  this.props.history.push(`/viewAllBookReservationAdvance/${id}/${this.state.description}`);
+    window.location.reload();
+
+}
+
 _showMessage = (bool) => {
   this.setState({
     showMessage: bool
@@ -332,7 +340,7 @@ render() {
     
     <div >
           <div className="form23"> 
-              <Form className="row2"
+              <Form 
                 onSubmit={this.handleLogin}
                 ref={c => {
                   this.form = c;
@@ -345,7 +353,7 @@ render() {
                 <p className="description">{this.state.message} </p>
                 </div>
                 <br></br>
-                <div className="rowBook2">
+                <div className="rowBook2 row2">
                 <p className="para1">Author :</p>
                 <p className="para2">Category :</p>
                 <p className="para2">Price :</p>
@@ -354,7 +362,7 @@ render() {
                 <p className="category2"><span ></span>Rs. {this.state.price}.00</p>
                 </div>
                 <br></br>
-                <div className="rowBook2">
+                <div className="rowBook2 row2">
                 <p className="description">ISBN -13 : </p>
                 <p className="para1">Pages :</p>
                 <p className="para2">Published :</p>
@@ -362,13 +370,14 @@ render() {
                 <p className="category2"><span ></span>{this.state.numberOfPAges}</p>
                 <p className="category2"><span ></span>{this.state.publishedYear}</p>
                 </div>
-     
+                
+            
              <br></br>
              <br></br>
-             <br></br>
+             <div className='row2'>
                 <p className="description">Book Excerpt : </p>
-                <p className="paragraph">{this.state.bookExcerpt}</p>
-
+                <p className="paragraph ">{this.state.bookExcerpt}</p>
+                </div>
                 <table>
                        <thead>
                            <tr>
@@ -384,7 +393,7 @@ render() {
                            
                                    <tr >
                                        
-                                       <td className='back1'> <button className="buttonVG"
+                                       <td className='back1'> <button className="buttonVB3"
               onClick={this.handleLogin}
               disabled={this.state.loading} 
              
@@ -393,17 +402,17 @@ render() {
               
              <span>LEND</span>
             </button></td>
-                                       <td className='back1'> <button className="buttonVG"
+                                       <td className='back1'> <button className="buttonVB"
               onClick={this.handleLogin2}
               disabled={this.state.loading} 
              
             >
              
               
-             <span>ONLINE BOOK</span>
+             <span>LEND ONLINE BOOK</span>
             </button></td>
                                        <td className='back1'>
-                                       <button className="buttonVG"
+                                       <button className="buttonVB3"
               onClick={this.handleLogin3}
               disabled={this.state.loading} 
              
@@ -414,8 +423,8 @@ render() {
             </button>
             </td>
                                        <td className='back1'>
-                                       <button className="buttonVR"
-            
+                                       <button className="buttonVB"
+            onClick={()=>this.addNewBook(this.state.id)}
               disabled={this.state.loading}
             >
         
@@ -441,8 +450,8 @@ render() {
 
                 <br></br>
                 <br></br>
-               
-              </Form>
+                </Form>
+             
              <h1>Give your feedbacks........</h1>
              <Form
              
@@ -497,7 +506,7 @@ render() {
                    </table>
  
                </div>
-
+             
       
              
               </div>

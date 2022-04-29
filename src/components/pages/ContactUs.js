@@ -98,7 +98,7 @@ export default class ContactUs extends Component {
 notify (){
  
     // Calling toast method by passing string
-    toast(this.state.message)
+    toast.success(this.state.message)
 }
 
 render() {

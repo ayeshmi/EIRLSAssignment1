@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import authService from '../services/auth.service';
-import './ViewAllBooks.css';
+import './OrderPageOfUser.css';
 import Form from "react-validation/build/form";
 import Input from "react-validation/build/input";
 import CheckButton from "react-validation/build/button";
@@ -139,32 +139,61 @@ viewVideoLending(e){
     this.props.history.push(`/onlineVideoWatch`);
     window.location.reload();
   }
+  handleLogin3(id) {
+   
+    this.setState({
+      message1: "",
+      loading: true
+    });
+
+      authService.cancelNewBookOrder(
+        id  
+      ).then(
+        
+        response => {
+          this.setState({
+            message1: response.data.message,
+            successful: true
+          });
+          toast.success(this.state.message1);
+        },
+        error => {
+          const resMessage =
+            (error.response &&
+              error.response.data &&
+              error.response.data.message) ||
+            error.message ||
+            error.toString();
+            
+
+          this.setState({
+            successful: false,
+            message1: resMessage
+          });
+          toast.error(this.state.message1);
+        }
+        
+      );
+    
+  }
 
     render() {
         return (
             <div className='bodyOfCategoryBook'>
-               <h2 id="headerTitle1"><b>Handle Reservations</b></h2> 
+               <h2 id="headerTitle1"><b>Handle Lendings</b></h2> 
                <br></br><br></br>
-               <div className='cards__items13 '>
+               <div className='cards__items144 '>
                  <div>
-               <Card style={{ width: '15rem',backgroundColor:'rgb(119, 175, 212)' }}>
-      <Card.Img variant="top" src="https://cdn.everydaypower.com/wp-content/uploads/2018/03/Books-for-Leaders-1000x600.jpg" />
+               <Card style={{ width: '21rem',backgroundColor:'rgb(119,181,254)' }}>
+      <Card.Img class="imageCard" variant="top" src="https://www.incimages.com/uploaded_files/image/1920x1080/GettyImages-900301626_437925.jpg" />
       <Card.Body>
-        <Button variant="primary" onClick={this.addNewBook}>Book Basket</Button>
+        <Button variant="primary" onClick={this.addNewBook}>Book Cart</Button>
       </Card.Body>
     </Card>
     </div>
     <div>
-               <Card style={{ width: '15rem',backgroundColor:'rgb(119, 175, 212)'  }}>
-      <Card.Img variant="top" src="https://cdn.everydaypower.com/wp-content/uploads/2018/03/Books-for-Leaders-1000x600.jpg" />
-      <Card.Body>
-        <Button variant="primary" onClick={this.videoBascket}>Video Basket</Button>
-      </Card.Body>
-    </Card>
-    </div>
-    <div>
-               <Card style={{ width: '15rem' ,backgroundColor:'rgb(119, 175, 212)' }}>
-      <Card.Img variant="top" src="https://www.betterreading.com.au/wp-content/uploads/2019/03/Four-isolated-people-thrown-together-by-family-and-circumstance...-Read-it-first-with-Better-Reading-Preview.-5-768x403.png" />
+               <Card style={{ width: '21rem' ,backgroundColor:'#191970' }}>
+      <Card.Img class="imageCard" variant="top" src="https://www.incimages.com/uploaded_files/image/1920x1080/GettyImages-900301626_437925.jpg" />
       <Card.Body>
         
         
@@ -173,8 +202,25 @@ viewVideoLending(e){
     </Card>
     </div>
     <div>
-    <Card style={{ width: '15rem' ,backgroundColor:'rgb(119, 175, 212)' }}>
-      <Card.Img variant="top" src="https://cdn.mos.cms.futurecdn.net/4U6wcUYiDzP4zCyuLWwo3M.png" />
+               <Card style={{ width: '21rem',backgroundColor:'#6082b6' }}>
+      <Card.Img class="imageCard" variant="top" src="https://i.redd.it/1ll3wwlvitj41.png" />
+      <Card.Body>
+        <Button variant="primary" onClick={this.onlineBookWatch}>Online Book Lendings</Button> 
+      </Card.Body>
+    </Card>
+    </div>
+    <div>
+               <Card style={{ width: '21rem',backgroundColor:'rgb(119,181,254)'  }}>
+      <Card.Img class="imageCard" variant="top" src="https://www.listchallenges.com/f/lists/46d8c72e-64c2-4a56-973f-03f3d4b41bc1.jpg" />
+      <Card.Body>
+        <Button variant="primary" onClick={this.videoBascket}>Video Cart</Button>
+      </Card.Body>
+    </Card>
+    </div>
+  
+    <div>
+    <Card style={{ width: '21rem' ,backgroundColor:'#191970' }}>
+      <Card.Img class="imageCard" variant="top" src="https://cdn.mos.cms.futurecdn.net/4U6wcUYiDzP4zCyuLWwo3M.png" />
       <Card.Body>
         
      
@@ -182,19 +228,12 @@ viewVideoLending(e){
       </Card.Body>
     </Card>
              </div>
-             <div>
-               <Card style={{ width: '15rem',backgroundColor:'rgb(119, 175, 212)' }}>
-      <Card.Img variant="top" src="https://cdn.everydaypower.com/wp-content/uploads/2018/03/Books-for-Leaders-1000x600.jpg" />
-      <Card.Body>
-        <Button variant="primary" onClick={this.onlineBookWatch}>Online Book</Button> 
-      </Card.Body>
-    </Card>
-    </div>
+      
     <div>
-               <Card style={{ width: '15rem',backgroundColor:'rgb(119, 175, 212)' }}>
-      <Card.Img variant="top" src="https://cdn.everydaypower.com/wp-content/uploads/2018/03/Books-for-Leaders-1000x600.jpg" />
+               <Card style={{ width: '21rem',backgroundColor:'#6082b6' }}>
+      <Card.Img class="imageCard" variant="top" src="https://i.pinimg.com/originals/57/58/7b/57587be2b9b9e49bc7fd17d5e305101d.png" />
       <Card.Body>
-        <Button variant="primary" onClick={this.onlineVideoWatch}>Online Video</Button> 
+        <Button variant="primary" onClick={this.onlineVideoWatch}>Online Video Lendings</Button> 
       </Card.Body>
     </Card>
     </div>
@@ -208,10 +247,11 @@ viewVideoLending(e){
                        <thead>
                            <tr>
                                <th className='back2' >Title</th>
-                               <th  className='back2'>Category</th>
+                               <th  className='back2'>Author</th>
                                <th  className='back2'>Image</th>
+                               <th  className='back2'>Category</th>
                                <th  className='back2'>Published Date </th>
-                               <th  className='back2'>Number of Copies</th>
+                               
                               
                                <th  className='back2'>Cancel Order</th>
                            </tr>
@@ -223,14 +263,15 @@ viewVideoLending(e){
                                    book =>
                                    <tr key={book.id}>
                                        <td className='back1'>{book.title}</td>
+                                       <td className='back1'>{book.author}</td>
                                        <td className='back1'><img src={book.imageOfVideo} className='viewAllImage'></img></td> 
                                        <td className='back1'>{book.category}</td>
                                        <td className='back1'>{book.year}</td>
-                                       <td className='back1'>{book.numberOfCopies}</td>
+                                      
             
                                        <td className='back1'>
                                        <button className="buttonVR"
-             
+             onClick={ () => this.handleLogin3(book.id)}
               disabled={this.state.loading}
             >
               {this.state.loading && (

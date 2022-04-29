@@ -69,6 +69,8 @@ import ViewVideoReservationOngoing from './components/pages/OngoingReservationVi
 import ViewAllReservationDetails from './components/pages/ViewAllReservationDetails';
 import OnlineBookWatch from './components/pages/OnlineBookWatch';
 import OnlineVideoWatch from './components/pages/OnlineVideoWatch';
+import UpdateVideoDetails from './components/pages/UpdateVideoDetails';
+import Payment123 from './components/pages/Payment12';
 
 
 
@@ -116,7 +118,7 @@ function App() {
       <Route path="/viewBookReservationOngoing" exact component={ViewBookReservationOngoing} />
       <Route path="/viewVideoReservationOngoing" exact component={ViewVideoReservationOngoing} />
       <Route path="/viewAllBookReservation" exact component={ViewAllBookReservation} />
-      <Route path="/viewAllBookReservationAdvance/:bookID" exact component={ViewAllBookReservationAdvance} />
+      <Route path="/viewAllBookReservationAdvance/:bookID/:name" exact component={ViewAllBookReservationAdvance} />
       <Route path="/advanceBookReservation/:bookID" exact component={AdvanceBookReservation} />
       <Route path="/viewBlackListUsers" exact component={ViewBlackListUsers} />
       <Route path="/checking" exact component={checking} />
@@ -138,13 +140,15 @@ function App() {
       <Route path="/viewAllOnlineBookView" exact component={ViewAllOnlineBookView} />
       <Route path="/viewAllOnlineVideoView" exact component={ViewAllOnlineVideoView} />
       <Route path="/addOnlineBook/:title" exact component={AddOnlineBook} />
-      <Route path="/updateBookDetails" exact component={UpdateBookDetails} />
+      <Route path="/updateBookDetails/:id" exact component={UpdateBookDetails} />
       <Route path="/orderPageOfUser" exact component={OrderPageOfUser} />
       <Route path="/viewAllReservationDetails" exact component={ViewAllReservationDetails} />
       <Route path="/onlineBookWatch" exact component={OnlineBookWatch} />
       <Route path="/onlineVideoWatch" exact component={ OnlineVideoWatch} />
       <Route path="/searchUser/:serach" exact component={ ViewSearchResultsUser} />
       <Route path="/externalResources" exact component={ externalResources} />
+      <Route path="/updateVideoDetails/:id" exact component={UpdateVideoDetails} />
+      <Route path="/addPayments/:email/:price/:reason" exact component={Payment123} />
     </Switch>
   </Router>
   </>

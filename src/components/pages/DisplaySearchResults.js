@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import CardItem from "../CardItem";
 import "./HomepageRegisteredUser.css";
 import { withStyles } from '@material-ui/core/styles';
-import Button from '@material-ui/core/Button';
+
 import Dialog from '@material-ui/core/Dialog';
 import MuiDialogTitle from '@material-ui/core/DialogTitle';
 import MuiDialogContent from '@material-ui/core/DialogContent';
@@ -14,6 +14,7 @@ import authService from '../services/auth.service';
 import Form from "react-validation/build/form";
 import Input from "react-validation/build/input";
 import CheckButton from "react-validation/build/button";
+import { Card, Button } from 'react-bootstrap';
 
 const required = value => {
   if (!value) {
@@ -159,14 +160,19 @@ export default class HomepageRegisteredUser extends Component {
           {
                     this.state.HorrorBooks.map(
                 employee =>
-          <div class="child " >
-            <CardItem
-              src={employee.imageOfVideo}
-              text={employee.title}
-              label="Book"
-              path={'/viewSelectedBook/'+employee.id}
-            />   
-            </div> 
+                <div class="child "  >
+            
+                <Card style={{ width: '16rem',height:'30rem', backgroundColor:'#77b5fe' }}>
+          <Card.Img variant="top" className='cardImage12' src={employee.imageOfVideo} />
+          <Card.Body>
+              <p style={{ fontSize:'20px',color:'white'}}><b>{employee.title}</b></p>
+              <p style={{ color:'black' }}>Author :{employee.author}</p>
+              <p style={{ color:'black' }}>Published  :{employee.year}</p>
+              <p style={{ color:'black' }}>{employee.category}</p>
+            <Button variant="primary" style={{ alignContent:'center' }}  onClick={()=>this.viewSelectedBookDetails(employee.id)}>View</Button>
+          </Card.Body>
+        </Card> 
+                </div>
               )
             }  
             </ul>

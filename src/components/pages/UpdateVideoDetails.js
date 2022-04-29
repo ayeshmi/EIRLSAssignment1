@@ -1,4 +1,4 @@
-import './AddNewBook.css';
+import './AddNewVideo.css';
 import React, { Component,useState } from "react";
 import AuthService from '../services/auth.service';
 import Form from "react-validation/build/form";
@@ -16,16 +16,25 @@ import {toast} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 toast.configure()
 
+
 const required = value => {
   if (!value) {
     return (
-      <div className="alert alert-danger alertClass" role="alert">
+      <div className="alert alert-danger" role="alert">
         This field is required!
       </div>
     );
   }
 };
 
+const options = [
+    { value: "hello", label: "hello1" },
+    { value: "hello", label: "hello"},
+    { value: "hello", label: "hello" },
+    { value: "hello", label: "hello" },
+    { value: "hello", label: "hello"},
+    { value: "hello", label: "hello" },
+  ];
 
 export default class AddNewBook extends Component {
   
@@ -37,91 +46,90 @@ export default class AddNewBook extends Component {
     this.onChangeTitle = this.onChangeTitle.bind(this);
     this.onChangeAuthor=this.onChangeAuthor.bind(this);
     this.onChangeEdition=this.onChangeEdition.bind(this);
+    this.onChangeIsbn=this.onChangeIsbn.bind(this);
     this.onChangePrice=this.onChangePrice.bind(this);
+    this.onChangePrice1=this.onChangePrice1.bind(this);
     this.onChangeNumberofCopies=this.onChangeNumberofCopies.bind(this);
     this.onChangeDate=this.onChangeDate.bind(this);
     this.onChangeBookdes=this.onChangeBookdes.bind(this);
-    this.onChangeIsbn=this.onChangeIsbn.bind(this);
-    this.onChangeBExcerpt=this.onChangeBExcerpt.bind(this);
-    this.onChangePrice=this.onChangePrice.bind(this);
+    this.UplaodVideo=this.UplaodVideo.bind(this);
+    this.onChangeAgeLimitation=this.onChangeAgeLimitation.bind(this);
     this.onChangePublishedYear=this.onChangePublishedYear.bind(this);
-    this.onChangeNumberOfPaged=this.onChangeNumberOfPaged.bind(this);
+    
+    
     this.state = {
       id:this.props.match.params.id,
       category:"",
       title:"",
       author:"",
       edition:"",
+      isbnNumber:"",
       price:"",
       numberOfCopies:"",
       date:"",
-      bDes:"",
-      inumber:"",
-      bExcerpt:"",
-      price:"",
+      Message:"",
+      ageLimitation:"",
       publishedYear:"",
-      numberOfPages:""
+      numberOfCopies:"",
+      
   
     };
-  }
-
-  componentDidMount(){
-    AuthService.getBooksByID(this.state.id).then(  (res) =>{
-        let book = res.data;
-        this.setState({author: book.author,
-            category: book.category,
-           title : book.title,
-            image:book.imageOfVideo,
-            bDes:book.bookDescription,
-            price:book.price,
-      publishedYear:book.year,
-      bookExcerpt:book.bookExcerpt,
-      numberOfPages:book.numberOfPages,
-      bookID:book.id,
-      inumber:book.inumber,
-      numberOfCopies:book.numberOfCopies,
-      bExcerpt:book.bookExcerpt,
-      date:book.date
-        });
     
-    });
+  }
+ 
+  componentDidMount(){
+    AuthService.getVideoByID(this.state.id).then(  (res) =>{
+      let book = res.data;
+      this.setState({author: book.author,
+          category: book.category,
+         description : book.title,
+          image:book.imageOfVideo,
+          price:book.description,
+          price1:book.price,
+    publishedYear:book.year,
+    title:book.title,
+    numberOfCopies:book.numberOfCopies,
+    bookExcerpt:book.bookExcerpt,
+    ageLimitation:book.ageLimitation,
+    date:book.date
+      });
+  
+  });
 
 }
 
-  onChangeBExcerpt(e) {
-    this.setState({
-      bExcerpt: e.target.value
-    });
-  }
+  notify (){
+ 
+    // Calling toast method by passing string
+    toast.success(this.state.message)
+}
 
-  onChangePrice(e) {
-    this.setState({
-      price: e.target.value
-    });
-  }
+onChangePrice(e) {
+  this.setState({
+    price: e.target.value
+  });
+}
 
-  onChangePublishedYear(e) {
-    this.setState({
-      publishedYear: e.target.value
-    });
-  }
-
-  onChangeNumberOfPaged(e) {
-    this.setState({
-      numberOfPages: e.target.value
-    });
-  }
+onChangePublishedYear(e) {
+  this.setState({
+    publishedYear: e.target.value
+  });
+}
 
   onChangeCategory(e) {
     this.setState({
       category: e.target.value
     });
   }
-  onChangeIsbn(e) {
+
+
+
+  onChangeAgeLimitation(e) {
     this.setState({
-      inumber: e.target.value
+      ageLimitation: e.target.value
     });
   }
+
   onChangeBookdes(e){
     this.setState({
       bDes:e.target.value
@@ -146,10 +154,27 @@ export default class AddNewBook extends Component {
     });
 
   }
- 
+  onChangeIsbn(e) {
+    this.setState({
+      isbnNumber: e.target.value
+    });
+
+  }
   onChangePrice(e) {
     this.setState({
       price: e.target.value
+    });
+
+  }
+  onChangePrice1(e) {
+    this.setState({
+      price1: e.target.value
+    });
+
+  }
+  onChangeDescription(e) {
+    this.setState({
+      Message: e.target.value
     });
 
   }
@@ -166,11 +191,12 @@ export default class AddNewBook extends Component {
     });
 
   }
+
+
   
-  notify (){
- 
-    // Calling toast method by passing string
-    toast.success(this.state.message)
+  
+  UplaodVideo(e){
+    this.props.history.push(`/addVideo`);
 }
 
   handleLogin(e) {
@@ -184,21 +210,16 @@ export default class AddNewBook extends Component {
     this.form.validateAll();
 
     if (this.checkBtn.context._errors.length === 0) {
-      AuthService.updateBook(
+      AuthService.updateVideo(
         this.state.category,
-        this.state.title,
-        this.state.author,
-        this.state.inumber,
-        this.state.numberOfCopies,
         this.state.date,
-        this.state.bDes,
-        this.state.bExcerpt,
         this.state.price,
+        this.state.title,
+        this.state.ageLimitation,
+        this.state.author,
         this.state.publishedYear,
-        this.state.numberOfPages
-        
-        
-        //this.state.description
+        this.state.numberOfCopies,
+        this.state.price1,
         
       ).then(
         response => {
@@ -209,6 +230,7 @@ export default class AddNewBook extends Component {
           this.notify();
         },
         error => {
+
           const resMessage =
             (error.response &&
               error.response.data &&
@@ -231,20 +253,20 @@ render() {
  
     //const { category } = this.state;
   return (
-    <div className="bodyAddNew">
-      <img className='form-img123'  src={"/images/Untitled Design (1).jpg"} alt='spaceship' />
-     
+    <div className="body">
+      <img className='form-img12' src={"/images/Untitled Design (1).jpg"} alt='spaceship' />
+    
       
-<div className="form22">
+<div className="form33">
         <Form class="row23"
           onSubmit={this.handleLogin}
           ref={c => {
             this.form = c;
           }}
         >
-            <h2 id="headerTitle23">Update Book Details</h2>
+            <h2 id="headerTitle23">Update Video Details</h2>
             
-<div className='rowAddBook'>
+<div className='rowAddVideo'>
             <label >Title</label>
             <label >Author</label>
             <Input
@@ -256,92 +278,67 @@ render() {
               validations={[required]}
               disabled
             />
-         
-         
-            <Input
-            placeholder="Enter book author"
+            
+            
+            <Input        
+            placeholder="Enter video author"
               type="text"
-              name="author"
+              name="date"
               value={this.state.author}
               onChange={this.onChangeAuthor}
               validations={[required]}
             />
 </div>
-<div className='rowAddBook'>
-         <label >ISBN </label> 
-         <label>Number of Copies</label>
-            <Input
-            placeholder="Enter book ISBN"
-              type="number" 
-              name="inumber"
-              value={this.state.inumber}
-              onChange={this.onChangeIsbn}
-              validations={[required]}
-              size={13}
-              disabled
-            />
-        
 
-<Input
+<div className='rowAddVideo'>
+            <label >Number Of Copies</label>
+            <label >Date</label>
+            <Input
             placeholder="Enter number of copies"
               type="number" 
-              name="inumber"
+              name="title"
               value={this.state.numberOfCopies}
               onChange={this.onChangeNumberofCopies}
               validations={[required]}
             />
-            </div>
+            
+            
+            <Input        
+            placeholder="Enter your birthday"
+              type="date"
+              name="date"
+              value={this.state.date}
+              onChange={this.onChangeDate}
+              validations={[required]}
+            />
+</div>
 
-            <div className='rowAddBook'>
-            <label >Date</label>
+<div className='rowAddVideo'>
+            <label >Published Year</label>
             <label >Price (Rs.)</label>
       <Input        
-      placeholder="Enter date of today"
-        type="date"
+      placeholder="Enter movie published year"
+        type="number"
         name="date"
-        value={this.state.date}
-        onChange={this.onChangeDate}
+        value={this.state.publishedYear}
+        onChange={this.onChangePublishedYear}
         validations={[required]}
       />
 
 <Input
-            placeholder="Enter book price"
+            placeholder="Enter movie price"
               type="number" 
               name="inumber"
-              value={this.state.price}
-              onChange={this.onChangePrice}
+              value={this.state.price1}
+              onChange={this.onChangePrice1}
               validations={[required]}
               size={13}
             />
             </div>
 
-            <div className='rowAddBook'>
-         <label >Number Of Pages </label> 
-         <label>Published Year</label>
-            <Input
-            placeholder="Enter number of pages"
-              type="number" 
-              name="inumber"
-              value={this.state.numberOfPages}
-              onChange={this.onChangeNumberOfPaged}
-              validations={[required]}
-              size={13}
-            />
-        
-
-<Input
-            placeholder="Enter published year"
-              type="number" 
-              name="inumber"
-              value={this.state.publishedYear}
-              onChange={this.onChangePublishedYear}
-              validations={[required]}
-            />
-            </div>
-
-            
+<div className='rowAddVideo'>
       <label>Category</label>
-      
+      <label>18+ video or not</label>
         <FormControl >
         <InputLabel id="demo-simple-select-label">Select Book Category</InputLabel>
         <Select
@@ -370,9 +367,25 @@ render() {
           <MenuItem value={"Mystery"}>Mystery</MenuItem>
         </Select>
       </FormControl>
-      <br></br>
-      
 
+     
+
+<FormControl >
+<InputLabel id="demo-simple-select-label">Select answer</InputLabel>
+<Select
+  labelId="demo-simple-select-label"
+  id="demo-simple-select"
+  value={this.state.ageLimitation}
+  onChange={this.onChangeAgeLimitation}  
+  className="formItem"
+  placeholder="Select category"
+>
+  <MenuItem value={"Yes"}>Yes</MenuItem>
+  <MenuItem value={"No"}>No</MenuItem>
+  
+</Select>
+</FormControl>
+</div>
       <label >Description</label>
           
           <TextField
@@ -382,34 +395,17 @@ render() {
        multiline
        rows={6}
        placeholder="Enter book description"
-       value={this.state.bDes}
-           onChange={this.onChangeBookdes}
+       value={this.state.price}
+           onChange={this.onChangePrice}
            validations={[required]}
      />
 
-<label >Book Excerpt </label>
-          
-          <TextField
-          className="textField1"
-       id="standard-multiline-static"
-       name="bExcerpt"
-       multiline
-       rows={6}
-       placeholder="Enter book excerpt"
-       value={this.state.bExcerpt}
-           onChange={this.onChangeBExcerpt}
-           validations={[required]}
-     />
 
-  
-         
+
+
             
-          
-     
-
-          <br></br>
-          <br></br>
-
+  
+<br></br>
           <div className="form-group">
             <button class="row"
               className="btn btn-primary btn-block"
@@ -418,14 +414,13 @@ render() {
               {this.state.loading && (
                 <span className="spinner-border spinner-border-sm"></span>
               )}
-             <span>Update Book</span>
+             <span>Update Video</span>
             </button>
             <br></br>
-           
+            <br></br>
           </div>
 <br></br>
-
-          
+        
           <CheckButton
             style={{ display: "none" }}
             ref={c => {

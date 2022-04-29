@@ -10,10 +10,10 @@ html{
   font-size: 100%;
 }
 
-.form2{
-  max-width: 800px;
-  min-width: 495px;
-  height: 715px;
+.form288{
+  width: 500px;
+ 
+  height: 515px;
   
   top:7%;
   left: 50%;
@@ -41,11 +41,11 @@ html{
   
 }
 
-.form-img22 {
+.form-img2288 {
   width:500px;
-  height: 710px;
+  height: 515px;
   position: absolute;
-  top: 65%;
+  top: 52%;
   left: 35%;
   transform: translate(-50%, -50%);
   border-radius: 55px;

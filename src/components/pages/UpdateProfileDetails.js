@@ -43,7 +43,9 @@ export default class Regsiter extends Component {
       loading: false,
       message: "",
       show:false,
-      show1:true
+      show1:true,
+      userID:"",
+      currentUser:""
     };
   }
 
@@ -68,6 +70,28 @@ export default class Regsiter extends Component {
     });
   }
 
+  componentDidMount(){
+    const user = AuthService.getCurrentUser(); 
+    this.state.currentUser=user.username;
+    this.state.userID=user.id;
+    
+   
+
+    AuthService.getUserByID(user.id).then(  (res) =>{
+        let book = res.data;
+        this.setState({email: book.email,
+          username: book.username,
+          birthday:book.birthDay
+           
+        });
+    
+    });
+
+
+    
+     
+}
+
   onChangePassword(e) {
     this.setState({
       password: e.target.value
@@ -86,12 +110,12 @@ export default class Regsiter extends Component {
     this.form.validateAll();
 
     if (this.checkBtn.context._errors.length === 0) {
-      AuthService.register(
+      AuthService.updateProfile(
         this.state.username,
         this.state.email,
         this.state.birthday,
-        this.state.password,
-        this.state.name
+        this.state.userID
+     
         
       ).then(
         
@@ -128,7 +152,7 @@ export default class Regsiter extends Component {
   notify (){
  
     // Calling toast method by passing string
-    toast(this.state.message)
+    toast.success(this.state.message)
 }
 
 render() {
@@ -136,8 +160,8 @@ render() {
     
      <div>
        
-     <img className='form-img22'  src={"/images/books-1617327_1920.jpg"} alt='register' /> 
-<div className="form2">
+     <img className='form-img2288'  src={"/images/books-1617327_1920.jpg"} alt='register' /> 
+<div className="form288">
         <Form class="row1"
           onSubmit={this.handleLogin}
           ref={c => {
@@ -170,6 +194,7 @@ render() {
               value={this.state.email}
               onChange={this.onChangeEmail}
               validations={[required]}
+              disabled
             />
            
 
@@ -184,35 +209,10 @@ render() {
               onChange={this.onChangeBirthDay}
               validations={[required]}
             />
-            <label >Password</label>
-            <Input
-           
-            placeholder="Enter your password"
-              type="password"
-           
-              name="password"
-              value={this.state.password}
-              onChange={this.onChangePassword}
-              validations={[required]}
-            />
-             
-
-          <br></br>
+           <br></br>
 
           <div className="form-group">
-            <button class="row"
-              className="btn btn-primary btn-block"
-              disabled={this.state.loading}
-            >
-              {this.state.loading && (
-                <span className="spinner-border spinner-border-sm"></span>
-              )}
-             <span>Regsiter</span>
-            </button>
-            <br></br>
-            <span className='form-input-login'>
-        Already have an account? Login <a href='login'>here</a>
-      </span>
+            <button style={{ width: '17rem', backgroundColor:'rgb(119,181,254)' }}>Update</button>
           </div>
 <br></br>
 

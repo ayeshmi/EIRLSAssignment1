@@ -87,7 +87,7 @@ handleLogin(e) {
        <div>
         
             
-            <h1>On Going Book Reservations</h1>
+            <h1>On Going Book Lendings</h1>
            <br></br>
            <br></br>
             <br></br>
@@ -95,7 +95,7 @@ handleLogin(e) {
           {
                     this.state.reservations.map(
                 reservation =>
-          <div class="cards__items12 "  onClick={ () => this.editEmployee(reservation.id)}>
+          <div class="cards__items12 "  onClick={ () => this.editEmployee(reservation.bookId)}>
             
                          <Card style={{ width: '16rem', background: 'rgb(141, 190, 230)' }}>
       <Card.Img variant="top" className='cardImage12' src={reservation.image} />
@@ -122,7 +122,7 @@ handleLogin(e) {
             <div className="hi123">
         <h1 style={{ fontSize:'25px', alignContent:'center' }}>WARNING !</h1></div>
       <br></br>
-      <div className="cartPayment">
+      <div >
     <p className="lendingFee">Return books on time will be helped to protect your account. </p> 
     </div>
     

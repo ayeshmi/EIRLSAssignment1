@@ -85,17 +85,17 @@ handleLogin(e) {
        <div>
         
             
-            <h1>On Going Book Reservations</h1>
+            <h1>On Going Video Lendings...</h1>
            <br></br>
            <br></br>
             <br></br>
-            <ul className="cards__items123">
+            <ul className="cards__items123r">
           {
                     this.state.reservations.map(
                 reservation =>
-          <div class="cards__items12 "  onClick={ () => this.editEmployee(reservation.id)}>
+          <div class="cards__items12 "  onClick={ () => this.editEmployee(reservation.bookId)}>
             
-                         <Card style={{ width: '18rem', background: 'rgb(141, 190, 230)' }}>
+                         <Card style={{ width: '16rem', background: 'rgb(141, 190, 230)' }}>
       <Card.Img variant="top" className='cardImage12' src={reservation.image} />
       <Card.Body>
           <p style={{ color:'white',fontSize:'22px' }}><b>{reservation.bookName}</b></p>

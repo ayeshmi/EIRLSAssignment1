@@ -250,6 +250,13 @@ authService.RhomePageVideosRomance(user.id).then((res) => {
               )
             }  
             </ul>
+            <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
             <h2>Drama</h2>
             <ul className="cards__items1">
            
@@ -272,6 +279,13 @@ authService.RhomePageVideosRomance(user.id).then((res) => {
               )
             }  
             </ul>
+            <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
             <h2>Romance</h2>
             <ul className="cards__items1">
           {
@@ -292,6 +306,13 @@ authService.RhomePageVideosRomance(user.id).then((res) => {
               )
             }  
             </ul> 
+            <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
             <h2>Fantasy</h2>
             <ul className="cards__items1">
           {
@@ -311,7 +332,14 @@ authService.RhomePageVideosRomance(user.id).then((res) => {
             </div> 
               )
             }  
-            </ul>    
+            </ul>   
+            <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
+            <br></br> 
             <h2>Horror</h2>    
             <ul className="cards__items1">
           {
@@ -332,6 +360,13 @@ authService.RhomePageVideosRomance(user.id).then((res) => {
               )
             }  
             </ul>
+            <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
         </div>
       
       </div>
@@ -412,27 +447,14 @@ authService.RhomePageVideosRomance(user.id).then((res) => {
             }  
             </ul>
             
-            <ul className="cards__items1">
-            <h2>Drama</h2>
-          {
-            
-                    this.state.DramaBooks.map(
-                employee =>
-          <div class="child " >
-                 <Card style={{ width: '16rem',height:'30rem', backgroundColor:'#77b5fe' }}>
-      <Card.Img variant="top" className='cardImage12' src={employee.imageOfVideo} />
-      <Card.Body>
-          <p style={{ fontSize:'20px',color:'white'}}><b>{employee.title}</b></p>
-          <p style={{ color:'black' }}>Author :{employee.author}</p>
-          <p style={{ color:'black' }}>Published  :{employee.year}</p>
-          <p style={{ color:'black' }}>{employee.category}</p>
-        <Button variant="primary" style={{ alignContent:'center' }}  onClick={()=>this.viewSelectedBookDetails(employee.id)}>View</Button>
-      </Card.Body>
-    </Card> 
-            </div> 
-              )
-            }  
-            </ul>
+           
+            <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
             <h2>Romance</h2>
             <ul className="cards__items1">
           {
@@ -453,6 +475,13 @@ authService.RhomePageVideosRomance(user.id).then((res) => {
               )
             }  
             </ul> 
+            <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
             <h2>Fantasy</h2>
             <ul className="cards__items1">
           {
@@ -472,7 +501,14 @@ authService.RhomePageVideosRomance(user.id).then((res) => {
             </div> 
               )
             }  
-            </ul>    
+            </ul>  
+            <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
+            <br></br>  
             <h2>Horror</h2>    
             <ul className="cards__items1">
           {

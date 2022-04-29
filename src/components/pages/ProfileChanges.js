@@ -37,55 +37,24 @@ export default class HomepageAdmin extends Component {
           <ul className="cards__items1">
             
             <CardItem
-              src='images/Desktop-Book-HD-Wallpapers.jpg'
+              src='https://cdn.dribbble.com/users/5534/screenshots/14230133/media/e2f853f8232acad78bf143c32f2f3a04.jpg'
               text="Change Profile Picture"
-              label="Book"
+              label="Profile"
               path="/profileImage"
             
             />
                <CardItem
-              src='images/Desktop-Book-HD-Wallpapers.jpg'
+              src='https://cdn.dribbble.com/users/5534/screenshots/14230133/media/e2f853f8232acad78bf143c32f2f3a04.jpg'
               text="Change Profile Details"
-              label="Book"
+              label="Profile"
               path="/updateProfileDetails"
             />
            
           </ul>
 
-          <h2>Reservations</h2>
-          <ul className="cards__items1">
-            <CardItem
-              src='images/futuristic-1628581653437-3273.jpg'
-              text="Book Reservations"
-              label="Video"
-              path="/services"
-            />
-             <CardItem
-              src='images/futuristic-1628581653437-3273.jpg'
-              text="Video Reservations"
-              label="Video"
-              path="/services"
-            />
-            
-         
-          </ul>
-          <h2>Payments</h2>
-          <ul className="cards__items1">
-           
-          <CardItem
-              src='images/reservation.jpg'
-              text="Overdue Charges"
-              label="Reservation"
-              path="/services"
-            /> 
-              <CardItem
-              src='images/contactus.jpg'
-              text="Membership Charges"
-              label="ContactUs"
-              path="/ViewAllContactUs"
-            />  
-           
-          </ul>
+        
+          
+          
           
         </div>
       </div>

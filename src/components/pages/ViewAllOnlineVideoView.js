@@ -142,7 +142,7 @@ updateBookImage(title){
                                        <td className='back1'>{book.title}</td>
                                        <td className='back1'>{book.category}</td>
                                        <td className='back1'><img src={book.imageOfVideo} className='viewAllImage'></img></td> 
-                                       <td className='back1'>{book.onlineBook != null ? `Available`:`Not Available`}</td>
+                                       <td className='back1'>{book.fileDownloadUri != null ? `Available`:`Not Available`}</td>
                                        <td className='back1'>
                                        <button className="buttonVG"
               onClick={ () => this.updateBookImage(book.title)} 

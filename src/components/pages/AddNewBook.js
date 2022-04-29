@@ -398,9 +398,7 @@ render() {
            
           </div>
 <br></br>
-<Link to={'/addBookImage/'+this.state.title} className='nav-links'>
-                          Upload video image here
-                      </Link>
+
                       <br></br>
           
           <CheckButton

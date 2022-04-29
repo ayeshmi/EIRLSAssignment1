@@ -19,10 +19,10 @@ class ViewAllContactUs extends Component {
     }
 
     
-handleLogin1(price) {
+handleLogin1(price,reason) {
  
   let user = authService.getCurrentUser(); 
-        this.props.history.push(`lendingPayment/${user.email}/${price}`);
+        this.props.history.push(`addPayments/${user.email}/${price}/${reason}`);
         window.location.reload();
 
 }
@@ -68,7 +68,7 @@ notify (){
      
             <td className='back1'>
             <button className="buttonVG"
-              onClick={ () => this.handleLogin1(detail.price)} 
+              onClick={ () => this.handleLogin1(detail.price,detail.reason)} 
               
             >
              

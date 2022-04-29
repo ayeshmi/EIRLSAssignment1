@@ -123,7 +123,7 @@ export default class Regsiter extends Component {
             successful: false,
             message: resMessage
           });
-          if(resMessage=="Request failed with status code 400"){
+          if(resMessage=="Request failed with status code 500"){
             this.setState({
               loading: false,
               message: "Incorrect email format!"
@@ -150,8 +150,8 @@ render() {
     
      <div>
        
-     <img className='form-img22'  src={"/images/books-1617327_1920.jpg"} alt='register' /> 
-<div className="form2">
+     <img className='form-img22r'  src={"/images/books-1617327_1920.jpg"} alt='register' /> 
+<div className="form2r">
         <Form 
           onSubmit={this.handleLogin}
           ref={c => {
@@ -210,14 +210,20 @@ render() {
               onChange={this.onChangePassword}
               validations={[required]}
             />
-             
+            <br></br>
+            </div>
+            <div>
+          <input type="checkbox" id="topping" name="newUpdates" value={this.state.newUpdates} className='emailSending' />
+         
+         <p className="newUpdates">Get update new book and video adding.</p> 
+         </div>  
 
 
           
          <br></br>
-          <div className="form-group">
+          <div className="row1 ">
       
-            <button class="row"
+            <button class=""
               className="btn btn-primary btn-block"
               disabled={this.state.loading}
             >
@@ -232,11 +238,9 @@ render() {
             <span className='form-input-login'>
         Already have an account? Login <a href='login'>here</a>
       </span>
+          
           </div>
-          </div>
-          <input type="checkbox" id="topping" name="newUpdates" value={this.state.newUpdates} className='emailSending' />
          
-         <p className="newUpdates">Get update new book and video adding.</p> 
 <br></br>
 
           <CheckButton

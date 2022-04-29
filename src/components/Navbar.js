@@ -70,27 +70,32 @@ const onMouseEnter = () => {
               </div>
               <ul className={click ? 'nav-menu active' : 'nav-menu'}>
                   
-                  <li className='nav-item'>
-                      <Link to='/contact' className='nav-links' onClick={closeMobileMenu}>
-                          Contact Us
-                      </Link>
-                  </li>
                   
                   <li className='nav-item'>
-                      <Link to='/aboutUs' className='nav-links' onClick={closeMobileMenu}>
-                          About Us
+                  {(() => {
+
+if (roles == "ROLE_ADMIN") {
+
+  return (
+
+    <Link to='/homeAdmin' className='nav-links' onClick={closeMobileMenu}>
+                     Home
                       </Link>
-                  </li>
-                  <li className='nav-item'>
-                      <Link to='/registerUserselection' className='nav-links' onClick={closeMobileMenu}>
-                      {username == null ? `Register ` : ` `}
+  )
+}  else if(roles == null){
+  <Link to='/orderPageOfUser' className='nav-links' onClick={closeMobileMenu}>
+                   
                       </Link>
-                  </li>
-                 
-                  <li className='nav-item'>
-                      <Link to='/login' className='nav-links' onClick={logout}>
-                      {username == null ? `Login ` : `LogOut `}
+}
+else {
+  return (
+
+    <Link to='/homeUser' className='nav-links' onClick={closeMobileMenu}>
+                     Home
                       </Link>
+  )
+}
+})()}
                   </li>
                   <li className='nav-item'>
                       <Link to='/aboutProfile' className='nav-links userProfile' onClick={closeMobileMenu}>
@@ -109,6 +114,11 @@ if (roles == "ROLE_ADMIN") {
                      Book
                       </Link>
   )
+}
+else if(roles == null){
+  <Link to='/orderPageOfUser' className='nav-links' onClick={closeMobileMenu}>
+                   
+                      </Link>
 }  else {
   return (
 
@@ -131,7 +141,11 @@ if (roles == "ROLE_ADMIN") {
                      Video
                       </Link>
   )
-}  else {
+} else if(roles == null){
+  <Link to='/orderPageOfUser' className='nav-links' onClick={closeMobileMenu}>
+                   
+                      </Link>
+} else {
   return (
 
     <Link to='/viewAllVideoCategory' className='nav-links' onClick={closeMobileMenu}>
@@ -154,7 +168,12 @@ if (roles == "ROLE_ADMIN") {
                      Customers
                       </Link>
   )
-}  else {
+}  else if(roles == null){
+  <Link to='/orderPageOfUser' className='nav-links' onClick={closeMobileMenu}>
+                   
+                      </Link>
+}
+else {
   return (
 
     <Link to='/viewAllPayments' className='nav-links' onClick={closeMobileMenu}>
@@ -179,16 +198,44 @@ if (roles == "ROLE_ADMIN") {
                      External Resources
                       </Link>
   )
-}  else {
+}  else if(roles == null){
+  <Link to='/orderPageOfUser' className='nav-links' onClick={closeMobileMenu}>
+                   
+                      </Link>
+}
+else {
   return (
 
     <Link to='/orderPageOfUser' className='nav-links' onClick={closeMobileMenu}>
-                     Orders
+                     Lendings
                       </Link>
   )
 }
 })()}
                   </li>
+                  <li className='nav-item'>
+                      <Link to='/contact' className='nav-links' onClick={closeMobileMenu}>
+                          Contact Us
+                      </Link>
+                  </li>
+                  
+                  <li className='nav-item'>
+                      <Link to='/aboutUs' className='nav-links' onClick={closeMobileMenu}>
+                          About Us
+                      </Link>
+                  </li>
+                  <li className='nav-item'>
+                      <Link to='/registerUserselection' className='nav-links' onClick={closeMobileMenu}>
+                      {username == null ? `Register ` : ` `}
+                      </Link>
+                  </li>
+                 
+                  <li className='nav-item'>
+                      <Link to='/login' className='nav-links' onClick={logout}>
+                      {username == null ? `Login ` : `LogOut `}
+                      </Link>
+                  </li>
+               
                 
                   
                 
@@ -196,7 +243,7 @@ if (roles == "ROLE_ADMIN") {
              
                   <li className='nav-item'>
                       <Link to='/aboutProfile' className='nav-links' onClick={closeMobileMenu}>
-                      <img src={image != null ? `${image}` : `https://mysoftlogic.lk/build/images/user.955847eb.svg `}  className='imageff'/>
+                      <img src={image != null ? `${image}` : `https://cdn.iconscout.com/icon/premium/png-256-thumb/profile-1506810-1278719.png `}  className='imageff'/>
                       </Link>
                    
                   </li>

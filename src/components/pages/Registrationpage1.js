@@ -63,6 +63,17 @@ handleSearch3(e){
             return (
               <div>
                 <h1 style={{ color:'white'}}>Select your user type?</h1>
+                <div style={{ alignItems:'center' }}>
+                <Card style={{ width: '95rem',height:'10rem', backgroundColor:'white',alignItems:'center' }}>
+      <Card.Body>
+          <p style={{ fontSize:'20px',color:'black'}}><b>User Type</b></p>
+          <p style={{ fontSize:'20px',color:'black'}}><b>We have four types of customers namely bronze, silver gold and platinum. Each customer has different lending limitations. Following is how each type of customer can reserve books and videos. 
+
+</b></p>
+      
+      </Card.Body>
+    </Card>
+    </div>
                 <br></br>
                 <div className='card2 cards__items1456'>
       
@@ -94,7 +105,7 @@ handleSearch3(e){
     </Card>
     </div>
     <div>
-    <Card style={{ width: '16rem',height:'52rem', backgroundColor:'white' }}>
+    <Card style={{ width: '16rem',height:'52rem', backgroundColor:'#a99a86' }}>
       <Card.Img variant="top" className='cardImage12' src='images/Bronze-shutterstock_1681180837-700x390.jpg' />
       <Card.Body>
       <p style={{ fontSize:'20px',color:'blue'}}><b>Bronze</b></p>
@@ -120,7 +131,7 @@ handleSearch3(e){
     </Card>
     </div>
     <div>
-          <Card style={{ width: '16rem',height:'52rem', backgroundColor:'white' }}>
+          <Card style={{ width: '16rem',height:'52rem', backgroundColor:'#bfc1c2' }}>
       <Card.Img variant="top" className='cardImage12' src='images/istockphoto-184415150-612x612.jpg' />
       <Card.Body>
       <p style={{ fontSize:'20px',color:'blue'}}><b>Silver </b></p>
@@ -146,7 +157,7 @@ handleSearch3(e){
     </Card>
     </div>
     <div>
-     <Card style={{ width: '16rem',height:'52rem', backgroundColor:'white' }}>
+     <Card style={{ width: '16rem',height:'52rem', backgroundColor:'#e4d96f' }}>
       <Card.Img variant="top" className='cardImage12' src='images/istockphoto-497802746-612x612.jpg' />
       <Card.Body>
       <p style={{ fontSize:'20px',color:'blue'}}><b>Gold</b></p>
@@ -172,10 +183,10 @@ handleSearch3(e){
     </Card>
     </div>
     <div>
-     <Card style={{ width: '16rem',height:'52rem', backgroundColor:'white' }}>
+     <Card style={{ width: '16rem',height:'52rem', backgroundColor:'#a9a9a9' }}>
       <Card.Img variant="top" className='cardImage12' src='images/istockphoto-1030071582-612x612.jpg' />
       <Card.Body>
-      <p style={{ fontSize:'20px',color:'blue'}}><b>platinum</b></p>
+      <p style={{ fontSize:'20px',color:'blue'}}><b>Platinum</b></p>
           <hr style={{ color:'black' }}/>
           <p style={{ color:'black' }}>10</p>
           <hr style={{ color:'black' }}/>

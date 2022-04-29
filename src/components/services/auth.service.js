@@ -41,6 +41,15 @@ getVideoByID(videoId){
     });
   }
 
+  updateProfile(username, email,dateOfBirth,id) {
+    return axios.put(API_URL + "updateProfileDetails", {
+      username,
+      email,
+      dateOfBirth,id
+     
+    });
+  }
+
  contactUs(name, email,message) {
     return axios.post(API_URL + "contactus", {
       name,
@@ -85,6 +94,10 @@ getVideoByID(videoId){
       return axios.post(API_URL+"addVideoCopy",{category,title,date,description,ageLimitation,author,year,numberOfCopies,price});
      }
 
+     updateVideo(category,date,description,title,ageLimitation,author,year,numberOfCopies,price){
+      return axios.post(API_URL+"updateVideo",{category,title,date,description,ageLimitation,author,year,numberOfCopies,price});
+     }
+
      deleteContactUsDetailsById(id){
       return axios.delete(API_URL+"deleteContactUs/"+id);
      }
@@ -112,6 +125,19 @@ getVideoByID(videoId){
 
   addNewBookCopy(category,title,author,inumber,numberOfCopies,date,bookDescription,bookExcerpt,price,year,numberOfPages){
     return axios.post(API_URL + "addBookCopy", {
+     category,
+     title,
+     author,
+     inumber,
+     numberOfCopies,
+     date,
+     bookDescription,
+     bookExcerpt,price,year,numberOfPages
+    });
+  }
+
+ updateBook(category,title,author,inumber,numberOfCopies,date,bookDescription,bookExcerpt,price,year,numberOfPages){
+    return axios.post(API_URL + "updatebook", {
      category,
      title,
      author,
@@ -159,6 +185,10 @@ getVideoByID(videoId){
      });
   }
 
+  cancelNewBookOrder(id){
+    return axios.get(API_URL + "cancelBookOrder/"+id);
+  }
+
 
   addNewVideoReservation(videoName,email,userId,videoId,image){
     return axios.post(API_URL + "videoReservation", {
@@ -185,6 +215,10 @@ getVideoByID(videoId){
 
   getOnlineBookWatch(id){
     return axios.get(API_URL+"getAllBookReservationOnline/"+id);
+  }
+
+  getUserByID(id){
+    return axios.get(API_URL+"getUserByID/"+id);
   }
 
   getOrderBooks(id){
@@ -255,6 +289,18 @@ getVideoByID(videoId){
   }
   addPayment(cardType,cardHolderName,cardNumber,expiryDate,cvv,email){
     return axios.post(API_URL + "addPayment",{
+     
+      cardType,
+      cardHolderName,
+      cardNumber,
+      expiryDate,
+      cvv,
+      email
+      });
+  }
+
+  addPayment12(cardType,cardHolderName,cardNumber,expiryDate,cvv,email){
+    return axios.post(API_URL + "addPayment12",{
      
       cardType,
       cardHolderName,
@@ -340,6 +386,9 @@ getVideoByID(videoId){
   deleteCartBook(id){
     return axios.delete(API_URL+"deleteBookFromCart/"+id);
   }
+  deleteCartVideo(id){
+    return axios.delete(API_URL+"deleteVideoFromCart/"+id);
+  }
 
   deleteUser(id){
     return axios.delete(API_URL+"deleteUser/"+id);
@@ -357,6 +406,7 @@ getVideoByID(videoId){
       bookId,userId,price
     });
   }
+  
   deleteCommentByID(commentID,userID){
     return axios.delete(API_URL+"deleteCommentByID/"+commentID+"/"+userID);
   }
@@ -373,6 +423,7 @@ getVideoByID(videoId){
   addNewBookIntegration(){
     return axios.get(API_URL+"readCSV/");
   }
+
 
  
  

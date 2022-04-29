@@ -132,7 +132,7 @@ handleAddNewBook(category,date,price,title,ageLimitation,author,publishedYear,nu
             onClick={() => this.handleAddNewBook(employee.category,employee.date,employee.price,employee.name,employee.ageLimitation,employee.author,employee.publishedYear,employee.numberOfCopies,employee.price1,employee.status)}
               disabled={this.state.loading}
             >  
-             <span>{employee.status == 'exist' ? `Add as a copy ` : 'Add as a new book'}</span>
+             <span>{employee.status == 'exist' ? `Add as a copy ` : 'Add as a new video'}</span>
             </button>
             </td>                           
                                    </tr>

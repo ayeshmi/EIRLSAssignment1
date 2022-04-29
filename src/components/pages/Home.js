@@ -13,8 +13,7 @@ export default class AddNewBook extends Component {
     return (
       <>
         <HeroSection />
-        <Cards/>
-        <Footer />
+      
       </>
     );
   }
